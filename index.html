@@ -31,7 +31,6 @@
       --border-strong: rgba(212, 148, 76, 0.42);
       --header-bg: rgba(11, 8, 6, 0.86);
       --shadow: 0 24px 54px rgba(0, 0, 0, 0.55);
-      --pattern-opacity: 0.05;
     }
 
     /* AYDINLIK TEMA (LÜKS SEDEF, LADİN & CEVİZ) */
@@ -55,7 +54,6 @@
       --border-strong: rgba(154, 82, 22, 0.38);
       --header-bg: rgba(244, 237, 226, 0.88);
       --shadow: 0 20px 44px rgba(38, 24, 12, 0.08);
-      --pattern-opacity: 0.08;
     }
 
     * {
@@ -652,7 +650,6 @@
       position: relative;
     }
 
-    /* Gerçekçi metal tel çizgisi */
     .string-line::before {
       content: "";
       position: absolute;
@@ -758,7 +755,6 @@
       transition: left 0.1s ease;
     }
 
-    /* Usul Vuruş Işıkları (Düm / Tek) */
     .usul-beats {
       display: flex;
       gap: 8px;
@@ -913,6 +909,26 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+    }
+
+    /* ÖZEL METOT PDF KARTI VE GÖMÜLÜ OKUYUCU */
+    .featured-method-box {
+      background: linear-gradient(135deg, var(--gold-glow), var(--surface-2));
+      border: 1.5px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+
+    .pdf-preview-frame {
+      width: 100%;
+      height: 520px;
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      margin-top: 14px;
+      background: #14100d;
+      display: none;
     }
 
     .pdf-drawer-grid {
@@ -1208,9 +1224,9 @@
             yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
           </p>
           <div class="hero-actions">
-            <a href="#basvuru-bolumu" class="btn">Birebir Ders Başvurusu</a>
+            <a href="#basvuru-bolumu" class="btn">Ders Paketi & Başvuru</a>
             <a href="#baglama-studyosu" class="btn btn-ghost">İnteraktif Bağlama Stüdyosu</a>
-            <button class="btn btn-ghost" data-go="ogrenci">Öğrenci Girişi</button>
+            <button class="btn btn-ghost" data-go="ogrenci">Üye Öğrenci Girişi</button>
           </div>
           <div class="hero-highlights">
             <div class="highlight-item">
@@ -1222,8 +1238,8 @@
               <span>Yüz yüze & canlı online eğitim</span>
             </div>
             <div class="highlight-item">
-              <strong>8 Uzmanlık Alanı</strong>
-              <span>Düzen, şelpe, solfej & sınav hazırlık</span>
+              <strong>Özel Metot PDF</strong>
+              <span>Üye öğrencilere özel 94 syf. metot</span>
             </div>
           </div>
         </div>
@@ -1302,7 +1318,6 @@
 
           <div class="neck-scroll">
             <div class="bağlama-neck" id="interactiveNeck">
-              <!-- Alt Tel -->
               <div class="string-line" id="row-alt">
                 <div class="string-name">Alt Tel (Re)</div>
                 <button type="button" class="fret-node" data-row="row-alt" data-note="Re (Boş Tel)" data-freq="293.66">Re<small>0. Perde</small></button>
@@ -1317,7 +1332,6 @@
                 <button type="button" class="fret-node" data-row="row-alt" data-note="Do (İnce Do)" data-freq="523.25">Do<small>İnce</small></button>
               </div>
 
-              <!-- Orta Tel -->
               <div class="string-line" id="row-orta">
                 <div class="string-name">Orta Tel (Sol)</div>
                 <button type="button" class="fret-node" data-row="row-orta" data-note="Sol (Boş Tel)" data-freq="196.00">Sol<small>0. Perde</small></button>
@@ -1332,7 +1346,6 @@
                 <button type="button" class="fret-node" data-row="row-orta" data-note="Fa" data-freq="349.23">Fa<small>Pozisyon</small></button>
               </div>
 
-              <!-- Üst Tel -->
               <div class="string-line" id="row-ust">
                 <div class="string-name">Üst Tel (La)</div>
                 <button type="button" class="fret-node" data-row="row-ust" data-note="La (Boş Tel)" data-freq="220.00">La<small>0. Perde</small></button>
@@ -1476,27 +1489,27 @@
         </div>
         <div class="faq-list">
           <details class="faq-item">
+            <summary>Öğrenci Portalı şifremi ve PDF Bağlama Metodunu nasıl alabilirim?</summary>
+            <p>Aşağıdaki başvuru formundan ders paketi talebinizi oluşturup WhatsApp üzerinden ödeme ve kayıt onayınızı tamamladığınızda, Doğukan Hoca size özel kullanıcı adı ve şifrenizi iletir. Giriş yaptığınızda 94 sayfalık Bağlama Metodu PDF'i ve kişisel ödevleriniz açılır.</p>
+          </details>
+          <details class="faq-item">
             <summary>Hiç bağlama çalmayı ve nota okumayı bilmiyorum, sıfırdan başlayabilir miyim?</summary>
             <p>Evet. Derslerimizde tutuş pozisyonu, mızrap (tezene) vuruş yönleri, temel nota ve solfej eğitimi en baştan birebir olarak işlenir.</p>
           </details>
           <details class="faq-item">
             <summary>Online birebir dersler nasıl işleniyor, bağlantı nasıl paylaşılıyor?</summary>
-            <p>Online ders bağlantınız (Zoom / Google Meet / WhatsApp) ders saatinde doğrudan Öğrenci Girişi ekranınızdaki "Canlı Online Ders Odası" kartında açılır ve notalarınız PDF çekmecenize eklenir.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Güzel Sanatlar Liseleri ve Konservatuar hazırlıkta neler çalışılıyor?</summary>
-            <p>Tek ses, iki ses, üç ses işitme, ritim ve ezgi tekrarı, solfej deşifresi ve sınav komisyonuna sunulacak çalgı/vokal eserlerinin profesyonel hazırlığı yürütülür.</p>
+            <p>Online ders bağlantınız (Zoom / Google Meet / WhatsApp) ders saatinde doğrudan Öğrenci Girişi ekranınızdaki "Canlı Online Ders Odası" kartında açılır.</p>
           </details>
         </div>
       </div>
 
-      <!-- DERS BAŞVURUSU & ÖĞRENCİ KAYDI -->
+      <!-- DERS PAKETİ BAŞVURUSU & WHATSAPP ÖDEME / ONAY YÖNLENDİRMESİ -->
       <div id="basvuru-bolumu" class="section-block">
         <div class="section-head">
           <div>
-            <span class="tag">Birebir Eğitim Kaydı</span>
-            <h2 class="section-title">Ders Başvurusu & Öğrenci Hesabı Oluşturma</h2>
-            <p class="section-sub">Formu doldurduğunuzda başvurunuz Hoca Paneline düşer ve öğrenci hesabınız anında açılır.</p>
+            <span class="tag">WhatsApp Onaylı Kayıt Sistemi</span>
+            <h2 class="section-title">Ders Paketi Başvurusu & Üyelik Talebi</h2>
+            <p class="section-sub">Başvurunuzu gönderdiğinizde WhatsApp üzerinden ödeme ve ders günü onayınız yapılır; ardından Doğukan Hoca tarafından öğrenci giriş şifreniz tanımlanır.</p>
           </div>
         </div>
         <div class="card" style="max-width: 780px;">
@@ -1513,22 +1526,12 @@
             </div>
             <div class="field-row">
               <div class="field">
-                <label for="regUsername">Kullanıcı Adı Belirleyin</label>
-                <input type="text" id="regUsername" placeholder="Örn: emre" required />
-              </div>
-              <div class="field">
-                <label for="regPassword">Giriş Şifreniz</label>
-                <input type="password" id="regPassword" placeholder="En az 4 karakter" required />
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
                 <label for="regCourse">Ders Alanı</label>
                 <select id="regCourse">
-                  <option>Nota</option>
-                  <option>Solfej</option>
                   <option>Bağlama Düzeni</option>
                   <option>Bağlama Bozuk Düzen</option>
+                  <option>Nota</option>
+                  <option>Solfej</option>
                   <option>Şelpe</option>
                   <option>Çalıp Söyleme</option>
                   <option>Güzel Sanatlara Hazırlık</option>
@@ -1536,11 +1539,12 @@
                 </select>
               </div>
               <div class="field">
-                <label for="regMode">Ders Tercihi</label>
+                <label for="regMode">Ders Paketi & Tercihi</label>
                 <select id="regMode">
-                  <option>Birebir Özel (Yüz Yüze / Online)</option>
-                  <option>Birebir Özel Yüz Yüze</option>
-                  <option>Birebir Özel Online</option>
+                  <option>Aylık 4 Ders Paketi (Yüz Yüze / Online)</option>
+                  <option>Aylık 4 Ders Paketi (Birebir Online)</option>
+                  <option>Aylık 4 Ders Paketi (Birebir Yüz Yüze)</option>
+                  <option>Aylık 8 Ders Yoğun Paket (Sınav Hazırlık)</option>
                 </select>
               </div>
             </div>
@@ -1549,8 +1553,7 @@
               <textarea id="regNote" rows="2" placeholder="Takvimden seçtiğiniz saat veya hedefiniz..."></textarea>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-              <button type="submit" class="btn">Kaydı Tamamla & Gönder</button>
-              <button type="button" id="quickWaBtn" class="btn btn-ghost">WhatsApp ile İletişime Geç</button>
+              <button type="submit" class="btn">WhatsApp ile Ödeme & Üyelik Onayına Geç →</button>
               <span id="regStatus" style="font-size:0.84rem; font-weight:700; color:var(--ok);"></span>
             </div>
           </form>
@@ -1558,13 +1561,13 @@
       </div>
     </section>
 
-    <!-- 2. ÖĞRENCİ GİRİŞİ -->
+    <!-- 2. ÖĞRENCİ GİRİŞİ (SADECE HOCA ONAYLI ŞİFRELİ ÜYELER) -->
     <section id="view-ogrenci" class="page-view">
       <div class="portal-banner">
         <div>
-          <span class="tag">Öğrenci Akademi Portalı</span>
-          <h2 class="section-title" style="font-size: 1.75rem;">Öğrenci Girişi & Ders Takip Ekranı</h2>
-          <p style="color: var(--muted); font-size: 0.9rem;">Canlı ders odanıza katılmak, PDF notalarınızı görmek, kur sayacınızı ve ödevlerinizi takip etmek için giriş yapın.</p>
+          <span class="tag">Sadece Kayıtlı Öğrencilere Özel</span>
+          <h2 class="section-title" style="font-size: 1.75rem;">Üye Öğrenci Girişi & Ders Portalı</h2>
+          <p style="color: var(--muted); font-size: 0.9rem;">94 sayfalık Bağlama Metodu PDF'ine erişmek, canlı ders odasına katılmak ve kur sayacınızı görmek için Doğukan Hoca'nın verdiği şifreyle giriş yapın.</p>
         </div>
         <div style="display:flex; gap:8px; align-items:center;">
           <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm" style="display:none;">Çıkış Yap</button>
@@ -1572,21 +1575,38 @@
       </div>
 
       <!-- ÖĞRENCİ GİRİŞ FORMU -->
-      <div id="studentAuthScreen" class="card form-stack" style="max-width: 460px;">
-        <h3>Öğrenci Girişi</h3>
-        <p style="font-size: 0.85rem;">Kullanıcı adınız ve şifrenizle giriş yapın. <em>(Örnek öğrenci: <strong>emre</strong> / <strong>1234</strong>)</em></p>
-        <form id="memberLoginForm" class="form-stack" style="margin-top:6px;">
-          <div class="field">
-            <label for="loginUser">Kullanıcı Adı veya Ad Soyad</label>
-            <input type="text" id="loginUser" placeholder="Örn: emre" required />
+      <div id="studentAuthScreen" class="grid-2" style="align-items: start;">
+        <div class="card form-stack">
+          <span class="tag">Şifreli Öğrenci Girişi</span>
+          <h3>Üye Öğrenci Girişi</h3>
+          <p style="font-size: 0.85rem;">Doğukan Hoca tarafından onaylanan kullanıcı adınız ve şifrenizle giriş yapın. <em>(Örnek öğrenci: <strong>emre</strong> / <strong>1234</strong>)</em></p>
+          <form id="memberLoginForm" class="form-stack" style="margin-top:6px;">
+            <div class="field">
+              <label for="loginUser">Kullanıcı Adı veya Ad Soyad</label>
+              <input type="text" id="loginUser" placeholder="Örn: emre" required />
+            </div>
+            <div class="field">
+              <label for="loginPass">Öğrenci Şifresi</label>
+              <input type="password" id="loginPass" placeholder="••••" required />
+            </div>
+            <button type="submit" class="btn">Öğrenci Portalını Aç</button>
+            <span id="memberLoginError" style="font-size:0.83rem; font-weight:700; color:var(--danger);"></span>
+          </form>
+        </div>
+
+        <div class="card form-stack">
+          <span class="tag">Üyelik & Şifre Bilgilendirmesi</span>
+          <h3>Henüz Giriş Şifreniz Yok mu?</h3>
+          <p style="font-size:0.88rem;">Öğrenci portalı ve <strong>Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF</strong> metodu yalnızca ders kaydı onaylanmış üye öğrencilere açıktır.</p>
+          <div class="msg-item">
+            <strong>Nasıl Şifre Alırım?</strong>
+            <p style="font-size:0.84rem; margin-top:4px;">Ders paketi ödemenizi ve kaydınızı WhatsApp üzerinden tamamladığınızda Doğukan Hoca kullanıcı adı ve şifrenizi size iletir.</p>
           </div>
-          <div class="field">
-            <label for="loginPass">Şifre</label>
-            <input type="password" id="loginPass" placeholder="••••" required />
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a id="authWaSupportBtn" href="https://wa.me/905374394992?text=Merhaba%20Do%C4%9Fukan%20Hocam%2C%20ders%20paketi%20%C3%B6demesi%20ve%20%C3%B6%C4%9Frenci%20giri%C5%9F%20%C5%9Fifresi%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener noreferrer" class="btn btn-sm">WhatsApp'tan Ödeme & Şifre Talep Et</a>
+            <button type="button" class="btn btn-ghost btn-sm" data-go="vitrin">Başvuru Formuna Dön</button>
           </div>
-          <button type="submit" class="btn">Giriş Yap</button>
-          <span id="memberLoginError" style="font-size:0.83rem; font-weight:700; color:var(--danger);"></span>
-        </form>
+        </div>
       </div>
 
       <!-- GİRİŞ YAPILDIKTAN SONRA AÇILAN ÖĞRENCİ EKRANI -->
@@ -1604,25 +1624,25 @@
         <!-- AYLIK ÖDEME / KUR YENİLEME BİLGİLENDİRME KARTI -->
         <div id="studentRenewalAlert" class="renewal-alert-card" style="display:none;">
           <div>
-            <span class="tag" style="background:rgba(245,158,11,0.2); color:var(--warn);">Kur Tamamlandı • Yenileme Bilgilendirmesi</span>
+            <span class="tag" style="background:rgba(245,158,11,0.2); color:var(--warn);">Kur Tamamlandı • WhatsApp Ödeme & Yenileme</span>
             <h3>Bu Ayki Ders Paketiniz Tamamlandı</h3>
-            <p style="font-size:0.86rem; color:var(--muted);">Mevcut kurdaki tüm derslerinizi tamamladınız. Yeni kur planlaması ve aylık ödeme bilgilendirmesi için Doğukan Hoca ile iletişime geçebilirsiniz.</p>
+            <p style="font-size:0.86rem; color:var(--muted);">Mevcut kurdaki tüm derslerinizi tamamladınız. Yeni kur ödemesi ve ders planlaması için aşağıdaki butondan Doğukan Hoca'ya WhatsApp mesajı gönderebilirsiniz.</p>
           </div>
-          <a id="studentRenewalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm">WhatsApp ile Kur Yenile</a>
+          <a id="studentRenewalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm">WhatsApp ile Ödeme & Kur Yenile →</a>
         </div>
 
         <div id="studentNextLessonBar" class="notice-bar" style="display:none;"></div>
 
         <div class="portal-grid">
           <div class="card form-stack">
-            <span class="tag">Öğrenci Profili</span>
+            <span class="tag">Onaylı Öğrenci Profili</span>
             <h3 id="memberWelcomeTitle">Hoş Geldiniz</h3>
             <p id="memberCourseInfo" style="font-size:0.85rem;"></p>
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
 
             <!-- AYLIK DERS / KUR SAYACI -->
-            <h3>Aylık Kur & Ders Sayacı</h3>
+            <h3>Aylık Kur & Ders Paketi</h3>
             <p style="font-size:0.82rem;">Bu kurda işlenen ve kalan birebir ders durumunuz:</p>
             <div class="progress-track">
               <div class="progress-fill" id="studentCourseLessonBar"></div>
@@ -1631,6 +1651,7 @@
               <span id="studentCourseLessonText">0 / 4 Ders İşlendi</span>
               <span class="status-pill" id="studentCourseRemainingBadge">4 Ders Kaldı</span>
             </div>
+            <a id="sideWaPaymentBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm" style="margin-top:4px;">WhatsApp Paket Ödeme / Yenileme Bildir</a>
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
 
@@ -1660,11 +1681,31 @@
           </div>
 
           <div class="form-stack">
-            <!-- KİŞİSEL PDF NOTA & ÇALIŞMA DOSYASI ÇEKMECESİ -->
+            <!-- KİŞİSEL PDF NOTA & DOĞUKAN BOZKURT BAĞLAMA METODU ÇEKMECESİ -->
             <div class="card">
-              <span class="tag">Kişisel Arşiv</span>
+              <span class="tag">Sadece Üye Öğrencilere Özel Metot & Arşiv</span>
               <h3>Kişisel PDF Nota & Çalışma Dosyası Çekmecesi</h3>
-              <p style="font-size:0.84rem;">Doğukan Hoca'nın size özel paylaştığı tüm türkü notaları, PDF etütler ve çalışma bağlantıları:</p>
+
+              <!-- SABİT ANA METOT PDF KARTI (dogukanbaglamametodu.pdf) -->
+              <div class="featured-method-box">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:14px; flex-wrap:wrap;">
+                  <div style="flex:1; min-width:240px;">
+                    <span class="tag" style="margin-bottom:6px;">Ana Ders Kitabı • 94 Sayfa</span>
+                    <h3 style="font-size:1.12rem; color:var(--gold-light);">📘 Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF</h3>
+                    <p style="font-size:0.84rem; margin-top:4px;">
+                      Temel Müzik Bilgileri, Porte & Sol Anahtarı, Tezene Anahtarı (4'lük, 8'lik, 16'lık, Senkop), Pozisyon/Çekme/Çarpma/Takma Etütleri ve 40+ Türkü Repertuvarı (Süt İçtim Dilim Yandı, Maçka Yolları, Toycular, Uzun İnce Bir Yoldayım, Yalan Dünya, Sarı Gelin, Çeke Çeke vb.).
+                    </p>
+                  </div>
+                  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button type="button" id="toggleMethodPreviewBtn" class="btn btn-sm">Sayfa İçinde Oku / Kapat</button>
+                    <a href="./dogukanbaglamametodu.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Yeni Sekmede Aç</a>
+                    <a href="./dogukanbaglamametodu.pdf" download="Baglama_Duzeni_Temel_Orta_Seviye_Repertuvar_Parmak_Etudu.pdf" class="btn btn-ghost btn-sm">PDF İndir ↓</a>
+                  </div>
+                </div>
+                <iframe id="methodPdfIframe" class="pdf-preview-frame" src="./dogukanbaglamametodu.pdf" title="Doğukan Bozkurt Bağlama Metodu PDF"></iframe>
+              </div>
+
+              <p style="font-size:0.83rem; font-weight:700; margin-top:10px;">Hocanızın Eklediği Diğer Kişisel Notalar & Çalışmalar:</p>
               <div class="pdf-drawer-grid" id="studentPdfDrawer"></div>
             </div>
 
@@ -1687,7 +1728,7 @@
               <form id="studentMsgForm" class="form-stack">
                 <div class="field">
                   <label for="studentMsgInput">Mesajınız veya Çalışma Kaydı Notu</label>
-                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz çalışmayı uyguladım, şu ölçüde sorum var..." required></textarea>
+                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam metottaki alıştırmayı çalıştım, şu ölçüde sorum var..." required></textarea>
                 </div>
                 <button type="submit" class="btn">Hocaya Gönder</button>
               </form>
@@ -1702,8 +1743,8 @@
       <div class="portal-banner">
         <div>
           <span class="tag">Eğitmen Kontrol Paneli</span>
-          <h2 class="section-title" style="font-size: 1.75rem;">Doğukan Bozkurt — Öğrenci, Kur Sayacı & Canlı Ders Yönetimi</h2>
-          <p style="color: var(--muted); font-size: 0.9rem;">Öğrencilerin ders sayacını yönetin, canlı online ders linki açın, PDF nota çekmecesine dosya ekleyin ve ödev gönderin.</p>
+          <h2 class="section-title" style="font-size: 1.75rem;">Doğukan Bozkurt — Üye Onayı, Şifre Verme & Ders Yönetimi</h2>
+          <p style="color: var(--muted); font-size: 0.9rem;">WhatsApp üzerinden ödemesini tamamladığınız öğrencileri onaylayıp şifre verin, kur sayacını yönetin ve PDF çekmecesine nota ekleyin.</p>
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
           <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Kayıtları İndir (JSON)</button>
@@ -1726,11 +1767,16 @@
       <div id="hocaWorkspace" style="display:none;">
         <div class="portal-grid">
           <div class="card form-stack">
-            <h3>Yeni Öğrenci Tanımla</h3>
+            <span class="tag">WhatsApp Ödeme Sonrası</span>
+            <h3>Yeni Üye Öğrenci Onayla & Şifre Ver</h3>
             <form id="hocaAddStudentForm" class="form-stack">
               <div class="field">
                 <label for="newStuName">Öğrenci Ad Soyad</label>
                 <input type="text" id="newStuName" placeholder="Örn: Ali Kaya" required />
+              </div>
+              <div class="field">
+                <label for="newStuPhone">Öğrenci WhatsApp Numarası</label>
+                <input type="tel" id="newStuPhone" placeholder="05XX XXX XX XX" />
               </div>
               <div class="field-row">
                 <div class="field">
@@ -1738,7 +1784,7 @@
                   <input type="text" id="newStuUser" placeholder="alikaya" required />
                 </div>
                 <div class="field">
-                  <label for="newStuPass">Şifre</label>
+                  <label for="newStuPass">Verilecek Şifre</label>
                   <input type="text" id="newStuPass" placeholder="1234" required />
                 </div>
               </div>
@@ -1746,10 +1792,10 @@
                 <div class="field">
                   <label for="newStuCourse">Ders Alanı</label>
                   <select id="newStuCourse">
-                    <option>Nota</option>
-                    <option>Solfej</option>
                     <option>Bağlama Düzeni</option>
                     <option>Bağlama Bozuk Düzen</option>
+                    <option>Nota</option>
+                    <option>Solfej</option>
                     <option>Şelpe</option>
                     <option>Çalıp Söyleme</option>
                     <option>Güzel Sanatlara Hazırlık</option>
@@ -1761,14 +1807,14 @@
                   <input type="number" id="newStuPkg" min="1" max="24" value="4" />
                 </div>
               </div>
-              <button type="submit" class="btn btn-sm">Öğrenci Ekle</button>
+              <button type="submit" class="btn btn-sm">Üyeyi Kaydet & Şifre Oluştur</button>
               <span id="hocaAddStuStatus" style="font-size:0.8rem; font-weight:700; color:var(--ok);"></span>
             </form>
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
 
-            <h3>Kayıtlı Öğrenciler</h3>
-            <p style="font-size:0.78rem; color:var(--muted);">Ders sayacı, canlı ders linki veya PDF nota eklemek için öğrenciye tıklayın:</p>
+            <h3>Kayıtlı Üye Öğrenciler</h3>
+            <p style="font-size:0.78rem; color:var(--muted);">Ders sayacı, WhatsApp şifre gönderimi veya canlı ders için öğrenciye tıklayın:</p>
             <div class="student-list" id="hocaStudentList"></div>
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
@@ -1777,17 +1823,22 @@
             <form id="hocaAnnouncementForm" class="form-stack">
               <div class="field">
                 <label for="announcementInput">Tüm Öğrencilere Duyuru</label>
-                <textarea id="announcementInput" rows="2" placeholder="Örn: Bu hafta konservatuar hazırlık ve düzen çalışmaları güncellendi..."></textarea>
+                <textarea id="announcementInput" rows="2" placeholder="Örn: Bağlama Düzeni Temel & Orta Seviye PDF metodu çekmecenize eklendi..."></textarea>
               </div>
               <button type="submit" class="btn btn-ghost btn-sm">Duyuruyu Yayınla</button>
             </form>
           </div>
 
           <div class="form-stack">
-            <!-- SEÇİLİ ÖĞRENCİ DERS SAYACI, KUR YENİLEME & CANLI DERS ODASI YÖNETİMİ -->
+            <!-- SEÇİLİ ÖĞRENCİ DERS SAYACI, ŞİFRE GÖNDERİMİ & CANLI DERS ODASI YÖNETİMİ -->
             <div class="card" id="hocaStudentToolsCard" style="display:none;">
-              <span class="tag">Seçili Öğrenci Kur & Canlı Ders Yönetimi</span>
-              <h3 id="hocaToolsStudentName">Öğrenci Yönetimi</h3>
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <span class="tag">Seçili Öğrenci Yönetimi</span>
+                  <h3 id="hocaToolsStudentName">Öğrenci Yönetimi</h3>
+                </div>
+                <a id="hocaSendPassWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Giriş Şifresini WhatsApp'tan Gönder →</a>
+              </div>
 
               <div class="grid-2" style="margin-top:12px;">
                 <div class="msg-item">
@@ -1812,13 +1863,14 @@
                 </div>
               </div>
 
-              <!-- KİŞİSEL PDF NOTA ÇEKMECESİNE DOSYA EKLEME -->
+              <!-- KİŞİSEL PDF NOTA ÇEKMECESİNE EK DOSYA EKLEME -->
               <div class="msg-item" style="margin-top:12px;">
-                <strong>Öğrencinin PDF Nota & Çalışma Çekmecesine Ekle</strong>
+                <strong>Öğrencinin PDF Çekmecesine Ek Nota / Dosya Ekle</strong>
+                <p style="font-size:0.78rem; color:var(--muted); margin-top:2px;">Not: "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF" tüm üye öğrencilerde otomatik tanımlıdır.</p>
                 <form id="hocaAddPdfForm" class="field-row" style="margin-top:8px;">
-                  <input type="text" id="hocaPdfTitle" placeholder="Nota / Türkü Adı (Örn: Mihriban Nota PDF)" required />
+                  <input type="text" id="hocaPdfTitle" placeholder="Ek Nota / Türkü Adı" required />
                   <div style="display:flex; gap:8px;">
-                    <input type="url" id="hocaPdfUrl" placeholder="PDF / Drive / Görsel Linki (https://...)" required />
+                    <input type="url" id="hocaPdfUrl" placeholder="PDF / Drive Linki (https://...)" required />
                     <button type="submit" class="btn btn-sm" style="white-space:nowrap;">Çekmeceye Ekle</button>
                   </div>
                 </form>
@@ -1844,6 +1896,7 @@
                     <label for="hocaCardType">Kart Türü</label>
                     <select id="hocaCardType">
                       <option value="Ders Notu / Ödev">Ders Notu / Ödev</option>
+                      <option value="Metot Sayfa Ödevi">Metot Sayfa Ödevi</option>
                       <option value="Teknik / Mızrap-Şelpe Notu">Teknik / Mızrap-Şelpe Notu</option>
                       <option value="Sınav Hazırlık Planı">Sınav Hazırlık Planı</option>
                     </select>
@@ -1855,7 +1908,7 @@
                 </div>
                 <div class="field">
                   <label for="hocaReplyInput">Öğrenciye Özel Ders Notu / Geri Bildirim</label>
-                  <textarea id="hocaReplyInput" rows="3" placeholder="Çalışılacak nota, düzen, mızrap/şelpe veya sınav hazırlık notu..."></textarea>
+                  <textarea id="hocaReplyInput" rows="3" placeholder="Örn: Metot PDF'indeki Alıştırma-1, Alıştırma-2 ve Süt İçtim Dilim Yandı sayfasını çalışalım..."></textarea>
                 </div>
                 <button type="submit" class="btn">Öğrenciye Gönder</button>
               </form>
@@ -1869,8 +1922,9 @@
             </div>
 
             <div class="card">
-              <h3 style="margin-bottom: 10px;">Gelen Ders & Kayıt Talepleri</h3>
-              <div class="feed" id="hocaRequestsFeed" style="max-height: 260px;"></div>
+              <h3 style="margin-bottom: 10px;">Gelen Ders Paketi & Kayıt Talepleri</h3>
+              <p style="font-size:0.8rem; color:var(--muted); margin-bottom:10px;">"Onayla & Şifre Oluştur" butonuna bastığınızda öğrenciye otomatik kullanıcı adı/şifre tanımlanır ve WhatsApp'tan gönderme ekranı açılır.</p>
+              <div class="feed" id="hocaRequestsFeed" style="max-height: 300px;"></div>
             </div>
           </div>
         </div>
@@ -1896,8 +1950,10 @@
     const WHATSAPP_NUMBER = "905374394992";
     const HOCA_PIN = "baglama2026";
     const FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v8";
+    const STORAGE_KEY = "dogukan_muzik_portal_v9";
     const THEME_KEY = "dogukan_portal_theme_v2";
+    const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
+    const MAIN_METHOD_PDF_URL = "./dogukanbaglamametodu.pdf";
 
     /* KALICI AYDINLIK / KARANLIK TEMA YÖNETİMİ */
     function applyTheme(theme) {
@@ -1934,7 +1990,14 @@
       setTimeout(() => {
         const pre = document.getElementById("preloader");
         if (pre) pre.classList.add("hide");
-      }, 1700);
+      }, 1600);
+    });
+
+    /* ÖĞRENCİ PANELİ SAYFA İÇİ PDF ÖN İZLEME AÇ/KAPAT */
+    document.getElementById("toggleMethodPreviewBtn").addEventListener("click", () => {
+      const frame = document.getElementById("methodPdfIframe");
+      const open = frame.style.display === "block";
+      frame.style.display = open ? "none" : "block";
     });
 
     const SKILL_BADGES = [
@@ -1965,15 +2028,19 @@
           password: "1234",
           course: "Bağlama Düzeni",
           phone: "0500 000 00 00",
-          mode: "Birebir Özel (Yüz Yüze / Online)",
+          mode: "Aylık 4 Ders Paketi (Yüz Yüze / Online)",
           practiceMins: 60,
           lessonsDone: 3,
           lessonsTotal: 4,
           liveLink: "https://meet.google.com/",
           liveActive: true,
           pdfs: [
-            { id: "p1", title: "Bağlama Düzeni Temel Parmak & Tezene Etüdü (PDF)", url: "https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy", date: "14:00" },
-            { id: "p2", title: "Uzun İnce Bir Yoldayım Nota & Bona Kağıdı", url: "https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3", date: "15:30" }
+            {
+              id: "p_main_method",
+              title: MAIN_METHOD_PDF_TITLE,
+              url: MAIN_METHOD_PDF_URL,
+              date: "Sabit Metot"
+            }
           ],
           badges: ["b_mizrap", "b_nota"]
         }
@@ -1985,9 +2052,9 @@
           senderName: "Doğukan Bozkurt",
           targetStudent: "ALL",
           course: "Genel Duyuru",
-          cardType: "Duyuru",
-          link: "",
-          text: "Öğrenci Portalına hoş geldiniz. Canlı online ders odanıza katılabilir, kişisel PDF nota çekmecenizi ve kur ders sayacınızı buradan takip edebilirsiniz.",
+          cardType: "Yeni Metot PDF",
+          link: MAIN_METHOD_PDF_URL,
+          text: "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF (94 Sayfa) kişisel PDF çekmecenize yüklenmiştir. Ders öncesi Tezene Anahtarı ve ilk alıştırmaları inceleyebilirsiniz.",
           time: nowStr(),
           completed: false
         },
@@ -1997,9 +2064,9 @@
           senderName: "Doğukan Bozkurt",
           targetStudent: "Emre Yılmaz",
           course: "Bağlama Düzeni",
-          cardType: "Ders Notu / Ödev",
-          link: "",
-          text: "Emre merhaba, bu hafta La karar ve Re karar geçiş egzersizlerini 85 BPM metronomla günde 30 dakika çalışalım.",
+          cardType: "Metot Sayfa Ödevi",
+          link: MAIN_METHOD_PDF_URL,
+          text: "Emre merhaba, bu hafta metottaki Alıştırma-1, Alıştırma-2 ve 'Süt İçtim Dilim Yandı' ile 'Maçka Yolları' notalarını tezene yönlerine dikkat ederek günde 30 dakika çalışalım.",
           time: nowStr(),
           completed: false
         }
@@ -2017,12 +2084,29 @@
       return new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
     }
 
+    function ensureMethodPdfForAllStudents(stObj) {
+      if (!stObj || !Array.isArray(stObj.students)) return;
+      stObj.students.forEach((stu) => {
+        if (!Array.isArray(stu.pdfs)) stu.pdfs = [];
+        const hasMethod = stu.pdfs.some((p) => p.url === MAIN_METHOD_PDF_URL || p.id === "p_main_method");
+        if (!hasMethod) {
+          stu.pdfs.unshift({
+            id: "p_main_method",
+            title: MAIN_METHOD_PDF_TITLE,
+            url: MAIN_METHOD_PDF_URL,
+            date: "Sabit Metot"
+          });
+        }
+      });
+    }
+
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
           if (!Array.isArray(parsed.schedule)) parsed.schedule = structuredClone(DEFAULT_SCHEDULE);
+          ensureMethodPdfForAllStudents(parsed);
           return parsed;
         }
       } catch (_) {}
@@ -2030,6 +2114,7 @@
     }
 
     function saveState() {
+      ensureMethodPdfForAllStudents(state);
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (_) {}
@@ -2382,9 +2467,9 @@
       document.getElementById("basvuru-bolumu").scrollIntoView({ behavior: "smooth" });
     });
 
-    /* ÖĞRENCİ EKLEME / GÜNCELLEME */
+    /* ÖĞRENCİ EKLEME / GÜNCELLEME (HOCA ONAYLI) */
     function upsertStudent(name, course, phone = "", mode = "", username = "", password = "", pkgTotal = 4) {
-      const cleanUser = (username || name).toLowerCase().replace(/\s+/g, "");
+      const cleanUser = (username || name).toLowerCase().replace(/[^a-z0-9ğüşıöç]/gi, "");
       const existing = state.students.find(
         (s) => s.name.toLowerCase() === name.toLowerCase() || (s.username && s.username.toLowerCase() === cleanUser)
       );
@@ -2405,7 +2490,7 @@
         id: "s_" + Date.now(),
         name,
         username: cleanUser,
-        password: password || "1234",
+        password: password || String(Math.floor(1000 + Math.random() * 9000)),
         course,
         phone,
         mode,
@@ -2414,66 +2499,59 @@
         lessonsTotal: pkgTotal || 4,
         liveLink: "",
         liveActive: false,
-        pdfs: [],
+        pdfs: [
+          {
+            id: "p_main_method",
+            title: MAIN_METHOD_PDF_TITLE,
+            url: MAIN_METHOD_PDF_URL,
+            date: "Sabit Metot"
+          }
+        ],
         badges: ["b_mizrap"]
       };
       state.students.push(created);
       return created;
     }
 
-    /* BAŞVURU & KAYIT OLUŞTURMA */
+    /* BAŞVURU FORMU -> HOCA PANELİNE KAYIT + WHATSAPP ÖDEME YÖNLENDİRMESİ */
     document.getElementById("quickRegisterForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("regName").value.trim();
       const phone = document.getElementById("regPhone").value.trim();
-      const username = document.getElementById("regUsername").value.trim();
-      const password = document.getElementById("regPassword").value.trim();
       const course = document.getElementById("regCourse").value;
       const mode = document.getElementById("regMode").value;
       const note = document.getElementById("regNote").value.trim();
 
-      const stu = upsertStudent(name, course, phone, mode, username, password, 4);
       state.requests.unshift({
         id: "r_" + Date.now(),
-        studentName: stu.name,
+        studentName: name,
+        phone,
         course,
         slot: mode,
         topic: note || course,
-        status: "Bekliyor",
+        status: "Ödeme / Onay Bekliyor",
         time: nowStr()
       });
+
       state.messages.unshift({
         id: "m_" + Date.now(),
         sender: "ogrenci",
-        senderName: stu.name,
+        senderName: name,
         targetStudent: "ALL",
         course,
-        cardType: "Yeni Kayıt & Başvuru",
+        cardType: "Ders Paketi Başvurusu",
         link: "",
-        text: `Yeni öğrenci kaydı ve ders başvurusu: ${course} (${mode})${note ? " — Not: " + note : ""}`,
+        text: `Yeni ders paketi ve üyelik başvurusu: ${course} — Paket: ${mode} — Tel: ${phone}${note ? " — Not: " + note : ""}`,
         time: nowStr(),
         completed: false
       });
 
-      currentStudent = stu;
       saveState();
       renderAll();
 
-      document.getElementById("regStatus").textContent = "Kaydınız oluşturuldu! Öğrenci ekranına yönlendiriliyorsunuz...";
-      setTimeout(() => {
-        document.getElementById("regStatus").textContent = "";
-        goView("ogrenci");
-      }, 1100);
-    });
-
-    document.getElementById("quickWaBtn").addEventListener("click", () => {
-      const name = document.getElementById("regName").value.trim() || "-";
-      const phone = document.getElementById("regPhone").value.trim() || "-";
-      const course = document.getElementById("regCourse").value;
-      const mode = document.getElementById("regMode").value;
-      const note = document.getElementById("regNote").value.trim() || "-";
-      const msg = `Merhaba Doğukan Bozkurt Hocam, müzik eğitimi için bilgi almak istiyorum.\nAd Soyad: ${name}\nTelefon: ${phone}\nDers Alanı: ${course}\nTercih: ${mode}\nNot: ${note}`;
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+      document.getElementById("regStatus").textContent = "Başvurunuz kaydedildi! Ödeme ve şifre onayı için WhatsApp açılıyor...";
+      const waMsg = `Merhaba Doğukan Bozkurt Hocam, ders paketi kaydı, ödeme bilgisi ve öğrenci portalı şifresi için başvuruyorum.\n\nAd Soyad: ${name}\nTelefon: ${phone}\nDers Alanı: ${course}\nPaket: ${mode}\nNot / Saat: ${note || "-"}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`, "_blank", "noopener,noreferrer");
     });
 
     /* ÖĞRENCİ GİRİŞİ */
@@ -2489,7 +2567,7 @@
       );
 
       if (!found || String(found.password || "1234") !== passInp) {
-        document.getElementById("memberLoginError").textContent = "Kullanıcı adı veya şifre hatalı. (Örnek: emre / 1234)";
+        document.getElementById("memberLoginError").textContent = "Kullanıcı adı veya şifre hatalı. Şifrenizi Doğukan Hoca'dan WhatsApp üzerinden alabilirsiniz.";
         return;
       }
 
@@ -2523,6 +2601,7 @@
       state.requests.unshift({
         id: "r_" + Date.now(),
         studentName: currentStudent.name,
+        phone: currentStudent.phone || "",
         course: currentStudent.course,
         slot,
         topic,
@@ -2588,20 +2667,23 @@
     document.getElementById("hocaAddStudentForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("newStuName").value.trim();
+      const phone = document.getElementById("newStuPhone").value.trim();
       const username = document.getElementById("newStuUser").value.trim();
       const password = document.getElementById("newStuPass").value.trim();
       const course = document.getElementById("newStuCourse").value;
       const pkg = parseInt(document.getElementById("newStuPkg").value, 10) || 4;
 
-      upsertStudent(name, course, "", "Birebir Özel", username, password, pkg);
+      const created = upsertStudent(name, course, phone, "Aylık Ders Paketi", username, password, pkg);
+      selectedHocaStudent = created.name;
       saveState();
       renderAll();
 
       document.getElementById("newStuName").value = "";
+      document.getElementById("newStuPhone").value = "";
       document.getElementById("newStuUser").value = "";
       document.getElementById("newStuPass").value = "";
-      document.getElementById("hocaAddStuStatus").textContent = `${name} eklendi!`;
-      setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
+      document.getElementById("hocaAddStuStatus").textContent = `${name} eklendi ve 94 syf. Bağlama Metodu PDF'i tanımlandı!`;
+      setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 3000);
     });
 
     document.getElementById("hocaIncLessonBtn").addEventListener("click", () => {
@@ -2618,7 +2700,7 @@
           course: stu.course,
           cardType: "Kur Tamamlandı / Yenileme",
           link: "",
-          text: `${stu.name}, bu kurdaki ${stu.lessonsTotal}/${stu.lessonsTotal} dersimizi tamamladık. Yeni kur planlaması ve aylık ödeme yenilemesi için iletişime geçebilirsin.`,
+          text: `${stu.name}, bu kurdaki ${stu.lessonsTotal}/${stu.lessonsTotal} dersimizi tamamladık. Yeni kur planlaması ve aylık paket ödemesi için WhatsApp'tan iletişime geçebilirsin.`,
           time: nowStr(),
           completed: false
         });
@@ -2783,6 +2865,14 @@
       URL.revokeObjectURL(url);
     });
 
+    function formatPhoneForWa(rawPhone) {
+      const digits = String(rawPhone || "").replace(/\D/g, "");
+      if (!digits) return "";
+      if (digits.startsWith("90")) return digits;
+      if (digits.startsWith("0")) return "9" + digits;
+      return "90" + digits;
+    }
+
     function renderSchedules() {
       const pubGrid = document.getElementById("publicScheduleGrid");
       const hocaGrid = document.getElementById("hocaScheduleGrid");
@@ -2834,6 +2924,7 @@
     }
 
     function renderAll() {
+      ensureMethodPdfForAllStudents(state);
       renderUsulBeats();
       renderSchedules();
 
@@ -2873,6 +2964,9 @@
         document.getElementById("studentCourseLessonText").textContent = `${done} / ${total} Ders İşlendi`;
         document.getElementById("studentCourseRemainingBadge").textContent = rem === 0 ? "Kur Tamamlandı" : `${rem} Ders Kaldı`;
 
+        const payWaMsg = `Merhaba Doğukan Hocam, ben ${stObj.name}. Ders paketi ödemesi / kur yenilemesi için bilgi almak istiyorum.`;
+        document.getElementById("sideWaPaymentBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(payWaMsg)}`;
+
         const renewalAlert = document.getElementById("studentRenewalAlert");
         const renewalWa = document.getElementById("studentRenewalWaBtn");
         if (done >= total) {
@@ -2900,7 +2994,7 @@
               <a href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Aç / İndir</a>
             </div>
           `).join("")
-          : `<p style="color:var(--muted); font-size:0.85rem;">Henüz çekmecenize eklenmiş PDF nota bulunmuyor.</p>`;
+          : `<p style="color:var(--muted); font-size:0.85rem;">Henüz ek dosya bulunmuyor.</p>`;
 
         const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
         document.getElementById("studentBadgesGrid").innerHTML = SKILL_BADGES.map((b) => {
@@ -2946,7 +3040,7 @@
               <span>${escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
-            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.84rem;">Kaynak / Nota Bağlantısını Aç →</a></div>` : ""}
+            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.84rem;">Dosyayı / Bağlantıyı Aç →</a></div>` : ""}
             ${m.sender === "hoca" ? `
               <div style="margin-top:10px;">
                 <button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">
@@ -3015,9 +3109,15 @@
 
         const d = foundStudent.lessonsDone || 0;
         const t = foundStudent.lessonsTotal || 4;
-        document.getElementById("hocaToolsStudentName").textContent = `${foundStudent.name} — Kur, Canlı Ders & PDF Yönetimi`;
+        document.getElementById("hocaToolsStudentName").textContent = `${foundStudent.name} (k.adı: ${foundStudent.username} / şifre: ${foundStudent.password})`;
         document.getElementById("hocaCourseCounterLabel").textContent = `${d} / ${t} Ders İşlendi ${d >= t ? "(Kur Doldu - Yenileme Bekliyor)" : ""}`;
         document.getElementById("hocaLiveLinkInput").value = foundStudent.liveLink || "";
+
+        const stuPhone = formatPhoneForWa(foundStudent.phone);
+        const passMsg = `Merhaba ${foundStudent.name}, Doğukan Bozkurt Müzik & Bağlama Akademisi öğrenci kaydın onaylandı.\n\nÖğrenci Girişi Bilgilerin:\nKullanıcı Adı: ${foundStudent.username}\nŞifre: ${foundStudent.password}\n\nGiriş yaptığında 94 sayfalık '${MAIN_METHOD_PDF_TITLE}' metoduna ve ders paneline ulaşabilirsin.`;
+        document.getElementById("hocaSendPassWaBtn").href = stuPhone
+          ? `https://wa.me/${stuPhone}?text=${encodeURIComponent(passMsg)}`
+          : `https://wa.me/?text=${encodeURIComponent(passMsg)}`;
 
         if (!Array.isArray(foundStudent.badges)) foundStudent.badges = [];
         badgeControlGrid.innerHTML = SKILL_BADGES.map((b) => {
@@ -3073,12 +3173,12 @@
         ? state.requests.map((r) => `
           <div class="msg-item">
             <div class="msg-meta">
-              <strong>${escapeHtml(r.studentName)} • ${escapeHtml(r.course)}</strong>
+              <strong>${escapeHtml(r.studentName)} ${r.phone ? "(" + escapeHtml(r.phone) + ")" : ""} • ${escapeHtml(r.course)}</strong>
               <span class="status-pill ${r.status === "Onaylandı" ? "done" : ""}">${escapeHtml(r.status)}</span>
             </div>
-            <div class="msg-body">Tercih: ${escapeHtml(r.slot)} — Konu: ${escapeHtml(r.topic)} (${escapeHtml(r.time)})</div>
-            <div style="margin-top:8px;">
-              <button type="button" class="btn btn-ghost btn-sm" data-approve="${escapeHtml(r.id)}">Onayla</button>
+            <div class="msg-body">Paket / Tercih: ${escapeHtml(r.slot)} — Not: ${escapeHtml(r.topic)} (${escapeHtml(r.time)})</div>
+            <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn btn-sm" data-approve="${escapeHtml(r.id)}">Onayla & Şifre Oluştur</button>
             </div>
           </div>
         `).join("")
@@ -3089,20 +3189,32 @@
           const item = state.requests.find((x) => x.id === btn.dataset.approve);
           if (item) {
             item.status = "Onaylandı";
+            const stu = upsertStudent(item.studentName, item.course, item.phone || "", item.slot);
+            selectedHocaStudent = stu.name;
             state.messages.unshift({
               id: "m_" + Date.now(),
               sender: "hoca",
               senderName: "Doğukan Bozkurt",
-              targetStudent: item.studentName,
-              course: item.course,
-              cardType: "Ders Onayı",
-              link: "",
-              text: `Ders talebiniz onaylandı: ${item.slot} (${item.topic})`,
+              targetStudent: stu.name,
+              course: stu.course,
+              cardType: "Üyelik & Ders Onayı",
+              link: MAIN_METHOD_PDF_URL,
+              text: `Ders paketin ve üyeliğin onaylandı: ${item.slot} (${item.topic}). Bağlama Metodu PDF'in çekmecene tanımlandı.`,
               time: nowStr(),
               completed: false
             });
             saveState();
             renderAll();
+
+            const stuPhone = formatPhoneForWa(stu.phone);
+            const waText = `Merhaba ${stu.name}, Doğukan Bozkurt Müzik & Bağlama Akademisi ders paketin onaylandı.\n\nÖğrenci Girişi Bilgilerin:\nKullanıcı Adı: ${stu.username}\nŞifre: ${stu.password}\n\nSitedeki 'Öğrenci Girişi' sekmesinden giriş yaparak '${MAIN_METHOD_PDF_TITLE}' metoduna ulaşabilirsin.`;
+            window.open(
+              stuPhone
+                ? `https://wa.me/${stuPhone}?text=${encodeURIComponent(waText)}`
+                : `https://wa.me/?text=${encodeURIComponent(waText)}`,
+              "_blank",
+              "noopener,noreferrer"
+            );
           }
         });
       });
