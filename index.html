@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doğukan Bozkurt | Müzik Eğitimi</title>
+  <link rel="icon" type="image/jpeg" href="./logo.jpg" />
   <style>
     :root {
       --bg: #0c0908;
@@ -80,14 +81,15 @@
     }
 
     .brand-logo-wrap {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), #8a3a12);
+      background: #0a0807;
+      border: 1px solid var(--border-strong);
       display: grid;
       place-items: center;
       font-weight: 800;
-      color: #130c08;
+      color: var(--accent-bright);
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -601,11 +603,11 @@
         <div class="brand-logo-wrap">
           <img
             id="brandLogoImg"
-            src="./logo.png"
+            src="./logo.jpg"
             alt="Doğukan Bozkurt Logo"
             onerror="handleLogoError(this)"
           />
-          <span id="brandLogoFallback" style="font-size:0.95rem; font-weight:800;">DB</span>
+          <span id="brandLogoFallback" style="display:none; font-size:0.95rem; font-weight:800;">DB</span>
         </div>
         <div>
           <strong>Doğukan Bozkurt</strong>
@@ -1082,9 +1084,11 @@
     }
 
     function handleLogoError(img) {
-      if (!img.dataset.retried) {
-        img.dataset.retried = "1";
-        img.src = "./logo.jpg";
+      const steps = ["./logo.jpg.jpeg", "./logo.png", "./LOGO.JPG"];
+      const idx = parseInt(img.dataset.retryIndex || "0", 10);
+      if (idx < steps.length) {
+        img.dataset.retryIndex = String(idx + 1);
+        img.src = steps[idx];
         return;
       }
       img.style.display = "none";
