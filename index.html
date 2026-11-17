@@ -1,59 +1,61 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="light">
+<html lang="tr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doğukan Bozkurt | Müzik Eğitimi</title>
+  <title>Doğukan Bozkurt | Konservatuar Disipliniyle Müzik & Bağlama Akademisi</title>
   <link rel="icon" type="image/jpeg" href="./logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* AYDINLIK TEMA (VARSAYILAN - SICAK AHŞAP & KUMTAŞI) */
+    /* KARANLIK TEMA (VARSAYILAN - LÜKS SAHNE & ALTIN KEHRİBAR) */
     :root,
-    html[data-theme="light"] {
-      --bg: #dfd1be;
-      --bg-grad-1: rgba(156, 78, 20, 0.16);
-      --bg-grad-2: rgba(102, 56, 20, 0.14);
-      --header-bg: rgba(223, 209, 190, 0.9);
-      --surface: rgba(247, 241, 233, 0.94);
-      --surface-2: #e7dac8;
-      --surface-3: #d5c3ab;
-      --accent: #944810;
-      --accent-bright: #733406;
-      --accent-soft: rgba(148, 72, 16, 0.14);
-      --ok: #197547;
-      --warn: #b8620c;
-      --danger: #b83224;
-      --text: #1c130c;
-      --muted: #574435;
-      --border: rgba(30, 20, 13, 0.14);
-      --border-strong: rgba(148, 72, 16, 0.42);
-      --shadow: 0 14px 34px rgba(30, 20, 13, 0.1);
-      --pattern-stroke: rgba(89, 52, 24, 0.09);
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
+    html[data-theme="dark"] {
+      --bg: #0b0806;
+      --bg-secondary: #130e0b;
+      --surface: rgba(24, 18, 14, 0.78);
+      --surface-solid: #1a130f;
+      --surface-2: rgba(36, 27, 21, 0.85);
+      --surface-3: #2e221a;
+      --gold: #d4944c;
+      --gold-light: #f3c48b;
+      --gold-dark: #9c5d1e;
+      --gold-glow: rgba(212, 148, 76, 0.18);
+      --ok: #2eb872;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --text: #f7f1ea;
+      --muted: #b3a190;
+      --border: rgba(243, 196, 139, 0.14);
+      --border-strong: rgba(212, 148, 76, 0.42);
+      --header-bg: rgba(11, 8, 6, 0.86);
+      --shadow: 0 24px 54px rgba(0, 0, 0, 0.55);
+      --pattern-opacity: 0.05;
     }
 
-    /* KARANLIK TEMA (GECE SAHNESİ & ALTIN KEHRİBAR) */
-    html[data-theme="dark"] {
-      --bg: #0f0b08;
-      --bg-grad-1: rgba(217, 130, 43, 0.15);
-      --bg-grad-2: rgba(120, 56, 18, 0.18);
-      --header-bg: rgba(15, 11, 8, 0.9);
-      --surface: rgba(26, 19, 15, 0.94);
-      --surface-2: #241a14;
-      --surface-3: #33251c;
-      --accent: #df8638;
-      --accent-bright: #f5b06c;
-      --accent-soft: rgba(223, 134, 56, 0.16);
-      --ok: #32b877;
-      --warn: #f59e0b;
-      --danger: #ef5344;
-      --text: #f7efe6;
-      --muted: #b5a290;
-      --border: rgba(247, 239, 230, 0.12);
-      --border-strong: rgba(223, 134, 56, 0.45);
-      --shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
-      --pattern-stroke: rgba(235, 170, 100, 0.07);
+    /* AYDINLIK TEMA (LÜKS SEDEF, LADİN & CEVİZ) */
+    html[data-theme="light"] {
+      --bg: #f4ede2;
+      --bg-secondary: #ebe0d0;
+      --surface: rgba(255, 252, 247, 0.88);
+      --surface-solid: #ffffff;
+      --surface-2: rgba(238, 228, 213, 0.9);
+      --surface-3: #dfd1bc;
+      --gold: #9a5216;
+      --gold-light: #753908;
+      --gold-dark: #b86924;
+      --gold-glow: rgba(154, 82, 22, 0.12);
+      --ok: #15803d;
+      --warn: #b45309;
+      --danger: #b91c1c;
+      --text: #1c130c;
+      --muted: #614e3e;
+      --border: rgba(120, 72, 32, 0.15);
+      --border-strong: rgba(154, 82, 22, 0.38);
+      --header-bg: rgba(244, 237, 226, 0.88);
+      --shadow: 0 20px 44px rgba(38, 24, 12, 0.08);
+      --pattern-opacity: 0.08;
     }
 
     * {
@@ -67,34 +69,38 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
       background-color: var(--bg);
       background-image:
-        radial-gradient(circle at 12% 10%, var(--bg-grad-1), transparent 42%),
-        radial-gradient(circle at 88% 18%, var(--bg-grad-2), transparent 45%),
-        radial-gradient(circle at 50% 92%, var(--bg-grad-1), transparent 50%),
-        repeating-linear-gradient(45deg, var(--pattern-stroke) 0px, var(--pattern-stroke) 1px, transparent 1px, transparent 28px),
-        repeating-linear-gradient(-45deg, var(--pattern-stroke) 0px, var(--pattern-stroke) 1px, transparent 1px, transparent 28px);
+        radial-gradient(circle at 14% 12%, var(--gold-glow), transparent 40%),
+        radial-gradient(circle at 86% 20%, rgba(156, 93, 30, 0.12), transparent 44%),
+        radial-gradient(circle at 50% 90%, var(--gold-glow), transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c88a4b' stroke-width='0.6' stroke-opacity='0.12'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 14L66 40L40 66L14 40Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
       background-attachment: fixed;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       min-height: 100vh;
-      transition: background-color 0.28s ease, color 0.28s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* BAĞLAMA ÇALAN AMCA AÇILIŞ ANİMASYONU (PRELOADER) */
+    h1, h2, .serif-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      letter-spacing: -0.2px;
+    }
+
+    /* PRELOADER: BAĞLAMA ÇALAN OZAN */
     #preloader {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: radial-gradient(circle at center, #2b1b11 0%, #140c07 100%);
+      background: radial-gradient(circle at center, #1e130c 0%, #090604 100%);
       color: #f5e6d3;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 18px;
-      transition: opacity 0.65s ease, visibility 0.65s ease;
+      gap: 16px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
     }
 
     #preloader.hide {
@@ -105,43 +111,43 @@
 
     .ozan-scene {
       position: relative;
-      width: 210px;
-      height: 210px;
+      width: 200px;
+      height: 200px;
       display: grid;
       place-items: center;
     }
 
     .ozan-svg {
-      width: 195px;
-      height: 195px;
-      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55));
-      animation: ozanBodySway 2.2s ease-in-out infinite;
+      width: 185px;
+      height: 185px;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65));
+      animation: ozanSway 2.2s ease-in-out infinite;
     }
 
     .strum-arm {
       transform-origin: 96px 118px;
-      animation: tezeneVur 0.32s ease-in-out infinite alternate;
+      animation: tezeneVur 0.3s ease-in-out infinite alternate;
     }
 
     .floating-note {
       position: absolute;
       font-size: 1.35rem;
-      color: #e69d52;
+      color: #f3c48b;
       opacity: 0;
-      animation: noteFloat 2.1s ease-out infinite;
+      animation: noteFloat 2s ease-out infinite;
     }
 
-    .floating-note.n1 { top: 28px; right: 20px; animation-delay: 0s; }
-    .floating-note.n2 { top: 10px; left: 26px; animation-delay: 0.7s; }
-    .floating-note.n3 { top: 55px; right: 4px; animation-delay: 1.3s; }
+    .floating-note.n1 { top: 24px; right: 18px; animation-delay: 0s; }
+    .floating-note.n2 { top: 8px; left: 24px; animation-delay: 0.65s; }
+    .floating-note.n3 { top: 52px; right: 4px; animation-delay: 1.25s; }
 
     @keyframes tezeneVur {
       0% { transform: rotate(-9deg) translateY(-2px); }
       100% { transform: rotate(12deg) translateY(3px); }
     }
 
-    @keyframes ozanBodySway {
-      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+    @keyframes ozanSway {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
       50% { transform: translateY(-4px) rotate(1deg); }
     }
 
@@ -151,23 +157,10 @@
       100% { transform: translateY(-34px) scale(1.15); opacity: 0; }
     }
 
-    .loader-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      color: #f3c28b;
-    }
-
-    .loader-sub {
-      font-size: 0.86rem;
-      color: #c7b199;
-      margin-top: -10px;
-    }
-
     .loader-bar {
-      width: 200px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.12);
+      width: 210px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 999px;
       overflow: hidden;
     }
@@ -176,38 +169,38 @@
       display: block;
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #c87428, #f5c384);
-      animation: loadProgress 1.8s ease forwards;
+      background: linear-gradient(90deg, #9c5d1e, #f3c48b);
+      animation: loadBar 1.7s ease forwards;
     }
 
-    @keyframes loadProgress {
-      0% { width: 0%; }
-      100% { width: 100%; }
+    @keyframes loadBar {
+      to { width: 100%; }
     }
 
     .container {
       width: 100%;
-      max-width: 1160px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
+    /* ÜST MENÜ (PREMIUM GLASS) */
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
       background: var(--header-bg);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.28s ease;
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 78px;
-      gap: 12px;
+      min-height: 84px;
+      gap: 16px;
       flex-wrap: wrap;
       padding: 10px 0;
     }
@@ -215,25 +208,25 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 14px;
       text-decoration: none;
       color: var(--text);
       cursor: pointer;
     }
 
     .brand-logo-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 13px;
-      background: #14100d;
-      border: 2px solid var(--accent);
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: #0d0907;
+      border: 1.5px solid var(--gold);
       display: grid;
       place-items: center;
       font-weight: 800;
-      color: #f5c384;
+      color: var(--gold-light);
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     }
 
     .brand-logo-wrap img {
@@ -243,185 +236,226 @@
       display: block;
     }
 
-    .brand strong {
+    .brand-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.1;
       display: block;
-      font-size: 1.08rem;
-      letter-spacing: -0.2px;
+      letter-spacing: 0.3px;
     }
 
-    .brand span {
+    .brand-sub {
       display: block;
-      font-size: 0.78rem;
-      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 2px;
     }
 
     .nav-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .portal-switch {
       display: flex;
       gap: 6px;
-      flex-wrap: wrap;
       background: var(--surface-2);
-      padding: 5px;
-      border-radius: 14px;
+      padding: 6px;
+      border-radius: 16px;
       border: 1px solid var(--border);
     }
 
     .tab-btn {
-      padding: 9px 16px;
-      border-radius: 10px;
+      padding: 10px 18px;
+      border-radius: 11px;
       border: none;
       background: transparent;
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.87rem;
+      font-size: 0.86rem;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.22s ease;
     }
 
     .tab-btn.active {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(143, 71, 17, 0.3);
+      box-shadow: 0 6px 16px rgba(156, 93, 30, 0.35);
     }
 
-    /* HER SAYFADA SABİT AYDINLIK / KARANLIK TEMA ŞALTERİ */
     .theme-toggle-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 14px;
-      border-radius: 12px;
+      padding: 10px 15px;
+      border-radius: 14px;
       border: 1px solid var(--border-strong);
       background: var(--surface);
       color: var(--text);
       font-weight: 700;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       cursor: pointer;
-      box-shadow: var(--shadow);
       transition: all 0.2s ease;
     }
 
     .theme-toggle-btn:hover {
+      border-color: var(--gold);
       transform: translateY(-1px);
-      border-color: var(--accent);
     }
 
     .page-view {
       display: none;
-      padding: 40px 0 68px;
-      animation: viewFadeIn 0.35s ease;
+      padding: 44px 0 80px;
+      animation: fadeUp 0.4s ease;
     }
 
     .page-view.active {
       display: block;
     }
 
-    @keyframes viewFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* BUTONLAR */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
+      gap: 9px;
+      padding: 13px 22px;
+      border-radius: 13px;
       border: 1px solid transparent;
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       color: #ffffff;
       font-weight: 700;
       font-size: 0.9rem;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+      transition: all 0.22s ease;
+      box-shadow: 0 8px 20px rgba(156, 93, 30, 0.25);
     }
 
     .btn:hover {
-      opacity: 0.95;
       transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(143, 71, 17, 0.25);
+      box-shadow: 0 12px 26px rgba(156, 93, 30, 0.38);
     }
 
     .btn-ghost {
-      background: var(--surface);
+      background: var(--surface-2);
       color: var(--text);
       border-color: var(--border);
+      box-shadow: none;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      box-shadow: none;
     }
 
     .btn-ok {
-      background: var(--ok);
+      background: linear-gradient(135deg, #2eb872, #15803d);
       color: #ffffff;
     }
 
     .btn-sm {
-      padding: 8px 13px;
-      font-size: 0.81rem;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      border-radius: 10px;
     }
 
+    /* HERO BÖLÜMÜ */
     .hero {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
+      gap: 44px;
       align-items: center;
-      margin-bottom: 44px;
+      margin-bottom: 56px;
     }
 
     .eyebrow {
-      display: inline-block;
-      padding: 6px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 15px;
       border-radius: 999px;
-      background: var(--accent-soft);
+      background: var(--gold-glow);
       border: 1px solid var(--border-strong);
-      color: var(--accent-bright);
-      font-size: 0.8rem;
+      color: var(--gold-light);
+      font-size: 0.78rem;
       font-weight: 700;
-      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(2rem, 4vw, 3.05rem);
-      line-height: 1.14;
-      margin-bottom: 16px;
+      font-size: clamp(2.4rem, 4.6vw, 3.85rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
       color: var(--text);
-      letter-spacing: -0.5px;
     }
 
     h1 em {
-      font-style: normal;
-      color: var(--accent);
+      font-style: italic;
+      color: var(--gold);
     }
 
     .lead {
       color: var(--muted);
-      font-size: 1.04rem;
-      margin-bottom: 26px;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      max-width: 620px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-bottom: 30px;
     }
 
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .highlight-item strong {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--gold-light);
+    }
+
+    .highlight-item span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* PORTRE KARTI */
     .portrait-card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong);
+      border-radius: 26px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      position: relative;
     }
 
     .portrait-media {
       position: relative;
-      height: 415px;
+      height: 440px;
       background: var(--surface-2);
     }
 
@@ -429,14 +463,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center 18%;
       display: block;
     }
 
     .portrait-fallback {
       display: none;
       height: 100%;
-      padding: 26px;
+      padding: 28px;
       flex-direction: column;
       justify-content: flex-end;
       background: linear-gradient(160deg, var(--surface-2), var(--surface-3));
@@ -447,14 +481,14 @@
     }
 
     .portrait-foot {
-      padding: 16px 20px;
+      padding: 18px 22px;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      background: var(--surface);
+      background: var(--surface-solid);
     }
 
     .social-pills {
@@ -464,65 +498,62 @@
     }
 
     .pill {
-      padding: 6px 13px;
+      padding: 7px 14px;
       border-radius: 999px;
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       font-weight: 700;
-      transition: background 0.15s ease;
+      transition: all 0.18s ease;
     }
 
     .pill:hover {
-      background: var(--surface-3);
+      border-color: var(--gold);
+      color: var(--gold-light);
     }
 
+    /* BÖLÜM BAŞLIKLARI & KARTLAR */
     .section-block {
-      margin-top: 46px;
-      padding-top: 36px;
+      margin-top: 56px;
+      padding-top: 44px;
       border-top: 1px solid var(--border);
     }
 
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
     .section-title {
-      font-size: 1.55rem;
-      margin-bottom: 6px;
-      letter-spacing: -0.3px;
+      font-size: clamp(1.75rem, 3vw, 2.3rem);
+      line-height: 1.15;
     }
 
     .section-sub {
       color: var(--muted);
-      font-size: 0.93rem;
-      margin-bottom: 22px;
+      font-size: 0.94rem;
+      margin-top: 4px;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
     .card {
       background: var(--surface);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 22px;
+      border-radius: 20px;
+      padding: 24px;
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.28s ease;
+      transition: transform 0.22s ease, border-color 0.22s ease;
     }
 
     .card:hover {
@@ -530,7 +561,8 @@
     }
 
     .card h3 {
-      margin-bottom: 6px;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
     }
 
     .card p {
@@ -538,128 +570,235 @@
       font-size: 0.9rem;
     }
 
-    .card p + p {
-      margin-top: 10px;
-    }
-
     .tag {
       display: inline-block;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent-bright);
-      font-size: 0.74rem;
+      background: var(--gold-glow);
+      border: 1px solid var(--border-strong);
+      color: var(--gold-light);
+      font-size: 0.72rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    /* Canlı Akort Cihazı */
-    .tuner-box {
-      text-align: center;
-      padding: 18px;
-      border-radius: var(--radius-sm);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      margin-top: 10px;
+    /* GERÇEKÇİ AHŞAP & SEDEF İŞLEMELİ BAĞLAMA KLAVYESİ */
+    .bağlama-studio-card {
+      background: linear-gradient(180deg, #1b120c 0%, #100a07 100%);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 24px;
+      padding: 26px;
+      color: #f7efe6;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
     }
 
-    .tuner-note {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent-bright);
-      line-height: 1.1;
+    .studio-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
-    .tuner-freq {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-top: 4px;
+    .tuning-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .tuner-meter {
-      width: 100%;
-      height: 10px;
-      background: var(--surface-3);
-      border-radius: 999px;
-      margin: 14px 0 8px;
-      position: relative;
-      overflow: hidden;
+    .tuning-pill {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(243, 196, 139, 0.22);
+      background: rgba(255, 255, 255, 0.04);
+      color: #d8c7b5;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
     }
 
-    .tuner-needle {
-      width: 16px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--accent);
-      position: absolute;
-      top: 0;
-      left: calc(50% - 8px);
-      transition: left 0.1s ease;
+    .tuning-pill.active {
+      background: linear-gradient(135deg, #d4944c, #9c5d1e);
+      color: #fff;
+      border-color: transparent;
     }
 
-    /* İnteraktif Bağlama Klavyesi */
-    .fretboard-wrap {
-      background: linear-gradient(90deg, #432814, #633b1e);
-      border: 2px solid #2e1a0c;
-      border-radius: var(--radius-md);
-      padding: 18px;
-      color: #f9f3eb;
+    .neck-scroll {
       overflow-x: auto;
-      box-shadow: var(--shadow);
+      padding-bottom: 8px;
     }
 
-    .string-row {
+    .bağlama-neck {
+      min-width: 920px;
+      background:
+        linear-gradient(180deg, #382010 0%, #523018 48%, #2e190b 100%);
+      border: 2px solid #7c4b23;
+      border-radius: 16px;
+      padding: 16px 18px;
+      position: relative;
+      box-shadow: inset 0 4px 18px rgba(0, 0, 0, 0.65);
+    }
+
+    .string-line {
       display: grid;
-      grid-template-columns: 110px repeat(8, minmax(74px, 1fr));
+      grid-template-columns: 115px repeat(10, 1fr);
       gap: 8px;
       align-items: center;
-      padding: 8px 0;
-      border-bottom: 2px solid rgba(255, 235, 205, 0.22);
+      padding: 10px 0;
+      position: relative;
     }
 
-    .string-row:last-child {
-      border-bottom: none;
+    /* Gerçekçi metal tel çizgisi */
+    .string-line::before {
+      content: "";
+      position: absolute;
+      left: 115px;
+      right: 0;
+      top: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, #d6c5b3, #ffffff, #b89f82);
+      opacity: 0.38;
+      pointer-events: none;
     }
 
-    .string-label {
+    .string-line.vibrating::before {
+      height: 3px;
+      opacity: 0.95;
+      background: #f3c48b;
+      box-shadow: 0 0 12px #f3c48b;
+    }
+
+    .string-name {
       font-size: 0.82rem;
-      font-weight: 700;
-      color: #f5d1a7;
+      font-weight: 800;
+      color: #f3c48b;
+      z-index: 2;
+      padding-right: 10px;
     }
 
-    .fret-btn {
-      padding: 9px 6px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      background: rgba(20, 12, 8, 0.45);
-      color: #ffffff;
+    .fret-node {
+      position: relative;
+      z-index: 2;
+      padding: 9px 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 240, 220, 0.22);
+      background: rgba(15, 9, 6, 0.76);
+      color: #fff;
       font-weight: 700;
       font-size: 0.8rem;
       cursor: pointer;
       text-align: center;
-      transition: all 0.15s ease;
+      transition: all 0.16s ease;
     }
 
-    .fret-btn:hover,
-    .fret-btn.active {
-      background: #e08b3e;
-      color: #1c1109;
-      border-color: #fff;
-      transform: scale(1.03);
+    .fret-node:hover,
+    .fret-node.active {
+      background: linear-gradient(135deg, #f3c48b, #d4944c);
+      color: #140c07;
+      border-color: #ffffff;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 16px rgba(212, 148, 76, 0.45);
     }
 
-    .fret-btn span {
+    .fret-node small {
       display: block;
-      font-size: 0.68rem;
-      font-weight: 500;
-      opacity: 0.85;
+      font-size: 0.65rem;
+      opacity: 0.8;
+      margin-top: 1px;
     }
 
-    /* Canlı Haftalık Ders Programı Tablosu */
+    /* AKORT STÜDYOSU & USUL METRONOMU */
+    .tuner-studio {
+      text-align: center;
+      padding: 22px;
+      border-radius: 16px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      margin-top: 12px;
+    }
+
+    .tuner-big-note {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .tuner-sub-info {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    .tuner-gauge {
+      width: 100%;
+      height: 12px;
+      background: var(--surface-3);
+      border-radius: 999px;
+      margin: 16px 0 12px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .tuner-gauge-needle {
+      width: 20px;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), var(--ok));
+      position: absolute;
+      top: 0;
+      left: calc(50% - 10px);
+      transition: left 0.1s ease;
+    }
+
+    /* Usul Vuruş Işıkları (Düm / Tek) */
+    .usul-beats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0;
+    }
+
+    .beat-dot {
+      flex: 1;
+      min-width: 42px;
+      padding: 10px 6px;
+      border-radius: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      transition: all 0.1s ease;
+    }
+
+    .beat-dot.active-dum {
+      background: var(--gold);
+      color: #fff;
+      border-color: #fff;
+      transform: scale(1.06);
+    }
+
+    .beat-dot.active-tek {
+      background: var(--ok);
+      color: #fff;
+      border-color: #fff;
+      transform: scale(1.04);
+    }
+
+    /* HAFTALIK DERS PROGRAMI */
     .schedule-grid {
       display: grid;
-      grid-template-columns: repeat(7, minmax(120px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(7, minmax(130px, 1fr));
+      gap: 12px;
       overflow-x: auto;
       padding-bottom: 6px;
     }
@@ -667,76 +806,76 @@
     .day-col {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 12px;
+      border-radius: 16px;
+      padding: 14px;
       box-shadow: var(--shadow);
     }
 
     .day-col h4 {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       margin-bottom: 10px;
       text-align: center;
-      color: var(--accent-bright);
+      color: var(--gold);
       border-bottom: 1px solid var(--border);
-      padding-bottom: 6px;
+      padding-bottom: 8px;
     }
 
     .slot-pill {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 7px 9px;
-      border-radius: 8px;
+      padding: 8px 10px;
+      border-radius: 9px;
       font-size: 0.76rem;
       font-weight: 700;
-      margin-bottom: 7px;
+      margin-bottom: 8px;
       border: 1px solid var(--border);
+      transition: transform 0.15s ease;
     }
 
     .slot-pill.free {
-      background: rgba(27, 122, 76, 0.14);
+      background: rgba(46, 184, 114, 0.13);
       color: var(--ok);
       cursor: pointer;
     }
 
+    .slot-pill.free:hover {
+      transform: scale(1.03);
+      border-color: var(--ok);
+    }
+
     .slot-pill.busy {
-      background: rgba(184, 50, 36, 0.14);
+      background: rgba(239, 68, 68, 0.12);
       color: var(--danger);
+      opacity: 0.75;
     }
 
-    /* Gelişim Rozetleri */
-    .badge-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .skill-badge {
-      padding: 11px 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      background: var(--surface-2);
-      font-size: 0.8rem;
+    /* ÖĞRENCİ VE HOCA PORTAL DÜZENİ */
+    .portal-banner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 6px;
-      opacity: 0.65;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 22px 26px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .skill-badge.earned {
-      opacity: 1;
-      border-color: var(--ok);
-      background: rgba(27, 122, 76, 0.16);
-      font-weight: 700;
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 22px;
+      align-items: start;
     }
 
-    /* CANLI ONLINE DERS ODASI BAĞLANTI KARTI */
     .live-room-card {
-      background: linear-gradient(135deg, rgba(25, 117, 71, 0.18), var(--surface));
+      background: linear-gradient(135deg, rgba(46, 184, 114, 0.2), var(--surface));
       border: 2px solid var(--ok);
-      border-radius: var(--radius-md);
+      border-radius: 18px;
       padding: 18px 22px;
       margin-bottom: 18px;
       display: flex;
@@ -758,16 +897,15 @@
     }
 
     @keyframes livePulse {
-      0% { box-shadow: 0 0 0 0 rgba(25, 117, 71, 0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(25, 117, 71, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(25, 117, 71, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(46, 184, 114, 0.6); }
+      70% { box-shadow: 0 0 0 10px rgba(46, 184, 114, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 184, 114, 0); }
     }
 
-    /* AYLIK KUR YENİLEME / ÖDEME BİLGİLENDİRME KARTI */
     .renewal-alert-card {
-      background: linear-gradient(135deg, rgba(184, 98, 12, 0.18), var(--surface));
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), var(--surface));
       border: 2px solid var(--warn);
-      border-radius: var(--radius-md);
+      border-radius: 18px;
       padding: 16px 20px;
       margin-bottom: 18px;
       display: flex;
@@ -777,53 +915,51 @@
       flex-wrap: wrap;
     }
 
-    /* KİŞİSEL PDF NOTA & ÇALIŞMA DOSYASI ÇEKMECESİ */
     .pdf-drawer-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .pdf-item {
       background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 13px 15px;
+      border-radius: 13px;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
     }
 
-    /* SSS Akordiyon */
-    .faq-list {
+    .badge-grid {
       display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
+      margin-top: 12px;
     }
 
-    details.faq-item {
-      background: var(--surface);
+    .skill-badge {
+      padding: 12px 14px;
+      border-radius: 12px;
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px 18px;
-      box-shadow: var(--shadow);
+      background: var(--surface-2);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.65;
     }
 
-    details.faq-item summary {
+    .skill-badge.earned {
+      opacity: 1;
+      border-color: var(--ok);
+      background: rgba(46, 184, 114, 0.15);
       font-weight: 700;
-      cursor: pointer;
-      color: var(--text);
-      font-size: 0.95rem;
     }
 
-    details.faq-item p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    /* Haftalık Pratik & Kur Barları */
     .progress-track {
       width: 100%;
       height: 12px;
@@ -837,73 +973,34 @@
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--ok));
+      background: linear-gradient(90deg, var(--gold), var(--ok));
       transition: width 0.25s ease;
     }
 
-    .portal-banner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 18px 22px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .portal-grid {
-      display: grid;
-      grid-template-columns: 350px 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .form-stack {
-      display: grid;
-      gap: 12px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .form-stack { display: grid; gap: 13px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
     label {
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.81rem;
+      font-weight: 700;
       color: var(--muted);
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 11px 13px;
-      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      border-radius: 12px;
       font-size: 0.9rem;
       font-family: inherit;
       width: 100%;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--accent);
-      background: var(--surface);
+      border-color: var(--gold);
     }
 
     .feed {
@@ -917,17 +1014,12 @@
     .msg-item {
       background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px;
+      border-radius: 13px;
+      padding: 15px;
     }
 
-    .msg-item.from-hoca {
-      border-left: 4px solid var(--accent);
-    }
-
-    .msg-item.from-ogrenci {
-      border-left: 4px solid var(--ok);
-    }
+    .msg-item.from-hoca { border-left: 4px solid var(--gold); }
+    .msg-item.from-ogrenci { border-left: 4px solid var(--ok); }
 
     .msg-meta {
       display: flex;
@@ -940,23 +1032,19 @@
     }
 
     .msg-body {
-      font-size: 0.9rem;
+      font-size: 0.91rem;
       color: var(--text);
       white-space: pre-wrap;
     }
 
-    .student-list {
-      display: grid;
-      gap: 8px;
-      margin-top: 12px;
-    }
+    .student-list { display: grid; gap: 8px; margin-top: 12px; }
 
     .student-pill {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
-      border-radius: var(--radius-sm);
+      padding: 11px 13px;
+      border-radius: 12px;
       background: var(--surface-2);
       border: 1px solid var(--border);
       cursor: pointer;
@@ -964,68 +1052,80 @@
     }
 
     .student-pill.active {
-      border-color: var(--accent);
-      background: var(--accent-soft);
+      border-color: var(--gold);
+      background: var(--gold-glow);
     }
 
     .status-pill {
-      padding: 3px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
       font-size: 0.74rem;
-      font-weight: 600;
+      font-weight: 700;
       background: var(--surface-3);
-      color: var(--accent-bright);
+      color: var(--gold-light);
     }
 
     .status-pill.done {
       color: var(--ok);
-      background: rgba(27, 122, 76, 0.16);
+      background: rgba(46, 184, 114, 0.16);
     }
 
     .notice-bar {
-      background: var(--accent-soft);
+      background: var(--gold-glow);
       border: 1px solid var(--border-strong);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
+      border-radius: 13px;
+      padding: 13px 16px;
       margin-bottom: 14px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text);
     }
 
+    .faq-list { display: grid; gap: 10px; }
+
+    details.faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    details.faq-item summary {
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.96rem;
+    }
+
+    details.faq-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 0 40px;
+      padding: 32px 0 44px;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       background: var(--header-bg);
     }
 
     @media (max-width: 980px) {
-      .hero,
-      .portal-grid,
-      .grid-2,
-      .grid-3,
-      .badge-grid,
-      .pdf-drawer-grid {
+      .hero, .portal-grid, .grid-2, .grid-3, .badge-grid, .pdf-drawer-grid {
         grid-template-columns: 1fr;
       }
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 560px) {
-      .grid-4,
-      .field-row {
-        grid-template-columns: 1fr;
-      }
+      .grid-4, .field-row, .hero-highlights { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BAĞLAMA ÇALAN AMCA (OZAN) YÜKLENİYOR ANİMASYONU -->
+  <!-- AÇILIŞ ANİMASYONU: BAĞLAMA ÇALAN OZAN -->
   <div id="preloader">
     <div class="ozan-scene">
       <span class="floating-note n1">♪</span>
@@ -1033,7 +1133,7 @@
       <span class="floating-note n3">♩</span>
 
       <svg class="ozan-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="108" r="74" fill="rgba(224, 139, 62, 0.12)" />
+        <circle cx="100" cy="108" r="74" fill="rgba(212, 148, 76, 0.14)" />
         <path d="M52 178 C52 132, 148 132, 148 178 Z" fill="#3a2314" stroke="#d99b52" stroke-width="2"/>
         <path d="M78 138 L100 178 L122 138" fill="#efe2d0"/>
         <circle cx="100" cy="76" r="24" fill="#e5b887"/>
@@ -1056,8 +1156,8 @@
         </g>
       </svg>
     </div>
-    <div class="loader-title">DOĞUKAN BOZKURT</div>
-    <div class="loader-sub">Bağlama & Müzik Eğitimi Yükleniyor...</div>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700; color:#f3c48b; letter-spacing:1px;">DOĞUKAN BOZKURT</div>
+    <div style="font-size:0.84rem; color:#c7b199; margin-top:-10px;">Müzik & Bağlama Akademisi Hazırlanıyor...</div>
     <div class="loader-bar"><span></span></div>
   </div>
 
@@ -1072,11 +1172,11 @@
             alt="Doğukan Bozkurt Logo"
             onerror="handleLogoError(this)"
           />
-          <span id="brandLogoFallback" style="display:none; font-size:0.95rem; font-weight:800;">DB</span>
+          <span id="brandLogoFallback" style="display:none; font-size:1rem; font-weight:800;">DB</span>
         </div>
         <div>
-          <strong>Doğukan Bozkurt</strong>
-          <span>Müzik Eğitimi</span>
+          <span class="brand-title">Doğukan Bozkurt</span>
+          <span class="brand-sub">Müzik & Bağlama Akademisi</span>
         </div>
       </div>
 
@@ -1088,8 +1188,8 @@
         </div>
 
         <button type="button" id="globalThemeBtn" class="theme-toggle-btn" title="Temayı Değiştir">
-          <span id="themeIcon">🌙</span>
-          <span id="themeLabel">Koyu Tema</span>
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">Açık Tema</span>
         </button>
       </div>
     </div>
@@ -1100,17 +1200,31 @@
     <section id="view-vitrin" class="page-view active">
       <div class="hero">
         <div>
-          <span class="eyebrow">Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu</span>
-          <h1>Doğukan Bozkurt ile <em>Müzik Eğitimi</em></h1>
+          <span class="eyebrow">Sakarya Üniversitesi Devlet Konservatuarı Mezunu</span>
+          <h1>Anadolu'nun Tezene Tavrıyla <em>Akademik Bağlama Eğitimi</em></h1>
           <p class="lead">
             Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü mezunu Doğukan Bozkurt;
             Milli Eğitim Bakanlığına bağlı kurs yerlerinde, derneklerde, özel derslerde ve online olmak üzere
             yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
           </p>
           <div class="hero-actions">
-            <a href="#basvuru-bolumu" class="btn">Ders Başvurusu Yap</a>
+            <a href="#basvuru-bolumu" class="btn">Birebir Ders Başvurusu</a>
+            <a href="#baglama-studyosu" class="btn btn-ghost">İnteraktif Bağlama Stüdyosu</a>
             <button class="btn btn-ghost" data-go="ogrenci">Öğrenci Girişi</button>
-            <button class="btn btn-ghost" data-go="hoca">Hoca Girişi</button>
+          </div>
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <strong>Konservatuar</strong>
+              <span>Akademik müfredat & metodoloji</span>
+            </div>
+            <div class="highlight-item">
+              <strong>Birebir Özel</strong>
+              <span>Yüz yüze & canlı online eğitim</span>
+            </div>
+            <div class="highlight-item">
+              <strong>8 Uzmanlık Alanı</strong>
+              <span>Düzen, şelpe, solfej & sınav hazırlık</span>
+            </div>
           </div>
         </div>
 
@@ -1124,14 +1238,14 @@
             />
             <div class="portrait-fallback" id="instructorFallback">
               <span class="eyebrow" style="width: fit-content;">Doğukan Bozkurt</span>
-              <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Sakarya Üniversitesi Devlet Konservatuarı</h3>
-              <p style="color: var(--muted); font-size: 0.88rem;">Çalgı Eğitimi Bölümü Mezunu • Müzik Eğitimi</p>
+              <h3 class="serif-title" style="font-size: 1.6rem; margin-bottom: 6px;">Sakarya Üniversitesi Devlet Konservatuarı</h3>
+              <p style="color: var(--muted); font-size: 0.9rem;">Çalgı Eğitimi Bölümü Mezunu • Müzik Eğitimi</p>
             </div>
           </div>
           <div class="portrait-foot">
             <div>
-              <strong>Doğukan Bozkurt</strong>
-              <span style="display:block; font-size: 0.8rem; color: var(--muted);">WhatsApp: 0 537 439 49 92</span>
+              <strong style="font-size:0.95rem;">Doğukan Bozkurt</strong>
+              <span style="display:block; font-size: 0.8rem; color: var(--muted);">WhatsApp İletişim: 0 537 439 49 92</span>
             </div>
             <div class="social-pills">
               <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="pill">YouTube</a>
@@ -1142,135 +1256,168 @@
         </div>
       </div>
 
-      <!-- HAKKINDA -->
-      <div class="section-block">
-        <h2 class="section-title">Hakkında & Eğitim Yaklaşımı</h2>
-        <p class="section-sub">Konservatuar disipliniyle birebir yüz yüze ve online eğitim</p>
-        <div class="grid-2">
-          <div class="card">
-            <span class="tag">Akademik Özgeçmiş</span>
-            <p>
-              <strong>Doğukan Bozkurt</strong>, lisans eğitimini <strong>Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü</strong>nde tamamlamıştır.
-            </p>
-            <p>
-              Milli Eğitim Bakanlığına bağlı kurs yerlerinde, derneklerde, özel derslerde ve online olmak üzere, yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
-            </p>
-          </div>
-          <div class="card">
-            <span class="tag">Resmi Sosyal Kanallar</span>
-            <h3>İcra & Çalışma Paylaşımları</h3>
-            <p>Doğukan Bozkurt'un güncel bağlama icralarını ve ders paylaşımlarını resmi sosyal medya hesaplarından takip edebilirsiniz.</p>
-            <div class="social-pills" style="margin-top: 14px;">
-              <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">YouTube (@dogukanbozkrt)</a>
-              <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Instagram</a>
-              <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Facebook</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- DERS ALANLARI -->
       <div class="section-block">
-        <h2 class="section-title">Ders Alanları</h2>
-        <p class="section-sub">Yüz yüze ve online birebir özel müzik eğitiminde işlenen başlıklar</p>
+        <div class="section-head">
+          <div>
+            <span class="tag">Akademik Müfredat</span>
+            <h2 class="section-title">Eğitim & İcra Branşları</h2>
+            <p class="section-sub">Seviyenize göre yapılandırılmış yüz yüze ve online birebir ders programları</p>
+          </div>
+        </div>
         <div class="grid-4">
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Nota</h3><p>Temel nota okuma, tartım kalıpları ve eser deşifresi.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Solfej</h3><p>Kulak eğitimi, ses-ritim uyumu ve ezgi tekrarı.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Bağlama Düzeni</h3><p>Bağlama düzeni akort yapısı, mızrap tekniği ve repertuvar.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Bağlama Bozuk Düzen</h3><p>Bozuk düzen akort sistemi, tezene tavrı ve türkü yorumu.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Şelpe</h3><p>Sağ el parmak tekniği, vuruş kalıpları ve hız egzersizleri.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Çalıp Söyleme</h3><p>Bağlama icrası ile vokal eşliğini dengeli yürütme.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Güzel Sanatlara Hazırlık</h3><p>Güzel Sanatlar Liseleri yetenek sınavı hazırlığı.</p></div>
-          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Konservatuara Hazırlık</h3><p>Konservatuar özel yetenek sınavı hazırlığı.</p></div>
+          <div class="card"><span class="tag">01 • Temel</span><h3>Nota Eğitimi</h3><p>Porte, anahtar, tartım kalıpları ve bağlama üzerinde doğru deşifre okuma tekniği.</p></div>
+          <div class="card"><span class="tag">02 • İşitme</span><h3>Solfej & Bona</h3><p>Müzikal kulak gelişimi, aralık duyumu, ritmik okuma ve dikte çalışmaları.</p></div>
+          <div class="card"><span class="tag">03 • Kısa Sap</span><h3>Bağlama Düzeni</h3><p>Bağlama düzeni akort yapısı, mızrap (tezene) yönleri, pozisyon geçişleri ve yöresel tavırlar.</p></div>
+          <div class="card"><span class="tag">04 • Uzun Sap</span><h3>Bağlama Bozuk Düzen</h3><p>Kara/bozuk düzen akort sistemi, karar sesleri, zeybek ve uzun hava açış tavırları.</p></div>
+          <div class="card"><span class="tag">05 • İleri Teknik</span><h3>Şelpe (Elle Çalma)</h3><p>Sağ ve sol el parmak kombinasyonları, pençe, vurma-çekme ve virtüözite etütleri.</p></div>
+          <div class="card"><span class="tag">06 • Repertuvar</span><h3>Çalıp Söyleme</h3><p>Bağlama eşliği ile nefes kontrolü, doğru tonlama ve vokal-çalgı senkronizasyonu.</p></div>
+          <div class="card"><span class="tag">07 • Akademik</span><h3>Güzel Sanatlara Hazırlık</h3><p>Güzel Sanatlar Liseleri yetenek sınavlarına yönelik işitme, ritim ve icra hazırlığı.</p></div>
+          <div class="card"><span class="tag">08 • Akademik</span><h3>Konservatuara Hazırlık</h3><p>Devlet Konservatuarları özel yetenek sınavları için ileri seviye solfej ve eser hazırlığı.</p></div>
         </div>
       </div>
 
-      <!-- İNTERAKTİF BAĞLAMA KLAVYESİ (PERDE & NOTA HARİTASI) -->
-      <div class="section-block">
-        <h2 class="section-title">İnteraktif Bağlama Klavyesi (Perde & Nota Haritası)</h2>
-        <p class="section-sub">Üst, orta veya alt teldeki perdelere tıklayarak notanın yerini görün ve gerçek frekans sesini dinleyin.</p>
-
-        <div class="fretboard-wrap">
-          <div class="string-row">
-            <div class="string-label">Alt Tel (Re)</div>
-            <button type="button" class="fret-btn" data-note="Re (Boş Tel)" data-freq="293.66">Re<span>Boş Tel</span></button>
-            <button type="button" class="fret-btn" data-note="Mi (1. Parmak)" data-freq="329.63">Mi<span>Tam Ses</span></button>
-            <button type="button" class="fret-btn" data-note="Fa (2. Parmak)" data-freq="349.23">Fa<span>Yarım Ses</span></button>
-            <button type="button" class="fret-btn" data-note="Fa# (3. Parmak)" data-freq="369.99">Fa#<span>Tiz</span></button>
-            <button type="button" class="fret-btn" data-note="Sol (3. Parmak)" data-freq="392.00">Sol<span>Tam Ses</span></button>
-            <button type="button" class="fret-btn" data-note="La (Karar / 4. P)" data-freq="440.00">La<span>Karar Sesi</span></button>
-            <button type="button" class="fret-btn" data-note="Sib (Bemol)" data-freq="466.16">Sib<span>Bemol</span></button>
-            <button type="button" class="fret-btn" data-note="Do (İnce Do)" data-freq="523.25">Do<span>İnce</span></button>
-          </div>
-
-          <div class="string-row">
-            <div class="string-label">Orta Tel (Sol)</div>
-            <button type="button" class="fret-btn" data-note="Sol (Boş Tel)" data-freq="196.00">Sol<span>Boş Tel</span></button>
-            <button type="button" class="fret-btn" data-note="La (Karar Sesi)" data-freq="220.00">La<span>1. Parmak</span></button>
-            <button type="button" class="fret-btn" data-note="Sib (Bemol)" data-freq="233.08">Sib<span>2. Parmak</span></button>
-            <button type="button" class="fret-btn" data-note="Si (Naturel)" data-freq="246.94">Si<span>Naturel</span></button>
-            <button type="button" class="fret-btn" data-note="Do (3. Parmak)" data-freq="261.63">Do<span>Tam Ses</span></button>
-            <button type="button" class="fret-btn" data-note="Re (4. Parmak)" data-freq="293.66">Re<span>Tam Ses</span></button>
-            <button type="button" class="fret-btn" data-note="Mi" data-freq="329.63">Mi<span>Pozisyon</span></button>
-            <button type="button" class="fret-btn" data-note="Fa" data-freq="349.23">Fa<span>Pozisyon</span></button>
-          </div>
-
-          <div class="string-row">
-            <div class="string-label">Üst Tel (La)</div>
-            <button type="button" class="fret-btn" data-note="La (Boş Tel)" data-freq="220.00">La<span>Boş Tel</span></button>
-            <button type="button" class="fret-btn" data-note="Sib (Baş Parmak)" data-freq="233.08">Sib<span>Üst Basış</span></button>
-            <button type="button" class="fret-btn" data-note="Si (Baş Parmak)" data-freq="246.94">Si<span>Üst Basış</span></button>
-            <button type="button" class="fret-btn" data-note="Do (Baş Parmak)" data-freq="261.63">Do<span>Üst Basış</span></button>
-            <button type="button" class="fret-btn" data-note="Do# " data-freq="277.18">Do#<span>Geçiş</span></button>
-            <button type="button" class="fret-btn" data-note="Re (Üst Re)" data-freq="293.66">Re<span>Üst Basış</span></button>
-            <button type="button" class="fret-btn" data-note="Mi" data-freq="329.63">Mi<span>Üst</span></button>
-            <button type="button" class="fret-btn" data-note="Fa" data-freq="349.23">Fa<span>Üst</span></button>
+      <!-- İNTERAKTİF BAĞLAMA PERDE & DÜZEN STÜDYOSU -->
+      <div id="baglama-studyosu" class="section-block">
+        <div class="section-head">
+          <div>
+            <span class="tag">Canlı Ses & Perde Laboratuvarı</span>
+            <h2 class="section-title">İnteraktif Bağlama Sapı & Düzen Simülatörü</h2>
+            <p class="section-sub">Düzeni seçin ve teller üzerindeki perdelere tıklayarak gerçek bağlama tınısını ve nota yerleşimini inceleyin.</p>
           </div>
         </div>
-        <p id="fretboardStatus" style="margin-top:10px; font-weight:700; color:var(--accent-bright);">Seçili Perde: Bir perdeye tıklayın</p>
+
+        <div class="bağlama-studio-card">
+          <div class="studio-top">
+            <div>
+              <strong id="activeTuningTitle" style="font-size:1.05rem; color:#f3c48b;">Aktif Düzen: Bağlama Düzeni (Alt: Re • Orta: Sol • Üst: La)</strong>
+              <p style="font-size:0.82rem; color:#b8a593;">Perdelere tıkladığınızda tel titreşir ve gerçek nota frekansı tınlar.</p>
+            </div>
+            <div class="tuning-pills">
+              <button type="button" class="tuning-pill active" data-tuning="baglama">Bağlama Düzeni</button>
+              <button type="button" class="tuning-pill" data-tuning="bozuk">Bozuk (Kara) Düzen</button>
+              <button type="button" class="tuning-pill" data-tuning="misket">Misket Düzeni</button>
+            </div>
+          </div>
+
+          <div class="neck-scroll">
+            <div class="bağlama-neck" id="interactiveNeck">
+              <!-- Alt Tel -->
+              <div class="string-line" id="row-alt">
+                <div class="string-name">Alt Tel (Re)</div>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Re (Boş Tel)" data-freq="293.66">Re<small>0. Perde</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Mib2 (Koma)" data-freq="311.13">Mib2<small>Koma</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Mi (1. Parmak)" data-freq="329.63">Mi<small>Tam Ses</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Fa (2. Parmak)" data-freq="349.23">Fa<small>Yarım</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Fa#3 (Hicaz)" data-freq="369.99">Fa#3<small>Hicaz</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Sol (3. Parmak)" data-freq="392.00">Sol<small>Tam Ses</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="La (Karar Sesi)" data-freq="440.00">La<small>Karar</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Sib2 (Uşşak)" data-freq="466.16">Sib2<small>Uşşak</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Si (Naturel)" data-freq="493.88">Si<small>Naturel</small></button>
+                <button type="button" class="fret-node" data-row="row-alt" data-note="Do (İnce Do)" data-freq="523.25">Do<small>İnce</small></button>
+              </div>
+
+              <!-- Orta Tel -->
+              <div class="string-line" id="row-orta">
+                <div class="string-name">Orta Tel (Sol)</div>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Sol (Boş Tel)" data-freq="196.00">Sol<small>0. Perde</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Lab" data-freq="207.65">Lab<small>Yarım</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="La (Karar Sesi)" data-freq="220.00">La<small>Karar</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Sib2 (Koma)" data-freq="233.08">Sib2<small>Uşşak</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Si (Naturel)" data-freq="246.94">Si<small>Naturel</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Do (3. Parmak)" data-freq="261.63">Do<small>Tam Ses</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Do#" data-freq="277.18">Do#<small>Geçiş</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Re (4. Parmak)" data-freq="293.66">Re<small>Tam Ses</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Mi" data-freq="329.63">Mi<small>Pozisyon</small></button>
+                <button type="button" class="fret-node" data-row="row-orta" data-note="Fa" data-freq="349.23">Fa<small>Pozisyon</small></button>
+              </div>
+
+              <!-- Üst Tel -->
+              <div class="string-line" id="row-ust">
+                <div class="string-name">Üst Tel (La)</div>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="La (Boş Tel)" data-freq="220.00">La<small>0. Perde</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Sib (Baş Parmak)" data-freq="233.08">Sib<small>Baş P.</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Si (Naturel)" data-freq="246.94">Si<small>Baş P.</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Do (Üst Do)" data-freq="261.63">Do<small>Üst Basış</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Do#" data-freq="277.18">Do#<small>Üst</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Re (Üst Re)" data-freq="293.66">Re<small>Üst Basış</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Mib" data-freq="311.13">Mib<small>Üst</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Mi" data-freq="329.63">Mi<small>Üst</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Fa" data-freq="349.23">Fa<small>Üst</small></button>
+                <button type="button" class="fret-node" data-row="row-ust" data-note="Sol" data-freq="392.00">Sol<small>Üst</small></button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <span id="fretboardStatus" style="font-weight:700; color:#f3c48b;">Seçili Perde: Bir perdeye tıklayın</span>
+            <span style="font-size:0.8rem; color:#b8a593;">Gerçek Bağlama Tını Sentezleyici Aktif</span>
+          </div>
+        </div>
       </div>
 
-      <!-- AKORT CİHAZI & METRONOM -->
+      <!-- MİKROFONLU AKORT CİHAZI & AKSAK USUL METRONOM STÜDYOSU -->
       <div class="section-block">
-        <h2 class="section-title">Canlı Mikrofonlu Akort Cihazı & Metronom</h2>
-        <p class="section-sub">Bağlamanızın akordunu mikrofonla kontrol edin ve çalışma temponuzu sabitleyin.</p>
+        <div class="section-head">
+          <div>
+            <span class="tag">Pratik Stüdyosu</span>
+            <h2 class="section-title">Mikrofonlu Akort Ölçer & Aksak Usul Metronomu</h2>
+            <p class="section-sub">Bağlamanızı mikrofonla akort edin ve 4/4, 5/8, 7/8, 9/8 Türk müziği usulleriyle çalışın.</p>
+          </div>
+        </div>
+
         <div class="grid-2">
           <div class="card">
-            <span class="tag">Mikrofonlu Tuner</span>
-            <h3>Canlı Bağlama Akort Ölçer</h3>
+            <span class="tag">Hassas Frekans Analizi</span>
+            <h3>Canlı Mikrofonlu Bağlama Akort Cihazı</h3>
             <p>Mikrofonu başlatıp bağlamanızın teline tek tek vurun:</p>
-            <div class="tuner-box">
-              <div class="tuner-note" id="liveTunerNote">--</div>
-              <div class="tuner-freq" id="liveTunerFreq">Mikrofon kapalı</div>
-              <div class="tuner-meter">
-                <div class="tuner-needle" id="liveTunerNeedle"></div>
+            <div class="tuner-studio">
+              <div class="tuner-big-note" id="liveTunerNote">--</div>
+              <div class="tuner-sub-info" id="liveTunerFreq">Mikrofon kapalı</div>
+              <div class="tuner-gauge">
+                <div class="tuner-gauge-needle" id="liveTunerNeedle"></div>
               </div>
-              <button type="button" id="micTunerBtn" class="btn btn-sm" style="margin-top: 6px;">Mikrofonla Akordu Başlat</button>
+              <button type="button" id="micTunerBtn" class="btn btn-sm">Mikrofonla Akordu Başlat</button>
             </div>
           </div>
 
           <div class="card">
-            <span class="tag">Ritim & Tartım</span>
-            <h3>Metronom</h3>
-            <p>Nota, solfej, şelpe ve çalıp söyleme çalışmaları için hız sabitleyici:</p>
-            <div class="field-row" style="margin-top: 16px;">
+            <span class="tag">Düm / Tek Vuruş Destekli</span>
+            <h3>Türk Halk Müziği Usul & Aksak Metronom</h3>
+            <p>Usul seçin; kuvvetli (Düm) ve zayıf (Tek) vuruşları ışıklı takip edin:</p>
+            <div class="field-row" style="margin-top: 12px;">
+              <div class="field">
+                <label for="usulSelect">Usul / Ritim Kalıbı</label>
+                <select id="usulSelect">
+                  <option value="4">4/4 Düz Usul (Düm-Tek-Tek-Tek)</option>
+                  <option value="5">5/8 Türk Aksağı (2+3)</option>
+                  <option value="7">7/8 Karadeniz / Devr-i Turan (2+2+3)</option>
+                  <option value="9">9/8 Aksak / Zeybek (2+2+2+3)</option>
+                </select>
+              </div>
               <div class="field">
                 <label for="bpmInput">Tempo (BPM)</label>
-                <input type="number" id="bpmInput" min="40" max="220" value="90" />
-              </div>
-              <div class="field" style="justify-content: flex-end;">
-                <button type="button" id="metronomeToggleBtn" class="btn">Metronomu Başlat</button>
+                <input type="number" id="bpmInput" min="40" max="220" value="92" />
               </div>
             </div>
-            <p id="metronomeStatus" style="margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--accent-bright);">Durduruldu</p>
+            <div class="usul-beats" id="usulBeatsRow"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+              <button type="button" id="metronomeToggleBtn" class="btn btn-sm">Metronomu Başlat</button>
+              <span id="metronomeStatus" style="font-size: 0.84rem; font-weight: 700; color: var(--gold);">Durduruldu</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- SEVİYE & HEDEF BELİRLEME TESTİ -->
+      <!-- SEVİYE & PROGRAM BELİRLEME -->
       <div class="section-block">
-        <h2 class="section-title">Seviye & Ders Programı Belirleme</h2>
-        <p class="section-sub">3 soruda seviyenize ve hedefinize en uygun eğitim programını belirleyin.</p>
+        <div class="section-head">
+          <div>
+            <span class="tag">Kişisel Eğitim Planı</span>
+            <h2 class="section-title">Seviye & Ders Programı Analizi</h2>
+            <p class="section-sub">3 adımda seviyenize en uygun müfredatı belirleyip başvurunuzu oluşturun.</p>
+          </div>
+        </div>
         <div class="card">
           <div class="grid-3">
             <div class="field">
@@ -1300,7 +1447,7 @@
             </div>
           </div>
           <div style="margin-top: 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-            <button type="button" id="runQuizBtn" class="btn">Uygun Programı Göster</button>
+            <button type="button" id="runQuizBtn" class="btn">Uygun Müfredatı Göster</button>
             <button type="button" id="applyQuizCourseBtn" class="btn btn-ghost btn-sm" style="display:none;">Bu Programla Başvuru Yap ↓</button>
           </div>
           <div id="quizResultBox" class="notice-bar" style="display:none; margin-top: 14px; margin-bottom:0;"></div>
@@ -1309,15 +1456,24 @@
 
       <!-- CANLI HAFTALIK DERS PROGRAMI -->
       <div class="section-block">
-        <h2 class="section-title">Haftalık Ders Programı & Müsait Saatler</h2>
-        <p class="section-sub">Yeşil "Müsait" saatlere tıklayarak doğrudan başvuru formunuza seçebilirsiniz.</p>
+        <div class="section-head">
+          <div>
+            <span class="tag">Canlı Kontenjan</span>
+            <h2 class="section-title">Haftalık Ders Programı & Müsait Saatler</h2>
+            <p class="section-sub">Yeşil "Müsait" saatlere tıklayarak doğrudan başvuru formunuza seçebilirsiniz.</p>
+          </div>
+        </div>
         <div class="schedule-grid" id="publicScheduleGrid"></div>
       </div>
 
       <!-- SIKÇA SORULAN SORULAR -->
       <div class="section-block">
-        <h2 class="section-title">Sıkça Sorulan Sorular</h2>
-        <p class="section-sub">Yüz yüze ve online birebir özel müzik eğitimi hakkında merak edilenler</p>
+        <div class="section-head">
+          <div>
+            <span class="tag">Bilgilendirme</span>
+            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+          </div>
+        </div>
         <div class="faq-list">
           <details class="faq-item">
             <summary>Hiç bağlama çalmayı ve nota okumayı bilmiyorum, sıfırdan başlayabilir miyim?</summary>
@@ -1336,9 +1492,14 @@
 
       <!-- DERS BAŞVURUSU & ÖĞRENCİ KAYDI -->
       <div id="basvuru-bolumu" class="section-block">
-        <h2 class="section-title">Ders Başvurusu & Öğrenci Kaydı</h2>
-        <p class="section-sub">Bilgilerinizi doldurarak başvurunuzu iletebilir ve öğrenci giriş hesabınızı oluşturabilirsiniz.</p>
-        <div class="card" style="max-width: 760px;">
+        <div class="section-head">
+          <div>
+            <span class="tag">Birebir Eğitim Kaydı</span>
+            <h2 class="section-title">Ders Başvurusu & Öğrenci Hesabı Oluşturma</h2>
+            <p class="section-sub">Formu doldurduğunuzda başvurunuz Hoca Paneline düşer ve öğrenci hesabınız anında açılır.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width: 780px;">
           <form id="quickRegisterForm" class="form-stack">
             <div class="field-row">
               <div class="field">
@@ -1390,7 +1551,7 @@
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
               <button type="submit" class="btn">Kaydı Tamamla & Gönder</button>
               <button type="button" id="quickWaBtn" class="btn btn-ghost">WhatsApp ile İletişime Geç</button>
-              <span id="regStatus" style="font-size:0.83rem; font-weight:600; color:var(--ok);"></span>
+              <span id="regStatus" style="font-size:0.84rem; font-weight:700; color:var(--ok);"></span>
             </div>
           </form>
         </div>
@@ -1401,9 +1562,9 @@
     <section id="view-ogrenci" class="page-view">
       <div class="portal-banner">
         <div>
-          <span class="tag">Öğrenci Portalı</span>
-          <h2 style="font-size: 1.45rem;">Öğrenci Girişi & Ders Takip Ekranı</h2>
-          <p style="color: var(--muted); font-size: 0.88rem;">Canlı ders odanıza katılmak, PDF notalarınızı görmek, kur sayacınızı ve ödevlerinizi takip etmek için giriş yapın.</p>
+          <span class="tag">Öğrenci Akademi Portalı</span>
+          <h2 class="section-title" style="font-size: 1.75rem;">Öğrenci Girişi & Ders Takip Ekranı</h2>
+          <p style="color: var(--muted); font-size: 0.9rem;">Canlı ders odanıza katılmak, PDF notalarınızı görmek, kur sayacınızı ve ödevlerinizi takip etmek için giriş yapın.</p>
         </div>
         <div style="display:flex; gap:8px; align-items:center;">
           <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm" style="display:none;">Çıkış Yap</button>
@@ -1424,26 +1585,26 @@
             <input type="password" id="loginPass" placeholder="••••" required />
           </div>
           <button type="submit" class="btn">Giriş Yap</button>
-          <span id="memberLoginError" style="font-size:0.83rem; font-weight:600; color:var(--danger);"></span>
+          <span id="memberLoginError" style="font-size:0.83rem; font-weight:700; color:var(--danger);"></span>
         </form>
       </div>
 
       <!-- GİRİŞ YAPILDIKTAN SONRA AÇILAN ÖĞRENCİ EKRANI -->
       <div id="studentMemberWorkspace" style="display:none;">
-        <!-- YENİ: CANLI ONLINE DERS ODASI BAĞLANTI KARTI -->
+        <!-- CANLI ONLINE DERS ODASI BAĞLANTI KARTI -->
         <div id="studentLiveRoomCard" class="live-room-card" style="display:none;">
           <div>
-            <span class="tag" style="background:rgba(25,117,71,0.2); color:var(--ok);"><span class="pulse-dot"></span>Canlı Online Ders Odası Aktif</span>
+            <span class="tag" style="background:rgba(46,184,114,0.2); color:var(--ok);"><span class="pulse-dot"></span>Canlı Online Ders Odası Aktif</span>
             <h3 id="studentLiveRoomTitle">Doğukan Bozkurt ile Birebir Canlı Ders</h3>
             <p id="studentLiveRoomNote" style="font-size:0.86rem; color:var(--muted);">Hocanız canlı ders bağlantısını açtı. Aşağıdaki butondan derse katılabilirsiniz.</p>
           </div>
           <a id="studentLiveRoomLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok">Canlı Derse Katıl →</a>
         </div>
 
-        <!-- YENİ: AYLIK ÖDEME / KUR YENİLEME BİLGİLENDİRME KARTI -->
+        <!-- AYLIK ÖDEME / KUR YENİLEME BİLGİLENDİRME KARTI -->
         <div id="studentRenewalAlert" class="renewal-alert-card" style="display:none;">
           <div>
-            <span class="tag" style="background:rgba(184,98,12,0.2); color:var(--warn);">Kur Tamamlandı • Yenileme Bilgilendirmesi</span>
+            <span class="tag" style="background:rgba(245,158,11,0.2); color:var(--warn);">Kur Tamamlandı • Yenileme Bilgilendirmesi</span>
             <h3>Bu Ayki Ders Paketiniz Tamamlandı</h3>
             <p style="font-size:0.86rem; color:var(--muted);">Mevcut kurdaki tüm derslerinizi tamamladınız. Yeni kur planlaması ve aylık ödeme bilgilendirmesi için Doğukan Hoca ile iletişime geçebilirsiniz.</p>
           </div>
@@ -1460,7 +1621,7 @@
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
 
-            <!-- YENİ: AYLIK DERS / KUR SAYACI -->
+            <!-- AYLIK DERS / KUR SAYACI -->
             <h3>Aylık Kur & Ders Sayacı</h3>
             <p style="font-size:0.82rem;">Bu kurda işlenen ve kalan birebir ders durumunuz:</p>
             <div class="progress-track">
@@ -1495,11 +1656,11 @@
               <input type="text" id="reqTopic" placeholder="Örn: Bağlama düzeni nota + mızrap" />
             </div>
             <button type="button" id="sendLessonReqBtn" class="btn btn-ghost">Hocaya Ders Talebi Gönder</button>
-            <span id="studentActionStatus" style="font-size:0.82rem; font-weight:600; color:var(--ok);"></span>
+            <span id="studentActionStatus" style="font-size:0.82rem; font-weight:700; color:var(--ok);"></span>
           </div>
 
           <div class="form-stack">
-            <!-- YENİ: KİŞİSEL PDF NOTA & ÇALIŞMA DOSYASI ÇEKMECESİ -->
+            <!-- KİŞİSEL PDF NOTA & ÇALIŞMA DOSYASI ÇEKMECESİ -->
             <div class="card">
               <span class="tag">Kişisel Arşiv</span>
               <h3>Kişisel PDF Nota & Çalışma Dosyası Çekmecesi</h3>
@@ -1541,8 +1702,8 @@
       <div class="portal-banner">
         <div>
           <span class="tag">Eğitmen Kontrol Paneli</span>
-          <h2 style="font-size: 1.45rem;">Doğukan Bozkurt — Öğrenci, Kur Sayacı & Canlı Ders Yönetimi</h2>
-          <p style="color: var(--muted); font-size: 0.88rem;">Öğrencilerin ders sayacını yönetin, canlı online ders linki açın, PDF nota çekmecesine dosya ekleyin ve ödev gönderin.</p>
+          <h2 class="section-title" style="font-size: 1.75rem;">Doğukan Bozkurt — Öğrenci, Kur Sayacı & Canlı Ders Yönetimi</h2>
+          <p style="color: var(--muted); font-size: 0.9rem;">Öğrencilerin ders sayacını yönetin, canlı online ders linki açın, PDF nota çekmecesine dosya ekleyin ve ödev gönderin.</p>
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
           <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Kayıtları İndir (JSON)</button>
@@ -1558,7 +1719,7 @@
             <input type="password" id="hocaPinInput" placeholder="baglama2026" required />
           </div>
           <button type="submit" class="btn">Paneli Aç</button>
-          <span id="hocaPinError" style="font-size:0.82rem; font-weight:600; color:var(--danger);"></span>
+          <span id="hocaPinError" style="font-size:0.82rem; font-weight:700; color:var(--danger);"></span>
         </form>
       </div>
 
@@ -1601,7 +1762,7 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-sm">Öğrenci Ekle</button>
-              <span id="hocaAddStuStatus" style="font-size:0.8rem; font-weight:600; color:var(--ok);"></span>
+              <span id="hocaAddStuStatus" style="font-size:0.8rem; font-weight:700; color:var(--ok);"></span>
             </form>
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
@@ -1623,7 +1784,7 @@
           </div>
 
           <div class="form-stack">
-            <!-- YENİ: SEÇİLİ ÖĞRENCİ DERS SAYACI, KUR YENİLEME & CANLI DERS ODASI YÖNETİMİ -->
+            <!-- SEÇİLİ ÖĞRENCİ DERS SAYACI, KUR YENİLEME & CANLI DERS ODASI YÖNETİMİ -->
             <div class="card" id="hocaStudentToolsCard" style="display:none;">
               <span class="tag">Seçili Öğrenci Kur & Canlı Ders Yönetimi</span>
               <h3 id="hocaToolsStudentName">Öğrenci Yönetimi</h3>
@@ -1631,7 +1792,7 @@
               <div class="grid-2" style="margin-top:12px;">
                 <div class="msg-item">
                   <strong>Aylık Ders / Kur Sayacı</strong>
-                  <p id="hocaCourseCounterLabel" style="font-size:0.88rem; margin:6px 0; font-weight:700; color:var(--accent-bright);">0 / 4 Ders</p>
+                  <p id="hocaCourseCounterLabel" style="font-size:0.88rem; margin:6px 0; font-weight:700; color:var(--gold);">0 / 4 Ders</p>
                   <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                     <button type="button" id="hocaIncLessonBtn" class="btn btn-sm">+1 Ders İşlendi</button>
                     <button type="button" id="hocaDecLessonBtn" class="btn btn-ghost btn-sm">-1</button>
@@ -1651,7 +1812,7 @@
                 </div>
               </div>
 
-              <!-- YENİ: KİŞİSEL PDF NOTA ÇEKMECESİNE DOSYA EKLEME -->
+              <!-- KİŞİSEL PDF NOTA ÇEKMECESİNE DOSYA EKLEME -->
               <div class="msg-item" style="margin-top:12px;">
                 <strong>Öğrencinin PDF Nota & Çalışma Çekmecesine Ekle</strong>
                 <form id="hocaAddPdfForm" class="field-row" style="margin-top:8px;">
@@ -1672,7 +1833,7 @@
 
             <div class="card">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
-                <h3>Seçili Öğrenci: <span id="selectedStudentTitle" style="color:var(--accent-bright);">Tüm Öğrenciler</span></h3>
+                <h3>Seçili Öğrenci: <span id="selectedStudentTitle" style="color:var(--gold);">Tüm Öğrenciler</span></h3>
                 <span class="status-pill" id="selectedStudentCourse">Genel</span>
               </div>
               <div class="feed" id="hocaFeed"></div>
@@ -1718,9 +1879,9 @@
   </main>
 
   <footer>
-    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; align-items:center;">
       <div>
-        <strong style="color:var(--text);">Doğukan Bozkurt — Müzik Eğitimi</strong><br />
+        <strong style="color:var(--text); font-family:'Cormorant Garamond',serif; font-size:1.2rem;">Doğukan Bozkurt — Müzik & Bağlama Akademisi</strong><br />
         Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu • WhatsApp: 0 537 439 49 92
       </div>
       <div class="social-pills">
@@ -1735,10 +1896,10 @@
     const WHATSAPP_NUMBER = "905374394992";
     const HOCA_PIN = "baglama2026";
     const FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v7";
-    const THEME_KEY = "dogukan_portal_theme";
+    const STORAGE_KEY = "dogukan_muzik_portal_v8";
+    const THEME_KEY = "dogukan_portal_theme_v2";
 
-    /* KALICI AYDINLIK / KARANLIK TEMA YÖNETİMİ (TÜM SEKMELERDE GEÇERLİ) */
+    /* KALICI AYDINLIK / KARANLIK TEMA YÖNETİMİ */
     function applyTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
       const icon = document.getElementById("themeIcon");
@@ -1756,9 +1917,9 @@
     }
 
     (function initTheme() {
-      let saved = "light";
+      let saved = "dark";
       try {
-        saved = localStorage.getItem(THEME_KEY) || "light";
+        saved = localStorage.getItem(THEME_KEY) || "dark";
       } catch (_) {}
       applyTheme(saved);
     })();
@@ -1768,12 +1929,12 @@
       applyTheme(current === "dark" ? "light" : "dark");
     });
 
-    /* AÇILIŞ BAĞLAMA ÇALAN AMCA ANİMASYONU KAPATMA */
+    /* PRELOADER KAPATMA */
     window.addEventListener("load", () => {
       setTimeout(() => {
         const pre = document.getElementById("preloader");
         if (pre) pre.classList.add("hide");
-      }, 1800);
+      }, 1700);
     });
 
     const SKILL_BADGES = [
@@ -1936,7 +2097,7 @@
       el.addEventListener("click", () => goView(el.dataset.go));
     });
 
-    /* SES MOTORU & İNTERAKTİF BAĞLAMA KLAVYESİ */
+    /* SES SENTEZLEYİCİ & İNTERAKTİF BAĞLAMA KLAVYESİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
@@ -1950,28 +2111,70 @@
       return audioCtx;
     }
 
-    function playPluckNote(freq) {
+    function playBaglamaPluck(freq) {
       const ctx = ensureAudioCtx();
       if (!ctx) return;
-      const osc = ctx.createOscillator();
+      const now = ctx.currentTime;
+
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const filter = ctx.createBiquadFilter();
       const gain = ctx.createGain();
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      gain.gain.setValueAtTime(0.18, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.85);
-      osc.connect(gain);
+
+      osc1.type = "sawtooth";
+      osc2.type = "triangle";
+      osc1.frequency.setValueAtTime(freq, now);
+      osc2.frequency.setValueAtTime(freq * 2, now);
+
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(freq * 5.5, now);
+      filter.frequency.exponentialRampToValueAtTime(freq * 1.4, now + 0.75);
+
+      gain.gain.setValueAtTime(0.22, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.15);
+
+      osc1.connect(filter);
+      osc2.connect(filter);
+      filter.connect(gain);
       gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.9);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 1.2);
+      osc2.stop(now + 1.2);
     }
 
-    document.querySelectorAll(".fret-btn").forEach((btn) => {
+    document.querySelectorAll(".fret-node").forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".fret-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".fret-node").forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
         const freq = parseFloat(btn.dataset.freq);
-        playPluckNote(freq);
+        playBaglamaPluck(freq);
+
+        const rowId = btn.dataset.row;
+        document.querySelectorAll(".string-line").forEach((r) => r.classList.remove("vibrating"));
+        const rowEl = document.getElementById(rowId);
+        if (rowEl) {
+          rowEl.classList.add("vibrating");
+          setTimeout(() => rowEl.classList.remove("vibrating"), 650);
+        }
+
         document.getElementById("fretboardStatus").textContent = `Çalınan Perde: ${btn.dataset.note} (${freq} Hz)`;
+      });
+    });
+
+    const TUNING_DESCRIPTIONS = {
+      baglama: "Aktif Düzen: Bağlama Düzeni (Alt: Re • Orta: Sol • Üst: La)",
+      bozuk: "Aktif Düzen: Bozuk / Kara Düzen (Alt: Re • Orta: Sol • Üst: Do)",
+      misket: "Aktif Düzen: Misket Düzeni (Alt: Re • Orta: Sol • Üst: Fa#)"
+    };
+
+    document.querySelectorAll("[data-tuning]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-tuning]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const key = btn.dataset.tuning;
+        document.getElementById("activeTuningTitle").textContent = TUNING_DESCRIPTIONS[key] || TUNING_DESCRIPTIONS.baglama;
       });
     });
 
@@ -2034,7 +2237,7 @@
 
         const clamped = Math.max(-45, Math.min(45, cents));
         const percent = 50 + clamped;
-        document.getElementById("liveTunerNeedle").style.left = `calc(${percent}% - 8px)`;
+        document.getElementById("liveTunerNeedle").style.left = `calc(${percent}% - 10px)`;
       }
       tunerRaf = requestAnimationFrame(updatePitch);
     }
@@ -2049,7 +2252,7 @@
         btn.textContent = "Mikrofonla Akordu Başlat";
         document.getElementById("liveTunerNote").textContent = "--";
         document.getElementById("liveTunerFreq").textContent = "Mikrofon kapalı";
-        document.getElementById("liveTunerNeedle").style.left = "calc(50% - 8px)";
+        document.getElementById("liveTunerNeedle").style.left = "calc(50% - 10px)";
         return;
       }
       try {
@@ -2067,22 +2270,58 @@
       }
     });
 
-    /* METRONOM */
-    let metroTimer = null;
+    /* TÜRK HALK MÜZİĞİ USUL & AKSAK METRONOMU */
+    const USUL_PATTERNS = {
+      "4": ["Düm", "Tek", "Tek", "Tek"],
+      "5": ["Düm", "Tek", "Düm", "Tek", "Tek"],
+      "7": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"],
+      "9": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"]
+    };
 
-    function playClick() {
+    let metroTimer = null;
+    let currentBeatIdx = 0;
+
+    function renderUsulBeats() {
+      const key = document.getElementById("usulSelect").value;
+      const pattern = USUL_PATTERNS[key] || USUL_PATTERNS["4"];
+      const row = document.getElementById("usulBeatsRow");
+      row.innerHTML = pattern.map((label, i) => `
+        <div class="beat-dot" id="beat-dot-${i}">${i + 1}. ${label}</div>
+      `).join("");
+    }
+
+    document.getElementById("usulSelect").addEventListener("change", () => {
+      currentBeatIdx = 0;
+      renderUsulBeats();
+    });
+
+    function playUsulBeat() {
       const ctx = ensureAudioCtx();
       if (!ctx) return;
+      const key = document.getElementById("usulSelect").value;
+      const pattern = USUL_PATTERNS[key] || USUL_PATTERNS["4"];
+      const beatType = pattern[currentBeatIdx % pattern.length];
+
+      document.querySelectorAll(".beat-dot").forEach((el) => {
+        el.classList.remove("active-dum", "active-tek");
+      });
+      const activeEl = document.getElementById(`beat-dot-${currentBeatIdx % pattern.length}`);
+      if (activeEl) {
+        activeEl.classList.add(beatType === "Düm" ? "active-dum" : "active-tek");
+      }
+
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = "sine";
-      osc.frequency.value = 880;
-      gain.gain.setValueAtTime(0.12, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+      osc.type = "triangle";
+      osc.frequency.value = beatType === "Düm" ? 520 : 880;
+      gain.gain.setValueAtTime(beatType === "Düm" ? 0.2 : 0.11, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
-      osc.stop(ctx.currentTime + 0.065);
+      osc.stop(ctx.currentTime + 0.075);
+
+      currentBeatIdx = (currentBeatIdx + 1) % pattern.length;
     }
 
     document.getElementById("metronomeToggleBtn").addEventListener("click", () => {
@@ -2093,17 +2332,19 @@
         metroTimer = null;
         btn.textContent = "Metronomu Başlat";
         status.textContent = "Durduruldu";
+        document.querySelectorAll(".beat-dot").forEach((el) => el.classList.remove("active-dum", "active-tek"));
         return;
       }
-      const bpm = Math.min(220, Math.max(40, parseInt(document.getElementById("bpmInput").value, 10) || 90));
+      currentBeatIdx = 0;
+      const bpm = Math.min(220, Math.max(40, parseInt(document.getElementById("bpmInput").value, 10) || 92));
       const intervalMs = Math.round(60000 / bpm);
-      playClick();
-      metroTimer = setInterval(playClick, intervalMs);
+      playUsulBeat();
+      metroTimer = setInterval(playUsulBeat, intervalMs);
       btn.textContent = "Metronomu Durdur";
       status.textContent = `Çalıyor: ${bpm} BPM`;
     });
 
-    /* 3 SORULUK SEVİYE & HEDEF BELİRLEME TESTİ */
+    /* 3 SORULUK SEVİYE ANALİZİ */
     document.getElementById("runQuizBtn").addEventListener("click", () => {
       const exp = document.getElementById("quizExp").value;
       const nota = document.getElementById("quizNota").value;
@@ -2235,7 +2476,7 @@
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     });
 
-    /* ÖĞRENCİ ŞİFRELİ GİRİŞİ */
+    /* ÖĞRENCİ GİRİŞİ */
     document.getElementById("memberLoginForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const userInp = document.getElementById("loginUser").value.trim().toLowerCase();
@@ -2363,7 +2604,6 @@
       setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
     });
 
-    /* HOCA DERS SAYACI KONTROLLERİ */
     document.getElementById("hocaIncLessonBtn").addEventListener("click", () => {
       const stu = state.students.find((s) => s.name === selectedHocaStudent);
       if (!stu) return;
@@ -2415,7 +2655,6 @@
       renderAll();
     });
 
-    /* HOCA CANLI ONLINE DERS ODASI KONTROLLERİ */
     document.getElementById("hocaActivateLiveBtn").addEventListener("click", () => {
       const stu = state.students.find((s) => s.name === selectedHocaStudent);
       if (!stu) return;
@@ -2447,7 +2686,6 @@
       renderAll();
     });
 
-    /* HOCA PDF NOTA ÇEKMECESİNE EKLEME */
     document.getElementById("hocaAddPdfForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const stu = state.students.find((s) => s.name === selectedHocaStudent);
@@ -2545,7 +2783,6 @@
       URL.revokeObjectURL(url);
     });
 
-    /* TAKVİM RENDER FONKSİYONU */
     function renderSchedules() {
       const pubGrid = document.getElementById("publicScheduleGrid");
       const hocaGrid = document.getElementById("hocaScheduleGrid");
@@ -2597,6 +2834,7 @@
     }
 
     function renderAll() {
+      renderUsulBeats();
       renderSchedules();
 
       const authScreen = document.getElementById("studentAuthScreen");
@@ -2618,7 +2856,6 @@
         document.getElementById("memberCourseInfo").textContent = `Ders Alanı: ${stObj.course} • Kullanıcı Adı: ${stObj.username || "-"}`;
         document.getElementById("activeStudentLabel").textContent = stObj.name;
 
-        /* CANLI DERS ODASI KARTI GÖRÜNÜMÜ */
         const liveCard = document.getElementById("studentLiveRoomCard");
         const liveLinkEl = document.getElementById("studentLiveRoomLink");
         if (stObj.liveActive && stObj.liveLink) {
@@ -2628,7 +2865,6 @@
           liveCard.style.display = "none";
         }
 
-        /* AYLIK KUR / DERS SAYACI VE YENİLEME UYARISI */
         const done = stObj.lessonsDone || 0;
         const total = stObj.lessonsTotal || 4;
         const rem = Math.max(0, total - done);
@@ -2647,13 +2883,11 @@
           renewalAlert.style.display = "none";
         }
 
-        /* HAFTALIK PRATİK SÜRESİ */
         const mins = stObj.practiceMins || 0;
         const pct = Math.min(100, Math.round((mins / 180) * 100));
         pBar.style.width = pct + "%";
         pText.textContent = `${mins} / 180 dk`;
 
-        /* KİŞİSEL PDF NOTA ÇEKMECESİ */
         const pdfDrawer = document.getElementById("studentPdfDrawer");
         const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : [];
         pdfDrawer.innerHTML = pdfList.length
@@ -2668,7 +2902,6 @@
           `).join("")
           : `<p style="color:var(--muted); font-size:0.85rem;">Henüz çekmecenize eklenmiş PDF nota bulunmuyor.</p>`;
 
-        /* ROZETLER */
         const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
         document.getElementById("studentBadgesGrid").innerHTML = SKILL_BADGES.map((b) => {
           const earned = earnedList.includes(b.id);
@@ -2713,7 +2946,7 @@
               <span>${escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
-            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright); font-weight:600; font-size:0.84rem;">Kaynak / Nota Bağlantısını Aç →</a></div>` : ""}
+            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.84rem;">Kaynak / Nota Bağlantısını Aç →</a></div>` : ""}
             ${m.sender === "hoca" ? `
               <div style="margin-top:10px;">
                 <button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">
@@ -2736,7 +2969,6 @@
         });
       });
 
-      /* HOCA ÖĞRENCİ LİSTESİ */
       const sList = document.getElementById("hocaStudentList");
       sList.innerHTML = [
         `<div class="student-pill ${selectedHocaStudent === "ALL" ? "active" : ""}" data-select-s="ALL">
@@ -2773,7 +3005,6 @@
         ? `${foundStudent.course} • Kur: ${foundStudent.lessonsDone || 0}/${foundStudent.lessonsTotal || 4} Ders`
         : "Genel";
 
-      /* HOCA SEÇİLİ ÖĞRENCİ ARAÇLARI (KUR SAYACI + CANLI DERS + PDF + ROZET) */
       const toolsCard = document.getElementById("hocaStudentToolsCard");
       const badgeCard = document.getElementById("hocaBadgeManagerCard");
       const badgeControlGrid = document.getElementById("hocaBadgesControlGrid");
@@ -2832,7 +3063,7 @@
               <span class="status-pill ${m.completed ? "done" : ""}">${m.completed ? "Tamamlandı" : escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
-            ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright); font-weight:600; font-size:0.82rem;">Bağlantıyı Aç →</a></div>` : ""}
+            ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.82rem;">Bağlantıyı Aç →</a></div>` : ""}
           </div>
         `).join("")
         : `<p style="color:var(--muted); font-size:0.88rem;">Bu görünümde mesaj yok.</p>`;
