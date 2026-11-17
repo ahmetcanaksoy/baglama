@@ -15,6 +15,7 @@
       --accent-bright: #965216;
       --accent-soft: rgba(184, 107, 40, 0.12);
       --ok: #1f8a58;
+      --danger: #c93b2b;
       --text: #261c14;
       --muted: #6e5d4f;
       --border: rgba(38, 28, 20, 0.12);
@@ -57,7 +58,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(250, 246, 240, 0.92);
+      background: rgba(250, 246, 240, 0.94);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
@@ -131,7 +132,7 @@
       background: transparent;
       color: var(--muted);
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       cursor: pointer;
       transition: all 0.18s ease;
     }
@@ -189,7 +190,7 @@
       grid-template-columns: 1.18fr 0.82fr;
       gap: 34px;
       align-items: center;
-      margin-bottom: 48px;
+      margin-bottom: 42px;
     }
 
     .eyebrow {
@@ -252,6 +253,31 @@
     .stat span {
       font-size: 0.78rem;
       color: var(--muted);
+    }
+
+    /* 3 KULLANIM MODU KARTLARI */
+    .access-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 42px;
+    }
+
+    .access-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .access-card.highlight {
+      border: 2px solid var(--accent);
+      background: linear-gradient(180deg, #ffffff, #fcf7f0);
     }
 
     .portrait-card {
@@ -540,6 +566,13 @@
       align-items: start;
     }
 
+    .auth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
     .form-stack {
       display: grid;
       gap: 12px;
@@ -682,6 +715,8 @@
     @media (max-width: 980px) {
       .hero,
       .portal-grid,
+      .auth-grid,
+      .access-cards,
       .grid-2,
       .grid-3 {
         grid-template-columns: 1fr;
@@ -721,15 +756,15 @@
       </div>
 
       <div class="portal-switch" role="tablist">
-        <button class="tab-btn active" data-go="vitrin">Müzik Eğitimi</button>
-        <button class="tab-btn" data-go="ogrenci">Öğrenci Sayfası</button>
-        <button class="tab-btn" data-go="hoca">Hoca Paneli</button>
+        <button class="tab-btn active" data-go="vitrin">Açık Vitrin & Misafir Alanı</button>
+        <button class="tab-btn" data-go="ogrenci">Üye Öğrenci Girişi</button>
+        <button class="tab-btn" data-go="hoca">Hoca Girişi</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- 1. VİTRİN / ANA SAYFA -->
+    <!-- 1. AÇIK VİTRİN & MİSAFİR (ÖYLESİNE GİREN) ÖĞRENCİ ALANI -->
     <section id="view-vitrin" class="page-view active">
       <div class="hero">
         <div>
@@ -741,22 +776,22 @@
             yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
           </p>
           <div class="hero-actions">
-            <button class="btn" data-go="ogrenci">Öğrenci Sayfasına Geç</button>
-            <button class="btn btn-ghost" data-go="hoca">Hoca Paneline Geç</button>
-            <a href="#basvuru-bolumu" class="btn btn-ghost">Ders Başvurusu</a>
+            <a href="#misafir-bolumu" class="btn">Misafir Öğrenci Alanını Keşfet</a>
+            <button class="btn btn-ghost" data-go="ogrenci">Üye Öğrenci Girişi</button>
+            <button class="btn btn-ghost" data-go="hoca">Hoca Girişi</button>
           </div>
           <div class="stats">
             <div class="stat">
-              <strong>8 Ders Alanı</strong>
-              <span>Nota, düzen, şelpe & hazırlık</span>
+              <strong>Misafir Alanı</strong>
+              <span>Şifresiz akort, metronom & türküler</span>
             </div>
             <div class="stat">
-              <strong>Birebir Özel</strong>
-              <span>Yüz yüze ve online eğitim</span>
+              <strong>Üye Öğrenci</strong>
+              <span>Şifreli özel ödev, nota & mesajlaşma</span>
             </div>
             <div class="stat">
-              <strong>Canlı Portal</strong>
-              <span>Akort, repertuvar & ödev takibi</span>
+              <strong>Hoca Paneli</strong>
+              <span>Üye şifresi verme & ders yönetimi</span>
             </div>
           </div>
         </div>
@@ -789,7 +824,37 @@
         </div>
       </div>
 
-      <!-- BİYOGRAFİ -->
+      <!-- 3 AYRI GİRİŞ VE KULLANIM MODU ÖZETİ -->
+      <div class="access-cards">
+        <div class="access-card">
+          <div>
+            <span class="tag">1. Üyeliksiz / Misafir Öğrenci</span>
+            <h3>Siteyi Gezenlere Açık Alan</h3>
+            <p style="color:var(--muted); font-size:0.88rem;">Henüz kayıtlı öğrenci değilseniz bile mikrofonlu bağlama akort cihazını, metronomu ve örnek türkü kütüphanesini ücretsiz kullanabilirsiniz.</p>
+          </div>
+          <a href="#misafir-bolumu" class="btn btn-ghost btn-sm">Açık Araçları Kullan ↓</a>
+        </div>
+
+        <div class="access-card highlight">
+          <div>
+            <span class="tag">2. Kayıtlı Üye Öğrenci</span>
+            <h3>Üye Öğrencilere Özel Portal</h3>
+            <p style="color:var(--muted); font-size:0.88rem;">Doğukan Hoca ile ders yapan öğrencilere özel şifreli giriş. Kişisel ödevleriniz, nota bağlantılarınız ve birebir mesajlaşma buradadır.</p>
+          </div>
+          <button type="button" class="btn btn-sm" data-go="ogrenci">Üye Öğrenci Girişi Yap →</button>
+        </div>
+
+        <div class="access-card">
+          <div>
+            <span class="tag">3. Eğitmen Girişi</span>
+            <h3>Doğukan Hoca Özel Paneli</h3>
+            <p style="color:var(--muted); font-size:0.88rem;">Yeni üye öğrenci tanımlama, öğrenciye şifre verme, haftalık çalışma süresi kontrolü ve ders taleplerini onaylama ekranı.</p>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm" data-go="hoca">Hoca Paneline Geç →</button>
+        </div>
+      </div>
+
+      <!-- BİYOGRAFİ & QR -->
       <div class="section-block">
         <h2 class="section-title">Biyografi & Eğitim Çalışmaları</h2>
         <p class="section-sub">Akademik çalgı eğitimi ve birebir özel öğretim deneyimi</p>
@@ -849,10 +914,11 @@
         </div>
       </div>
 
-      <!-- CANLI MİKROFONLU AKORT CİHAZI & METRONOM -->
-      <div class="section-block">
+      <!-- MİSAFİR ÖĞRENCİLERE AÇIK ALAN: AKORT & METRONOM -->
+      <div id="misafir-bolumu" class="section-block">
+        <span class="tag">Misafir Öğrencilere Açık Kısım (Şifresiz)</span>
         <h2 class="section-title">Canlı Mikrofonlu Akort Cihazı & Metronom</h2>
-        <p class="section-sub">Bağlamanızın teline vurduğunuzda mikrofon üzerinden anlık nota ve frekans tespiti yapar.</p>
+        <p class="section-sub">Sayfaya yeni giren tüm bağlama severler üye olmadan akort ve ritim araçlarını kullanabilir.</p>
         <div class="grid-2">
           <div class="card">
             <span class="tag">Mikrofonlu Tuner</span>
@@ -886,10 +952,11 @@
         </div>
       </div>
 
-      <!-- SEVİYEYE GÖRE REPERTUVAR KÜTÜPHANESİ -->
+      <!-- MİSAFİR ÖĞRENCİLERE AÇIK REPERTUVAR -->
       <div class="section-block">
+        <span class="tag">Misafir Öğrencilere Açık Kütüphane</span>
         <h2 class="section-title">Türkü & Etüt Repertuvar Kütüphanesi</h2>
-        <p class="section-sub">Seviyelere göre derslerde işlenen örnek eserler ve düzen yapıları</p>
+        <p class="section-sub">Seviyelere göre derslerde işlenen örnek eserler (Tam nota arşivleri ve ödev videoları Üye Öğrenci Girişindedir)</p>
         <div class="filter-bar">
           <button type="button" class="filter-btn active" data-rep-filter="ALL">Tümü</button>
           <button type="button" class="filter-btn" data-rep-filter="Başlangıç">Başlangıç</button>
@@ -925,11 +992,12 @@
         </div>
       </div>
 
-      <!-- DERS BAŞVURUSU -->
+      <!-- MİSAFİR ÖĞRENCİ ÖN KAYIT & ÜYELİK BAŞVURUSU -->
       <div id="basvuru-bolumu" class="section-block">
-        <h2 class="section-title">Ders Başvurusu & Öğrenci Kaydı</h2>
-        <p class="section-sub">Başvuru gönderdiğinizde kayıt otomatik olarak Hoca Paneline ve Öğrenci Portalına düşer.</p>
-        <div class="card" style="max-width: 720px;">
+        <span class="tag">Yeni Öğrenci Ön Kayıt</span>
+        <h2 class="section-title">Ders Başvurusu & Üyelik Talebi</h2>
+        <p class="section-sub">Henüz üye değilseniz buradan başvuru bırakabilir veya kendi öğrenci hesabınızı oluşturup Doğukan Hoca'ya gönderebilirsiniz.</p>
+        <div class="card" style="max-width: 760px;">
           <form id="quickRegisterForm" class="form-stack">
             <div class="field-row">
               <div class="field">
@@ -939,6 +1007,16 @@
               <div class="field">
                 <label for="regPhone">Telefon / WhatsApp</label>
                 <input type="tel" id="regPhone" placeholder="05XX XXX XX XX" required />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="regUsername">Belirlemek İstediğiniz Kullanıcı Adı</label>
+                <input type="text" id="regUsername" placeholder="Örn: emre" required />
+              </div>
+              <div class="field">
+                <label for="regPassword">Giriş Şifreniz</label>
+                <input type="password" id="regPassword" placeholder="En az 4 karakter" required />
               </div>
             </div>
             <div class="field-row">
@@ -969,7 +1047,7 @@
               <textarea id="regNote" rows="2" placeholder="Seviyeniz veya hedefiniz..."></textarea>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-              <button type="submit" class="btn">Portala Kaydet & Hoca Paneline Gönder</button>
+              <button type="submit" class="btn">Üyeliğimi Oluştur & Hoca Paneline Gönder</button>
               <button type="button" id="quickWaBtn" class="btn btn-ghost">WhatsApp ile İletişime Geç</button>
               <span id="regStatus" style="font-size:0.83rem; font-weight:600; color:var(--ok);"></span>
             </div>
@@ -978,140 +1056,224 @@
       </div>
     </section>
 
-    <!-- 2. ÖĞRENCİ SAYFASI -->
+    <!-- 2. ÜYE ÖĞRENCİ ÖZEL GİRİŞİ VE PANELİ -->
     <section id="view-ogrenci" class="page-view">
       <div class="portal-banner">
         <div>
-          <span class="tag">Öğrenci Portalı</span>
-          <h2 style="font-size: 1.45rem;">Öğrenci Ders, Ödev & Çalışma Takip Ekranı</h2>
-          <p style="color: var(--muted); font-size: 0.88rem;">Adınızla giriş yapın; hocanızdan gelen ödevleri görün, haftalık bağlama çalışma sürenizi kaydedin.</p>
+          <span class="tag">Kayıtlı Öğrenci Özel Alanı</span>
+          <h2 style="font-size: 1.45rem;">Üye Öğrenci Girişi & Ders Takip Portalı</h2>
+          <p style="color: var(--muted); font-size: 0.88rem;">Bu alan yalnızca Doğukan Bozkurt'un kayıtlı öğrencilerine özeldir. Öylesine göz atmak istiyorsanız üst menüden "Açık Vitrin & Misafir Alanı" sekmesine geçebilirsiniz.</p>
         </div>
-        <span class="mode-badge" id="studentSyncMode">Yerel Senkron Modu</span>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <span class="mode-badge" id="studentSyncMode">Üye Korumalı Mod</span>
+          <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm" style="display:none;">Çıkış Yap</button>
+        </div>
       </div>
 
-      <div id="studentNextLessonBar" class="notice-bar" style="display:none;"></div>
-
-      <div class="portal-grid">
+      <!-- GİRİŞ YAPILMAMIŞSA GÖSTERİLEN KİLİTLİ EKRAN -->
+      <div id="studentAuthScreen" class="auth-grid">
         <div class="card form-stack">
-          <h3>Öğrenci Girişi</h3>
-          <div class="field">
-            <label for="studentLoginName">Adınız Soyadınız</label>
-            <input type="text" id="studentLoginName" placeholder="Örn: Emre Yılmaz" />
-          </div>
-          <div class="field">
-            <label for="studentCourseSelect">Çalıştığınız Ders Alanı</label>
-            <select id="studentCourseSelect">
-              <option>Nota</option>
-              <option>Solfej</option>
-              <option>Bağlama Düzeni</option>
-              <option>Bağlama Bozuk Düzen</option>
-              <option>Şelpe</option>
-              <option>Çalıp Söyleme</option>
-              <option>Güzel Sanatlara Hazırlık</option>
-              <option>Konservatuara Hazırlık</option>
-            </select>
-          </div>
-          <button type="button" id="studentLoginBtn" class="btn">Portala Giriş Yap</button>
-
-          <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
-
-          <h3>Haftalık Çalışma Süresi (Hedef: 180 dk)</h3>
-          <p style="font-size:0.82rem;">Bugün pratik yaptıkça sürenizi ekleyin; Hoca Panelinde otomatik görünür.</p>
-          <div class="progress-track">
-            <div class="progress-fill" id="studentPracticeBar"></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; font-weight:600;">
-            <span id="studentPracticeText">0 / 180 dk</span>
-            <button type="button" id="addPracticeBtn" class="btn btn-ghost btn-sm">+30 dk Çalıştım</button>
-          </div>
-
-          <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
-
-          <h3>Ders Gün / Saat Talebi</h3>
-          <div class="field">
-            <label for="reqDateTime">Önerdiğiniz Gün ve Saat</label>
-            <input type="text" id="reqDateTime" placeholder="Örn: Cumartesi 16:00" />
-          </div>
-          <div class="field">
-            <label for="reqTopic">Çalışılacak Konu</label>
-            <input type="text" id="reqTopic" placeholder="Örn: Bağlama düzeni nota + mızrap" />
-          </div>
-          <button type="button" id="sendLessonReqBtn" class="btn btn-ghost">Hocaya Ders Talebi Gönder</button>
-          <span id="studentActionStatus" style="font-size:0.82rem; font-weight:600; color:var(--ok);"></span>
+          <span class="tag">Üye Öğrenci Girişi</span>
+          <h3>Kullanıcı Adı ve Şifrenizle Giriş Yapın</h3>
+          <p style="font-size: 0.85rem;">Doğukan Hoca tarafından verilen veya kayıt olurken belirlediğiniz bilgilerle giriş yapın. <em>(Demo giriş: kullanıcı adı <strong>emre</strong>, şifre <strong>1234</strong>)</em></p>
+          <form id="memberLoginForm" class="form-stack" style="margin-top:6px;">
+            <div class="field">
+              <label for="loginUser">Kullanıcı Adı veya Ad Soyad</label>
+              <input type="text" id="loginUser" placeholder="Örn: emre" required />
+            </div>
+            <div class="field">
+              <label for="loginPass">Öğrenci Şifresi</label>
+              <input type="password" id="loginPass" placeholder="••••" required />
+            </div>
+            <button type="submit" class="btn">Üye Portalını Aç</button>
+            <span id="memberLoginError" style="font-size:0.83rem; font-weight:600; color:var(--danger);"></span>
+          </form>
         </div>
 
-        <div class="form-stack">
-          <div class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <h3>Ders Notları, Duyurular & Mesaj Akışı</h3>
-              <span class="status-pill" id="activeStudentLabel">Giriş yapılmadı</span>
+        <div class="card form-stack">
+          <span class="tag">Henüz Üye Değil Misiniz?</span>
+          <h3>Misafir Öğrenci Seçenekleri</h3>
+          <p>Eğer sayfaya öylesine girdiyseniz veya henüz şifreniz yoksa:</p>
+          <div class="msg-item">
+            <strong>1. Şifresiz Misafir Araçlarını Kullanın</strong>
+            <p style="margin-top:4px; font-size:0.85rem;">Canlı akort cihazı, metronom ve örnek türkü listesi herkese açıktır.</p>
+            <button type="button" class="btn btn-ghost btn-sm" style="margin-top:8px;" data-go="vitrin">Misafir Alanına Dön</button>
+          </div>
+          <div class="msg-item">
+            <strong>2. Yeni Üye Öğrenci Hesabı Açın</strong>
+            <p style="margin-top:4px; font-size:0.85rem;">Ana sayfanın altındaki başvuru formundan kendi kullanıcı adınızı ve şifrenizi oluşturup anında giriş yapabilirsiniz.</p>
+            <button type="button" class="btn btn-sm" style="margin-top:8px;" id="goRegisterFromAuthBtn">Üyelik Oluşturmaya Git</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GİRİŞ YAPILDIKTAN SONRA AÇILAN ÜYE ÖĞRENCİ EKRANI -->
+      <div id="studentMemberWorkspace" style="display:none;">
+        <div id="studentNextLessonBar" class="notice-bar" style="display:none;"></div>
+
+        <div class="portal-grid">
+          <div class="card form-stack">
+            <span class="tag">Aktif Üye Profili</span>
+            <h3 id="memberWelcomeTitle">Hoş Geldiniz</h3>
+            <p id="memberCourseInfo" style="font-size:0.85rem;"></p>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
+
+            <h3>Haftalık Çalışma Süresi (Hedef: 180 dk)</h3>
+            <p style="font-size:0.82rem;">Bugün pratik yaptıkça sürenizi ekleyin; Doğukan Hoca kendi panelinde anlık görür.</p>
+            <div class="progress-track">
+              <div class="progress-fill" id="studentPracticeBar"></div>
             </div>
-            <div class="feed" id="studentFeed"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; font-weight:600;">
+              <span id="studentPracticeText">0 / 180 dk</span>
+              <button type="button" id="addPracticeBtn" class="btn btn-ghost btn-sm">+30 dk Çalıştım</button>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
+
+            <h3>Ders Gün / Saat Talebi</h3>
+            <div class="field">
+              <label for="reqDateTime">Önerdiğiniz Gün ve Saat</label>
+              <input type="text" id="reqDateTime" placeholder="Örn: Cumartesi 16:00" />
+            </div>
+            <div class="field">
+              <label for="reqTopic">Çalışılacak Konu</label>
+              <input type="text" id="reqTopic" placeholder="Örn: Bağlama düzeni nota + mızrap" />
+            </div>
+            <button type="button" id="sendLessonReqBtn" class="btn btn-ghost">Hocaya Ders Talebi Gönder</button>
+            <span id="studentActionStatus" style="font-size:0.82rem; font-weight:600; color:var(--ok);"></span>
           </div>
 
-          <div class="card">
-            <h3 style="margin-bottom: 10px;">Doğukan Hocaya Mesaj / Çalışma Notu Gönder</h3>
-            <form id="studentMsgForm" class="form-stack">
-              <div class="field">
-                <label for="studentMsgInput">Mesajınız veya Çalışma Kaydı Notu</label>
-                <textarea id="studentMsgInput" rows="3" placeholder="Hocam verilen çalışmayı uyguladım, şu bölümde sorum var..." required></textarea>
+          <div class="form-stack">
+            <!-- ÜYELERE ÖZEL DERS MATERYALLERİ -->
+            <div class="card">
+              <span class="tag">Sadece Üye Öğrencilere Özel</span>
+              <h3>VIP Nota, Solfej & Egzersiz Kaynakları</h3>
+              <div class="grid-3" style="margin-top:12px;">
+                <div class="msg-item">
+                  <strong>Bağlama Düzeni Etüt PDF</strong>
+                  <p style="font-size:0.8rem; margin-top:4px;">1. ve 2. pozisyon parmak numarası ve tezene yönü egzersizleri.</p>
+                </div>
+                <div class="msg-item">
+                  <strong>Bozuk Düzen Tavır Notları</strong>
+                  <p style="font-size:0.8rem; margin-top:4px;">Karar sesleri, süslemeler ve yöresel tezene kalıpları.</p>
+                </div>
+                <div class="msg-item">
+                  <strong>Sınav Solfej & Dikte Paketi</strong>
+                  <p style="font-size:0.8rem; margin-top:4px;">Güzel Sanatlar ve Konservatuar sınav hazırlık 2-3 sesli çalışmalar.</p>
+                </div>
               </div>
-              <button type="submit" class="btn">Hocaya Gönder</button>
-            </form>
+            </div>
+
+            <div class="card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h3>Size Özel Ödevler, Ders Notları & Duyurular</h3>
+                <span class="status-pill done" id="activeStudentLabel">Üye Girişi Aktif</span>
+              </div>
+              <div class="feed" id="studentFeed"></div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 10px;">Doğukan Hocaya Özel Mesaj / Çalışma Notu Gönder</h3>
+              <form id="studentMsgForm" class="form-stack">
+                <div class="field">
+                  <label for="studentMsgInput">Mesajınız veya Çalışma Kaydı Notu</label>
+                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz türküyü çalıştım, şu ölçüde sorum var..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Hocaya Gönder</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. HOCA PANELİ -->
+    <!-- 3. DOĞUKAN HOCA ÖZEL GİRİŞİ VE PANELİ -->
     <section id="view-hoca" class="page-view">
       <div class="portal-banner">
         <div>
-          <span class="tag">Eğitmen Kontrol Paneli</span>
-          <h2 style="font-size: 1.45rem;">Doğukan Bozkurt — Öğrenci Yönetimi & Haberleşme</h2>
-          <p style="color: var(--muted); font-size: 0.88rem;">Öğrencilerin haftalık çalışma sürelerini görün, ders notu/ödev kartı gönderin ve ders taleplerini onaylayın.</p>
+          <span class="tag">Eğitmen Özel Kontrol Paneli</span>
+          <h2 style="font-size: 1.45rem;">Doğukan Bozkurt — Üye Öğrenci & Ders Yönetimi</h2>
+          <p style="color: var(--muted); font-size: 0.88rem;">Yeni üye öğrenci oluşturun, şifre tanımlayın, öğrencilerin pratik sürelerini görün ve kişiye özel ödev gönderin.</p>
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-          <span class="mode-badge" id="hocaSyncMode">Yerel Senkron Modu</span>
+          <span class="mode-badge" id="hocaSyncMode">Yönetici Modu</span>
           <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Kayıtları İndir (JSON)</button>
         </div>
       </div>
 
       <div id="hocaLockBox" class="card" style="max-width: 440px;">
-        <h3 style="margin-bottom: 8px;">Hoca Paneli Girişi</h3>
-        <p style="margin-bottom: 14px;">Varsayılan giriş kodu: <strong>baglama2026</strong></p>
+        <span class="tag">Sadece Eğitmen Girişi</span>
+        <h3 style="margin-bottom: 8px;">Doğukan Hoca Özel Girişi</h3>
+        <p style="margin-bottom: 14px;">Eğitmen şifresi: <strong>baglama2026</strong></p>
         <form id="hocaPinForm" class="form-stack">
           <div class="field">
-            <label for="hocaPinInput">Erişim Kodu</label>
+            <label for="hocaPinInput">Hoca Erişim Şifresi</label>
             <input type="password" id="hocaPinInput" placeholder="baglama2026" required />
           </div>
-          <button type="submit" class="btn">Paneli Aç</button>
-          <span id="hocaPinError" style="font-size:0.82rem; color:#d93829;"></span>
+          <button type="submit" class="btn">Hoca Panelini Aç</button>
+          <span id="hocaPinError" style="font-size:0.82rem; font-weight:600; color:var(--danger);"></span>
         </form>
       </div>
 
       <div id="hocaWorkspace" style="display:none;">
         <div class="portal-grid">
-          <div class="card">
-            <h3>Kayıtlı Öğrenciler & Pratik Süreleri</h3>
-            <p style="font-size: 0.82rem;">Mesaj veya ders notu göndermek için öğrenci seçin.</p>
+          <div class="card form-stack">
+            <h3>Yeni Üye Öğrenci Tanımla</h3>
+            <p style="font-size:0.8rem;">Buradan eklediğiniz öğrenci kendi kullanıcı adı ve şifresiyle Üye Öğrenci Girişinden giriş yapabilir.</p>
+            <form id="hocaAddStudentForm" class="form-stack">
+              <div class="field">
+                <label for="newStuName">Öğrenci Ad Soyad</label>
+                <input type="text" id="newStuName" placeholder="Örn: Ali Kaya" required />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="newStuUser">Kullanıcı Adı</label>
+                  <input type="text" id="newStuUser" placeholder="alikaya" required />
+                </div>
+                <div class="field">
+                  <label for="newStuPass">Öğrenci Şifresi</label>
+                  <input type="text" id="newStuPass" placeholder="1234" required />
+                </div>
+              </div>
+              <div class="field">
+                <label for="newStuCourse">Ders Alanı</label>
+                <select id="newStuCourse">
+                  <option>Nota</option>
+                  <option>Solfej</option>
+                  <option>Bağlama Düzeni</option>
+                  <option>Bağlama Bozuk Düzen</option>
+                  <option>Şelpe</option>
+                  <option>Çalıp Söyleme</option>
+                  <option>Güzel Sanatlara Hazırlık</option>
+                  <option>Konservatuara Hazırlık</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-sm">Üye Öğrenci Ekle</button>
+              <span id="hocaAddStuStatus" style="font-size:0.8rem; font-weight:600; color:var(--ok);"></span>
+            </form>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
+
+            <h3>Kayıtlı Üye Öğrenciler</h3>
+            <p style="font-size: 0.8rem;">Ödev göndermek veya mesajlarını görmek için öğrenciye tıklayın.</p>
             <div class="student-list" id="hocaStudentList"></div>
 
-            <hr style="border:none; border-top:1px solid var(--border); margin: 16px 0;" />
+            <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
 
             <h3>Genel Duyuru Yayınla</h3>
-            <form id="hocaAnnouncementForm" class="form-stack" style="margin-top:10px;">
+            <form id="hocaAnnouncementForm" class="form-stack">
               <div class="field">
-                <label for="announcementInput">Tüm Öğrencilere Duyuru</label>
-                <textarea id="announcementInput" rows="3" placeholder="Örn: Bu hafta konservatuar hazırlık ve düzen çalışmaları güncellendi..."></textarea>
+                <label for="announcementInput">Tüm Üye Öğrencilere Duyuru</label>
+                <textarea id="announcementInput" rows="2" placeholder="Örn: Bu hafta konservatuar hazırlık ve düzen çalışmaları güncellendi..."></textarea>
               </div>
-              <button type="submit" class="btn btn-ghost">Duyuruyu Yayınla</button>
+              <button type="submit" class="btn btn-ghost btn-sm">Duyuruyu Yayınla</button>
             </form>
           </div>
 
           <div class="form-stack">
             <div class="card">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
                 <h3>Seçili Öğrenci: <span id="selectedStudentTitle" style="color:var(--accent-bright);">Tüm Öğrenciler</span></h3>
                 <span class="status-pill" id="selectedStudentCourse">Genel</span>
               </div>
@@ -1141,7 +1303,7 @@
             </div>
 
             <div class="card">
-              <h3 style="margin-bottom: 10px;">Gelen Ders Talepleri</h3>
+              <h3 style="margin-bottom: 10px;">Gelen Ders & Yeni Üyelik Talepleri</h3>
               <div class="feed" id="hocaRequestsFeed" style="max-height: 260px;"></div>
             </div>
           </div>
@@ -1168,7 +1330,7 @@
     const WHATSAPP_NUMBER = "905374394992";
     const HOCA_PIN = "baglama2026";
     const FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v3";
+    const STORAGE_KEY = "dogukan_muzik_portal_v4";
 
     const REPERTOIRE_ITEMS = [
       { title: "Uzun İnce Bir Yoldayım", level: "Başlangıç", tuning: "Bağlama Düzeni", focus: "Temel tezene vuruşu ve dörtlük/sekizlik tartım" },
@@ -1181,7 +1343,16 @@
 
     const defaultState = {
       students: [
-        { id: "s1", name: "Örnek Öğrenci", course: "Bağlama Düzeni", phone: "", mode: "Birebir Özel (Yüz Yüze / Online)", practiceMins: 60 }
+        {
+          id: "s1",
+          name: "Emre Yılmaz",
+          username: "emre",
+          password: "1234",
+          course: "Bağlama Düzeni",
+          phone: "0500 000 00 00",
+          mode: "Birebir Özel (Yüz Yüze / Online)",
+          practiceMins: 60
+        }
       ],
       messages: [
         {
@@ -1192,7 +1363,19 @@
           course: "Genel Duyuru",
           cardType: "Duyuru",
           link: "",
-          text: "Müzik Eğitimi portalına hoş geldiniz. Canlı mikrofonlu akort cihazını ve metronomu kullanabilir, ödevlerinizi ve haftalık çalışma sürenizi buradan takip edebilirsiniz.",
+          text: "Üye Öğrenci Portalına hoş geldiniz. Haftalık ödevlerinizi buradan görebilir, çalıştıkça sürenizi ekleyebilir ve doğrudan mesaj gönderebilirsiniz.",
+          time: nowStr(),
+          completed: false
+        },
+        {
+          id: "m2",
+          sender: "hoca",
+          senderName: "Doğukan Bozkurt",
+          targetStudent: "Emre Yılmaz",
+          course: "Bağlama Düzeni",
+          cardType: "Ders Notu / Ödev",
+          link: "",
+          text: "Emre merhaba, bu hafta Mihriban eserinin giriş bölümünü 80 BPM metronomla temiz tezene vuruşlarıyla günde 30 dakika çalışalım.",
           time: nowStr(),
           completed: false
         }
@@ -1284,6 +1467,13 @@
 
     document.querySelectorAll("[data-go]").forEach((el) => {
       el.addEventListener("click", () => goView(el.dataset.go));
+    });
+
+    document.getElementById("goRegisterFromAuthBtn").addEventListener("click", () => {
+      goView("vitrin");
+      setTimeout(() => {
+        document.getElementById("basvuru-bolumu").scrollIntoView({ behavior: "smooth" });
+      }, 150);
     });
 
     /* REPERTUVAR FİLTRELEME */
@@ -1449,19 +1639,26 @@
       status.textContent = `Çalıyor: ${bpm} BPM`;
     });
 
-    /* KAYIT VE PORTAL İŞLEMLERİ */
-    function upsertStudent(name, course, phone = "", mode = "") {
-      const existing = state.students.find((s) => s.name.toLowerCase() === name.toLowerCase());
+    /* ÜYE ÖĞRENCİ EKLEME / GÜNCELLEME */
+    function upsertStudent(name, course, phone = "", mode = "", username = "", password = "") {
+      const cleanUser = (username || name).toLowerCase().replace(/\s+/g, "");
+      const existing = state.students.find(
+        (s) => s.name.toLowerCase() === name.toLowerCase() || (s.username && s.username.toLowerCase() === cleanUser)
+      );
       if (existing) {
         existing.course = course || existing.course;
         if (phone) existing.phone = phone;
         if (mode) existing.mode = mode;
+        if (username) existing.username = cleanUser;
+        if (password) existing.password = password;
         if (typeof existing.practiceMins !== "number") existing.practiceMins = 0;
         return existing;
       }
       const created = {
         id: "s_" + Date.now(),
         name,
+        username: cleanUser,
+        password: password || "1234",
         course,
         phone,
         mode,
@@ -1471,18 +1668,21 @@
       return created;
     }
 
+    /* MİSAFİR BAŞVURU & YENİ ÜYELİK OLUŞTURMA */
     document.getElementById("quickRegisterForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("regName").value.trim();
       const phone = document.getElementById("regPhone").value.trim();
+      const username = document.getElementById("regUsername").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
       const course = document.getElementById("regCourse").value;
       const mode = document.getElementById("regMode").value;
       const note = document.getElementById("regNote").value.trim();
 
-      upsertStudent(name, course, phone, mode);
+      const stu = upsertStudent(name, course, phone, mode, username, password);
       state.requests.unshift({
         id: "r_" + Date.now(),
-        studentName: name,
+        studentName: stu.name,
         course,
         slot: mode,
         topic: note || course,
@@ -1492,23 +1692,25 @@
       state.messages.unshift({
         id: "m_" + Date.now(),
         sender: "ogrenci",
-        senderName: name,
+        senderName: stu.name,
         targetStudent: "ALL",
         course,
-        cardType: "Başvuru",
+        cardType: "Yeni Üyelik & Başvuru",
         link: "",
-        text: `Yeni ders başvurusu: ${course} (${mode})${note ? " — Not: " + note : ""}`,
+        text: `Yeni üye kaydı ve ders başvurusu: ${course} (${mode})${note ? " — Not: " + note : ""}`,
         time: nowStr(),
         completed: false
       });
+
+      currentStudent = stu;
       saveState();
       renderAll();
 
-      currentStudent = { name, course };
-      document.getElementById("studentLoginName").value = name;
-      document.getElementById("studentCourseSelect").value = course;
-      document.getElementById("regStatus").textContent = "Kaydedildi! Öğrenci ve Hoca panellerine eklendi.";
-      setTimeout(() => { document.getElementById("regStatus").textContent = ""; }, 3500);
+      document.getElementById("regStatus").textContent = "Üyeliğiniz oluşturuldu! Üye Öğrenci Paneline yönlendiriliyorsunuz...";
+      setTimeout(() => {
+        document.getElementById("regStatus").textContent = "";
+        goView("ogrenci");
+      }, 1200);
     });
 
     document.getElementById("quickWaBtn").addEventListener("click", () => {
@@ -1521,28 +1723,40 @@
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     });
 
-    document.getElementById("studentLoginBtn").addEventListener("click", () => {
-      const name = document.getElementById("studentLoginName").value.trim();
-      const course = document.getElementById("studentCourseSelect").value;
-      if (!name) {
-        document.getElementById("studentActionStatus").textContent = "Lütfen adınızı soyadınızı girin.";
+    /* ÜYE ÖĞRENCİ ŞİFRELİ GİRİŞİ */
+    document.getElementById("memberLoginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const userInp = document.getElementById("loginUser").value.trim().toLowerCase();
+      const passInp = document.getElementById("loginPass").value.trim();
+
+      const found = state.students.find(
+        (s) =>
+          (s.username && s.username.toLowerCase() === userInp) ||
+          s.name.toLowerCase() === userInp
+      );
+
+      if (!found || String(found.password || "1234") !== passInp) {
+        document.getElementById("memberLoginError").textContent = "Kullanıcı adı veya şifre hatalı. (Demo: emre / 1234)";
         return;
       }
-      currentStudent = { name, course };
-      upsertStudent(name, course);
-      saveState();
+
+      currentStudent = found;
+      document.getElementById("memberLoginError").textContent = "";
       renderAll();
-      document.getElementById("studentActionStatus").textContent = `${name} olarak giriş yapıldı.`;
-      setTimeout(() => { document.getElementById("studentActionStatus").textContent = ""; }, 2500);
+    });
+
+    document.getElementById("studentLogoutBtn").addEventListener("click", () => {
+      currentStudent = null;
+      document.getElementById("loginUser").value = "";
+      document.getElementById("loginPass").value = "";
+      renderAll();
     });
 
     document.getElementById("addPracticeBtn").addEventListener("click", () => {
-      if (!currentStudent) {
-        document.getElementById("studentActionStatus").textContent = "Önce sol üstten adınızla giriş yapın.";
-        return;
-      }
+      if (!currentStudent) return;
       const st = upsertStudent(currentStudent.name, currentStudent.course);
       st.practiceMins = (st.practiceMins || 0) + 30;
+      currentStudent = st;
       saveState();
       renderAll();
       document.getElementById("studentActionStatus").textContent = "+30 dk çalışma eklendi!";
@@ -1550,10 +1764,7 @@
     });
 
     document.getElementById("sendLessonReqBtn").addEventListener("click", () => {
-      if (!currentStudent) {
-        document.getElementById("studentActionStatus").textContent = "Önce sol taraftan adınızla giriş yapın.";
-        return;
-      }
+      if (!currentStudent) return;
       const slot = document.getElementById("reqDateTime").value.trim() || "Esnek";
       const topic = document.getElementById("reqTopic").value.trim() || currentStudent.course;
       state.requests.unshift({
@@ -1587,10 +1798,7 @@
 
     document.getElementById("studentMsgForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      if (!currentStudent) {
-        document.getElementById("studentActionStatus").textContent = "Önce sol taraftan adınızla giriş yapın.";
-        return;
-      }
+      if (!currentStudent) return;
       const text = document.getElementById("studentMsgInput").value.trim();
       if (!text) return;
       state.messages.unshift({
@@ -1610,6 +1818,7 @@
       renderAll();
     });
 
+    /* HOCA PANELİ GİRİŞ VE İŞLEMLERİ */
     document.getElementById("hocaPinForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const pin = document.getElementById("hocaPinInput").value.trim();
@@ -1619,8 +1828,26 @@
         document.getElementById("hocaPinError").textContent = "";
         renderAll();
       } else {
-        document.getElementById("hocaPinError").textContent = "Hatalı erişim kodu.";
+        document.getElementById("hocaPinError").textContent = "Hatalı eğitmen şifresi.";
       }
+    });
+
+    document.getElementById("hocaAddStudentForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("newStuName").value.trim();
+      const username = document.getElementById("newStuUser").value.trim();
+      const password = document.getElementById("newStuPass").value.trim();
+      const course = document.getElementById("newStuCourse").value;
+
+      upsertStudent(name, course, "", "Birebir Özel", username, password);
+      saveState();
+      renderAll();
+
+      document.getElementById("newStuName").value = "";
+      document.getElementById("newStuUser").value = "";
+      document.getElementById("newStuPass").value = "";
+      document.getElementById("hocaAddStuStatus").textContent = `${name} üye olarak eklendi!`;
+      setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
     });
 
     document.getElementById("hocaAnnouncementForm").addEventListener("submit", (e) => {
@@ -1682,14 +1909,21 @@
     function renderAll() {
       renderRepertoire();
 
-      const badge = document.getElementById("activeStudentLabel");
+      const authScreen = document.getElementById("studentAuthScreen");
+      const memberWorkspace = document.getElementById("studentMemberWorkspace");
+      const logoutBtn = document.getElementById("studentLogoutBtn");
       const nextBar = document.getElementById("studentNextLessonBar");
       const pBar = document.getElementById("studentPracticeBar");
       const pText = document.getElementById("studentPracticeText");
 
       if (currentStudent) {
-        badge.textContent = `${currentStudent.name} (${currentStudent.course})`;
-        badge.classList.add("done");
+        authScreen.style.display = "none";
+        memberWorkspace.style.display = "block";
+        logoutBtn.style.display = "inline-flex";
+
+        document.getElementById("memberWelcomeTitle").textContent = `Hoş Geldin, ${currentStudent.name}`;
+        document.getElementById("memberCourseInfo").textContent = `Ders Alanı: ${currentStudent.course} • Kullanıcı Adı: ${currentStudent.username || "-"}`;
+        document.getElementById("activeStudentLabel").textContent = `${currentStudent.name} (Üye)`;
 
         const stObj = state.students.find((s) => s.name.toLowerCase() === currentStudent.name.toLowerCase());
         const mins = stObj ? (stObj.practiceMins || 0) : 0;
@@ -1702,21 +1936,19 @@
         );
         if (approved) {
           nextBar.style.display = "block";
-          nextBar.textContent = `Planlanan Ders: ${approved.course} • ${approved.slot} (${approved.topic})`;
+          nextBar.textContent = `Planlanan Dersiniz: ${approved.course} • ${approved.slot} (${approved.topic})`;
         } else {
           nextBar.style.display = "none";
         }
       } else {
-        badge.textContent = "Giriş yapılmadı";
-        badge.classList.remove("done");
-        nextBar.style.display = "none";
-        pBar.style.width = "0%";
-        pText.textContent = "0 / 180 dk";
+        authScreen.style.display = "grid";
+        memberWorkspace.style.display = "none";
+        logoutBtn.style.display = "none";
       }
 
       const studentFeed = document.getElementById("studentFeed");
       const visibleForStudent = state.messages.filter((m) => {
-        if (!currentStudent) return m.targetStudent === "ALL";
+        if (!currentStudent) return false;
         return (
           m.targetStudent === "ALL" ||
           m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase() ||
@@ -1732,7 +1964,7 @@
               <span>${escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
-            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright); font-weight:600; font-size:0.84rem;">Kaynak Bağlantısını Aç →</a></div>` : ""}
+            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright); font-weight:600; font-size:0.84rem;">Kaynak / Nota Bağlantısını Aç →</a></div>` : ""}
             ${m.sender === "hoca" ? `
               <div style="margin-top:10px;">
                 <button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">
@@ -1758,14 +1990,16 @@
       const sList = document.getElementById("hocaStudentList");
       sList.innerHTML = [
         `<div class="student-pill ${selectedHocaStudent === "ALL" ? "active" : ""}" data-select-s="ALL">
-          <span>Tüm Öğrenciler</span>
+          <span>Tüm Üye Öğrenciler</span>
           <span class="status-pill">Genel</span>
         </div>`,
         ...state.students.map((s) => `
           <div class="student-pill ${selectedHocaStudent === s.name ? "active" : ""}" data-select-s="${escapeHtml(s.name)}">
             <div>
               <strong>${escapeHtml(s.name)}</strong>
-              <span style="display:block; font-size:0.75rem; color:var(--muted);">${escapeHtml(s.course)}</span>
+              <span style="display:block; font-size:0.74rem; color:var(--muted);">
+                ${escapeHtml(s.course)} • к.adı: ${escapeHtml(s.username || "-")} / şifre: ${escapeHtml(s.password || "1234")}
+              </span>
             </div>
             <span class="status-pill">${s.practiceMins || 0} dk</span>
           </div>
