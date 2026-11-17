@@ -7,20 +7,20 @@
   <link rel="icon" type="image/jpeg" href="./logo.jpg" />
   <style>
     :root {
-      --bg: #faf6f0;
-      --surface: #ffffff;
-      --surface-2: #f3ece1;
-      --surface-3: #e6dccb;
-      --accent: #b86b28;
-      --accent-bright: #965216;
-      --accent-soft: rgba(184, 107, 40, 0.12);
-      --ok: #1f8a58;
-      --danger: #c93b2b;
-      --text: #261c14;
-      --muted: #6e5d4f;
-      --border: rgba(38, 28, 20, 0.12);
-      --border-strong: rgba(184, 107, 40, 0.38);
-      --shadow: 0 10px 28px rgba(38, 28, 20, 0.06);
+      --bg: #e5dacb;
+      --surface: #efe7dc;
+      --surface-2: #e2d5c3;
+      --surface-3: #d3c2ac;
+      --accent: #9c5318;
+      --accent-bright: #7d3f0d;
+      --accent-soft: rgba(156, 83, 24, 0.14);
+      --ok: #1b7a4c;
+      --danger: #b83224;
+      --text: #211710;
+      --muted: #5c4b3c;
+      --border: rgba(33, 23, 16, 0.15);
+      --border-strong: rgba(156, 83, 24, 0.42);
+      --shadow: 0 10px 26px rgba(33, 23, 16, 0.08);
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-sm: 12px;
@@ -39,8 +39,8 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background:
-        radial-gradient(circle at 10% 5%, rgba(184, 107, 40, 0.09), transparent 38%),
-        radial-gradient(circle at 90% 15%, rgba(212, 163, 115, 0.14), transparent 42%),
+        radial-gradient(circle at 12% 6%, rgba(156, 83, 24, 0.12), transparent 38%),
+        radial-gradient(circle at 88% 15%, rgba(120, 72, 32, 0.12), transparent 42%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -58,7 +58,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(250, 246, 240, 0.94);
+      background: rgba(229, 218, 203, 0.94);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
@@ -94,7 +94,7 @@
       color: #f5c384;
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(38, 28, 20, 0.14);
+      box-shadow: 0 4px 12px rgba(33, 23, 16, 0.18);
     }
 
     .brand-logo-wrap img {
@@ -140,7 +140,7 @@
     .tab-btn.active {
       background: var(--accent);
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(184, 107, 40, 0.25);
+      box-shadow: 0 4px 10px rgba(156, 83, 24, 0.28);
     }
 
     .page-view {
@@ -255,7 +255,6 @@
       color: var(--muted);
     }
 
-    /* 3 KULLANIM MODU KARTLARI */
     .access-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -277,7 +276,7 @@
 
     .access-card.highlight {
       border: 2px solid var(--accent);
-      background: linear-gradient(180deg, #ffffff, #fcf7f0);
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
     }
 
     .portrait-card {
@@ -308,7 +307,7 @@
       padding: 26px;
       flex-direction: column;
       justify-content: flex-end;
-      background: linear-gradient(160deg, #f3ece1, #e5d7c3);
+      background: linear-gradient(160deg, var(--surface-2), var(--surface-3));
     }
 
     .portrait-fallback.active {
@@ -410,7 +409,7 @@
       margin-bottom: 8px;
     }
 
-    /* Canlı Akort Cihazı & Metronom */
+    /* Canlı Akort Cihazı */
     .tuner-box {
       text-align: center;
       padding: 18px;
@@ -454,67 +453,166 @@
       transition: left 0.1s ease;
     }
 
-    /* Repertuvar Filtre */
-    .filter-bar {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
+    /* İnteraktif Bağlama Klavyesi (Perde & Nota Haritası) */
+    .fretboard-wrap {
+      background: linear-gradient(90deg, #4b2e19, #6b4223);
+      border: 2px solid #362010;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      color: #f9f3eb;
+      overflow-x: auto;
+      box-shadow: var(--shadow);
     }
 
-    .filter-btn {
-      padding: 7px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+    .string-row {
+      display: grid;
+      grid-template-columns: 110px repeat(8, minmax(74px, 1fr));
+      gap: 8px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 2px solid rgba(255, 235, 205, 0.22);
+    }
+
+    .string-row:last-child {
+      border-bottom: none;
+    }
+
+    .string-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #f5d1a7;
+    }
+
+    .fret-btn {
+      padding: 9px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(20, 12, 8, 0.45);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .fret-btn:hover,
+    .fret-btn.active {
+      background: #e08b3e;
+      color: #1c1109;
+      border-color: #fff;
+      transform: scale(1.03);
+    }
+
+    .fret-btn span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    /* Canlı Haftalık Ders Programı Tablosu */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(120px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .day-col {
       background: var(--surface);
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.83rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .day-col h4 {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      text-align: center;
+      color: var(--accent-bright);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .slot-pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 9px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+      border: 1px solid var(--border);
+    }
+
+    .slot-pill.free {
+      background: rgba(27, 122, 76, 0.13);
+      color: var(--ok);
       cursor: pointer;
     }
 
-    .filter-btn.active {
-      background: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
+    .slot-pill.busy {
+      background: rgba(184, 50, 36, 0.12);
+      color: var(--danger);
     }
 
-    /* QR Kartvizit */
-    .qr-wrap {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
+    /* Gelişim Rozetleri */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
     }
 
-    .qr-img-box {
-      position: relative;
-      width: 148px;
-      height: 148px;
-      border-radius: 14px;
-      padding: 8px;
-      background: #ffffff;
+    .skill-badge {
+      padding: 11px 12px;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--border);
-      flex-shrink: 0;
+      background: var(--surface-2);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.65;
     }
 
-    .qr-img-box img.qr-code {
-      width: 100%;
-      height: 100%;
-      display: block;
+    .skill-badge.earned {
+      opacity: 1;
+      border-color: var(--ok);
+      background: rgba(27, 122, 76, 0.14);
+      font-weight: 700;
     }
 
-    .qr-logo-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      border: 2px solid #ffffff;
-      object-fit: cover;
-      background: #14100d;
+    /* SSS Akordiyon */
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details.faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    details.faq-item summary {
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    details.faq-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.88rem;
     }
 
     /* Haftalık Pratik Bar */
@@ -690,7 +788,7 @@
 
     .status-pill.done {
       color: var(--ok);
-      background: rgba(31, 138, 88, 0.14);
+      background: rgba(27, 122, 76, 0.16);
     }
 
     .notice-bar {
@@ -718,7 +816,8 @@
       .auth-grid,
       .access-cards,
       .grid-2,
-      .grid-3 {
+      .grid-3,
+      .badge-grid {
         grid-template-columns: 1fr;
       }
       .grid-4 {
@@ -776,22 +875,22 @@
             yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
           </p>
           <div class="hero-actions">
-            <a href="#misafir-bolumu" class="btn">Misafir Öğrenci Alanını Keşfet</a>
+            <a href="#misafir-bolumu" class="btn">Misafir Araçlarını Kullan</a>
             <button class="btn btn-ghost" data-go="ogrenci">Üye Öğrenci Girişi</button>
             <button class="btn btn-ghost" data-go="hoca">Hoca Girişi</button>
           </div>
           <div class="stats">
             <div class="stat">
               <strong>Misafir Alanı</strong>
-              <span>Şifresiz akort, metronom & türküler</span>
+              <span>İnteraktif bağlama sapı, akort & test</span>
             </div>
             <div class="stat">
               <strong>Üye Öğrenci</strong>
-              <span>Şifreli özel ödev, nota & mesajlaşma</span>
+              <span>Rozetler, özel ödev & birebir mesaj</span>
             </div>
             <div class="stat">
               <strong>Hoca Paneli</strong>
-              <span>Üye şifresi verme & ders yönetimi</span>
+              <span>Takvim, rozet & üye yönetimi</span>
             </div>
           </div>
         </div>
@@ -829,17 +928,17 @@
         <div class="access-card">
           <div>
             <span class="tag">1. Üyeliksiz / Misafir Öğrenci</span>
-            <h3>Siteyi Gezenlere Açık Alan</h3>
-            <p style="color:var(--muted); font-size:0.88rem;">Henüz kayıtlı öğrenci değilseniz bile mikrofonlu bağlama akort cihazını, metronomu ve örnek türkü kütüphanesini ücretsiz kullanabilirsiniz.</p>
+            <h3>Siteye Öylesine Girenlere Açık</h3>
+            <p style="color:var(--muted); font-size:0.88rem;">İnteraktif bağlama klavyesini, mikrofonlu akort cihazını, seviye belirleme testini ve müsait ders takvimini şifresiz kullanabilirsiniz.</p>
           </div>
-          <a href="#misafir-bolumu" class="btn btn-ghost btn-sm">Açık Araçları Kullan ↓</a>
+          <a href="#misafir-bolumu" class="btn btn-ghost btn-sm">Misafir Araçlarına Git ↓</a>
         </div>
 
         <div class="access-card highlight">
           <div>
             <span class="tag">2. Kayıtlı Üye Öğrenci</span>
-            <h3>Üye Öğrencilere Özel Portal</h3>
-            <p style="color:var(--muted); font-size:0.88rem;">Doğukan Hoca ile ders yapan öğrencilere özel şifreli giriş. Kişisel ödevleriniz, nota bağlantılarınız ve birebir mesajlaşma buradadır.</p>
+            <h3>Üye Öğrencilere Özel Giriş</h3>
+            <p style="color:var(--muted); font-size:0.88rem;">Doğukan Hoca ile ders yapan öğrencilere özel şifreli giriş. Gelişim rozetleriniz, kişisel ödevleriniz ve birebir mesajlaşma buradadır.</p>
           </div>
           <button type="button" class="btn btn-sm" data-go="ogrenci">Üye Öğrenci Girişi Yap →</button>
         </div>
@@ -848,19 +947,19 @@
           <div>
             <span class="tag">3. Eğitmen Girişi</span>
             <h3>Doğukan Hoca Özel Paneli</h3>
-            <p style="color:var(--muted); font-size:0.88rem;">Yeni üye öğrenci tanımlama, öğrenciye şifre verme, haftalık çalışma süresi kontrolü ve ders taleplerini onaylama ekranı.</p>
+            <p style="color:var(--muted); font-size:0.88rem;">Yeni üye öğrenci tanımlama, öğrenciye gelişim rozeti verme, haftalık ders saatlerini dolu/müsait yapma ve ödev gönderme ekranı.</p>
           </div>
           <button type="button" class="btn btn-ghost btn-sm" data-go="hoca">Hoca Paneline Geç →</button>
         </div>
       </div>
 
-      <!-- BİYOGRAFİ & QR -->
+      <!-- BİYOGRAFİ -->
       <div class="section-block">
         <h2 class="section-title">Biyografi & Eğitim Çalışmaları</h2>
         <p class="section-sub">Akademik çalgı eğitimi ve birebir özel öğretim deneyimi</p>
         <div class="grid-2">
           <div class="card">
-            <span class="tag">Eğitim Geçmişi</span>
+            <span class="tag">Akademik Eğitim</span>
             <p>
               <strong>Doğukan Bozkurt</strong>, lisans eğitimini <strong>Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü</strong>nde tamamlamıştır.
             </p>
@@ -869,30 +968,13 @@
             </p>
           </div>
           <div class="card">
-            <span class="tag">Hızlı Dijital Kartvizit & QR</span>
-            <div class="qr-wrap">
-              <div class="qr-img-box">
-                <img
-                  id="qrCodeImage"
-                  class="qr-code"
-                  alt="Doğukan Bozkurt QR"
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fwa.me%2F905374394992"
-                />
-                <img
-                  src="./logo.jpg"
-                  alt="Logo"
-                  class="qr-logo-center"
-                  onerror="this.style.display='none'"
-                />
-              </div>
-              <div style="flex:1; min-width: 190px;">
-                <h3>Hızlı Erişim QR</h3>
-                <p>Kameranızla okutarak doğrudan WhatsApp üzerinden ders bilgisi alabilir veya sosyal kanallara ulaşabilirsiniz.</p>
-                <div class="social-pills" style="margin-top: 10px;">
-                  <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">YouTube</a>
-                  <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Instagram</a>
-                </div>
-              </div>
+            <span class="tag">İcra & Sosyal Medya</span>
+            <h3>Ders Kesitleri ve İcra Kayıtları</h3>
+            <p>Doğukan Bozkurt'un bağlama düzeni, bozuk düzen, şelpe ve çalıp söyleme performanslarını resmi sosyal medya hesaplarından inceleyebilirsiniz.</p>
+            <div class="social-pills" style="margin-top: 14px;">
+              <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">YouTube (@dogukanbozkrt)</a>
+              <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Instagram</a>
+              <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Facebook</a>
             </div>
           </div>
         </div>
@@ -914,9 +996,54 @@
         </div>
       </div>
 
-      <!-- MİSAFİR ÖĞRENCİLERE AÇIK ALAN: AKORT & METRONOM -->
+      <!-- YENİ 1: İNTERAKTİF BAĞLAMA KLAVYESİ (PERDE & NOTA HARİTASI) -->
       <div id="misafir-bolumu" class="section-block">
         <span class="tag">Misafir Öğrencilere Açık Kısım (Şifresiz)</span>
+        <h2 class="section-title">İnteraktif Bağlama Klavyesi (Perde & Nota Haritası)</h2>
+        <p class="section-sub">Üst, orta veya alt teldeki perdelere tıklayarak notanın yerini görün ve gerçek frekans sesini dinleyin.</p>
+
+        <div class="fretboard-wrap">
+          <div class="string-row">
+            <div class="string-label">Alt Tel (Re)</div>
+            <button type="button" class="fret-btn" data-note="Re (Boş Tel)" data-freq="293.66">Re<span>Boş Tel</span></button>
+            <button type="button" class="fret-btn" data-note="Mi (1. Parmak)" data-freq="329.63">Mi<span>Tam Ses</span></button>
+            <button type="button" class="fret-btn" data-note="Fa (2. Parmak)" data-freq="349.23">Fa<span>Yarım Ses</span></button>
+            <button type="button" class="fret-btn" data-note="Fa# (3. Parmak)" data-freq="369.99">Fa#<span>Tiz</span></button>
+            <button type="button" class="fret-btn" data-note="Sol (3. Parmak)" data-freq="392.00">Sol<span>Tam Ses</span></button>
+            <button type="button" class="fret-btn" data-note="La (Karar / 4. P)" data-freq="440.00">La<span>Karar Sesi</span></button>
+            <button type="button" class="fret-btn" data-note="Sib (Bemol)" data-freq="466.16">Sib<span>Bemol</span></button>
+            <button type="button" class="fret-btn" data-note="Do (İnce Do)" data-freq="523.25">Do<span>İnce</span></button>
+          </div>
+
+          <div class="string-row">
+            <div class="string-label">Orta Tel (Sol)</div>
+            <button type="button" class="fret-btn" data-note="Sol (Boş Tel)" data-freq="196.00">Sol<span>Boş Tel</span></button>
+            <button type="button" class="fret-btn" data-note="La (Karar Sesi)" data-freq="220.00">La<span>1. Parmak</span></button>
+            <button type="button" class="fret-btn" data-note="Sib (Bemol)" data-freq="233.08">Sib<span>2. Parmak</span></button>
+            <button type="button" class="fret-btn" data-note="Si (Naturel)" data-freq="246.94">Si<span>Naturel</span></button>
+            <button type="button" class="fret-btn" data-note="Do (3. Parmak)" data-freq="261.63">Do<span>Tam Ses</span></button>
+            <button type="button" class="fret-btn" data-note="Re (4. Parmak)" data-freq="293.66">Re<span>Tam Ses</span></button>
+            <button type="button" class="fret-btn" data-note="Mi" data-freq="329.63">Mi<span>Pozisyon</span></button>
+            <button type="button" class="fret-btn" data-note="Fa" data-freq="349.23">Fa<span>Pozisyon</span></button>
+          </div>
+
+          <div class="string-row">
+            <div class="string-label">Üst Tel (La)</div>
+            <button type="button" class="fret-btn" data-note="La (Boş Tel)" data-freq="220.00">La<span>Boş Tel</span></button>
+            <button type="button" class="fret-btn" data-note="Sib (Baş Parmak)" data-freq="233.08">Sib<span>Üst Basış</span></button>
+            <button type="button" class="fret-btn" data-note="Si (Baş Parmak)" data-freq="246.94">Si<span>Üst Basış</span></button>
+            <button type="button" class="fret-btn" data-note="Do (Baş Parmak)" data-freq="261.63">Do<span>Üst Basış</span></button>
+            <button type="button" class="fret-btn" data-note="Do# " data-freq="277.18">Do#<span>Geçiş</span></button>
+            <button type="button" class="fret-btn" data-note="Re (Üst Re)" data-freq="293.66">Re<span>Üst Basış</span></button>
+            <button type="button" class="fret-btn" data-note="Mi" data-freq="329.63">Mi<span>Üst</span></button>
+            <button type="button" class="fret-btn" data-note="Fa" data-freq="349.23">Fa<span>Üst</span></button>
+          </div>
+        </div>
+        <p id="fretboardStatus" style="margin-top:10px; font-weight:700; color:var(--accent-bright);">Seçili Perde: Bir perdeye tıklayın</p>
+      </div>
+
+      <!-- MİSAFİR AKORT CİHAZI & METRONOM -->
+      <div class="section-block">
         <h2 class="section-title">Canlı Mikrofonlu Akort Cihazı & Metronom</h2>
         <p class="section-sub">Sayfaya yeni giren tüm bağlama severler üye olmadan akort ve ritim araçlarını kullanabilir.</p>
         <div class="grid-2">
@@ -952,43 +1079,76 @@
         </div>
       </div>
 
-      <!-- MİSAFİR ÖĞRENCİLERE AÇIK REPERTUVAR -->
+      <!-- YENİ 2: SEVİYE & HEDEF BELİRLEME TESTİ (MİSAFİR ÖĞRENCİLER İÇİN) -->
       <div class="section-block">
-        <span class="tag">Misafir Öğrencilere Açık Kütüphane</span>
-        <h2 class="section-title">Türkü & Etüt Repertuvar Kütüphanesi</h2>
-        <p class="section-sub">Seviyelere göre derslerde işlenen örnek eserler (Tam nota arşivleri ve ödev videoları Üye Öğrenci Girişindedir)</p>
-        <div class="filter-bar">
-          <button type="button" class="filter-btn active" data-rep-filter="ALL">Tümü</button>
-          <button type="button" class="filter-btn" data-rep-filter="Başlangıç">Başlangıç</button>
-          <button type="button" class="filter-btn" data-rep-filter="Orta">Orta Seviye</button>
-          <button type="button" class="filter-btn" data-rep-filter="İleri">İleri / Sınav</button>
+        <span class="tag">Misafir Öğrenciler İçin Rehber</span>
+        <h2 class="section-title">Hangi Ders Programı Size Uygun? (3 Soruda Seviye Testi)</h2>
+        <p class="section-sub">Soruları yanıtlayın, size en uygun ders alanını belirleyip başvuru formuna otomatik aktaralım.</p>
+        <div class="card">
+          <div class="grid-3">
+            <div class="field">
+              <label for="quizExp">1. Bağlama / Çalgı Deneyiminiz</label>
+              <select id="quizExp">
+                <option value="sifir">Hiç çalmadım, sıfırdan başlayacağım</option>
+                <option value="kulaktan">Kulaktan birkaç türkü çalabiliyorum</option>
+                <option value="ileri">Orta/ileri seviyeyim, teknik geliştirmek istiyorum</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quizNota">2. Nota & Solfej Bilginiz</label>
+              <select id="quizNota">
+                <option value="yok">Nota okumayı bilmiyorum</option>
+                <option value="temel">Temel nota yerlerini biliyorum</option>
+                <option value="iyi">Bona ve solfej okuyabiliyorum</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quizGoal">3. Temel Hedefiniz</label>
+              <select id="quizGoal">
+                <option value="turku">Bağlama Düzeni ile temiz türkü çalmak</option>
+                <option value="bozuk">Bozuk Düzen veya Şelpe tavrı öğrenmek</option>
+                <option value="vokal">Bağlama çalıp aynı anda türkü söylemek</option>
+                <option value="sinav">Güzel Sanatlar / Konservatuar sınavını kazanmak</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top: 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+            <button type="button" id="runQuizBtn" class="btn">Bana Uygun Programı Göster</button>
+            <button type="button" id="applyQuizCourseBtn" class="btn btn-ghost btn-sm" style="display:none;">Bu Programla Başvuru Formuna Git ↓</button>
+          </div>
+          <div id="quizResultBox" class="notice-bar" style="display:none; margin-top: 14px; margin-bottom:0;"></div>
         </div>
-        <div class="grid-3" id="repertoireGrid"></div>
       </div>
 
-      <!-- İCRA & VİDEO VİTRİNİ -->
+      <!-- YENİ 3: CANLI HAFTALIK DERS PROGRAMI (DOLU / MÜSAİT SAATLER) -->
       <div class="section-block">
-        <h2 class="section-title">İcra & Ders Vitrini</h2>
-        <p class="section-sub">Doğukan Bozkurt'un icra ve eğitim paylaşımları</p>
-        <div class="grid-3">
-          <div class="card">
-            <span class="tag">YouTube Kanalı</span>
-            <h3>Bağlama Düzeni & Tezene Tavrı</h3>
-            <p>Geleneksel tezene vuruşları, pozisyon geçişleri ve türkü icra örnekleri.</p>
-            <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm" style="margin-top: 14px;">YouTube'da İzle →</a>
-          </div>
-          <div class="card">
-            <span class="tag">Instagram Reels</span>
-            <h3>Bozuk Düzen & Şelpe İcraları</h3>
-            <p>Kısa ders kesitleri, şelpe parmak egzersizleri ve çalıp söyleme kayıtları.</p>
-            <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm" style="margin-top: 14px;">Instagram'da Gör →</a>
-          </div>
-          <div class="card">
-            <span class="tag">Sınav Hazırlık</span>
-            <h3>Güzel Sanatlar & Konservatuar</h3>
-            <p>Kulak, solfej, dikte ve çalgı icra sınavlarına yönelik birebir hazırlık çalışmaları.</p>
-            <a href="#basvuru-bolumu" class="btn btn-ghost btn-sm" style="margin-top: 14px;">Başvuru Yap →</a>
-          </div>
+        <span class="tag">Canlı Ders Takvimi</span>
+        <h2 class="section-title">Haftalık Müsait & Dolu Ders Saatleri</h2>
+        <p class="section-sub">Yeşil "Müsait" saatlere tıklayarak o saati doğrudan başvuru formunuza seçebilirsiniz. (Doğukan Hoca kendi panelinden saatleri günceller.)</p>
+        <div class="schedule-grid" id="publicScheduleGrid"></div>
+      </div>
+
+      <!-- YENİ 4: SIKÇA SORULAN SORULAR (AKORDİYON) -->
+      <div class="section-block">
+        <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+        <p class="section-sub">Yüz yüze ve online birebir özel müzik eğitimi hakkında merak edilenler</p>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Hiç bağlama çalmayı ve nota okumayı bilmiyorum, sıfırdan başlayabilir miyim?</summary>
+            <p>Evet. Derslerimizde tutuş pozisyonu, mızrap (tezene) vuruş yönleri, temel nota ve solfej eğitimi en baştan birebir olarak işlenir.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Online birebir dersler nasıl işleniyor, verimli oluyor mu?</summary>
+            <p>Online dersler kamera açısı bağlama klavyesini ve sağ el tezene vuruşunu net görecek şekilde birebir canlı yapılır. Ders sonunda ödevler ve nota bağlantıları Üye Öğrenci Portalına yüklenir.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Güzel Sanatlar Liseleri ve Konservatuar hazırlıkta neler çalışılıyor?</summary>
+            <p>Tek ses, iki ses, üç ses işitme, ritim ve ezgi tekrarı, solfej deşifresi ve sınav komisyonuna sunulacak çalgı/vokal eserlerinin profesyonel hazırlığı yürütülür.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Üye Öğrenci Girişi şifremi nasıl alabilirim?</summary>
+            <p>Aşağıdaki ön kayıt formundan kendi kullanıcı adınızı ve şifrenizi oluşturarak hemen giriş yapabilir veya ders başlangıcında Doğukan Hoca'dan şifrenizi alabilirsiniz.</p>
+          </details>
         </div>
       </div>
 
@@ -1043,8 +1203,8 @@
               </div>
             </div>
             <div class="field">
-              <label for="regNote">Uygun Gün / Saat veya Notunuz</label>
-              <textarea id="regNote" rows="2" placeholder="Seviyeniz veya hedefiniz..."></textarea>
+              <label for="regNote">Seçtiğiniz Gün / Saat veya Notunuz</label>
+              <textarea id="regNote" rows="2" placeholder="Takvimden seçtiğiniz saat veya hedefiniz..."></textarea>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
               <button type="submit" class="btn">Üyeliğimi Oluştur & Hoca Paneline Gönder</button>
@@ -1096,7 +1256,7 @@
           <p>Eğer sayfaya öylesine girdiyseniz veya henüz şifreniz yoksa:</p>
           <div class="msg-item">
             <strong>1. Şifresiz Misafir Araçlarını Kullanın</strong>
-            <p style="margin-top:4px; font-size:0.85rem;">Canlı akort cihazı, metronom ve örnek türkü listesi herkese açıktır.</p>
+            <p style="margin-top:4px; font-size:0.85rem;">İnteraktif bağlama klavyesi, canlı akort cihazı, seviye testi ve ders takvimi herkese açıktır.</p>
             <button type="button" class="btn btn-ghost btn-sm" style="margin-top:8px;" data-go="vitrin">Misafir Alanına Dön</button>
           </div>
           <div class="msg-item">
@@ -1145,24 +1305,12 @@
           </div>
 
           <div class="form-stack">
-            <!-- ÜYELERE ÖZEL DERS MATERYALLERİ -->
+            <!-- YENİ 5: ÜYE ÖĞRENCİ GELİŞİM ROZETLERİ -->
             <div class="card">
-              <span class="tag">Sadece Üye Öğrencilere Özel</span>
-              <h3>VIP Nota, Solfej & Egzersiz Kaynakları</h3>
-              <div class="grid-3" style="margin-top:12px;">
-                <div class="msg-item">
-                  <strong>Bağlama Düzeni Etüt PDF</strong>
-                  <p style="font-size:0.8rem; margin-top:4px;">1. ve 2. pozisyon parmak numarası ve tezene yönü egzersizleri.</p>
-                </div>
-                <div class="msg-item">
-                  <strong>Bozuk Düzen Tavır Notları</strong>
-                  <p style="font-size:0.8rem; margin-top:4px;">Karar sesleri, süslemeler ve yöresel tezene kalıpları.</p>
-                </div>
-                <div class="msg-item">
-                  <strong>Sınav Solfej & Dikte Paketi</strong>
-                  <p style="font-size:0.8rem; margin-top:4px;">Güzel Sanatlar ve Konservatuar sınav hazırlık 2-3 sesli çalışmalar.</p>
-                </div>
-              </div>
+              <span class="tag">Hoca Onaylı Gelişim Tablosu</span>
+              <h3>Kazanılan Bağlama & Müzik Rozetleriniz</h3>
+              <p style="font-size:0.84rem;">Doğukan Hoca derslerde tamamladığınız aşamaları onayladıkça rozetleriniz yeşil yanar:</p>
+              <div class="badge-grid" id="studentBadgesGrid"></div>
             </div>
 
             <div class="card">
@@ -1178,7 +1326,7 @@
               <form id="studentMsgForm" class="form-stack">
                 <div class="field">
                   <label for="studentMsgInput">Mesajınız veya Çalışma Kaydı Notu</label>
-                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz türküyü çalıştım, şu ölçüde sorum var..." required></textarea>
+                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz çalışmayı uyguladım, şu ölçüde sorum var..." required></textarea>
                 </div>
                 <button type="submit" class="btn">Hocaya Gönder</button>
               </form>
@@ -1193,8 +1341,8 @@
       <div class="portal-banner">
         <div>
           <span class="tag">Eğitmen Özel Kontrol Paneli</span>
-          <h2 style="font-size: 1.45rem;">Doğukan Bozkurt — Üye Öğrenci & Ders Yönetimi</h2>
-          <p style="color: var(--muted); font-size: 0.88rem;">Yeni üye öğrenci oluşturun, şifre tanımlayın, öğrencilerin pratik sürelerini görün ve kişiye özel ödev gönderin.</p>
+          <h2 style="font-size: 1.45rem;">Doğukan Bozkurt — Üye Öğrenci, Takvim & Rozet Yönetimi</h2>
+          <p style="color: var(--muted); font-size: 0.88rem;">Yeni üye öğrenci oluşturun, öğrencilere gelişim rozeti verin, haftalık ders takvimini düzenleyin ve ödev gönderin.</p>
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
           <span class="mode-badge" id="hocaSyncMode">Yönetici Modu</span>
@@ -1256,7 +1404,7 @@
             <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
 
             <h3>Kayıtlı Üye Öğrenciler</h3>
-            <p style="font-size: 0.8rem;">Ödev göndermek veya mesajlarını görmek için öğrenciye tıklayın.</p>
+            <p style="font-size: 0.8rem;">Ödev göndermek veya rozet vermek için öğrenciye tıklayın.</p>
             <div class="student-list" id="hocaStudentList"></div>
 
             <hr style="border:none; border-top:1px solid var(--border); margin: 8px 0;" />
@@ -1272,6 +1420,14 @@
           </div>
 
           <div class="form-stack">
+            <!-- HOCA ROZET YÖNETİMİ -->
+            <div class="card" id="hocaBadgeManagerCard" style="display:none;">
+              <span class="tag">Öğrenci Seviye & Rozet Onayı</span>
+              <h3>Seçili Öğrencinin Rozetlerini Aç / Kapat</h3>
+              <p style="font-size:0.82rem;">Tıkladığınız rozet öğrencinin ekranında "Tamamlandı" olarak görünür:</p>
+              <div class="badge-grid" id="hocaBadgesControlGrid"></div>
+            </div>
+
             <div class="card">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
                 <h3>Seçili Öğrenci: <span id="selectedStudentTitle" style="color:var(--accent-bright);">Tüm Öğrenciler</span></h3>
@@ -1302,6 +1458,14 @@
               </form>
             </div>
 
+            <!-- HOCA HAFTALIK TAKVİM YÖNETİMİ -->
+            <div class="card">
+              <span class="tag">Canlı Takvim Kontrolü</span>
+              <h3>Haftalık Ders Saatlerini Dolu / Müsait Yap</h3>
+              <p style="font-size:0.82rem; margin-bottom:12px;">Saat kutusuna tıkladığınızda "Müsait" ve "Dolu" durumu anında değişir ve ana sayfaya yansır:</p>
+              <div class="schedule-grid" id="hocaScheduleGrid"></div>
+            </div>
+
             <div class="card">
               <h3 style="margin-bottom: 10px;">Gelen Ders & Yeni Üyelik Talepleri</h3>
               <div class="feed" id="hocaRequestsFeed" style="max-height: 260px;"></div>
@@ -1330,15 +1494,25 @@
     const WHATSAPP_NUMBER = "905374394992";
     const HOCA_PIN = "baglama2026";
     const FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v4";
+    const STORAGE_KEY = "dogukan_muzik_portal_v5";
 
-    const REPERTOIRE_ITEMS = [
-      { title: "Uzun İnce Bir Yoldayım", level: "Başlangıç", tuning: "Bağlama Düzeni", focus: "Temel tezene vuruşu ve dörtlük/sekizlik tartım" },
-      { title: "Çeke Çeke Ben Bu Dertten", level: "Başlangıç", tuning: "Bağlama Düzeni", focus: "Pozisyon geçişi ve temiz ses çıkarma" },
-      { title: "Mihriban", level: "Orta", tuning: "Bağlama Düzeni", focus: "Çarpma, çekme ve duygu/tavır çalışması" },
-      { title: "Ne Ağlarsın Benim Zülfü Siyahım", level: "Orta", tuning: "Bağlama Bozuk Düzen", focus: "Bozuk düzen karar sesleri ve tezene tavrı" },
-      { title: "Haydar Haydar (Şelpe & Tezene Etüdü)", level: "İleri", tuning: "Bağlama Düzeni / Şelpe", focus: "Hız, senkop ve sağ el parmak hakimiyeti" },
-      { title: "Konservatuar 2 Sesli & Ritmik Deşifre Etüdü", level: "İleri", tuning: "Solfej / Sınav Hazırlık", focus: "Yetenek sınavı kulak, tartım ve ezgi tekrarı" }
+    const SKILL_BADGES = [
+      { id: "b_mizrap", title: "Temel Mızrap & Tutuş" },
+      { id: "b_nota", title: "Nota & Bona Okuma" },
+      { id: "b_baglama", title: "Bağlama Düzeni Geçişleri" },
+      { id: "b_bozuk", title: "Bozuk Düzen Tavrı" },
+      { id: "b_selpe", title: "Şelpe Teknik Hakimiyeti" },
+      { id: "b_sinav", title: "Solfej & Sınav Hazırlık" }
+    ];
+
+    const DEFAULT_SCHEDULE = [
+      { day: "Pazartesi", slots: [{ time: "15:00", busy: false }, { time: "17:00", busy: true }, { time: "19:00", busy: false }] },
+      { day: "Salı", slots: [{ time: "15:00", busy: false }, { time: "17:00", busy: false }, { time: "19:00", busy: true }] },
+      { day: "Çarşamba", slots: [{ time: "15:00", busy: true }, { time: "17:00", busy: false }, { time: "19:00", busy: false }] },
+      { day: "Perşembe", slots: [{ time: "15:00", busy: false }, { time: "17:00", busy: true }, { time: "19:00", busy: false }] },
+      { day: "Cuma", slots: [{ time: "15:00", busy: false }, { time: "17:00", busy: false }, { time: "19:00", busy: false }] },
+      { day: "Cumartesi", slots: [{ time: "13:00", busy: true }, { time: "15:00", busy: false }, { time: "17:00", busy: false }] },
+      { day: "Pazar", slots: [{ time: "13:00", busy: false }, { time: "15:00", busy: true }, { time: "17:00", busy: false }] }
     ];
 
     const defaultState = {
@@ -1351,7 +1525,8 @@
           course: "Bağlama Düzeni",
           phone: "0500 000 00 00",
           mode: "Birebir Özel (Yüz Yüze / Online)",
-          practiceMins: 60
+          practiceMins: 60,
+          badges: ["b_mizrap", "b_nota"]
         }
       ],
       messages: [
@@ -1363,7 +1538,7 @@
           course: "Genel Duyuru",
           cardType: "Duyuru",
           link: "",
-          text: "Üye Öğrenci Portalına hoş geldiniz. Haftalık ödevlerinizi buradan görebilir, çalıştıkça sürenizi ekleyebilir ve doğrudan mesaj gönderebilirsiniz.",
+          text: "Üye Öğrenci Portalına hoş geldiniz. Haftalık ödevlerinizi ve gelişim rozetlerinizi buradan takip edebilir, doğrudan mesaj gönderebilirsiniz.",
           time: nowStr(),
           completed: false
         },
@@ -1375,18 +1550,19 @@
           course: "Bağlama Düzeni",
           cardType: "Ders Notu / Ödev",
           link: "",
-          text: "Emre merhaba, bu hafta Mihriban eserinin giriş bölümünü 80 BPM metronomla temiz tezene vuruşlarıyla günde 30 dakika çalışalım.",
+          text: "Emre merhaba, bu hafta La karar ve Re karar geçiş egzersizlerini 85 BPM metronomla günde 30 dakika çalışalım.",
           time: nowStr(),
           completed: false
         }
       ],
-      requests: []
+      requests: [],
+      schedule: structuredClone(DEFAULT_SCHEDULE)
     };
 
     let state = loadState();
     let currentStudent = null;
     let selectedHocaStudent = "ALL";
-    let currentRepFilter = "ALL";
+    let recommendedCourseFromQuiz = "Bağlama Düzeni";
 
     function nowStr() {
       return new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
@@ -1395,7 +1571,11 @@
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) return JSON.parse(raw);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed.schedule)) parsed.schedule = structuredClone(DEFAULT_SCHEDULE);
+          return parsed;
+        }
       } catch (_) {}
       return structuredClone(defaultState);
     }
@@ -1424,7 +1604,8 @@
           state = {
             students: Array.isArray(data.students) ? data.students : state.students,
             messages: Array.isArray(data.messages) ? data.messages : state.messages,
-            requests: Array.isArray(data.requests) ? data.requests : state.requests
+            requests: Array.isArray(data.requests) ? data.requests : state.requests,
+            schedule: Array.isArray(data.schedule) ? data.schedule : state.schedule
           };
           saveState();
           renderAll();
@@ -1476,35 +1657,11 @@
       }, 150);
     });
 
-    /* REPERTUVAR FİLTRELEME */
-    function renderRepertoire() {
-      const grid = document.getElementById("repertoireGrid");
-      const list = REPERTOIRE_ITEMS.filter((item) => currentRepFilter === "ALL" || item.level === currentRepFilter);
-      grid.innerHTML = list.map((item) => `
-        <div class="card">
-          <span class="tag">${escapeHtml(item.level)} • ${escapeHtml(item.tuning)}</span>
-          <h3>${escapeHtml(item.title)}</h3>
-          <p>${escapeHtml(item.focus)}</p>
-        </div>
-      `).join("");
-    }
-
-    document.querySelectorAll("[data-rep-filter]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll("[data-rep-filter]").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentRepFilter = btn.dataset.repFilter;
-        renderRepertoire();
-      });
-    });
-
-    /* MİKROFONLU CANLI BAĞLAMA AKORT CİHAZI */
+    /* SES MOTORU & İNTERAKTİF BAĞLAMA KLAVYESİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
     let tunerRaf = null;
-
-    const NOTE_NAMES = ["Do (C)", "Do# (C#)", "Re (D)", "Re# (D#)", "Mi (E)", "Fa (F)", "Fa# (F#)", "Sol (G)", "Sol# (G#)", "La (A)", "Sib (Bb)", "Si (B)"];
 
     function ensureAudioCtx() {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -1513,6 +1670,34 @@
       if (audioCtx.state === "suspended") audioCtx.resume();
       return audioCtx;
     }
+
+    function playPluckNote(freq) {
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.85);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.9);
+    }
+
+    document.querySelectorAll(".fret-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".fret-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const freq = parseFloat(btn.dataset.freq);
+        playPluckNote(freq);
+        document.getElementById("fretboardStatus").textContent = `Çalınan Perde: ${btn.dataset.note} (${freq} Hz)`;
+      });
+    });
+
+    /* MİKROFONLU CANLI BAĞLAMA AKORT CİHAZI */
+    const NOTE_NAMES = ["Do (C)", "Do# (C#)", "Re (D)", "Re# (D#)", "Mi (E)", "Fa (F)", "Fa# (F#)", "Sol (G)", "Sol# (G#)", "La (A)", "Sib (Bb)", "Si (B)"];
 
     function autoCorrelate(buf, sampleRate) {
       let size = buf.length;
@@ -1639,6 +1824,44 @@
       status.textContent = `Çalıyor: ${bpm} BPM`;
     });
 
+    /* 3 SORULUK SEVİYE & HEDEF BELİRLEME TESTİ */
+    document.getElementById("runQuizBtn").addEventListener("click", () => {
+      const exp = document.getElementById("quizExp").value;
+      const nota = document.getElementById("quizNota").value;
+      const goal = document.getElementById("quizGoal").value;
+
+      let course = "Bağlama Düzeni";
+      let desc = "";
+
+      if (goal === "sinav") {
+        course = "Konservatuara Hazırlık";
+        desc = "Önerilen Program: Konservatuara / Güzel Sanatlara Hazırlık + Solfej. Birebir işitme, dikte ve sınav eseri hazırlığı.";
+      } else if (goal === "bozuk") {
+        course = exp === "ileri" ? "Şelpe" : "Bağlama Bozuk Düzen";
+        desc = `Önerilen Program: ${course}. Yöresel tezene tavrı, karar sesleri ve sağ el parmak teknikleri.`;
+      } else if (goal === "vokal") {
+        course = "Çalıp Söyleme";
+        desc = "Önerilen Program: Çalıp Söyleme + Solfej. Bağlama eşliği ile ses/nefes koordinasyonu.";
+      } else if (exp === "sifir" || nota === "yok") {
+        course = "Nota";
+        desc = "Önerilen Program: Temel Nota + Bağlama Düzeni. Sıfırdan mızrap tutuşu, nota okuma ve temel türkü repertuvarı.";
+      } else {
+        course = "Bağlama Düzeni";
+        desc = "Önerilen Program: Bağlama Düzeni İleri Tavır & Pozisyon Geçişleri.";
+      }
+
+      recommendedCourseFromQuiz = course;
+      const box = document.getElementById("quizResultBox");
+      box.style.display = "block";
+      box.textContent = desc;
+      document.getElementById("applyQuizCourseBtn").style.display = "inline-flex";
+    });
+
+    document.getElementById("applyQuizCourseBtn").addEventListener("click", () => {
+      document.getElementById("regCourse").value = recommendedCourseFromQuiz;
+      document.getElementById("basvuru-bolumu").scrollIntoView({ behavior: "smooth" });
+    });
+
     /* ÜYE ÖĞRENCİ EKLEME / GÜNCELLEME */
     function upsertStudent(name, course, phone = "", mode = "", username = "", password = "") {
       const cleanUser = (username || name).toLowerCase().replace(/\s+/g, "");
@@ -1652,6 +1875,7 @@
         if (username) existing.username = cleanUser;
         if (password) existing.password = password;
         if (typeof existing.practiceMins !== "number") existing.practiceMins = 0;
+        if (!Array.isArray(existing.badges)) existing.badges = [];
         return existing;
       }
       const created = {
@@ -1662,7 +1886,8 @@
         course,
         phone,
         mode,
-        practiceMins: 0
+        practiceMins: 0,
+        badges: ["b_mizrap"]
       };
       state.students.push(created);
       return created;
@@ -1710,7 +1935,7 @@
       setTimeout(() => {
         document.getElementById("regStatus").textContent = "";
         goView("ogrenci");
-      }, 1200);
+      }, 1100);
     });
 
     document.getElementById("quickWaBtn").addEventListener("click", () => {
@@ -1906,8 +2131,59 @@
       URL.revokeObjectURL(url);
     });
 
+    /* TAKVİM RENDER FONKSİYONU */
+    function renderSchedules() {
+      const pubGrid = document.getElementById("publicScheduleGrid");
+      const hocaGrid = document.getElementById("hocaScheduleGrid");
+
+      pubGrid.innerHTML = state.schedule.map((d) => `
+        <div class="day-col">
+          <h4>${escapeHtml(d.day)}</h4>
+          ${d.slots.map((s) => `
+            <div class="slot-pill ${s.busy ? "busy" : "free"}" data-pick-slot="${escapeHtml(d.day + " " + s.time)}" data-busy="${s.busy ? "1" : "0"}">
+              <span>${escapeHtml(s.time)}</span>
+              <span>${s.busy ? "Dolu" : "Müsait ✓"}</span>
+            </div>
+          `).join("")}
+        </div>
+      `).join("");
+
+      pubGrid.querySelectorAll("[data-pick-slot]").forEach((el) => {
+        el.addEventListener("click", () => {
+          if (el.dataset.busy === "1") return;
+          const chosen = el.dataset.pickSlot;
+          document.getElementById("regNote").value = `Talep edilen ders saati: ${chosen}`;
+          document.getElementById("basvuru-bolumu").scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      if (hocaGrid) {
+        hocaGrid.innerHTML = state.schedule.map((d, dIdx) => `
+          <div class="day-col">
+            <h4>${escapeHtml(d.day)}</h4>
+            ${d.slots.map((s, sIdx) => `
+              <div class="slot-pill ${s.busy ? "busy" : "free"}" style="cursor:pointer;" data-toggle-day="${dIdx}" data-toggle-slot="${sIdx}">
+                <span>${escapeHtml(s.time)}</span>
+                <span>${s.busy ? "Dolu" : "Müsait"}</span>
+              </div>
+            `).join("")}
+          </div>
+        `).join("");
+
+        hocaGrid.querySelectorAll("[data-toggle-day]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const dIdx = parseInt(el.dataset.toggleDay, 10);
+            const sIdx = parseInt(el.dataset.toggleSlot, 10);
+            state.schedule[dIdx].slots[sIdx].busy = !state.schedule[dIdx].slots[sIdx].busy;
+            saveState();
+            renderSchedules();
+          });
+        });
+      }
+    }
+
     function renderAll() {
-      renderRepertoire();
+      renderSchedules();
 
       const authScreen = document.getElementById("studentAuthScreen");
       const memberWorkspace = document.getElementById("studentMemberWorkspace");
@@ -1921,18 +2197,31 @@
         memberWorkspace.style.display = "block";
         logoutBtn.style.display = "inline-flex";
 
-        document.getElementById("memberWelcomeTitle").textContent = `Hoş Geldin, ${currentStudent.name}`;
-        document.getElementById("memberCourseInfo").textContent = `Ders Alanı: ${currentStudent.course} • Kullanıcı Adı: ${currentStudent.username || "-"}`;
-        document.getElementById("activeStudentLabel").textContent = `${currentStudent.name} (Üye)`;
+        const stObj = state.students.find((s) => s.name.toLowerCase() === currentStudent.name.toLowerCase()) || currentStudent;
+        currentStudent = stObj;
 
-        const stObj = state.students.find((s) => s.name.toLowerCase() === currentStudent.name.toLowerCase());
-        const mins = stObj ? (stObj.practiceMins || 0) : 0;
+        document.getElementById("memberWelcomeTitle").textContent = `Hoş Geldin, ${stObj.name}`;
+        document.getElementById("memberCourseInfo").textContent = `Ders Alanı: ${stObj.course} • Kullanıcı Adı: ${stObj.username || "-"}`;
+        document.getElementById("activeStudentLabel").textContent = `${stObj.name} (Üye)`;
+
+        const mins = stObj.practiceMins || 0;
         const pct = Math.min(100, Math.round((mins / 180) * 100));
         pBar.style.width = pct + "%";
         pText.textContent = `${mins} / 180 dk`;
 
+        const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
+        document.getElementById("studentBadgesGrid").innerHTML = SKILL_BADGES.map((b) => {
+          const earned = earnedList.includes(b.id);
+          return `
+            <div class="skill-badge ${earned ? "earned" : ""}">
+              <span>${escapeHtml(b.title)}</span>
+              <span>${earned ? "✓ Kazanıldı" : "Çalışılıyor"}</span>
+            </div>
+          `;
+        }).join("");
+
         const approved = state.requests.find(
-          (r) => r.studentName.toLowerCase() === currentStudent.name.toLowerCase() && r.status === "Onaylandı"
+          (r) => r.studentName.toLowerCase() === stObj.name.toLowerCase() && r.status === "Onaylandı"
         );
         if (approved) {
           nextBar.style.display = "block";
@@ -1998,7 +2287,7 @@
             <div>
               <strong>${escapeHtml(s.name)}</strong>
               <span style="display:block; font-size:0.74rem; color:var(--muted);">
-                ${escapeHtml(s.course)} • к.adı: ${escapeHtml(s.username || "-")} / şifre: ${escapeHtml(s.password || "1234")}
+                ${escapeHtml(s.course)} • k.adı: ${escapeHtml(s.username || "-")} / şifre: ${escapeHtml(s.password || "1234")}
               </span>
             </div>
             <span class="status-pill">${s.practiceMins || 0} dk</span>
@@ -2016,6 +2305,36 @@
       document.getElementById("selectedStudentTitle").textContent = selectedHocaStudent === "ALL" ? "Tüm Öğrenciler" : selectedHocaStudent;
       const foundStudent = state.students.find((s) => s.name === selectedHocaStudent);
       document.getElementById("selectedStudentCourse").textContent = foundStudent ? `${foundStudent.course} • ${foundStudent.practiceMins || 0} dk` : "Genel";
+
+      /* HOCA ROZET PANELİ */
+      const badgeCard = document.getElementById("hocaBadgeManagerCard");
+      const badgeControlGrid = document.getElementById("hocaBadgesControlGrid");
+      if (foundStudent) {
+        badgeCard.style.display = "block";
+        if (!Array.isArray(foundStudent.badges)) foundStudent.badges = [];
+        badgeControlGrid.innerHTML = SKILL_BADGES.map((b) => {
+          const earned = foundStudent.badges.includes(b.id);
+          return `
+            <div class="skill-badge ${earned ? "earned" : ""}" style="cursor:pointer;" data-hoca-badge="${b.id}">
+              <span>${escapeHtml(b.title)}</span>
+              <span>${earned ? "✓ Verildi" : "+ Ver"}</span>
+            </div>
+          `;
+        }).join("");
+
+        badgeControlGrid.querySelectorAll("[data-hoca-badge]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const bId = el.dataset.hocaBadge;
+            const idx = foundStudent.badges.indexOf(bId);
+            if (idx >= 0) foundStudent.badges.splice(idx, 1);
+            else foundStudent.badges.push(bId);
+            saveState();
+            renderAll();
+          });
+        });
+      } else {
+        badgeCard.style.display = "none";
+      }
 
       const hocaFeed = document.getElementById("hocaFeed");
       const visibleForHoca = state.messages.filter((m) => {
