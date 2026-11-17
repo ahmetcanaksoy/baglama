@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doğukan Bozkurt | Online Bağlama Eğitimi & Akademi</title>
+  <title>Doğukan Bozkurt | Müzik Eğitimi</title>
   <style>
     :root {
-      --bg: #0c0a09;
-      --surface: #161210;
-      --surface-elevated: #1f1916;
-      --surface-glass: rgba(22, 18, 16, 0.82);
+      --bg: #0c0908;
+      --surface: #15100d;
+      --surface-2: #1e1713;
+      --surface-3: #281f1a;
       --accent: #e08234;
+      --accent-bright: #f5a65b;
       --accent-soft: rgba(224, 130, 52, 0.14);
-      --accent-bright: #f4a259;
+      --ok: #38b27b;
       --text: #f7f2ed;
-      --muted: #b5a699;
+      --muted: #b6a698;
       --border: rgba(247, 242, 237, 0.1);
-      --border-strong: rgba(224, 130, 52, 0.35);
+      --border-strong: rgba(224, 130, 52, 0.36);
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-sm: 12px;
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
     }
 
     * {
@@ -36,27 +36,26 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background:
-        radial-gradient(circle at 15% 10%, rgba(224, 130, 52, 0.14), transparent 38%),
-        radial-gradient(circle at 88% 18%, rgba(168, 78, 32, 0.12), transparent 42%),
+        radial-gradient(circle at 12% 8%, rgba(224, 130, 52, 0.14), transparent 36%),
+        radial-gradient(circle at 88% 16%, rgba(143, 61, 20, 0.13), transparent 40%),
         var(--bg);
       color: var(--text);
-      line-height: 1.65;
-      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
     .container {
       width: 100%;
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 22px;
+      padding: 0 20px;
     }
 
-    /* Header */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(12, 10, 9, 0.86);
+      background: rgba(12, 9, 8, 0.9);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
@@ -65,8 +64,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
-      gap: 16px;
+      min-height: 74px;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 10px 0;
     }
 
     .brand {
@@ -75,48 +76,74 @@
       gap: 12px;
       text-decoration: none;
       color: var(--text);
+      cursor: pointer;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
+    .brand-logo-wrap {
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), #8f3d14);
+      background: linear-gradient(135deg, var(--accent), #8a3a12);
       display: grid;
       place-items: center;
       font-weight: 800;
-      color: #120c08;
-      font-size: 1rem;
-      box-shadow: 0 8px 20px rgba(224, 130, 52, 0.28);
+      color: #130c08;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .brand-text strong {
+    .brand-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      font-size: 1rem;
-      letter-spacing: 0.2px;
     }
 
-    .brand-text span {
+    .brand strong {
       display: block;
-      font-size: 0.76rem;
+      font-size: 1rem;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 0.75rem;
       color: var(--muted);
     }
 
-    .nav-links {
+    .portal-switch {
       display: flex;
-      align-items: center;
-      gap: 24px;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: var(--surface);
+      padding: 5px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
     }
 
-    .nav-links a {
+    .tab-btn {
+      padding: 9px 15px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
       color: var(--muted);
-      text-decoration: none;
-      font-size: 0.92rem;
-      transition: color 0.2s ease;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.18s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent), #c6671c);
+      color: #140c08;
+    }
+
+    .page-view {
+      display: none;
+      padding: 36px 0 64px;
+    }
+
+    .page-view.active {
+      display: block;
     }
 
     .btn {
@@ -124,122 +151,106 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 13px 22px;
+      padding: 11px 18px;
       border-radius: var(--radius-sm);
       border: 1px solid transparent;
-      background: linear-gradient(135deg, var(--accent), #c8691e);
-      color: #130d09;
+      background: linear-gradient(135deg, var(--accent), #c6671c);
+      color: #140c08;
       font-weight: 700;
-      font-size: 0.94rem;
+      font-size: 0.9rem;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(224, 130, 52, 0.28);
-      filter: brightness(1.05);
     }
 
     .btn-ghost {
-      background: var(--surface-elevated);
+      background: var(--surface-2);
       color: var(--text);
       border-color: var(--border);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--border-strong);
-      box-shadow: none;
+    .btn-sm {
+      padding: 7px 12px;
+      font-size: 0.8rem;
     }
 
-    /* Hero */
     .hero {
-      padding: 64px 0 54px;
       display: grid;
       grid-template-columns: 1.18fr 0.82fr;
-      gap: 42px;
+      gap: 34px;
       align-items: center;
+      margin-bottom: 48px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
+      display: inline-block;
+      padding: 6px 13px;
       border-radius: 999px;
       background: var(--accent-soft);
       border: 1px solid var(--border-strong);
       color: var(--accent-bright);
-      font-size: 0.82rem;
+      font-size: 0.79rem;
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
-    .hero h1 {
-      font-size: clamp(2.1rem, 4.2vw, 3.25rem);
-      line-height: 1.14;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
+    h1 {
+      font-size: clamp(1.95rem, 3.8vw, 2.95rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
     }
 
-    .hero h1 em {
+    h1 em {
       font-style: normal;
       color: var(--accent-bright);
     }
 
-    .hero-lead {
+    .lead {
       color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 26px;
-      max-width: 60ch;
+      font-size: 1rem;
+      margin-bottom: 22px;
     }
 
-    .hero-cta {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 28px;
+      gap: 10px;
+      margin-bottom: 22px;
     }
 
-    .metrics {
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    .metric {
+    .stat {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 14px 16px;
+      padding: 13px 15px;
     }
 
-    .metric strong {
+    .stat strong {
       display: block;
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 2px;
+      font-size: 0.98rem;
     }
 
-    .metric span {
-      font-size: 0.8rem;
+    .stat span {
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
-    /* Hero Visual Card */
     .portrait-card {
-      background: linear-gradient(180deg, var(--surface-elevated), var(--surface));
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow);
     }
 
     .portrait-media {
       position: relative;
-      height: 440px;
-      background: #191310;
+      height: 410px;
+      background: #1a1310;
     }
 
     .portrait-media img {
@@ -253,49 +264,24 @@
     .portrait-fallback {
       display: none;
       height: 100%;
-      padding: 32px;
+      padding: 26px;
       flex-direction: column;
       justify-content: flex-end;
-      background:
-        radial-gradient(circle at 75% 25%, rgba(224, 130, 52, 0.25), transparent 55%),
-        linear-gradient(160deg, #241b16, #110d0b);
+      background: linear-gradient(160deg, #241b16, #110d0b);
     }
 
     .portrait-fallback.active {
       display: flex;
     }
 
-    .portrait-badge {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(12, 10, 9, 0.78);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border);
-      font-size: 0.78rem;
-      color: var(--accent-bright);
-    }
-
-    .portrait-footer {
-      padding: 18px 20px;
+    .portrait-foot {
+      padding: 15px 18px;
       border-top: 1px solid var(--border);
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      align-items: center;
       flex-wrap: wrap;
-    }
-
-    .portrait-footer strong {
-      display: block;
-      font-size: 0.98rem;
-    }
-
-    .portrait-footer span {
-      font-size: 0.82rem;
-      color: var(--muted);
+      gap: 10px;
     }
 
     .social-pills {
@@ -304,344 +290,172 @@
       flex-wrap: wrap;
     }
 
-    .social-pill {
-      padding: 7px 12px;
+    .pill {
+      padding: 6px 12px;
       border-radius: 999px;
-      background: var(--surface-elevated);
+      background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text);
       text-decoration: none;
-      font-size: 0.82rem;
-      transition: border-color 0.2s ease, color 0.2s ease;
+      font-size: 0.8rem;
     }
 
-    .social-pill:hover {
-      border-color: var(--accent);
-      color: var(--accent-bright);
-    }
-
-    /* Sections */
-    section {
-      padding: 70px 0;
+    .section-block {
+      margin-top: 44px;
+      padding-top: 34px;
       border-top: 1px solid var(--border);
     }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-
-    .section-header h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      letter-spacing: -0.015em;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      max-width: 56ch;
-      margin-top: 6px;
-    }
-
-    /* Bio */
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 24px;
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 28px;
-    }
-
-    .panel p + p {
-      margin-top: 14px;
-    }
-
-    .panel p {
-      color: var(--muted);
-    }
-
-    .panel strong {
-      color: var(--text);
-    }
-
-    .institution-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .institution-item {
-      padding: 14px 16px;
-      border-radius: var(--radius-sm);
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-    }
-
-    .institution-item strong {
-      display: block;
-      font-size: 0.94rem;
-      margin-bottom: 3px;
-    }
-
-    .institution-item span {
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-
-    /* Filterable Courses */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .filter-btn {
-      padding: 9px 15px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      font-size: 0.86rem;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--accent-soft);
-      border-color: var(--border-strong);
-      color: var(--text);
-    }
-
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .course-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .course-card:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
-    }
-
-    .course-card.hidden {
-      display: none;
-    }
-
-    .course-tag {
-      display: inline-block;
-      width: fit-content;
-      font-size: 0.74rem;
-      color: var(--accent-bright);
-      background: var(--accent-soft);
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-
-    .course-card h3 {
-      font-size: 1.06rem;
-      margin-bottom: 8px;
-    }
-
-    .course-card p {
-      font-size: 0.89rem;
-      color: var(--muted);
-    }
-
-    .course-select-link {
-      font-size: 0.85rem;
-      color: var(--accent-bright);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* Interactive Roadmap / Workflow */
-    .roadmap {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      position: relative;
-    }
-
-    .step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      background: var(--accent-soft);
-      border: 1px solid var(--border-strong);
-      color: var(--accent-bright);
-      font-weight: 700;
-      font-size: 0.86rem;
-      display: grid;
-      place-items: center;
-      margin-bottom: 14px;
-    }
-
-    .step h3 {
-      font-size: 1rem;
+    .section-title {
+      font-size: 1.5rem;
       margin-bottom: 6px;
     }
 
-    .step p {
-      font-size: 0.88rem;
+    .section-sub {
       color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
     }
 
-    /* Packages */
-    .package-grid {
+    .grid-2 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
     }
 
-    .package-card {
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
+      padding: 22px;
     }
 
-    .package-card.featured {
-      background: linear-gradient(180deg, var(--surface-elevated), var(--surface));
-      border-color: var(--border-strong);
-    }
-
-    .package-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-    }
-
-    .package-card .subtitle {
-      font-size: 0.9rem;
+    .card p {
       color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .package-list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
       font-size: 0.9rem;
-      color: var(--muted);
     }
 
-    .package-list li::before {
-      content: "→ ";
+    .card p + p {
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
       color: var(--accent-bright);
-      font-weight: 700;
+      font-size: 0.74rem;
+      margin-bottom: 8px;
     }
 
-    /* FAQ + Form */
-    .split-grid {
+    .tuner-grid {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      align-items: start;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0;
     }
 
-    .faq-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .faq-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .tuner-btn {
+      padding: 11px;
       border-radius: var(--radius-sm);
-      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
     }
 
-    .faq-btn {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 16px 18px;
-      text-align: left;
-      font-size: 0.94rem;
-      font-weight: 600;
+    .tuner-btn.playing {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .tuner-btn strong {
+      display: block;
+      font-size: 0.88rem;
+    }
+
+    .tuner-btn span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .portal-banner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-
-    .faq-body {
-      display: none;
-      padding: 0 18px 16px;
-      color: var(--muted);
-      font-size: 0.89rem;
-    }
-
-    .faq-item.open .faq-body {
-      display: block;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 14px;
+      flex-wrap: wrap;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 20px;
+    }
+
+    .mode-badge {
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      background: var(--accent-soft);
+      color: var(--accent-bright);
+      border: 1px solid var(--border-strong);
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .form-stack {
+      display: grid;
+      gap: 12px;
     }
 
     .field {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
-    .field.full {
-      grid-column: 1 / -1;
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
     label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
     input,
     select,
     textarea {
-      background: var(--surface-elevated);
+      background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 12px 14px;
+      padding: 11px 13px;
       border-radius: var(--radius-sm);
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       font-family: inherit;
+      width: 100%;
     }
 
     input:focus,
@@ -651,65 +465,129 @@
       border-color: var(--accent);
     }
 
-    .form-actions {
-      margin-top: 18px;
+    .feed {
+      display: grid;
+      gap: 12px;
+      max-height: 460px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .msg-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+    }
+
+    .msg-item.from-hoca {
+      border-left: 3px solid var(--accent);
+    }
+
+    .msg-item.from-ogrenci {
+      border-left: 3px solid var(--ok);
+    }
+
+    .msg-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .status-note {
-      font-size: 0.83rem;
-      color: var(--accent-bright);
-      min-height: 20px;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 0 48px;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.76rem;
       color: var(--muted);
-      font-size: 0.88rem;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
     }
 
-    .footer-grid {
+    .msg-body {
+      font-size: 0.9rem;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+
+    .student-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .student-pill {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.86rem;
     }
 
-    @media (max-width: 1024px) {
-      .course-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .roadmap {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .student-pill.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
     }
 
-    @media (max-width: 860px) {
+    .status-pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      background: var(--surface-3);
+      color: var(--accent-bright);
+    }
+
+    .status-pill.done {
+      color: var(--ok);
+    }
+
+    .notice-bar {
+      background: var(--accent-soft);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .guide-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .guide-list li::before {
+      content: "• ";
+      color: var(--accent-bright);
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 980px) {
       .hero,
-      .bio-grid,
-      .package-grid,
-      .split-grid {
+      .portal-grid,
+      .grid-2,
+      .grid-3 {
         grid-template-columns: 1fr;
       }
-      .portrait-media {
-        height: 380px;
-      }
-      .nav-links a:not(.btn) {
-        display: none;
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 560px) {
-      .metrics,
-      .course-grid,
-      .roadmap,
-      .form-grid {
+      .stats,
+      .grid-4,
+      .field-row,
+      .tuner-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -719,409 +597,385 @@
 
   <header>
     <div class="container nav">
-      <a href="#" class="brand">
-        <div class="brand-mark">DB</div>
-        <div class="brand-text">
-          <strong>Doğukan Bozkurt</strong>
-          <span>Online Bağlama Eğitimi</span>
+      <div class="brand" data-go="vitrin">
+        <div class="brand-logo-wrap">
+          <img
+            id="brandLogoImg"
+            src="./logo.png"
+            alt="Doğukan Bozkurt Logo"
+            onerror="handleLogoError(this)"
+          />
+          <span id="brandLogoFallback" style="font-size:0.95rem; font-weight:800;">DB</span>
         </div>
-      </a>
-      <nav class="nav-links">
-        <a href="#biyografi">Biyografi</a>
-        <a href="#dersler">Dersler</a>
-        <a href="#surec">Ders Akışı</a>
-        <a href="#paketler">Programlar</a>
-        <a href="#basvuru" class="btn">Ders Talep Et</a>
-      </nav>
+        <div>
+          <strong>Doğukan Bozkurt</strong>
+          <span>Müzik Eğitimi & Öğrenci Portalı</span>
+        </div>
+      </div>
+
+      <div class="portal-switch" role="tablist">
+        <button class="tab-btn active" data-go="vitrin">Müzik Eğitimi</button>
+        <button class="tab-btn" data-go="ogrenci">Öğrenci Sayfası</button>
+        <button class="tab-btn" data-go="hoca">Hoca Paneli</button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero" style="border-top: none;">
-      <div>
-        <div class="eyebrow">Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu</div>
-        <h1>Konservatuar Disipliniyle <em>Birebir Online Bağlama</em> Eğitimi</h1>
-        <p class="hero-lead">
-          Doğukan Bozkurt; Milli Eğitim Bakanlığına bağlı kurs kurumlarında, derneklerde, özel derslerde ve online platformlarda
-          nota, solfej, bağlama düzeni, bozuk düzen, şelpe, çalıp söyleme ve sınav hazırlık dersleri vermektedir.
-        </p>
-        <div class="hero-cta">
-          <a href="#basvuru" class="btn">WhatsApp ile Ders Planla</a>
-          <a href="#dersler" class="btn btn-ghost">Ders Programlarını İncele</a>
+  <main class="container">
+    <section id="view-vitrin" class="page-view active">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu</span>
+          <h1>Doğukan Bozkurt ile <em>Müzik Eğitimi</em></h1>
+          <p class="lead">
+            Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü mezunu Doğukan Bozkurt;
+            Milli Eğitim Bakanlığına bağlı kurs yerlerinde, derneklerde, özel derslerde ve online olmak üzere
+            yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
+          </p>
+          <div class="hero-actions">
+            <button class="btn" data-go="ogrenci">Öğrenci Sayfasına Geç</button>
+            <button class="btn btn-ghost" data-go="hoca">Hoca Paneline Geç</button>
+            <a href="#basvuru-bolumu" class="btn btn-ghost">Ders Başvurusu</a>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>8 Ders Alanı</strong>
+              <span>Nota, düzen, şelpe & hazırlık</span>
+            </div>
+            <div class="stat">
+              <strong>Birebir Özel</strong>
+              <span>Yüz yüze ve online eğitim</span>
+            </div>
+            <div class="stat">
+              <strong>2 Ayrı Portal</strong>
+              <span>Öğrenci sayfası & hoca paneli</span>
+            </div>
+          </div>
         </div>
-        <div class="metrics">
-          <div class="metric">
-            <strong>8 Uzmanlık</strong>
-            <span>Nota, düzen, şelpe & hazırlık</span>
+
+        <div class="portrait-card">
+          <div class="portrait-media">
+            <img
+              id="instructorPhoto"
+              src="./dogukan.jpg"
+              alt="Doğukan Bozkurt Bağlama"
+              onerror="handlePhotoError(this)"
+            />
+            <div class="portrait-fallback" id="instructorFallback">
+              <span class="eyebrow" style="width: fit-content;">Doğukan Bozkurt</span>
+              <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Sakarya Üniversitesi Devlet Konservatuarı</h3>
+              <p style="color: var(--muted); font-size: 0.88rem;">Çalgı Eğitimi Bölümü Mezunu • Müzik Eğitimi</p>
+            </div>
           </div>
-          <div class="metric">
-            <strong>Birebir Canlı</strong>
-            <span>Kişiye özel müfredat</span>
-          </div>
-          <div class="metric">
-            <strong>Çoklu Kurum</strong>
-            <span>MEB, dernek, özel & online</span>
+          <div class="portrait-foot">
+            <div>
+              <strong>Doğukan Bozkurt</strong>
+              <span style="display:block; font-size: 0.8rem; color: var(--muted);">WhatsApp: 0 537 439 49 92</span>
+            </div>
+            <div class="social-pills">
+              <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="pill">YouTube</a>
+              <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="pill">Instagram</a>
+              <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="pill">Facebook</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="portrait-card">
-        <div class="portrait-media">
-          <span class="portrait-badge">Bağlama Eğitmeni</span>
-          <img
-            id="instructorImg"
-            src="./dogukan.jpg"
-            alt="Doğukan Bozkurt Bağlama İcrası"
-            onerror="handleImageError(this)"
-          />
-          <div class="portrait-fallback" id="instructorFallback">
-            <span class="eyebrow" style="width: fit-content;">Doğukan Bozkurt</span>
-            <h3 style="font-size: 1.35rem; margin-bottom: 8px;">Sakarya Üniversitesi Devlet Konservatuarı</h3>
-            <p style="color: var(--muted); font-size: 0.9rem;">
-              Çalgı Eğitimi Bölümü mezunu • Birebir online bağlama eğitimi
-            </p>
-          </div>
-        </div>
-        <div class="portrait-footer">
-          <div>
-            <strong>Doğukan Bozkurt</strong>
-            <span>Çalgı Eğitimi Bölümü Mezunu</span>
-          </div>
-          <div class="social-pills">
-            <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="social-pill">YouTube</a>
-            <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="social-pill">Instagram</a>
-            <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="social-pill">Facebook</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="biyografi">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Biyografi</h2>
-            <p>Akademik çalgı eğitimi ve çok yönlü öğretim deneyimi</p>
-          </div>
-        </div>
-
-        <div class="bio-grid">
-          <div class="panel">
+      <div class="section-block">
+        <h2 class="section-title">Biyografi & Eğitim Çalışmaları</h2>
+        <p class="section-sub">Akademik çalgı eğitimi ve birebir özel öğretim deneyimi</p>
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">Eğitim Geçmişi</span>
             <p>
               <strong>Doğukan Bozkurt</strong>, lisans eğitimini <strong>Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü</strong>nde tamamlamıştır.
             </p>
             <p>
-              Geleneksel Türk halk müziği icra geleneğini konservatuar düzeyindeki teknik, nota-solfej ve pedagojik yöntemlerle buluşturan Doğukan Bozkurt;
-              Milli Eğitim Bakanlığına bağlı kurs yerlerinde, derneklerde, özel derslerde ve online olmak üzere bağlama eğitimine aktif olarak devam etmektedir.
-            </p>
-            <p>
-              Derslerde öğrencinin el-bilek sağlığı, mızrap hakimiyeti, akort bilgisi ve müzikal ifade gücü temel alınarak sürdürülebilir bir gelişim hedeflenir.
+              Milli Eğitim Bakanlığına bağlı kurs yerlerinde, derneklerde, özel derslerde ve online olmak üzere, yüz yüze ve online birebir özel müzik eğitimine devam etmektedir.
             </p>
           </div>
-
-          <div class="panel">
-            <strong style="font-size: 1rem;">Eğitim ve Çalışma Alanları</strong>
-            <div class="institution-list">
-              <div class="institution-item">
-                <strong>Sakarya Üniversitesi Devlet Konservatuarı</strong>
-                <span>Çalgı Eğitimi Bölümü Mezunu</span>
-              </div>
-              <div class="institution-item">
-                <strong>MEB Bağlı Kurs Kurumları & Dernekler</strong>
-                <span>Kurumsal ve topluluk odaklı bağlama eğitimi</span>
-              </div>
-              <div class="institution-item">
-                <strong>Özel & Online Birebir Dersler</strong>
-                <span>Türkiye genelinden canlı bağlantı ile kişisel eğitim</span>
-              </div>
+          <div class="card">
+            <span class="tag">İcra & Sosyal Kanallar</span>
+            <p>Ders örnekleri, icra kayıtları ve güncel paylaşımlar için sosyal medya hesaplarından takip edebilirsiniz:</p>
+            <div class="social-pills" style="margin-top: 12px;">
+              <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">YouTube (@dogukanbozkrt)</a>
+              <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Instagram</a>
+              <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Facebook</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="dersler">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Ders Alanları</h2>
-            <p>İhtiyacınıza göre filtreleyebilir, ders seçip doğrudan başvuru formuna aktarabilirsiniz.</p>
+      <div class="section-block">
+        <h2 class="section-title">Ders Alanları</h2>
+        <p class="section-sub">Yüz yüze ve online birebir özel müzik eğitiminde işlenen başlıklar</p>
+        <div class="grid-4">
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Nota</h3><p>Temel nota okuma, tartım kalıpları ve eser deşifresi.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Solfej</h3><p>Kulak eğitimi, ses-ritim uyumu ve ezgi tekrarı.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Bağlama Düzeni</h3><p>Bağlama düzeni akort yapısı, mızrap tekniği ve repertuvar.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Bağlama Bozuk Düzen</h3><p>Bozuk düzen akort sistemi, tezene tavrı ve türkü yorumu.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Şelpe</h3><p>Sağ el parmak tekniği, vuruş kalıpları ve hız egzersizleri.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Çalıp Söyleme</h3><p>Bağlama icrası ile vokal eşliğini dengeli yürütme.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Güzel Sanatlara Hazırlık</h3><p>Güzel Sanatlar Liseleri yetenek sınavı hazırlığı.</p></div>
+          <div class="card"><span class="tag">Müzik Eğitimi</span><h3>Konservatuara Hazırlık</h3><p>Konservatuar özel yetenek sınavı hazırlığı.</p></div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h2 class="section-title">Çalışma Araçları & Düzen Rehberi</h2>
+        <p class="section-sub">Ders öncesi referans ses, metronom ve düzen özeti</p>
+        <div class="grid-3">
+          <div class="card">
+            <span class="tag">Akort Referansı</span>
+            <h3>Referans Tonları</h3>
+            <p>Bağlamanızı kontrol etmek için referans sesi dinleyin:</p>
+            <div class="tuner-grid">
+              <button type="button" class="tuner-btn" data-freq="220" data-label="La (220 Hz)">
+                <strong>La Tel</strong><span>220 Hz</span>
+              </button>
+              <button type="button" class="tuner-btn" data-freq="293.66" data-label="Re (293.66 Hz)">
+                <strong>Re Tel</strong><span>293.66 Hz</span>
+              </button>
+              <button type="button" class="tuner-btn" data-freq="329.63" data-label="Mi / Sol (329.63 Hz)">
+                <strong>Mi / Sol</strong><span>329.63 Hz</span>
+              </button>
+            </div>
+            <p id="vitrinTunerStatus" style="font-size: 0.8rem; color: var(--accent-bright);">Ses kapalı</p>
+          </div>
+
+          <div class="card">
+            <span class="tag">Ritim & Tartım</span>
+            <h3>Metronom</h3>
+            <p>Nota, solfej, şelpe ve çalıp söyleme çalışmaları için tempo:</p>
+            <div class="field-row" style="margin-top: 12px;">
+              <div class="field">
+                <label for="bpmInput">Tempo (BPM)</label>
+                <input type="number" id="bpmInput" min="40" max="220" value="90" />
+              </div>
+              <div class="field" style="justify-content: flex-end;">
+                <button type="button" id="metronomeToggleBtn" class="btn btn-ghost">Metronomu Başlat</button>
+              </div>
+            </div>
+            <p id="metronomeStatus" style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-bright);">Durduruldu</p>
+          </div>
+
+          <div class="card">
+            <span class="tag">Düzen & İcra Özeti</span>
+            <h3>Çalışma Başlıkları</h3>
+            <ul class="guide-list">
+              <li><strong>Bağlama Düzeni:</strong> Akort dengesi, pozisyonlar ve mızrap yönü</li>
+              <li><strong>Bozuk Düzen:</strong> Tezene karakteri ve türkü tavrı</li>
+              <li><strong>Şelpe & Çalıp Söyleme:</strong> Sağ el parmak hakimiyeti ve vokal dengesi</li>
+              <li><strong>Sınav Hazırlık:</strong> GS ve Konservatuar müfredat takibi</li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <div class="filter-bar" id="filterBar">
-          <button class="filter-btn active" data-filter="all">Tümü (8)</button>
-          <button class="filter-btn" data-filter="temel">Nota & Solfej</button>
-          <button class="filter-btn" data-filter="icra">Düzen, Şelpe & İcra</button>
-          <button class="filter-btn" data-filter="sinav">Sınav Hazırlık</button>
-        </div>
-
-        <div class="course-grid" id="courseGrid">
-          <article class="course-card" data-category="temel">
-            <div>
-              <span class="course-tag">Nota & Solfej</span>
-              <h3>Nota</h3>
-              <p>Temel nota okuma, ölçü yapıları, tartım kalıpları ve eserlerin doğru deşifre edilmesi.</p>
+      <div id="basvuru-bolumu" class="section-block">
+        <h2 class="section-title">Ders Başvurusu & Öğrenci Kaydı</h2>
+        <p class="section-sub">Başvuru gönderdiğinizde kayıt otomatik olarak Hoca Paneline ve Öğrenci Portalına düşer.</p>
+        <div class="card" style="max-width: 720px;">
+          <form id="quickRegisterForm" class="form-stack">
+            <div class="field-row">
+              <div class="field">
+                <label for="regName">Öğrenci Ad Soyad</label>
+                <input type="text" id="regName" placeholder="Örn: Emre Yılmaz" required />
+              </div>
+              <div class="field">
+                <label for="regPhone">Telefon / WhatsApp</label>
+                <input type="tel" id="regPhone" placeholder="05XX XXX XX XX" required />
+              </div>
             </div>
-            <a href="#basvuru" class="course-select-link" data-course="Nota">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="temel">
-            <div>
-              <span class="course-tag">Nota & Solfej</span>
-              <h3>Solfej</h3>
-              <p>Ses ve ritim kulağını geliştiren solfej çalışmaları, ezgi tekrarı ve müzikal işitme egzersizleri.</p>
+            <div class="field-row">
+              <div class="field">
+                <label for="regCourse">Ders Alanı</label>
+                <select id="regCourse">
+                  <option>Nota</option>
+                  <option>Solfej</option>
+                  <option>Bağlama Düzeni</option>
+                  <option>Bağlama Bozuk Düzen</option>
+                  <option>Şelpe</option>
+                  <option>Çalıp Söyleme</option>
+                  <option>Güzel Sanatlara Hazırlık</option>
+                  <option>Konservatuara Hazırlık</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="regMode">Ders Tercihi</label>
+                <select id="regMode">
+                  <option>Birebir Özel (Yüz Yüze / Online)</option>
+                  <option>Birebir Özel Yüz Yüze</option>
+                  <option>Birebir Özel Online</option>
+                </select>
+              </div>
             </div>
-            <a href="#basvuru" class="course-select-link" data-course="Solfej">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="icra">
-            <div>
-              <span class="course-tag">Düzen, Şelpe & İcra</span>
-              <h3>Bağlama Düzeni</h3>
-              <p>Bağlama düzeni akort yapısı, pozisyon geçişleri, mızrap tekniği ve düzen repertuvarı.</p>
+            <div class="field">
+              <label for="regNote">Uygun Gün / Saat veya Notunuz</label>
+              <textarea id="regNote" rows="2" placeholder="Seviyeniz veya hedefiniz..."></textarea>
             </div>
-            <a href="#basvuru" class="course-select-link" data-course="Bağlama Düzeni">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="icra">
-            <div>
-              <span class="course-tag">Düzen, Şelpe & İcra</span>
-              <h3>Bağlama Bozuk Düzen</h3>
-              <p>Bozuk düzen akort sistemi, karakteristik icra tavrı, tezene kullanımı ve türkü yorumu.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button type="submit" class="btn">Portala Kaydet & Hoca Paneline Gönder</button>
+              <button type="button" id="quickWaBtn" class="btn btn-ghost">WhatsApp ile İletişime Geç</button>
+              <span id="regStatus" style="font-size:0.83rem; color:var(--accent-bright);"></span>
             </div>
-            <a href="#basvuru" class="course-select-link" data-course="Bağlama Bozuk Düzen">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="icra">
-            <div>
-              <span class="course-tag">Düzen, Şelpe & İcra</span>
-              <h3>Şelpe</h3>
-              <p>Sağ el parmak tekniği, şelpe vuruş kalıpları, hız kontrolü ve temiz tını egzersizleri.</p>
-            </div>
-            <a href="#basvuru" class="course-select-link" data-course="Şelpe">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="icra">
-            <div>
-              <span class="course-tag">Düzen, Şelpe & İcra</span>
-              <h3>Çalıp Söyleme</h3>
-              <p>Bağlama icrası ile vokal eşliğini ritmik, dengeli ve müzikal bütünlük içinde yürütme.</p>
-            </div>
-            <a href="#basvuru" class="course-select-link" data-course="Çalıp Söyleme">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="sinav">
-            <div>
-              <span class="course-tag">Sınav Hazırlık</span>
-              <h3>Güzel Sanatlara Hazırlık</h3>
-              <p>Güzel Sanatlar Liseleri yetenek sınavlarına yönelik çalgı, nota, solfej ve eser hazırlığı.</p>
-            </div>
-            <a href="#basvuru" class="course-select-link" data-course="Güzel Sanatlara Hazırlık">Bu dersi seç →</a>
-          </article>
-
-          <article class="course-card" data-category="sinav">
-            <div>
-              <span class="course-tag">Sınav Hazırlık</span>
-              <h3>Konservatuara Hazırlık</h3>
-              <p>Konservatuar özel yetenek sınavları için teknik yeterlilik, etüt, repertuvar ve işitme hazırlığı.</p>
-            </div>
-            <a href="#basvuru" class="course-select-link" data-course="Konservatuara Hazırlık">Bu dersi seç →</a>
-          </article>
+          </form>
         </div>
       </div>
     </section>
 
-    <section id="surec">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Online Ders Akışı</h2>
-            <p>İlk görüşmeden düzenli çalışmaya kadar adım adım ilerleyen sistem</p>
-          </div>
+    <section id="view-ogrenci" class="page-view">
+      <div class="portal-banner">
+        <div>
+          <span class="tag">Öğrenci Portalı</span>
+          <h2 style="font-size: 1.45rem;">Öğrenci Ders, Ödev & Haberleşme Ekranı</h2>
+          <p style="color: var(--muted); font-size: 0.88rem;">Adınızla giriş yapın; hocanızdan gelen ders notlarını ve ödevleri görün, mesaj yazın ve ders talebi bırakın.</p>
         </div>
-
-        <div class="roadmap">
-          <div class="step">
-            <div class="step-num">01</div>
-            <h3>Ön Görüşme & Seviye Analizi</h3>
-            <p>Hedefiniz (nota, düzen, şelpe, çalıp söyleme veya sınav hazırlık) ve mevcut çalım durumunuz belirlenir.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">02</div>
-            <h3>Kişisel Müfredat</h3>
-            <p>Seviyenize uygun akort düzeni, etüt sırası ve repertuvar planı oluşturulur.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">03</div>
-            <h3>Birebir Canlı Ders</h3>
-            <p>El duruşu, mızrap/şelpe vuruşları ve müzikal yorum canlı bağlantı üzerinden birebir işlenir.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">04</div>
-            <h3>Haftalık Takip & Geri Bildirim</h3>
-            <p>Ders aralarında çalışma yönlendirmesi ve gelişim takibi ile tempoyu korursunuz.</p>
-          </div>
-        </div>
+        <span class="mode-badge" id="studentSyncMode">Yerel Senkron Modu</span>
       </div>
-    </section>
 
-    <section id="paketler">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Eğitim Programları</h2>
-            <p>Hedefinize ve haftalık çalışma sürenize göre şekillenen birebir programlar</p>
+      <div id="studentNextLessonBar" class="notice-bar" style="display:none;"></div>
+
+      <div class="portal-grid">
+        <div class="card form-stack">
+          <h3>Öğrenci Girişi</h3>
+          <div class="field">
+            <label for="studentLoginName">Adınız Soyadınız</label>
+            <input type="text" id="studentLoginName" placeholder="Örn: Emre Yılmaz" />
           </div>
+          <div class="field">
+            <label for="studentCourseSelect">Çalıştığınız Ders Alanı</label>
+            <select id="studentCourseSelect">
+              <option>Nota</option>
+              <option>Solfej</option>
+              <option>Bağlama Düzeni</option>
+              <option>Bağlama Bozuk Düzen</option>
+              <option>Şelpe</option>
+              <option>Çalıp Söyleme</option>
+              <option>Güzel Sanatlara Hazırlık</option>
+              <option>Konservatuara Hazırlık</option>
+            </select>
+          </div>
+          <button type="button" id="studentLoginBtn" class="btn">Portala Giriş Yap</button>
+
+          <hr style="border:none; border-top:1px solid var(--border); margin: 6px 0;" />
+
+          <h3>Ders Gün / Saat Talebi</h3>
+          <div class="field">
+            <label for="reqDateTime">Önerdiğiniz Gün ve Saat</label>
+            <input type="text" id="reqDateTime" placeholder="Örn: Cumartesi 16:00" />
+          </div>
+          <div class="field">
+            <label for="reqTopic">Çalışılacak Konu</label>
+            <input type="text" id="reqTopic" placeholder="Örn: Bağlama düzeni nota + mızrap" />
+          </div>
+          <button type="button" id="sendLessonReqBtn" class="btn btn-ghost">Hocaya Ders Talebi Gönder</button>
+          <span id="studentActionStatus" style="font-size:0.82rem; color:var(--accent-bright);"></span>
         </div>
 
-        <div class="package-grid">
-          <div class="package-card">
-            <div>
-              <h3>Tanışma & Değerlendirme</h3>
-              <p class="subtitle">İlk adımı atmak ve yol haritası çıkarmak isteyenler için</p>
-              <ul class="package-list">
-                <li>Birebir online tanışma ve seviye tespiti</li>
-                <li>Teknik ve mızrap/şelpe kontrolü</li>
-                <li>Kişiye özel başlangıç planı</li>
-              </ul>
+        <div class="form-stack">
+          <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <h3>Ders Notları, Duyurular & Mesaj Akışı</h3>
+              <span class="status-pill" id="activeStudentLabel">Giriş yapılmadı</span>
             </div>
-            <a href="#basvuru" class="btn btn-ghost" data-course="Nota">Başvuru Oluştur</a>
+            <div class="feed" id="studentFeed"></div>
           </div>
 
-          <div class="package-card featured">
-            <div>
-              <span class="course-tag">En Çok Tercih Edilen</span>
-              <h3>Düzenli Online Akademi</h3>
-              <p class="subtitle">Nota, solfej, bağlama/bozuk düzen, şelpe ve çalıp söyleme gelişimi</p>
-              <ul class="package-list">
-                <li>Haftalık birebir canlı online dersler</li>
-                <li>Seviyeye özel nota, etüt ve türkü seçkisi</li>
-                <li>Ders arası çalışma yönlendirmesi</li>
-                <li>Sosyal medya ve icra içerikleriyle destek</li>
-              </ul>
-            </div>
-            <a href="#basvuru" class="btn" data-course="Bağlama Düzeni">Programı Seç</a>
-          </div>
-
-          <div class="package-card">
-            <div>
-              <h3>Güzel Sanatlar & Konservatuar Hazırlık</h3>
-              <p class="subtitle">Yetenek sınavlarına yönelik yoğun ve hedefli hazırlık</p>
-              <ul class="package-list">
-                <li>Sınav odaklı çalgı, nota ve solfej çalışması</li>
-                <li>Repertuvar ve teknik yeterlilik takibi</li>
-                <li>Hedefe göre esnek ders planlaması</li>
-              </ul>
-            </div>
-            <a href="#basvuru" class="btn btn-ghost" data-course="Konservatuara Hazırlık">Hazırlık İçin Başvur</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="basvuru">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Sık Sorulanlar & Ders Başvurusu</h2>
-            <p>Merak edilen soruları inceleyebilir veya doğrudan WhatsApp üzerinden ders talebi oluşturabilirsiniz.</p>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="faq-list" id="faqList">
-            <div class="faq-item open">
-              <button class="faq-btn" type="button">
-                <span>Online dersler hangi alanlarda veriliyor?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                Nota, Solfej, Bağlama Düzeni, Bağlama Bozuk Düzen, Şelpe, Çalıp Söyleme, Güzel Sanatlara Hazırlık ve Konservatuara Hazırlık alanlarında birebir online ders verilmektedir.
+          <div class="card">
+            <h3 style="margin-bottom: 10px;">Doğukan Hocaya Mesaj / Çalışma Notu Gönder</h3>
+            <form id="studentMsgForm" class="form-stack">
+              <div class="field">
+                <label for="studentMsgInput">Mesajınız veya Çalışma Kaydı Notu</label>
+                <textarea id="studentMsgInput" rows="3" placeholder="Hocam verilen çalışmayı uyguladım, şu bölümde not/bağlantı paylaşmak istiyorum..." required></textarea>
               </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-btn" type="button">
-                <span>Sıfırdan başlayanlar katılabilir mi?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                Evet. Temel duruş, mızrap tekniği, akort, nota ve solfej adımlarıyla sıfırdan başlayanlar için aşamalı program uygulanır.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-btn" type="button">
-                <span>Güzel Sanatlar ve Konservatuar sınavlarına hazırlık var mı?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                Evet. Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü mezunu Doğukan Bozkurt eşliğinde sınav odaklı hazırlık programı yürütülmektedir.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-btn" type="button">
-                <span>Ders saatleri nasıl belirleniyor?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                Başvuru formunu doldurduktan sonra WhatsApp üzerinden uygun gün ve saat aralığı birlikte netleştirilir.
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <strong style="font-size: 1.05rem; display: block; margin-bottom: 6px;">Online Ders Talep Formu</strong>
-            <p style="font-size: 0.88rem; margin-bottom: 18px;">
-              Bilgilerinizi girin; Doğukan Bozkurt'un WhatsApp hattına hazır başvuru mesajı olarak iletin.
-            </p>
-
-            <form id="lessonForm">
-              <div class="form-grid">
-                <div class="field">
-                  <label for="name">Ad Soyad</label>
-                  <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required />
-                </div>
-                <div class="field">
-                  <label for="phone">Telefon / WhatsApp</label>
-                  <input type="tel" id="phone" name="phone" placeholder="05XX XXX XX XX" required />
-                </div>
-                <div class="field">
-                  <label for="course">Ders Alanı</label>
-                  <select id="course" name="course">
-                    <option value="Nota">Nota</option>
-                    <option value="Solfej">Solfej</option>
-                    <option value="Bağlama Düzeni">Bağlama Düzeni</option>
-                    <option value="Bağlama Bozuk Düzen">Bağlama Bozuk Düzen</option>
-                    <option value="Şelpe">Şelpe</option>
-                    <option value="Çalıp Söyleme">Çalıp Söyleme</option>
-                    <option value="Güzel Sanatlara Hazırlık">Güzel Sanatlara Hazırlık</option>
-                    <option value="Konservatuara Hazırlık">Konservatuara Hazırlık</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="level">Seviye</label>
-                  <select id="level" name="level">
-                    <option value="Başlangıç">Başlangıç</option>
-                    <option value="Orta Seviye">Orta Seviye</option>
-                    <option value="İleri Seviye">İleri Seviye</option>
-                    <option value="Sınav Hazırlık">Sınav Hazırlık</option>
-                  </select>
-                </div>
-                <div class="field full">
-                  <label for="note">Uygun Gün / Saat veya Notunuz</label>
-                  <textarea id="note" name="note" rows="3" placeholder="Örn: Hafta içi akşamları bağlama düzeni veya konservatuara hazırlık dersi almak istiyorum."></textarea>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="submit" class="btn">WhatsApp ile Gönder</button>
-                <button type="button" id="copySummaryBtn" class="btn btn-ghost">Metni Kopyala</button>
-                <span class="status-note" id="statusNote"></span>
-              </div>
+              <button type="submit" class="btn">Hocaya Gönder</button>
             </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-hoca" class="page-view">
+      <div class="portal-banner">
+        <div>
+          <span class="tag">Eğitmen Kontrol Paneli</span>
+          <h2 style="font-size: 1.45rem;">Doğukan Bozkurt — Öğrenci Yönetimi & Haberleşme</h2>
+          <p style="color: var(--muted); font-size: 0.88rem;">Öğrenci mesajlarını okuyun, yapılandırılmış ders notu/ödev kartı gönderin, duyuru yayınlayın ve ders taleplerini onaylayın.</p>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+          <span class="mode-badge" id="hocaSyncMode">Yerel Senkron Modu</span>
+          <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Kayıtları İndir (JSON)</button>
+        </div>
+      </div>
+
+      <div id="hocaLockBox" class="card" style="max-width: 440px;">
+        <h3 style="margin-bottom: 8px;">Hoca Paneli Girişi</h3>
+        <p style="margin-bottom: 14px;">Varsayılan giriş kodu: <strong>baglama2026</strong></p>
+        <form id="hocaPinForm" class="form-stack">
+          <div class="field">
+            <label for="hocaPinInput">Erişim Kodu</label>
+            <input type="password" id="hocaPinInput" placeholder="baglama2026" required />
+          </div>
+          <button type="submit" class="btn">Paneli Aç</button>
+          <span id="hocaPinError" style="font-size:0.82rem; color:#f87171;"></span>
+        </form>
+      </div>
+
+      <div id="hocaWorkspace" style="display:none;">
+        <div class="portal-grid">
+          <div class="card">
+            <h3>Kayıtlı Öğrenciler</h3>
+            <p style="font-size: 0.82rem;">Mesaj veya ders notu göndermek için öğrenci seçin.</p>
+            <div class="student-list" id="hocaStudentList"></div>
+
+            <hr style="border:none; border-top:1px solid var(--border); margin: 16px 0;" />
+
+            <h3>Genel Duyuru Yayınla</h3>
+            <form id="hocaAnnouncementForm" class="form-stack" style="margin-top:10px;">
+              <div class="field">
+                <label for="announcementInput">Tüm Öğrencilere Duyuru</label>
+                <textarea id="announcementInput" rows="3" placeholder="Örn: Bu hafta konservatuar hazırlık ve düzen çalışmaları güncellendi..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-ghost">Duyuruyu Yayınla</button>
+            </form>
+          </div>
+
+          <div class="form-stack">
+            <div class="card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h3>Seçili Öğrenci ile Haberleşme: <span id="selectedStudentTitle" style="color:var(--accent-bright);">Tüm Öğrenciler</span></h3>
+                <span class="status-pill" id="selectedStudentCourse">Genel</span>
+              </div>
+              <div class="feed" id="hocaFeed"></div>
+
+              <form id="hocaReplyForm" class="form-stack" style="margin-top: 14px;">
+                <div class="field-row">
+                  <div class="field">
+                    <label for="hocaCardType">Kart Türü</label>
+                    <select id="hocaCardType">
+                      <option value="Ders Notu / Ödev">Ders Notu / Ödev</option>
+                      <option value="Teknik / Mızrap-Şelpe Notu">Teknik / Mızrap-Şelpe Notu</option>
+                      <option value="Sınav Hazırlık Planı">Sınav Hazırlık Planı</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="hocaResourceLink">Kaynak Bağlantısı (Opsiyonel)</label>
+                    <input type="url" id="hocaResourceLink" placeholder="https://..." />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="hocaReplyInput">Öğrenciye Özel Ders Notu / Geri Bildirim</label>
+                  <textarea id="hocaReplyInput" rows="3" placeholder="Çalışılacak nota, düzen, mızrap/şelpe veya sınav hazırlık notu..."></textarea>
+                </div>
+                <button type="submit" class="btn">Öğrenciye Gönder</button>
+              </form>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 10px;">Gelen Ders Talepleri</h3>
+              <div class="feed" id="hocaRequestsFeed" style="max-height: 260px;"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1129,26 +983,97 @@
   </main>
 
   <footer>
-    <div class="container footer-grid">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
       <div>
-        <strong style="color: var(--text); display: block;">Doğukan Bozkurt — Online Bağlama Eğitimi</strong>
-        <span>Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu • WhatsApp: 0 537 439 49 92</span>
+        <strong style="color:var(--text);">Doğukan Bozkurt — Müzik Eğitimi</strong><br />
+        Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu • WhatsApp: 0 537 439 49 92
       </div>
       <div class="social-pills">
-        <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="social-pill">YouTube</a>
-        <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="social-pill">Instagram</a>
-        <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="social-pill">Facebook</a>
+        <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="pill">YouTube</a>
+        <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="pill">Instagram</a>
+        <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="pill">Facebook</a>
       </div>
     </div>
   </footer>
 
   <script>
     const WHATSAPP_NUMBER = "905374394992";
+    const HOCA_PIN = "baglama2026";
+    const FIREBASE_DB_URL = "";
+    const STORAGE_KEY = "dogukan_muzik_portal_v2";
 
-    // Resim yolunu otomatik dene (dogukan.jpg veya doğrudan yüklenen dosya adı)
-    function handleImageError(img) {
-      if (!img.dataset.triedEncoded) {
-        img.dataset.triedEncoded = "1";
+    const defaultState = {
+      students: [
+        { id: "s1", name: "Örnek Öğrenci", course: "Bağlama Düzeni", phone: "", mode: "Birebir Özel (Yüz Yüze / Online)" }
+      ],
+      messages: [
+        {
+          id: "m1",
+          sender: "hoca",
+          senderName: "Doğukan Bozkurt",
+          targetStudent: "ALL",
+          course: "Genel Duyuru",
+          cardType: "Duyuru",
+          link: "",
+          text: "Müzik Eğitimi portalına hoş geldiniz. Ders öncesi referans ses ve metronom araçlarını kullanabilir, ödev/ders notlarınızı buradan takip edebilirsiniz.",
+          time: nowStr(),
+          completed: false
+        }
+      ],
+      requests: []
+    };
+
+    let state = loadState();
+    let currentStudent = null;
+    let selectedHocaStudent = "ALL";
+
+    function nowStr() {
+      return new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      return structuredClone(defaultState);
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (_) {}
+      if (FIREBASE_DB_URL) {
+        fetch(FIREBASE_DB_URL.replace(/\/$/, "") + "/portal.json", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(state)
+        }).catch(() => {});
+      }
+    }
+
+    async function syncFromCloudIfConfigured() {
+      if (!FIREBASE_DB_URL) return;
+      document.getElementById("studentSyncMode").textContent = "Canlı Bulut Bağlantısı Aktif";
+      document.getElementById("hocaSyncMode").textContent = "Canlı Bulut Bağlantısı Aktif";
+      try {
+        const res = await fetch(FIREBASE_DB_URL.replace(/\/$/, "") + "/portal.json");
+        const data = await res.json();
+        if (data && typeof data === "object") {
+          state = {
+            students: Array.isArray(data.students) ? data.students : state.students,
+            messages: Array.isArray(data.messages) ? data.messages : state.messages,
+            requests: Array.isArray(data.requests) ? data.requests : state.requests
+          };
+          saveState();
+          renderAll();
+        }
+      } catch (_) {}
+    }
+
+    function handlePhotoError(img) {
+      if (!img.dataset.retried) {
+        img.dataset.retried = "1";
         img.src = "./do%C4%9Fukan.jpg.jpeg";
         return;
       }
@@ -1156,77 +1081,491 @@
       document.getElementById("instructorFallback").classList.add("active");
     }
 
-    // Ders filtreleme
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const courseCards = document.querySelectorAll(".course-card");
-
-    filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        filterButtons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        const filter = btn.dataset.filter;
-
-        courseCards.forEach((card) => {
-          const match = filter === "all" || card.dataset.category === filter;
-          card.classList.toggle("hidden", !match);
-        });
-      });
-    });
-
-    // Kart veya paket üzerinden ders seçtiğinde formu otomatik doldur
-    document.querySelectorAll("[data-course]").forEach((el) => {
-      el.addEventListener("click", () => {
-        const courseSelect = document.getElementById("course");
-        const selected = el.dataset.course;
-        if (selected) {
-          courseSelect.value = selected;
-        }
-      });
-    });
-
-    // SSS akordeon
-    document.querySelectorAll(".faq-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        btn.parentElement.classList.toggle("open");
-      });
-    });
-
-    function buildMessage() {
-      const name = document.getElementById("name").value.trim() || "-";
-      const phone = document.getElementById("phone").value.trim() || "-";
-      const course = document.getElementById("course").value;
-      const level = document.getElementById("level").value;
-      const note = document.getElementById("note").value.trim() || "-";
-
-      return (
-        `Merhaba Doğukan Bozkurt Hocam, online bağlama dersi için bilgi almak istiyorum.\n` +
-        `Ad Soyad: ${name}\n` +
-        `Telefon: ${phone}\n` +
-        `Ders Alanı: ${course}\n` +
-        `Seviye: ${level}\n` +
-        `Not: ${note}`
-      );
+    function handleLogoError(img) {
+      if (!img.dataset.retried) {
+        img.dataset.retried = "1";
+        img.src = "./logo.jpg";
+        return;
+      }
+      img.style.display = "none";
+      document.getElementById("brandLogoFallback").style.display = "inline";
     }
 
-    document.getElementById("lessonForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const message = buildMessage();
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
+    function goView(viewName) {
+      document.querySelectorAll(".tab-btn").forEach((b) => {
+        b.classList.toggle("active", b.dataset.go === viewName);
+      });
+      document.querySelectorAll(".page-view").forEach((v) => {
+        v.classList.toggle("active", v.id === "view-" + viewName);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      renderAll();
+    }
+
+    document.querySelectorAll("[data-go]").forEach((el) => {
+      el.addEventListener("click", () => goView(el.dataset.go));
     });
 
-    document.getElementById("copySummaryBtn").addEventListener("click", async function () {
-      const status = document.getElementById("statusNote");
-      try {
-        await navigator.clipboard.writeText(buildMessage());
-        status.textContent = "Başvuru metni kopyalandı.";
-      } catch {
-        status.textContent = "Metin hazırlandı, kopyalamak için formu gönderin.";
+    let audioCtx = null;
+    let currentOsc = null;
+    let currentBtn = null;
+
+    function stopAudio() {
+      if (currentOsc) {
+        try { currentOsc.stop(); } catch (_) {}
+        currentOsc.disconnect();
+        currentOsc = null;
       }
-      setTimeout(() => {
-        status.textContent = "";
-      }, 3000);
+      if (currentBtn) {
+        currentBtn.classList.remove("playing");
+        currentBtn = null;
+      }
+      document.getElementById("vitrinTunerStatus").textContent = "Ses kapalı";
+    }
+
+    function ensureAudioCtx() {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return null;
+      if (!audioCtx) audioCtx = new AudioCtx();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      return audioCtx;
+    }
+
+    document.querySelectorAll(".tuner-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const same = currentBtn === btn;
+        stopAudio();
+        if (same) return;
+        const ctx = ensureAudioCtx();
+        if (!ctx) return;
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.value = parseFloat(btn.dataset.freq);
+        gain.gain.value = 0.08;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+
+        currentOsc = osc;
+        currentBtn = btn;
+        btn.classList.add("playing");
+        document.getElementById("vitrinTunerStatus").textContent = "Çalıyor: " + btn.dataset.label;
+      });
     });
+
+    let metroTimer = null;
+
+    function playClick() {
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = 880;
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.065);
+    }
+
+    document.getElementById("metronomeToggleBtn").addEventListener("click", () => {
+      const btn = document.getElementById("metronomeToggleBtn");
+      const status = document.getElementById("metronomeStatus");
+      if (metroTimer) {
+        clearInterval(metroTimer);
+        metroTimer = null;
+        btn.textContent = "Metronomu Başlat";
+        status.textContent = "Durduruldu";
+        return;
+      }
+      const bpm = Math.min(220, Math.max(40, parseInt(document.getElementById("bpmInput").value, 10) || 90));
+      const intervalMs = Math.round(60000 / bpm);
+      playClick();
+      metroTimer = setInterval(playClick, intervalMs);
+      btn.textContent = "Metronomu Durdur";
+      status.textContent = `Çalıyor: ${bpm} BPM`;
+    });
+
+    document.getElementById("quickRegisterForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("regName").value.trim();
+      const phone = document.getElementById("regPhone").value.trim();
+      const course = document.getElementById("regCourse").value;
+      const mode = document.getElementById("regMode").value;
+      const note = document.getElementById("regNote").value.trim();
+
+      upsertStudent(name, course, phone, mode);
+      state.requests.unshift({
+        id: "r_" + Date.now(),
+        studentName: name,
+        course,
+        slot: mode,
+        topic: note || course,
+        status: "Bekliyor",
+        time: nowStr()
+      });
+      state.messages.unshift({
+        id: "m_" + Date.now(),
+        sender: "ogrenci",
+        senderName: name,
+        targetStudent: "ALL",
+        course,
+        cardType: "Başvuru",
+        link: "",
+        text: `Yeni ders başvurusu: ${course} (${mode})${note ? " — Not: " + note : ""}`,
+        time: nowStr(),
+        completed: false
+      });
+      saveState();
+      renderAll();
+
+      currentStudent = { name, course };
+      document.getElementById("studentLoginName").value = name;
+      document.getElementById("studentCourseSelect").value = course;
+      document.getElementById("regStatus").textContent = "Kaydedildi! Öğrenci ve Hoca panellerine eklendi.";
+      setTimeout(() => { document.getElementById("regStatus").textContent = ""; }, 3500);
+    });
+
+    document.getElementById("quickWaBtn").addEventListener("click", () => {
+      const name = document.getElementById("regName").value.trim() || "-";
+      const phone = document.getElementById("regPhone").value.trim() || "-";
+      const course = document.getElementById("regCourse").value;
+      const mode = document.getElementById("regMode").value;
+      const note = document.getElementById("regNote").value.trim() || "-";
+      const msg = `Merhaba Doğukan Bozkurt Hocam, müzik eğitimi için bilgi almak istiyorum.\nAd Soyad: ${name}\nTelefon: ${phone}\nDers Alanı: ${course}\nTercih: ${mode}\nNot: ${note}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+    });
+
+    function upsertStudent(name, course, phone = "", mode = "") {
+      const existing = state.students.find((s) => s.name.toLowerCase() === name.toLowerCase());
+      if (existing) {
+        existing.course = course || existing.course;
+        if (phone) existing.phone = phone;
+        if (mode) existing.mode = mode;
+      } else {
+        state.students.push({
+          id: "s_" + Date.now(),
+          name,
+          course,
+          phone,
+          mode
+        });
+      }
+    }
+
+    document.getElementById("studentLoginBtn").addEventListener("click", () => {
+      const name = document.getElementById("studentLoginName").value.trim();
+      const course = document.getElementById("studentCourseSelect").value;
+      if (!name) {
+        document.getElementById("studentActionStatus").textContent = "Lütfen adınızı soyadınızı girin.";
+        return;
+      }
+      currentStudent = { name, course };
+      upsertStudent(name, course);
+      saveState();
+      renderAll();
+      document.getElementById("studentActionStatus").textContent = `${name} olarak giriş yapıldı.`;
+      setTimeout(() => { document.getElementById("studentActionStatus").textContent = ""; }, 2500);
+    });
+
+    document.getElementById("sendLessonReqBtn").addEventListener("click", () => {
+      if (!currentStudent) {
+        document.getElementById("studentActionStatus").textContent = "Önce sol taraftan adınızla giriş yapın.";
+        return;
+      }
+      const slot = document.getElementById("reqDateTime").value.trim() || "Esnek";
+      const topic = document.getElementById("reqTopic").value.trim() || currentStudent.course;
+      state.requests.unshift({
+        id: "r_" + Date.now(),
+        studentName: currentStudent.name,
+        course: currentStudent.course,
+        slot,
+        topic,
+        status: "Bekliyor",
+        time: nowStr()
+      });
+      state.messages.unshift({
+        id: "m_" + Date.now(),
+        sender: "ogrenci",
+        senderName: currentStudent.name,
+        targetStudent: "ALL",
+        course: currentStudent.course,
+        cardType: "Ders Talebi",
+        link: "",
+        text: `Ders talebi: ${slot} — Konu: ${topic}`,
+        time: nowStr(),
+        completed: false
+      });
+      document.getElementById("reqDateTime").value = "";
+      document.getElementById("reqTopic").value = "";
+      saveState();
+      renderAll();
+      document.getElementById("studentActionStatus").textContent = "Ders talebiniz Doğukan Hocaya iletildi.";
+      setTimeout(() => { document.getElementById("studentActionStatus").textContent = ""; }, 2500);
+    });
+
+    document.getElementById("studentMsgForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!currentStudent) {
+        document.getElementById("studentActionStatus").textContent = "Önce sol taraftan adınızla giriş yapın.";
+        return;
+      }
+      const text = document.getElementById("studentMsgInput").value.trim();
+      if (!text) return;
+      state.messages.unshift({
+        id: "m_" + Date.now(),
+        sender: "ogrenci",
+        senderName: currentStudent.name,
+        targetStudent: currentStudent.name,
+        course: currentStudent.course,
+        cardType: "Öğrenci Notu",
+        link: "",
+        text,
+        time: nowStr(),
+        completed: false
+      });
+      document.getElementById("studentMsgInput").value = "";
+      saveState();
+      renderAll();
+    });
+
+    document.getElementById("hocaPinForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const pin = document.getElementById("hocaPinInput").value.trim();
+      if (pin === HOCA_PIN) {
+        document.getElementById("hocaLockBox").style.display = "none";
+        document.getElementById("hocaWorkspace").style.display = "block";
+        document.getElementById("hocaPinError").textContent = "";
+        renderAll();
+      } else {
+        document.getElementById("hocaPinError").textContent = "Hatalı erişim kodu.";
+      }
+    });
+
+    document.getElementById("hocaAnnouncementForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = document.getElementById("announcementInput").value.trim();
+      if (!text) return;
+      state.messages.unshift({
+        id: "m_" + Date.now(),
+        sender: "hoca",
+        senderName: "Doğukan Bozkurt",
+        targetStudent: "ALL",
+        course: "Genel Duyuru",
+        cardType: "Duyuru",
+        link: "",
+        text,
+        time: nowStr(),
+        completed: false
+      });
+      document.getElementById("announcementInput").value = "";
+      saveState();
+      renderAll();
+    });
+
+    document.getElementById("hocaReplyForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = document.getElementById("hocaReplyInput").value.trim();
+      const cardType = document.getElementById("hocaCardType").value;
+      const link = document.getElementById("hocaResourceLink").value.trim();
+      if (!text) return;
+      const found = state.students.find((s) => s.name === selectedHocaStudent);
+      state.messages.unshift({
+        id: "m_" + Date.now(),
+        sender: "hoca",
+        senderName: "Doğukan Bozkurt",
+        targetStudent: selectedHocaStudent,
+        course: found ? found.course : "Müzik Eğitimi",
+        cardType,
+        link,
+        text,
+        time: nowStr(),
+        completed: false
+      });
+      document.getElementById("hocaReplyInput").value = "";
+      document.getElementById("hocaResourceLink").value = "";
+      saveState();
+      renderAll();
+    });
+
+    document.getElementById("exportDataBtn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "dogukan-bozkurt-portal-yedek.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    function renderAll() {
+      const badge = document.getElementById("activeStudentLabel");
+      const nextBar = document.getElementById("studentNextLessonBar");
+
+      if (currentStudent) {
+        badge.textContent = `${currentStudent.name} (${currentStudent.course})`;
+        badge.classList.add("done");
+        const approved = state.requests.find(
+          (r) => r.studentName.toLowerCase() === currentStudent.name.toLowerCase() && r.status === "Onaylandı"
+        );
+        if (approved) {
+          nextBar.style.display = "block";
+          nextBar.textContent = `Planlanan Ders: ${approved.course} • ${approved.slot} (${approved.topic})`;
+        } else {
+          nextBar.style.display = "none";
+        }
+      } else {
+        badge.textContent = "Giriş yapılmadı";
+        badge.classList.remove("done");
+        nextBar.style.display = "none";
+      }
+
+      const studentFeed = document.getElementById("studentFeed");
+      const visibleForStudent = state.messages.filter((m) => {
+        if (!currentStudent) return m.targetStudent === "ALL";
+        return (
+          m.targetStudent === "ALL" ||
+          m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase() ||
+          m.senderName.toLowerCase() === currentStudent.name.toLowerCase()
+        );
+      });
+
+      studentFeed.innerHTML = visibleForStudent.length
+        ? visibleForStudent.map((m) => `
+          <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
+            <div class="msg-meta">
+              <strong>${escapeHtml(m.senderName)} • ${escapeHtml(m.cardType || m.course || "")}</strong>
+              <span>${escapeHtml(m.time)}</span>
+            </div>
+            <div class="msg-body">${escapeHtml(m.text)}</div>
+            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright); font-size:0.84rem;">Kaynak Bağlantısını Aç →</a></div>` : ""}
+            ${m.sender === "hoca" ? `
+              <div style="margin-top:10px;">
+                <button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">
+                  ${m.completed ? "Tamamlandı ✓" : "Çalıştım / Tamamla"}
+                </button>
+              </div>
+            ` : ""}
+          </div>
+        `).join("")
+        : `<p style="color:var(--muted); font-size:0.88rem;">Henüz ders notu veya mesaj bulunmuyor.</p>`;
+
+      studentFeed.querySelectorAll("[data-toggle-done]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = state.messages.find((x) => x.id === btn.dataset.toggleDone);
+          if (item) {
+            item.completed = !item.completed;
+            saveState();
+            renderAll();
+          }
+        });
+      });
+
+      const sList = document.getElementById("hocaStudentList");
+      sList.innerHTML = [
+        `<div class="student-pill ${selectedHocaStudent === "ALL" ? "active" : ""}" data-select-s="ALL">
+          <span>Tüm Öğrenciler</span>
+          <span class="status-pill">Genel</span>
+        </div>`,
+        ...state.students.map((s) => `
+          <div class="student-pill ${selectedHocaStudent === s.name ? "active" : ""}" data-select-s="${escapeHtml(s.name)}">
+            <div>
+              <strong>${escapeHtml(s.name)}</strong>
+              <span style="display:block; font-size:0.75rem; color:var(--muted);">${escapeHtml(s.course)}</span>
+            </div>
+            <span class="status-pill">Seç</span>
+          </div>
+        `)
+      ].join("");
+
+      sList.querySelectorAll("[data-select-s]").forEach((el) => {
+        el.addEventListener("click", () => {
+          selectedHocaStudent = el.dataset.selectS;
+          renderAll();
+        });
+      });
+
+      document.getElementById("selectedStudentTitle").textContent = selectedHocaStudent === "ALL" ? "Tüm Öğrenciler" : selectedHocaStudent;
+      const foundStudent = state.students.find((s) => s.name === selectedHocaStudent);
+      document.getElementById("selectedStudentCourse").textContent = foundStudent ? foundStudent.course : "Genel";
+
+      const hocaFeed = document.getElementById("hocaFeed");
+      const visibleForHoca = state.messages.filter((m) => {
+        if (selectedHocaStudent === "ALL") return true;
+        return (
+          m.targetStudent === "ALL" ||
+          m.targetStudent.toLowerCase() === selectedHocaStudent.toLowerCase() ||
+          m.senderName.toLowerCase() === selectedHocaStudent.toLowerCase()
+        );
+      });
+
+      hocaFeed.innerHTML = visibleForHoca.length
+        ? visibleForHoca.map((m) => `
+          <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
+            <div class="msg-meta">
+              <strong>${escapeHtml(m.senderName)} → ${escapeHtml(m.targetStudent === "ALL" ? "Herkes" : m.targetStudent)} • ${escapeHtml(m.cardType || "")}</strong>
+              <span class="status-pill ${m.completed ? "done" : ""}">${m.completed ? "Tamamlandı" : escapeHtml(m.time)}</span>
+            </div>
+            <div class="msg-body">${escapeHtml(m.text)}</div>
+            ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright); font-size:0.82rem;">Kaynak Bağlantısı</a></div>` : ""}
+          </div>
+        `).join("")
+        : `<p style="color:var(--muted); font-size:0.88rem;">Bu görünümde mesaj yok.</p>`;
+
+      const reqFeed = document.getElementById("hocaRequestsFeed");
+      reqFeed.innerHTML = state.requests.length
+        ? state.requests.map((r) => `
+          <div class="msg-item">
+            <div class="msg-meta">
+              <strong>${escapeHtml(r.studentName)} • ${escapeHtml(r.course)}</strong>
+              <span class="status-pill ${r.status === "Onaylandı" ? "done" : ""}">${escapeHtml(r.status)}</span>
+            </div>
+            <div class="msg-body">Tercih: ${escapeHtml(r.slot)} — Konu: ${escapeHtml(r.topic)} (${escapeHtml(r.time)})</div>
+            <div style="margin-top:8px;">
+              <button type="button" class="btn btn-ghost btn-sm" data-approve="${escapeHtml(r.id)}">Onayla</button>
+            </div>
+          </div>
+        `).join("")
+        : `<p style="color:var(--muted); font-size:0.88rem;">Henüz ders talebi yok.</p>`;
+
+      reqFeed.querySelectorAll("[data-approve]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = state.requests.find((x) => x.id === btn.dataset.approve);
+          if (item) {
+            item.status = "Onaylandı";
+            state.messages.unshift({
+              id: "m_" + Date.now(),
+              sender: "hoca",
+              senderName: "Doğukan Bozkurt",
+              targetStudent: item.studentName,
+              course: item.course,
+              cardType: "Ders Onayı",
+              link: "",
+              text: `Ders talebiniz onaylandı: ${item.slot} (${item.topic})`,
+              time: nowStr(),
+              completed: false
+            });
+            saveState();
+            renderAll();
+          }
+        });
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    renderAll();
+    syncFromCloudIfConfigured();
   </script>
 </body>
 </html>
