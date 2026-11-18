@@ -657,16 +657,9 @@
 
     <!-- 2. ÖĞRENCİ GİRİŞİ -->
     <section id="view-ogrenci" class="page-view">
-      <div class="portal-banner">
-        <div>
-          <span class="tag">Öğrenci Portalı</span>
-          <h2 class="section-title" style="font-size: 1.65rem;">Öğrenci Girişi & Çalışma Ekranı</h2>
-        </div>
-        <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm" style="display:none;">Çıkış Yap</button>
-      </div>
-
-      <!-- GİRİŞ FORMU -->
-      <div id="studentAuthScreen" class="card form-stack" style="max-width: 440px;">
+      <!-- GİRİŞ FORMU (GİRİŞ YAPMADAN ÖNCE SADECE BU GÖRÜNÜR) -->
+      <div id="studentAuthScreen" class="card form-stack" style="max-width: 440px; margin: 20px auto;">
+        <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
         <h3>Öğrenci Girişi</h3>
         <p style="font-size: 0.84rem;">Doğukan Hoca tarafından verilen kullanıcı adı ve şifrenizle giriş yapın.</p>
         <form id="memberLoginForm" class="form-stack">
@@ -683,8 +676,16 @@
         </form>
       </div>
 
-      <!-- ÖĞRENCİ ÇALIŞMA ALANI -->
+      <!-- ÖĞRENCİ ÇALIŞMA ALANI (SADECE GİRİŞ YAPTIKTAN SONRA AÇILIR) -->
       <div id="studentMemberWorkspace" style="display:none;">
+        <div class="portal-banner">
+          <div>
+            <span class="tag">Öğrenci Portalı</span>
+            <h2 class="section-title" style="font-size: 1.65rem;">Çalışma & Ders Takip Ekranı</h2>
+          </div>
+          <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
+        </div>
+
         <!-- CANLI DERS KARTI -->
         <div id="studentLiveRoomCard" class="live-room-card" style="display:none;">
           <div>
@@ -777,15 +778,9 @@
 
     <!-- 3. HOCA GİRİŞİ -->
     <section id="view-hoca" class="page-view">
-      <div class="portal-banner">
-        <div>
-          <span class="tag">Eğitmen Kontrol Paneli</span>
-          <h2 class="section-title" style="font-size: 1.65rem;">Doğukan Bozkurt — Öğrenci & Ödev Yönetimi</h2>
-        </div>
-        <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Yedek İndir (JSON)</button>
-      </div>
-
-      <div id="hocaLockBox" class="card form-stack" style="max-width: 420px;">
+      <!-- HOCA ŞİFRE KUTUSU (GİRİŞ YAPMADAN ÖNCE SADECE BU GÖRÜNÜR) -->
+      <div id="hocaLockBox" class="card form-stack" style="max-width: 420px; margin: 20px auto;">
+        <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
         <h3>Hoca Girişi</h3>
         <form id="hocaPinForm" class="form-stack">
           <div class="field">
@@ -797,7 +792,19 @@
         </form>
       </div>
 
+      <!-- HOCA YÖNETİM PANELİ VE YEDEK İNDİRME (SADECE HOCA GİRİŞ YAPTIKTAN SONRA AÇILIR) -->
       <div id="hocaWorkspace" style="display:none;">
+        <div class="portal-banner">
+          <div>
+            <span class="tag">Eğitmen Kontrol Paneli</span>
+            <h2 class="section-title" style="font-size: 1.65rem;">Doğukan Bozkurt — Öğrenci & Ödev Yönetimi</h2>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Yedek İndir (JSON)</button>
+            <button type="button" id="hocaLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
+          </div>
+        </div>
+
         <div class="portal-grid">
           <!-- SOL SÜTUN: ÖĞRENCİ SEÇİMİ VE YENİ ÖĞRENCİ EKLEME -->
           <div class="card form-stack">
@@ -1622,6 +1629,12 @@
       }
     });
 
+    document.getElementById("hocaLogoutBtn").addEventListener("click", () => {
+      document.getElementById("hocaPinInput").value = "";
+      document.getElementById("hocaWorkspace").style.display = "none";
+      document.getElementById("hocaLockBox").style.display = "grid";
+    });
+
     document.getElementById("hocaAddStudentForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("newStuName").value.trim();
@@ -1644,7 +1657,7 @@
       setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
     });
 
-    /* HOCA PDF LİNKİ EKLEME (SEÇİLİ ÖĞRENCİYE VEYA TÜM ÖĞRENCİLERE) */
+    /* HOCA PDF LİNKİ EKLEME */
     document.getElementById("hocaAddPdfForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("hocaPdfTitle").value.trim();
@@ -1813,12 +1826,10 @@
 
       const authScreen = document.getElementById("studentAuthScreen");
       const memberWorkspace = document.getElementById("studentMemberWorkspace");
-      const logoutBtn = document.getElementById("studentLogoutBtn");
 
       if (currentStudent) {
         authScreen.style.display = "none";
         memberWorkspace.style.display = "block";
-        logoutBtn.style.display = "inline-flex";
 
         const stObj = state.students.find((s) => s.name.toLowerCase() === currentStudent.name.toLowerCase()) || currentStudent;
         currentStudent = stObj;
@@ -1881,7 +1892,6 @@
       } else {
         authScreen.style.display = "grid";
         memberWorkspace.style.display = "none";
-        logoutBtn.style.display = "none";
       }
 
       const studentFeed = document.getElementById("studentFeed");
