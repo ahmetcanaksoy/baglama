@@ -285,7 +285,7 @@
     .slot-pill.free { background: rgba(46, 184, 114, 0.13); color: var(--ok); cursor: pointer; }
     .slot-pill.busy { background: rgba(239, 68, 68, 0.12); color: var(--danger); opacity: 0.75; }
 
-    /* DÜZENLİ PANEL İÇİ ALT SEKMELER (ÖĞRENCİ VE HOCA İÇİN) */
+    /* DÜZENLİ PANEL İÇİ ALT SEKMELER */
     .portal-banner {
       display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
       background: var(--surface); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
@@ -309,29 +309,23 @@
     .sub-pane { display: none; }
     .sub-pane.active { display: block; }
 
-    /* TÜRKÜYE IŞINLANMA VE ARAMA KUTUSU */
-    .song-jump-grid {
+    /* SADECE LİNK OLARAK GÖRÜNEN PDF LİSTESİ */
+    .pdf-link-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      max-height: 230px;
-      overflow-y: auto;
-      margin-top: 10px;
-      padding-right: 4px;
+      gap: 10px;
+      margin-top: 12px;
     }
 
-    .song-jump-btn {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 9px 11px; border-radius: 10px; border: 1px solid var(--border);
-      background: var(--surface-2); color: var(--text); font-size: 0.79rem;
-      font-weight: 600; cursor: pointer; text-align: left; transition: all 0.15s ease;
-    }
-    .song-jump-btn:hover { border-color: var(--gold); background: var(--gold-glow); }
-    .song-jump-btn span.pg { font-size: 0.72rem; color: var(--gold); font-weight: 700; margin-left: 6px; white-space: nowrap; }
-
-    .pdf-preview-frame {
-      width: 100%; height: 560px; border: 1px solid var(--border-strong);
-      border-radius: 14px; margin-top: 14px; background: #14100d; display: block;
+    .pdf-link-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-strong);
     }
 
     .live-room-card {
@@ -386,7 +380,7 @@
     footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 0.84rem; background: var(--header-bg); }
 
     @media (max-width: 980px) {
-      .hero, .portal-grid, .grid-2, .grid-3, .badge-grid, .song-jump-grid { grid-template-columns: 1fr; }
+      .hero, .portal-grid, .grid-2, .grid-3, .badge-grid { grid-template-columns: 1fr; }
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 560px) {
@@ -661,7 +655,7 @@
       </div>
     </section>
 
-    <!-- 2. ÖĞRENCİ GİRİŞİ (SADE VE DÜZENLİ SEKMELİ YAPI) -->
+    <!-- 2. ÖĞRENCİ GİRİŞİ -->
     <section id="view-ogrenci" class="page-view">
       <div class="portal-banner">
         <div>
@@ -739,35 +733,16 @@
           <!-- SAĞ SEKMELİ DÜZENLİ ALAN -->
           <div>
             <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 Metot PDF & Türküye Işınlanma</button>
+              <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 PDF Nota & Çalışma Linkleri</button>
               <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">📝 Hocanın Verdiği Ödevler & Mesaj</button>
               <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-rozet">🏅 Gelişim Tablosu (Hoca Onaylı)</button>
             </div>
 
-            <!-- SEKME 1: METOT PDF & TÜRKÜYE IŞINLANMA -->
+            <!-- SEKME 1: SADECE LİNK OLARAK GÖRÜNEN PDF ÇEKMECESİ -->
             <div id="pane-stu-pdf" class="sub-pane active">
               <div class="card">
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
-                  <h3>📘 Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF</h3>
-                  <div style="display:flex; gap:8px;">
-                    <a href="./dogukanbaglamametodu.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Tam Ekran Aç</a>
-                    <a href="./dogukanbaglamametodu.pdf" download class="btn btn-sm">PDF İndir ↓</a>
-                  </div>
-                </div>
-
-                <!-- ESER ARAMA VE SAYFAYA IŞINLANMA -->
-                <div class="field">
-                  <label for="methodSongSearch">Metot İçinde Türkü veya Etüt Ara (Tıkladığınızda PDF O Sayfayı Açar)</label>
-                  <input type="text" id="methodSongSearch" placeholder="Türkü veya etüt adı yazın (Örn: Maçka, Uzun İnce, Tezene, Yalan Dünya...)" />
-                </div>
-                <div class="song-jump-grid" id="songJumpGrid"></div>
-
-                <iframe id="methodPdfIframe" class="pdf-preview-frame" src="./dogukanbaglamametodu.pdf#page=1" title="Bağlama Metodu PDF"></iframe>
-
-                <div id="studentExtraPdfsWrap" style="margin-top:16px; display:none;">
-                  <h4 style="font-size:0.9rem; margin-bottom:8px;">Hocanın Eklediği Diğer Dosyalar</h4>
-                  <div class="grid-2" id="studentPdfDrawer"></div>
-                </div>
+                <h3>PDF Nota & Metot Bağlantıları</h3>
+                <div class="pdf-link-list" id="studentPdfDrawer"></div>
               </div>
             </div>
 
@@ -800,7 +775,7 @@
       </div>
     </section>
 
-    <!-- 3. HOCA GİRİŞİ (DÜZENLİ VE TEMİZ YÖNETİM PANELİ) -->
+    <!-- 3. HOCA GİRİŞİ -->
     <section id="view-hoca" class="page-view">
       <div class="portal-banner">
         <div>
@@ -861,12 +836,12 @@
           <!-- SAĞ SÜTUN: SEKMELİ TEMİZ HOCA ARAÇLARI -->
           <div>
             <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / Not Ekle & Mesajlar</button>
+              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / PDF Linki Ekle & Mesajlar</button>
               <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur Sayacı, Canlı Ders & Gelişim Onayı</button>
               <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Takvim, Talepler & Firebase</button>
             </div>
 
-            <!-- HOCA SEKME 1: ÖDEV EKLEME VE MESAJ AKIŞI -->
+            <!-- HOCA SEKME 1: ÖDEV / PDF LİNKİ EKLEME VE MESAJ AKIŞI -->
             <div id="pane-hoca-odev" class="sub-pane active">
               <div class="card form-stack">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
@@ -874,27 +849,38 @@
                   <span class="status-pill" id="selectedStudentCourse">Genel</span>
                 </div>
 
+                <!-- DOĞRUDAN PDF LİNKİ EKLEME KUTUSU -->
+                <div class="msg-item">
+                  <strong>Öğrenciye Yeni PDF / Nota Linki Ekle</strong>
+                  <form id="hocaAddPdfForm" class="field-row" style="margin-top:8px;">
+                    <input type="text" id="hocaPdfTitle" placeholder="PDF Başlığı (Örn: Egzersiz Notası PDF)" required />
+                    <div style="display:flex; gap:8px;">
+                      <input type="text" id="hocaPdfUrl" placeholder="PDF Linki (Örn: ./dosya.pdf veya https://...)" required />
+                      <button type="submit" class="btn btn-sm" style="white-space:nowrap;">PDF Linki Ekle</button>
+                    </div>
+                  </form>
+                </div>
+
                 <form id="hocaReplyForm" class="form-stack">
                   <div class="field-row">
                     <div class="field">
                       <label for="hocaCardType">Ödev / Bildirim Başlığı</label>
                       <select id="hocaCardType">
-                        <option value="Metot Sayfa Ödevi">Metot Sayfa Ödevi</option>
                         <option value="Ders Notu / Ödev">Ders Notu / Ödev</option>
                         <option value="Teknik / Tezene Notu">Teknik / Tezene Notu</option>
                         <option value="Genel Duyuru">Genel Duyuru</option>
                       </select>
                     </div>
                     <div class="field">
-                      <label for="hocaResourceLink">Ek PDF / Video Bağlantısı (İsteğe Bağlı)</label>
-                      <input type="url" id="hocaResourceLink" placeholder="https://..." />
+                      <label for="hocaResourceLink">Ek Bağlantı (İsteğe Bağlı)</label>
+                      <input type="text" id="hocaResourceLink" placeholder="https://... veya ./dogukanbaglamametodu.pdf" />
                     </div>
                   </div>
                   <div class="field">
                     <label for="hocaReplyInput">Öğrenciye Eklenecek Ödev veya Ders Notu</label>
-                    <textarea id="hocaReplyInput" rows="3" placeholder="Örn: Bu hafta metottan Alıştırma-1 ve Maçka Yolları notasını çalışalım..." required></textarea>
+                    <textarea id="hocaReplyInput" rows="3" placeholder="Öğrenciye göndermek istediğiniz ödev veya çalışma notunu yazın..." required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Öğrenci Ekranına Ekle</button>
+                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Öğrenci Ekranına Gönder</button>
                 </form>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
@@ -991,65 +977,11 @@
     const WHATSAPP_NUMBER = "905374394992";
     const HOCA_PIN = "baglama2026";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v10";
+    const STORAGE_KEY = "dogukan_muzik_portal_v11";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
     const MAIN_METHOD_PDF_URL = "./dogukanbaglamametodu.pdf";
-
-    /* 94 SAYFALIK METOT İÇİN TÜRKÜYE IŞINLANMA İNDEKSİ */
-    const METHOD_INDEX = [
-      { title: "Temel Müzik & Porte", page: 1 },
-      { title: "Sol Anahtarı & Notalar", page: 2 },
-      { title: "Ölçü & Röpriz / Senyö", page: 4 },
-      { title: "Alıştırma 1-2-3 (Tel Geçiş)", page: 6 },
-      { title: "Tezene Anahtarı (Kalıplar)", page: 9 },
-      { title: "Süt İçtim Dilim Yandı", page: 10 },
-      { title: "Maçka Yolları", page: 11 },
-      { title: "Toycular", page: 12 },
-      { title: "Gelin Ayşe", page: 15 },
-      { title: "Yaylalar", page: 16 },
-      { title: "Mavilim", page: 17 },
-      { title: "Karşıda Görünen Ne Güzel Yayla", page: 19 },
-      { title: "Sen Bir Ceylan Olsan", page: 20 },
-      { title: "Şu Dağlarda Kar Olsaydım", page: 21 },
-      { title: "Ne Ağlarsın Benim Zülfü Siyahım", page: 22 },
-      { title: "Nem Kaldı", page: 23 },
-      { title: "Kara Tren Gelmez Mola", page: 25 },
-      { title: "Kirpiğin Kaşına Değdiği Zaman", page: 26 },
-      { title: "Ela Gözlü Pirim Geldi", page: 28 },
-      { title: "Uzun İnce Bir Yoldayım", page: 29 },
-      { title: "Gine Gam Yükünün Kervanı Geldi", page: 31 },
-      { title: "Çekme & Çarpma Etütleri", page: 35 },
-      { title: "Çarşambayı Sel Aldı", page: 38 },
-      { title: "Bugün Benim Efkarım Var", page: 39 },
-      { title: "Mevlam Bir Çok Dert Vermiş", page: 41 },
-      { title: "Çeşmi Siyahım", page: 42 },
-      { title: "Şu Metrisin Önü", page: 44 },
-      { title: "Çekme-Çarpma-Takma Karışık", page: 45 },
-      { title: "Ne Güzel Yaratmış", page: 46 },
-      { title: "Sen Bir Aysın", page: 49 },
-      { title: "Hekimoğlu", page: 53 },
-      { title: "Halil İbrahim", page: 55 },
-      { title: "Sarı Gelin", page: 57 },
-      { title: "Karadır Kaşların", page: 62 },
-      { title: "Kara Toprak", page: 63 },
-      { title: "Halkalı Şeker", page: 65 },
-      { title: "Al Yazmalım", page: 66 },
-      { title: "Su Sızıyor", page: 68 },
-      { title: "Beyaz Giyme Toz Olur", page: 70 },
-      { title: "Gönül Gurbet Ele Varma", page: 71 },
-      { title: "Telli Turnam", page: 72 },
-      { title: "Eklemedir Koca Konak", page: 73 },
-      { title: "Al Fadimem", page: 74 },
-      { title: "Yalan Dünya", page: 76 },
-      { title: "Derdim Çoktur", page: 78 },
-      { title: "Bırak Gam Kederi", page: 81 },
-      { title: "Hazin Hazin Esen Seher Yelleri", page: 84 },
-      { title: "Burçak Tarlası", page: 90 },
-      { title: "Çeke Çeke", page: 93 },
-      { title: "Elmas", page: 94 }
-    ];
 
     /* 23 PERDE TAM BAĞLAMA NOTA VE FREKANS DİZİLİMİ */
     const FRET_RATIOS = [
@@ -1132,31 +1064,6 @@
       });
     });
 
-    /* METOT TÜRKÜYE IŞINLANMA RENDER */
-    function renderSongJumpList(query = "") {
-      const q = query.trim().toLowerCase();
-      const filtered = METHOD_INDEX.filter((item) => !q || item.title.toLowerCase().includes(q));
-      const grid = document.getElementById("songJumpGrid");
-      grid.innerHTML = filtered.map((item) => `
-        <button type="button" class="song-jump-btn" data-jump-page="${item.page}">
-          <span>${escapeHtml(item.title)}</span>
-          <span class="pg">Syf. ${item.page} →</span>
-        </button>
-      `).join("");
-
-      grid.querySelectorAll("[data-jump-page]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const pg = btn.dataset.jumpPage;
-          const frame = document.getElementById("methodPdfIframe");
-          frame.src = `${MAIN_METHOD_PDF_URL}#page=${pg}`;
-        });
-      });
-    }
-
-    document.getElementById("methodSongSearch").addEventListener("input", (e) => {
-      renderSongJumpList(e.target.value);
-    });
-
     const SKILL_BADGES = [
       { id: "b_mizrap", title: "Temel Mızrap & Tutuş" },
       { id: "b_nota", title: "Nota & Bona Okuma" },
@@ -1176,7 +1083,6 @@
       { day: "Pazar", slots: [{ time: "13:00", busy: false }, { time: "15:00", busy: true }, { time: "17:00", busy: false }] }
     ];
 
-    /* OTOMATİK HAZIR MESAJLAR SİLİNDİ - SADECE HOCA EKLEDİĞİNDE GÖRÜNÜR */
     const defaultState = {
       students: [
         {
@@ -1192,7 +1098,13 @@
           lessonsTotal: 4,
           liveLink: "",
           liveActive: false,
-          pdfs: [],
+          pdfs: [
+            {
+              id: "p_main_method",
+              title: MAIN_METHOD_PDF_TITLE,
+              url: MAIN_METHOD_PDF_URL
+            }
+          ],
           badges: ["b_mizrap"]
         }
       ],
@@ -1204,6 +1116,21 @@
     let state = loadState();
     let currentStudent = null;
     let selectedHocaStudent = "ALL";
+
+    function ensureMethodPdfForAllStudents(stObj) {
+      if (!stObj || !Array.isArray(stObj.students)) return;
+      stObj.students.forEach((stu) => {
+        if (!Array.isArray(stu.pdfs)) stu.pdfs = [];
+        const hasMethod = stu.pdfs.some((p) => p.url === MAIN_METHOD_PDF_URL || p.id === "p_main_method");
+        if (!hasMethod) {
+          stu.pdfs.unshift({
+            id: "p_main_method",
+            title: MAIN_METHOD_PDF_TITLE,
+            url: MAIN_METHOD_PDF_URL
+          });
+        }
+      });
+    }
 
     function getActiveFirebaseUrl() {
       try {
@@ -1224,6 +1151,7 @@
           const parsed = JSON.parse(raw);
           if (!Array.isArray(parsed.schedule)) parsed.schedule = structuredClone(DEFAULT_SCHEDULE);
           if (!Array.isArray(parsed.messages)) parsed.messages = [];
+          ensureMethodPdfForAllStudents(parsed);
           return parsed;
         }
       } catch (_) {}
@@ -1231,6 +1159,7 @@
     }
 
     function saveState() {
+      ensureMethodPdfForAllStudents(state);
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
       const fbUrl = getActiveFirebaseUrl();
       if (fbUrl) {
@@ -1303,7 +1232,7 @@
       el.addEventListener("click", () => goView(el.dataset.go));
     });
 
-    /* GERÇEKÇİ BAĞLAMA SES SENTEZLEYİCİ (ÇİFT TEL & MIZRAP VURUŞU) */
+    /* GERÇEKÇİ BAĞLAMA SES SENTEZLEYİCİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
@@ -1322,7 +1251,6 @@
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      /* Mızrap (Tezene) vuruş atağı */
       const noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 0.025, ctx.sampleRate);
       const output = noiseBuf.getChannelData(0);
       for (let i = 0; i < noiseBuf.length; i++) {
@@ -1340,7 +1268,6 @@
       noiseGain.connect(ctx.destination);
       noise.start(now);
 
-      /* Bağlama çift tel + oktav rezonansı */
       const harmonics = [
         { mult: 1, type: "sawtooth", amp: 0.22, decay: 1.55 },
         { mult: 1.0018, type: "sawtooth", amp: 0.16, decay: 1.45 },
@@ -1586,7 +1513,13 @@
         lessonsTotal: pkgTotal || 4,
         liveLink: "",
         liveActive: false,
-        pdfs: [],
+        pdfs: [
+          {
+            id: "p_main_method",
+            title: MAIN_METHOD_PDF_TITLE,
+            url: MAIN_METHOD_PDF_URL
+          }
+        ],
         badges: []
       };
       state.students.push(created);
@@ -1711,6 +1644,32 @@
       setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
     });
 
+    /* HOCA PDF LİNKİ EKLEME (SEÇİLİ ÖĞRENCİYE VEYA TÜM ÖĞRENCİLERE) */
+    document.getElementById("hocaAddPdfForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("hocaPdfTitle").value.trim();
+      const url = document.getElementById("hocaPdfUrl").value.trim();
+      if (!title || !url) return;
+
+      const targets = selectedHocaStudent === "ALL"
+        ? state.students
+        : state.students.filter((s) => s.name === selectedHocaStudent);
+
+      targets.forEach((stu) => {
+        if (!Array.isArray(stu.pdfs)) stu.pdfs = [];
+        stu.pdfs.push({
+          id: "pdf_" + Date.now() + Math.random(),
+          title,
+          url
+        });
+      });
+
+      document.getElementById("hocaPdfTitle").value = "";
+      document.getElementById("hocaPdfUrl").value = "";
+      saveState();
+      renderAll();
+    });
+
     document.getElementById("hocaReplyForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const text = document.getElementById("hocaReplyInput").value.trim();
@@ -1718,15 +1677,6 @@
       const link = document.getElementById("hocaResourceLink").value.trim();
       if (!text) return;
       const found = state.students.find((s) => s.name === selectedHocaStudent);
-      if (found && link) {
-        if (!Array.isArray(found.pdfs)) found.pdfs = [];
-        found.pdfs.unshift({
-          id: "pdf_" + Date.now(),
-          title: `${cardType}: ${text.slice(0, 32)}`,
-          url: link,
-          date: nowStr()
-        });
-      }
       state.messages.unshift({
         id: "m_" + Date.now(),
         sender: "hoca",
@@ -1857,6 +1807,7 @@
     }
 
     function renderAll() {
+      ensureMethodPdfForAllStudents(state);
       renderUsulBeats();
       renderSchedules();
 
@@ -1903,20 +1854,18 @@
         document.getElementById("studentPracticeBar").style.width = Math.min(100, Math.round((mins / 180) * 100)) + "%";
         document.getElementById("studentPracticeText").textContent = `${mins} / 180 dk`;
 
-        const extraWrap = document.getElementById("studentExtraPdfsWrap");
+        /* SADECE LİNK OLARAK GÖRÜNEN PDF LİSTESİ */
         const pdfDrawer = document.getElementById("studentPdfDrawer");
-        const extraPdfs = (stObj.pdfs || []).filter((p) => p.url !== MAIN_METHOD_PDF_URL);
-        if (extraPdfs.length) {
-          extraWrap.style.display = "block";
-          pdfDrawer.innerHTML = extraPdfs.map((p) => `
-            <div class="msg-item" style="display:flex; justify-content:space-between; align-items:center;">
-              <strong>📄 ${escapeHtml(p.title)}</strong>
-              <a href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Aç</a>
+        const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : [];
+        pdfDrawer.innerHTML = pdfList.map((p) => `
+          <div class="pdf-link-card">
+            <strong style="font-size:0.92rem; color:var(--gold-light);">📘 ${escapeHtml(p.title)}</strong>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">PDF Aç →</a>
+              <a href="${escapeHtml(p.url)}" download class="btn btn-ghost btn-sm">PDF İndir ↓</a>
             </div>
-          `).join("");
-        } else {
-          extraWrap.style.display = "none";
-        }
+          </div>
+        `).join("");
 
         /* GELİŞİM TABLOSU (SADECE HOCA ONAYLI GÖRÜNÜM) */
         const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
@@ -1953,7 +1902,7 @@
               <span>${escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
-            ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.82rem;">Dosyayı / Bağlantıyı Aç →</a></div>` : ""}
+            ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.82rem;">PDF / Bağlantıyı Aç →</a></div>` : ""}
             ${m.sender === "hoca" ? `
               <div style="margin-top:8px;">
                 <button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">
@@ -2128,7 +2077,6 @@
     }
 
     renderBaglamaNeck();
-    renderSongJumpList();
     renderAll();
     syncFromCloudIfConfigured();
   </script>
