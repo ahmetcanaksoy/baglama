@@ -228,7 +228,6 @@
     .btn-danger { background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; }
     .btn-sm { padding: 7px 13px; font-size: 0.79rem; border-radius: 9px; }
 
-    /* HERO */
     .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 38px; align-items: center; margin-bottom: 44px; }
     .eyebrow {
       display: inline-block; padding: 6px 14px; border-radius: 999px;
@@ -296,7 +295,6 @@
       color: var(--gold-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
     }
 
-    /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ + TÜRKÜ ÇALAR */
     .baglama-studio-card {
       background: linear-gradient(180deg, rgba(32, 21, 13, 0.94) 0%, rgba(16, 10, 7, 0.96) 100%);
       backdrop-filter: blur(18px); border: 1.5px solid var(--border-strong); border-radius: 22px; padding: 22px; color: #f7efe6;
@@ -940,12 +938,17 @@
 
             <hr style="border:none; border-top:1px solid var(--border);" />
 
-            <h3>Haftalık Çalışma Süresi</h3>
+            <!-- HAFTALIK ÇALIŞMA SÜRESİ (ELLE GİRİŞ) -->
+            <h3>Haftalık Çalışma Süresi (dk)</h3>
             <div class="progress-track"><div class="progress-fill" id="studentPracticeBar"></div></div>
-            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+            <div style="display:flex; justify-content:space-between; font-size:0.82rem; font-weight:700; margin-bottom:4px;">
               <span id="studentPracticeText">0 / 180 dk</span>
-              <button type="button" id="addPracticeBtn" class="btn btn-ghost btn-sm">+30 dk Ekle</button>
             </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <input type="number" id="studentPracticeInput" min="0" max="2000" placeholder="Dakika girin" />
+              <button type="button" id="savePracticeMinsBtn" class="btn btn-sm" style="white-space:nowrap;">Kaydet</button>
+            </div>
+            <span id="practiceSaveStatus" style="font-size:0.78rem; color:var(--ok); font-weight:700;"></span>
 
             <hr style="border:none; border-top:1px solid var(--border);" />
 
@@ -1243,7 +1246,7 @@
     const DEFAULT_HOCA_PIN = "baglama2026";
     const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v19";
+    const STORAGE_KEY = "dogukan_muzik_portal_v20";
     const AUTH_PERSIST_KEY = "dogukan_auth_persist_v1";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
@@ -1589,7 +1592,7 @@
       }
     });
 
-    /* ÇİFT TELLİ BAĞLAMA SES SENTEZLEYİCİ */
+    /* YUMUŞAK VE DOĞAL ÇİFT TELLİ BAĞLAMA SES SENTEZLEYİCİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
@@ -1603,42 +1606,43 @@
       return audioCtx;
     }
 
-    function playBaglamaSound(freq, durationSec = 1.85, velocity = 1.0) {
+    function playBaglamaSound(freq, durationSec = 1.6, velocity = 0.92) {
       const ctx = ensureAudioCtx();
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      const clickLen = Math.floor(ctx.sampleRate * 0.032);
+      /* Yumuşak mızrap teması */
+      const clickLen = Math.floor(ctx.sampleRate * 0.018);
       const noiseBuf = ctx.createBuffer(1, clickLen, ctx.sampleRate);
       const output = noiseBuf.getChannelData(0);
       for (let i = 0; i < clickLen; i++) {
-        output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.007));
+        output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.0045));
       }
       const noise = ctx.createBufferSource();
       noise.buffer = noiseBuf;
       const noiseFilter = ctx.createBiquadFilter();
-      noiseFilter.type = "bandpass";
-      noiseFilter.frequency.setValueAtTime(Math.min(4800, freq * 3.8), now);
-      noiseFilter.Q.setValueAtTime(2.4, now);
+      noiseFilter.type = "lowpass";
+      noiseFilter.frequency.setValueAtTime(Math.min(2600, freq * 2.4), now);
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.34 * velocity, now);
+      noiseGain.gain.setValueAtTime(0.14 * velocity, now);
       noise.connect(noiseFilter);
       noiseFilter.connect(noiseGain);
       noiseGain.connect(ctx.destination);
       noise.start(now);
 
+      /* Sıcak telli gövde harmonikleri */
       const harmonics = [
-        { mult: 1.0, type: "sawtooth", amp: 0.21 * velocity, decay: durationSec },
-        { mult: 1.0022, type: "sawtooth", amp: 0.16 * velocity, decay: durationSec * 0.94 },
-        { mult: 2.0, type: "triangle", amp: 0.12 * velocity, decay: durationSec * 0.65 },
-        { mult: 3.0, type: "sine", amp: 0.055 * velocity, decay: durationSec * 0.42 }
+        { mult: 1.0, type: "triangle", amp: 0.24 * velocity, decay: durationSec },
+        { mult: 1.0015, type: "sine", amp: 0.16 * velocity, decay: durationSec * 0.95 },
+        { mult: 2.0, type: "sine", amp: 0.09 * velocity, decay: durationSec * 0.62 },
+        { mult: 3.0, type: "sine", amp: 0.03 * velocity, decay: durationSec * 0.35 }
       ];
 
       const bodyFilter = ctx.createBiquadFilter();
       bodyFilter.type = "lowpass";
-      bodyFilter.Q.setValueAtTime(1.6, now);
-      bodyFilter.frequency.setValueAtTime(Math.min(6200, freq * 7.5), now);
-      bodyFilter.frequency.exponentialRampToValueAtTime(Math.max(140, freq * 1.55), now + durationSec * 0.68);
+      bodyFilter.Q.setValueAtTime(1.1, now);
+      bodyFilter.frequency.setValueAtTime(Math.min(3400, freq * 4.5), now);
+      bodyFilter.frequency.exponentialRampToValueAtTime(Math.max(130, freq * 1.35), now + durationSec * 0.75);
       bodyFilter.connect(ctx.destination);
 
       harmonics.forEach((h) => {
@@ -1647,12 +1651,12 @@
         osc.type = h.type;
         osc.frequency.setValueAtTime(freq * h.mult, now);
         g.gain.setValueAtTime(0.0001, now);
-        g.gain.linearRampToValueAtTime(h.amp, now + 0.006);
-        g.gain.exponentialRampToValueAtTime(0.0007, now + h.decay);
+        g.gain.linearRampToValueAtTime(h.amp, now + 0.012);
+        g.gain.exponentialRampToValueAtTime(0.0006, now + h.decay);
         osc.connect(g);
         g.connect(bodyFilter);
         osc.start(now);
-        osc.stop(now + h.decay + 0.06);
+        osc.stop(now + h.decay + 0.05);
       });
     }
 
@@ -1675,7 +1679,7 @@
         nodes[fretIndex].classList.add("active");
         setTimeout(() => {
           if (nodes[fretIndex]) nodes[fretIndex].classList.remove("active");
-        }, 320);
+        }, 340);
       }
     }
 
@@ -1706,60 +1710,84 @@
           document.querySelectorAll(".fret-node").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           const freq = parseFloat(btn.dataset.freq);
-          playBaglamaSound(freq, 1.9, 1.0);
+          playBaglamaSound(freq, 1.75, 0.96);
           triggerStringVisual(btn.dataset.row);
           document.getElementById("fretboardStatus").textContent = `Çalınan Nota: ${btn.dataset.note} • ${freq} Hz`;
         });
       });
     }
 
+    /* TÜRKÜ ÇALAR (MELODİK PERDE DİZİLİMLERİ) */
     const TURKU_CATALOG = {
       uzunince: {
         title: "Uzun İnce Bir Yoldayım",
-        stepMs: 360,
         notes: [
-          { row: "row-alt", fret: 0, dur: 0.75 }, { row: "row-alt", fret: 0, dur: 0.75 },
-          { row: "row-alt", fret: 3, dur: 0.75 }, { row: "row-alt", fret: 7, dur: 0.9 },
-          { row: "row-alt", fret: 7, dur: 0.75 }, { row: "row-alt", fret: 10, dur: 0.8 },
-          { row: "row-alt", fret: 7, dur: 0.75 }, { row: "row-alt", fret: 3, dur: 1.1 },
-          { row: "row-alt", fret: 3, dur: 0.75 }, { row: "row-alt", fret: 7, dur: 0.75 },
-          { row: "row-alt", fret: 10, dur: 0.75 }, { row: "row-alt", fret: 12, dur: 0.95 },
-          { row: "row-alt", fret: 10, dur: 0.75 }, { row: "row-alt", fret: 7, dur: 0.8 },
-          { row: "row-alt", fret: 3, dur: 0.75 }, { row: "row-alt", fret: 0, dur: 1.4 }
+          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 12, gap: 560, dur: 0.9 },
+          { row: "row-alt", fret: 13, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 7,  gap: 640, dur: 1.0 },
+          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 7,  gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 10, gap: 560, dur: 0.9 },
+          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 7,  gap: 420, dur: 0.7 },
+          { row: "row-alt", fret: 3,  gap: 540, dur: 0.85 },
+          { row: "row-alt", fret: 0,  gap: 750, dur: 1.3 }
         ]
       },
       cokertme: {
         title: "Çökertme",
-        stepMs: 250,
         notes: [
-          { row: "row-alt", fret: 0, dur: 0.65 }, { row: "row-alt", fret: 3, dur: 0.65 },
-          { row: "row-alt", fret: 7, dur: 0.7 }, { row: "row-alt", fret: 10, dur: 0.7 },
-          { row: "row-alt", fret: 12, dur: 0.85 }, { row: "row-alt", fret: 10, dur: 0.65 },
-          { row: "row-alt", fret: 7, dur: 0.8 }, { row: "row-alt", fret: 7, dur: 0.65 },
-          { row: "row-alt", fret: 10, dur: 0.65 }, { row: "row-alt", fret: 7, dur: 0.65 },
-          { row: "row-alt", fret: 3, dur: 0.75 }, { row: "row-alt", fret: 0, dur: 1.2 }
+          { row: "row-alt", fret: 0,  gap: 300, dur: 0.55 },
+          { row: "row-alt", fret: 3,  gap: 300, dur: 0.55 },
+          { row: "row-alt", fret: 7,  gap: 320, dur: 0.6 },
+          { row: "row-alt", fret: 10, gap: 320, dur: 0.6 },
+          { row: "row-alt", fret: 12, gap: 460, dur: 0.8 },
+          { row: "row-alt", fret: 10, gap: 300, dur: 0.55 },
+          { row: "row-alt", fret: 12, gap: 300, dur: 0.55 },
+          { row: "row-alt", fret: 10, gap: 320, dur: 0.6 },
+          { row: "row-alt", fret: 7,  gap: 460, dur: 0.8 },
+          { row: "row-alt", fret: 7,  gap: 300, dur: 0.55 },
+          { row: "row-alt", fret: 10, gap: 300, dur: 0.55 },
+          { row: "row-alt", fret: 7,  gap: 320, dur: 0.6 },
+          { row: "row-alt", fret: 3,  gap: 340, dur: 0.65 },
+          { row: "row-alt", fret: 0,  gap: 700, dur: 1.15 }
         ]
       },
       misket: {
         title: "Misket",
-        stepMs: 220,
         notes: [
-          { row: "row-alt", fret: 7, dur: 0.55 }, { row: "row-alt", fret: 10, dur: 0.55 },
-          { row: "row-alt", fret: 12, dur: 0.65 }, { row: "row-alt", fret: 10, dur: 0.55 },
-          { row: "row-alt", fret: 7, dur: 0.6 }, { row: "row-alt", fret: 5, dur: 0.55 },
-          { row: "row-alt", fret: 3, dur: 0.65 }, { row: "row-alt", fret: 7, dur: 0.6 },
-          { row: "row-alt", fret: 3, dur: 0.55 }, { row: "row-alt", fret: 0, dur: 1.15 }
+          { row: "row-alt", fret: 0,  gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 3,  gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 7,  gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 10, gap: 340, dur: 0.65 },
+          { row: "row-alt", fret: 12, gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 10, gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 7,  gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 10, gap: 340, dur: 0.65 },
+          { row: "row-alt", fret: 7,  gap: 260, dur: 0.5 },
+          { row: "row-alt", fret: 3,  gap: 280, dur: 0.55 },
+          { row: "row-alt", fret: 0,  gap: 650, dur: 1.1 }
         ]
       },
       gesibaglari: {
         title: "Gesi Bağları",
-        stepMs: 390,
         notes: [
-          { row: "row-alt", fret: 7, dur: 0.9 }, { row: "row-alt", fret: 10, dur: 0.85 },
-          { row: "row-alt", fret: 12, dur: 1.0 }, { row: "row-alt", fret: 10, dur: 0.85 },
-          { row: "row-alt", fret: 7, dur: 0.95 }, { row: "row-alt", fret: 3, dur: 0.9 },
-          { row: "row-alt", fret: 7, dur: 0.85 }, { row: "row-alt", fret: 3, dur: 0.85 },
-          { row: "row-alt", fret: 0, dur: 1.5 }
+          { row: "row-alt", fret: 7,  gap: 450, dur: 0.8 },
+          { row: "row-alt", fret: 10, gap: 450, dur: 0.8 },
+          { row: "row-alt", fret: 12, gap: 580, dur: 0.95 },
+          { row: "row-alt", fret: 10, gap: 450, dur: 0.8 },
+          { row: "row-alt", fret: 7,  gap: 520, dur: 0.85 },
+          { row: "row-alt", fret: 3,  gap: 480, dur: 0.8 },
+          { row: "row-alt", fret: 7,  gap: 450, dur: 0.75 },
+          { row: "row-alt", fret: 3,  gap: 450, dur: 0.75 },
+          { row: "row-alt", fret: 0,  gap: 800, dur: 1.35 }
         ]
       }
     };
@@ -1790,7 +1818,11 @@
       const lbl = document.getElementById("turkuNowPlayingLabel");
       if (lbl) lbl.textContent = `Çalınıyor: ${song.title}`;
 
+      let elapsedMs = 0;
       song.notes.forEach((step, idx) => {
+        const startAt = elapsedMs;
+        elapsedMs += step.gap;
+
         const timerId = setTimeout(() => {
           if (activeSongKey !== songKey) return;
           const ratioObj = FRET_RATIOS[step.fret] || FRET_RATIOS[0];
@@ -1799,7 +1831,7 @@
           const freq = parseFloat((baseFreq * ratioObj.r).toFixed(2));
           const noteName = namesArr[step.fret] || "";
 
-          playBaglamaSound(freq, step.dur, 0.96);
+          playBaglamaSound(freq, step.dur, 0.92);
           triggerStringVisual(step.row);
           highlightFretButton(step.row, step.fret);
           document.getElementById("fretboardStatus").textContent = `${song.title} • ${noteName} (${step.fret}. Perde) • ${freq} Hz`;
@@ -1810,7 +1842,7 @@
             }, Math.round(step.dur * 650));
             turkuTimers.push(endTimer);
           }
-        }, idx * song.stepMs);
+        }, startAt);
         turkuTimers.push(timerId);
       });
     }
@@ -1840,10 +1872,10 @@
     document.getElementById("playOpenStringsBtn").addEventListener("click", () => {
       stopTurkuPlayback();
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
-      playBaglamaSound(cfg.ustBase, 1.9, 0.85);
-      setTimeout(() => playBaglamaSound(cfg.ortaBase, 1.9, 0.92), 110);
+      playBaglamaSound(cfg.ustBase, 1.8, 0.85);
+      setTimeout(() => playBaglamaSound(cfg.ortaBase, 1.8, 0.9), 110);
       setTimeout(() => {
-        playBaglamaSound(cfg.altBase, 2.1, 1.0);
+        playBaglamaSound(cfg.altBase, 2.0, 0.96);
         triggerStringVisual("row-alt");
       }, 220);
       document.getElementById("fretboardStatus").textContent = `Açık Teller: Üst (${cfg.ustNames[0]}) • Orta (${cfg.ortaNames[0]}) • Alt (${cfg.altNames[0]})`;
@@ -1852,7 +1884,7 @@
     document.getElementById("playKararBtn").addEventListener("click", () => {
       stopTurkuPlayback();
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
-      playBaglamaSound(cfg.altBase, 2.3, 1.05);
+      playBaglamaSound(cfg.altBase, 2.1, 1.0);
       triggerStringVisual("row-alt");
       document.getElementById("fretboardStatus").textContent = `Karar Sesi: Alt Tel ${cfg.altNames[0]} • ${cfg.altBase.toFixed(2)} Hz`;
     });
@@ -1864,7 +1896,7 @@
       steps.forEach((stepIdx, i) => {
         setTimeout(() => {
           const f = (cfg.altBase * FRET_RATIOS[stepIdx].r).toFixed(2);
-          playBaglamaSound(parseFloat(f), 1.15, 0.92);
+          playBaglamaSound(parseFloat(f), 1.15, 0.9);
           triggerStringVisual("row-alt");
           document.getElementById("fretboardStatus").textContent = `Seyir / Koma: ${cfg.altNames[stepIdx]} (${stepIdx}. Perde) • ${f} Hz`;
         }, i * 240);
@@ -1878,7 +1910,7 @@
         setTimeout(() => {
           const isAlt = i % 2 === 0;
           const f = isAlt ? cfg.altBase : cfg.ortaBase;
-          playBaglamaSound(f, 0.85, isAlt ? 1.0 : 0.78);
+          playBaglamaSound(f, 0.85, isAlt ? 0.95 : 0.78);
           triggerStringVisual(isAlt ? "row-alt" : "row-orta");
         }, i * 115);
       }
@@ -2163,13 +2195,18 @@
       renderAll();
     });
 
-    document.getElementById("addPracticeBtn").addEventListener("click", () => {
+    /* HAFTALIK ÇALIŞMA SÜRESİNİ ELLE KAYDETME */
+    document.getElementById("savePracticeMinsBtn").addEventListener("click", () => {
       if (!currentStudent) return;
-      const st = upsertStudent(currentStudent.name, currentStudent.course);
-      st.practiceMins = (st.practiceMins || 0) + 30;
+      const rawVal = parseInt(document.getElementById("studentPracticeInput").value, 10);
+      if (Number.isNaN(rawVal) || rawVal < 0) return;
+      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent;
+      st.practiceMins = rawVal;
       currentStudent = st;
       saveState();
       renderAll();
+      document.getElementById("practiceSaveStatus").textContent = "Çalışma süresi kaydedildi ✓";
+      setTimeout(() => { document.getElementById("practiceSaveStatus").textContent = ""; }, 2200);
     });
 
     document.getElementById("studentMsgForm").addEventListener("submit", (e) => {
@@ -2549,6 +2586,10 @@
         const mins = stObj.practiceMins || 0;
         document.getElementById("studentPracticeBar").style.width = Math.min(100, Math.round((mins / 180) * 100)) + "%";
         document.getElementById("studentPracticeText").textContent = `${mins} / 180 dk`;
+        const pInput = document.getElementById("studentPracticeInput");
+        if (document.activeElement !== pInput) {
+          pInput.value = String(mins);
+        }
 
         const pdfDrawer = document.getElementById("studentPdfDrawer");
         pdfDrawer.innerHTML = pdfList.map((p) => `
@@ -2792,7 +2833,6 @@
         .replaceAll('"', "&quot;");
     }
 
-    /* SAYFA YENİLENDİĞİNDE SEKMİYİ VE GİRİŞİ GERİ YÜKLE */
     (function restoreInitialView() {
       const targetView = authPersist.view || "vitrin";
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === targetView));
