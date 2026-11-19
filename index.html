@@ -314,23 +314,8 @@
     .quick-sound-bar {
       display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
       padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(243, 196, 139, 0.16); margin-bottom: 12px;
+      border: 1px solid rgba(243, 196, 139, 0.16); margin-bottom: 14px;
     }
-    .turku-player-bar {
-      display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between;
-      padding: 12px 14px; border-radius: 14px;
-      background: linear-gradient(135deg, rgba(212, 148, 76, 0.14), rgba(156, 93, 30, 0.08));
-      border: 1px solid rgba(243, 196, 139, 0.28); margin-bottom: 14px;
-    }
-    .turku-btns { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
-    .turku-btn {
-      padding: 7px 12px; border-radius: 9px; border: 1px solid rgba(243, 196, 139, 0.32);
-      background: rgba(15, 9, 6, 0.75); color: #f3c48b; font-size: 0.78rem; font-weight: 700; cursor: pointer;
-      transition: all 0.18s ease;
-    }
-    .turku-btn:hover { background: rgba(212, 148, 76, 0.28); color: #fff; transform: translateY(-1px); }
-    .turku-btn.playing { background: linear-gradient(135deg, #2eb872, #15803d); color: #fff; border-color: transparent; }
-
     .quick-sound-btn {
       padding: 6px 11px; border-radius: 8px; border: 1px solid rgba(243, 196, 139, 0.28);
       background: rgba(212, 148, 76, 0.12); color: #f3c48b; font-size: 0.76rem; font-weight: 700; cursor: pointer;
@@ -692,7 +677,7 @@
         <div class="section-head">
           <span class="tag">23 Perde Tam Klavye & Gerçek Bağlama Tınısı</span>
           <h2 class="section-title">İnteraktif Bağlama Sapı & Düzen Simülatörü</h2>
-          <p class="section-sub">Alt, orta ve üst tel üzerindeki 23 perdenin tamamına tıklayın veya aşağıdaki türkülerden birini başlatın.</p>
+          <p class="section-sub">Alt, orta ve üst tel üzerindeki 23 perdenin tamamına tıklayarak çift telli bağlama tınısını dinleyin.</p>
         </div>
 
         <div class="baglama-studio-card">
@@ -706,18 +691,6 @@
               <button type="button" class="tuning-pill" data-tuning="misket">Misket Düzeni</button>
               <button type="button" class="tuning-pill" data-tuning="asik">Aşık / Müstezat</button>
             </div>
-          </div>
-
-          <div class="turku-player-bar">
-            <div class="turku-btns">
-              <span style="font-size:0.78rem; font-weight:800; color:#f3c48b; margin-right:2px;">🎵 Türkü Çal:</span>
-              <button type="button" class="turku-btn" data-song="uzunince">Uzun İnce Bir Yoldayım</button>
-              <button type="button" class="turku-btn" data-song="cokertme">Çökertme</button>
-              <button type="button" class="turku-btn" data-song="misket">Misket</button>
-              <button type="button" class="turku-btn" data-song="gesibaglari">Gesi Bağları</button>
-              <button type="button" class="turku-btn" id="stopTurkuBtn" style="border-color:rgba(239,68,68,0.45); color:#fca5a5;">⏹ Durdur</button>
-            </div>
-            <span id="turkuNowPlayingLabel" style="font-size:0.78rem; font-weight:700; color:#d8c7b5;">Hazır</span>
           </div>
 
           <div class="quick-sound-bar">
@@ -737,7 +710,7 @@
           </div>
 
           <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <span id="fretboardStatus" style="font-weight:700; color:#f3c48b;">Seçili Perde: Bir perdeye tıklayın veya bir türkü seçin</span>
+            <span id="fretboardStatus" style="font-weight:700; color:#f3c48b;">Seçili Perde: Bir perdeye tıklayın</span>
             <span style="font-size:0.78rem; color:#b8a593;">0'dan 23. Perdeye Tam Nota Dizilimi • Çift Tel Rezonansı</span>
           </div>
         </div>
@@ -847,7 +820,6 @@
       </div>
     </section>
 
-    <!-- 2. ÖĞRENCİ GİRİŞİ & MESAJLAŞMA -->
     <section id="view-ogrenci" class="page-view">
       <div id="studentAuthScreen" class="card ribbon-card form-stack" style="max-width: 440px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
@@ -938,7 +910,6 @@
 
             <hr style="border:none; border-top:1px solid var(--border);" />
 
-            <!-- HAFTALIK ÇALIŞMA SÜRESİ (ELLE GİRİŞ) -->
             <h3>Haftalık Çalışma Süresi (dk)</h3>
             <div class="progress-track"><div class="progress-fill" id="studentPracticeBar"></div></div>
             <div style="display:flex; justify-content:space-between; font-size:0.82rem; font-weight:700; margin-bottom:4px;">
@@ -1000,7 +971,6 @@
       </div>
     </section>
 
-    <!-- 3. HOCA GİRİŞİ & MESAJLAŞMA -->
     <section id="view-hoca" class="page-view">
       <div id="hocaLockBox" class="card ribbon-card form-stack" style="max-width: 420px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
@@ -1246,7 +1216,7 @@
     const DEFAULT_HOCA_PIN = "baglama2026";
     const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v20";
+    const STORAGE_KEY = "dogukan_muzik_portal_v21";
     const AUTH_PERSIST_KEY = "dogukan_auth_persist_v1";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
@@ -1592,7 +1562,6 @@
       }
     });
 
-    /* YUMUŞAK VE DOĞAL ÇİFT TELLİ BAĞLAMA SES SENTEZLEYİCİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
@@ -1611,7 +1580,6 @@
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      /* Yumuşak mızrap teması */
       const clickLen = Math.floor(ctx.sampleRate * 0.018);
       const noiseBuf = ctx.createBuffer(1, clickLen, ctx.sampleRate);
       const output = noiseBuf.getChannelData(0);
@@ -1630,7 +1598,6 @@
       noiseGain.connect(ctx.destination);
       noise.start(now);
 
-      /* Sıcak telli gövde harmonikleri */
       const harmonics = [
         { mult: 1.0, type: "triangle", amp: 0.24 * velocity, decay: durationSec },
         { mult: 1.0015, type: "sine", amp: 0.16 * velocity, decay: durationSec * 0.95 },
@@ -1670,19 +1637,6 @@
       }
     }
 
-    function highlightFretButton(rowId, fretIndex) {
-      document.querySelectorAll(".fret-node").forEach((b) => b.classList.remove("active"));
-      const rowEl = document.getElementById(rowId);
-      if (!rowEl) return;
-      const nodes = rowEl.querySelectorAll(".fret-node");
-      if (nodes[fretIndex]) {
-        nodes[fretIndex].classList.add("active");
-        setTimeout(() => {
-          if (nodes[fretIndex]) nodes[fretIndex].classList.remove("active");
-        }, 340);
-      }
-    }
-
     function renderBaglamaNeck() {
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
       document.getElementById("activeTuningTitle").textContent = cfg.title;
@@ -1706,7 +1660,6 @@
 
       document.querySelectorAll(".fret-node").forEach((btn) => {
         btn.addEventListener("click", () => {
-          stopTurkuPlayback();
           document.querySelectorAll(".fret-node").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           const freq = parseFloat(btn.dataset.freq);
@@ -1717,151 +1670,8 @@
       });
     }
 
-    /* TÜRKÜ ÇALAR (MELODİK PERDE DİZİLİMLERİ) */
-    const TURKU_CATALOG = {
-      uzunince: {
-        title: "Uzun İnce Bir Yoldayım",
-        notes: [
-          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 12, gap: 560, dur: 0.9 },
-          { row: "row-alt", fret: 13, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 7,  gap: 640, dur: 1.0 },
-          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 7,  gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 10, gap: 560, dur: 0.9 },
-          { row: "row-alt", fret: 12, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 10, gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 7,  gap: 420, dur: 0.7 },
-          { row: "row-alt", fret: 3,  gap: 540, dur: 0.85 },
-          { row: "row-alt", fret: 0,  gap: 750, dur: 1.3 }
-        ]
-      },
-      cokertme: {
-        title: "Çökertme",
-        notes: [
-          { row: "row-alt", fret: 0,  gap: 300, dur: 0.55 },
-          { row: "row-alt", fret: 3,  gap: 300, dur: 0.55 },
-          { row: "row-alt", fret: 7,  gap: 320, dur: 0.6 },
-          { row: "row-alt", fret: 10, gap: 320, dur: 0.6 },
-          { row: "row-alt", fret: 12, gap: 460, dur: 0.8 },
-          { row: "row-alt", fret: 10, gap: 300, dur: 0.55 },
-          { row: "row-alt", fret: 12, gap: 300, dur: 0.55 },
-          { row: "row-alt", fret: 10, gap: 320, dur: 0.6 },
-          { row: "row-alt", fret: 7,  gap: 460, dur: 0.8 },
-          { row: "row-alt", fret: 7,  gap: 300, dur: 0.55 },
-          { row: "row-alt", fret: 10, gap: 300, dur: 0.55 },
-          { row: "row-alt", fret: 7,  gap: 320, dur: 0.6 },
-          { row: "row-alt", fret: 3,  gap: 340, dur: 0.65 },
-          { row: "row-alt", fret: 0,  gap: 700, dur: 1.15 }
-        ]
-      },
-      misket: {
-        title: "Misket",
-        notes: [
-          { row: "row-alt", fret: 0,  gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 3,  gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 7,  gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 10, gap: 340, dur: 0.65 },
-          { row: "row-alt", fret: 12, gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 10, gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 7,  gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 10, gap: 340, dur: 0.65 },
-          { row: "row-alt", fret: 7,  gap: 260, dur: 0.5 },
-          { row: "row-alt", fret: 3,  gap: 280, dur: 0.55 },
-          { row: "row-alt", fret: 0,  gap: 650, dur: 1.1 }
-        ]
-      },
-      gesibaglari: {
-        title: "Gesi Bağları",
-        notes: [
-          { row: "row-alt", fret: 7,  gap: 450, dur: 0.8 },
-          { row: "row-alt", fret: 10, gap: 450, dur: 0.8 },
-          { row: "row-alt", fret: 12, gap: 580, dur: 0.95 },
-          { row: "row-alt", fret: 10, gap: 450, dur: 0.8 },
-          { row: "row-alt", fret: 7,  gap: 520, dur: 0.85 },
-          { row: "row-alt", fret: 3,  gap: 480, dur: 0.8 },
-          { row: "row-alt", fret: 7,  gap: 450, dur: 0.75 },
-          { row: "row-alt", fret: 3,  gap: 450, dur: 0.75 },
-          { row: "row-alt", fret: 0,  gap: 800, dur: 1.35 }
-        ]
-      }
-    };
-
-    let turkuTimers = [];
-    let activeSongKey = null;
-
-    function stopTurkuPlayback() {
-      turkuTimers.forEach((t) => clearTimeout(t));
-      turkuTimers = [];
-      activeSongKey = null;
-      document.querySelectorAll(".turku-btn[data-song]").forEach((b) => b.classList.remove("playing"));
-      const lbl = document.getElementById("turkuNowPlayingLabel");
-      if (lbl) lbl.textContent = "Hazır";
-    }
-
-    function playTurku(songKey) {
-      const song = TURKU_CATALOG[songKey];
-      if (!song) return;
-      stopTurkuPlayback();
-      activeSongKey = songKey;
-
-      document.querySelectorAll(".turku-btn[data-song]").forEach((b) => {
-        b.classList.toggle("playing", b.dataset.song === songKey);
-      });
-
-      const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
-      const lbl = document.getElementById("turkuNowPlayingLabel");
-      if (lbl) lbl.textContent = `Çalınıyor: ${song.title}`;
-
-      let elapsedMs = 0;
-      song.notes.forEach((step, idx) => {
-        const startAt = elapsedMs;
-        elapsedMs += step.gap;
-
-        const timerId = setTimeout(() => {
-          if (activeSongKey !== songKey) return;
-          const ratioObj = FRET_RATIOS[step.fret] || FRET_RATIOS[0];
-          const baseFreq = step.row === "row-orta" ? cfg.ortaBase : (step.row === "row-ust" ? cfg.ustBase : cfg.altBase);
-          const namesArr = step.row === "row-orta" ? cfg.ortaNames : (step.row === "row-ust" ? cfg.ustNames : cfg.altNames);
-          const freq = parseFloat((baseFreq * ratioObj.r).toFixed(2));
-          const noteName = namesArr[step.fret] || "";
-
-          playBaglamaSound(freq, step.dur, 0.92);
-          triggerStringVisual(step.row);
-          highlightFretButton(step.row, step.fret);
-          document.getElementById("fretboardStatus").textContent = `${song.title} • ${noteName} (${step.fret}. Perde) • ${freq} Hz`;
-
-          if (idx === song.notes.length - 1) {
-            const endTimer = setTimeout(() => {
-              if (activeSongKey === songKey) stopTurkuPlayback();
-            }, Math.round(step.dur * 650));
-            turkuTimers.push(endTimer);
-          }
-        }, startAt);
-        turkuTimers.push(timerId);
-      });
-    }
-
-    document.querySelectorAll(".turku-btn[data-song]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (activeSongKey === btn.dataset.song) {
-          stopTurkuPlayback();
-        } else {
-          playTurku(btn.dataset.song);
-        }
-      });
-    });
-
-    document.getElementById("stopTurkuBtn").addEventListener("click", stopTurkuPlayback);
-
     document.querySelectorAll("[data-tuning]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        stopTurkuPlayback();
         document.querySelectorAll("[data-tuning]").forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
         currentTuningKey = btn.dataset.tuning;
@@ -1870,7 +1680,6 @@
     });
 
     document.getElementById("playOpenStringsBtn").addEventListener("click", () => {
-      stopTurkuPlayback();
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
       playBaglamaSound(cfg.ustBase, 1.8, 0.85);
       setTimeout(() => playBaglamaSound(cfg.ortaBase, 1.8, 0.9), 110);
@@ -1882,7 +1691,6 @@
     });
 
     document.getElementById("playKararBtn").addEventListener("click", () => {
-      stopTurkuPlayback();
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
       playBaglamaSound(cfg.altBase, 2.1, 1.0);
       triggerStringVisual("row-alt");
@@ -1890,7 +1698,6 @@
     });
 
     document.getElementById("playKomaScaleBtn").addEventListener("click", () => {
-      stopTurkuPlayback();
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
       const steps = [0, 2, 3, 5, 7, 10, 12];
       steps.forEach((stepIdx, i) => {
@@ -1904,7 +1711,6 @@
     });
 
     document.getElementById("playTezeneRollBtn").addEventListener("click", () => {
-      stopTurkuPlayback();
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
       for (let i = 0; i < 6; i++) {
         setTimeout(() => {
@@ -2195,7 +2001,6 @@
       renderAll();
     });
 
-    /* HAFTALIK ÇALIŞMA SÜRESİNİ ELLE KAYDETME */
     document.getElementById("savePracticeMinsBtn").addEventListener("click", () => {
       if (!currentStudent) return;
       const rawVal = parseInt(document.getElementById("studentPracticeInput").value, 10);
