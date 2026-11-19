@@ -12,44 +12,48 @@
     :root,
     html[data-theme="dark"] {
       --bg: #0b0806;
-      --surface: rgba(24, 18, 14, 0.86);
+      --surface: rgba(26, 19, 14, 0.78);
       --surface-solid: #18120e;
-      --surface-2: rgba(36, 27, 21, 0.9);
+      --surface-2: rgba(38, 28, 21, 0.85);
       --surface-3: #2e221a;
+      --wood-grad: linear-gradient(145deg, rgba(44, 30, 20, 0.88), rgba(22, 15, 11, 0.92));
       --gold: #d4944c;
       --gold-light: #f3c48b;
       --gold-dark: #9c5d1e;
-      --gold-glow: rgba(212, 148, 76, 0.16);
+      --gold-glow: rgba(212, 148, 76, 0.18);
       --ok: #2eb872;
       --warn: #f59e0b;
       --danger: #ef4444;
       --text: #f7f1ea;
       --muted: #b3a190;
-      --border: rgba(243, 196, 139, 0.14);
-      --border-strong: rgba(212, 148, 76, 0.42);
-      --header-bg: rgba(11, 8, 6, 0.9);
-      --shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+      --border: rgba(243, 196, 139, 0.16);
+      --border-strong: rgba(212, 148, 76, 0.46);
+      --header-bg: rgba(11, 8, 6, 0.88);
+      --shadow: 0 20px 48px rgba(0, 0, 0, 0.52);
+      --card-hover-glow: 0 24px 54px rgba(212, 148, 76, 0.18);
     }
 
     html[data-theme="light"] {
       --bg: #f3ece1;
-      --surface: rgba(255, 252, 247, 0.92);
+      --surface: rgba(255, 252, 247, 0.84);
       --surface-solid: #ffffff;
-      --surface-2: #ebe1d2;
+      --surface-2: rgba(235, 225, 210, 0.88);
       --surface-3: #dfd1bc;
+      --wood-grad: linear-gradient(145deg, rgba(252, 246, 238, 0.94), rgba(238, 226, 208, 0.92));
       --gold: #9a5216;
       --gold-light: #753908;
       --gold-dark: #b86924;
-      --gold-glow: rgba(154, 82, 22, 0.12);
+      --gold-glow: rgba(154, 82, 22, 0.14);
       --ok: #15803d;
       --warn: #b45309;
       --danger: #b91c1c;
       --text: #1c130c;
       --muted: #614e3e;
-      --border: rgba(120, 72, 32, 0.15);
-      --border-strong: rgba(154, 82, 22, 0.38);
-      --header-bg: rgba(243, 236, 225, 0.92);
-      --shadow: 0 16px 38px rgba(38, 24, 12, 0.08);
+      --border: rgba(120, 72, 32, 0.16);
+      --border-strong: rgba(154, 82, 22, 0.4);
+      --header-bg: rgba(243, 236, 225, 0.9);
+      --shadow: 0 16px 38px rgba(38, 24, 12, 0.09);
+      --card-hover-glow: 0 20px 44px rgba(154, 82, 22, 0.15);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,14 +63,50 @@
       font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
       background-color: var(--bg);
       background-image:
-        radial-gradient(circle at 14% 12%, var(--gold-glow), transparent 40%),
-        radial-gradient(circle at 86% 20%, rgba(156, 93, 30, 0.1), transparent 44%),
         url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c88a4b' stroke-width='0.6' stroke-opacity='0.1'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 14L66 40L40 66L14 40Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
       background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.55s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s ease;
+    }
+
+    /* KATMANLI ARKA PLAN & SAYFA KAYDIKÇA TEPKİ VEREN SAHNE IŞIĞI DOKUSU */
+    .stage-ambient-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(85px);
+      transition: transform 0.25s ease-out, opacity 0.6s ease;
+    }
+    .ambient-orb.orb-1 {
+      width: 520px;
+      height: 520px;
+      top: -90px;
+      left: 5%;
+      background: radial-gradient(circle, rgba(212, 148, 76, 0.24), transparent 70%);
+    }
+    .ambient-orb.orb-2 {
+      width: 600px;
+      height: 600px;
+      top: 38%;
+      right: -120px;
+      background: radial-gradient(circle, rgba(156, 93, 30, 0.18), transparent 72%);
+    }
+    .ambient-orb.orb-3 {
+      width: 460px;
+      height: 460px;
+      bottom: -80px;
+      left: 25%;
+      background: radial-gradient(circle, rgba(243, 196, 139, 0.14), transparent 70%);
     }
 
     h1, h2, .serif-title {
@@ -109,8 +149,10 @@
       top: 0;
       z-index: 100;
       background: var(--header-bg);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      transition: background-color 0.55s ease, border-color 0.45s ease;
     }
 
     .nav {
@@ -128,6 +170,7 @@
       width: 50px; height: 50px; border-radius: 13px; background: #0d0907;
       border: 1.5px solid var(--gold); display: grid; place-items: center;
       font-weight: 800; color: var(--gold-light); overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(212, 148, 76, 0.25);
     }
     .brand-logo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .brand-title { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 700; display: block; line-height: 1.1; }
@@ -137,28 +180,32 @@
     .portal-switch { display: flex; gap: 5px; background: var(--surface-2); padding: 5px; border-radius: 14px; border: 1px solid var(--border); }
     .tab-btn {
       padding: 9px 16px; border-radius: 10px; border: none; background: transparent;
-      color: var(--muted); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;
+      color: var(--muted); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.25s ease;
     }
-    .tab-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff; }
+    .tab-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff; box-shadow: 0 4px 14px rgba(212, 148, 76, 0.35); }
 
     .theme-toggle-btn {
       display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px;
       border-radius: 12px; border: 1px solid var(--border-strong); background: var(--surface);
       color: var(--text); font-weight: 700; font-size: 0.8rem; cursor: pointer;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
     }
+    .theme-toggle-btn:hover { border-color: var(--gold); box-shadow: 0 0 18px var(--gold-glow); }
 
-    .page-view { display: none; padding: 38px 0 72px; animation: fadeUp 0.3s ease; }
+    .page-view { display: none; padding: 38px 0 72px; animation: fadeUp 0.35s ease; }
     .page-view.active { display: block; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       padding: 12px 20px; border-radius: 12px; border: 1px solid transparent;
       background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff;
-      font-weight: 700; font-size: 0.88rem; text-decoration: none; cursor: pointer; transition: all 0.2s ease;
+      font-weight: 700; font-size: 0.88rem; text-decoration: none; cursor: pointer; transition: all 0.25s ease;
     }
-    .btn:hover { transform: translateY(-1px); opacity: 0.95; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212, 148, 76, 0.35); }
     .btn-ghost { background: var(--surface-2); color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--gold); }
     .btn-ok { background: linear-gradient(135deg, #2eb872, #15803d); color: #fff; }
     .btn-sm { padding: 7px 13px; font-size: 0.79rem; border-radius: 9px; }
 
@@ -174,17 +221,56 @@
     .lead { color: var(--muted); font-size: 1.02rem; margin-bottom: 24px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
-    .portrait-card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .portrait-card {
+      background: var(--wood-grad);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .portrait-card:hover { transform: translateY(-3px); box-shadow: var(--card-hover-glow); }
     .portrait-media { position: relative; height: 410px; background: var(--surface-2); }
     .portrait-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; display: block; }
     .portrait-fallback { display: none; height: 100%; padding: 26px; flex-direction: column; justify-content: flex-end; background: var(--surface-2); }
     .portrait-fallback.active { display: flex; }
-    .portrait-foot { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; background: var(--surface-solid); }
+    .portrait-foot { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; background: var(--surface); }
     .social-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pill { padding: 6px 13px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.78rem; font-weight: 700; }
+    .pill { padding: 6px 13px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: all 0.2s ease; }
+    .pill:hover { border-color: var(--gold); color: var(--gold-light); }
 
-    .section-block { margin-top: 48px; padding-top: 38px; border-top: 1px solid var(--border); }
-    .section-head { margin-bottom: 20px; }
+    /* ANADOLU MOTİFLİ BÖLÜM AYRAÇLARI & ÇERÇEVELER */
+    .section-block {
+      margin-top: 52px;
+      padding-top: 44px;
+      position: relative;
+    }
+    .section-block::before {
+      content: "❖ ── ✦ ── ❖";
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      padding: 0 16px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 3px;
+      z-index: 2;
+      transition: background-color 0.55s ease;
+    }
+    .section-block::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-strong), var(--gold), var(--border-strong), transparent);
+    }
+
+    .section-head { margin-bottom: 22px; }
     .section-title { font-size: clamp(1.65rem, 2.8vw, 2.15rem); line-height: 1.15; }
     .section-sub { color: var(--muted); font-size: 0.91rem; margin-top: 4px; }
 
@@ -192,12 +278,49 @@
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 
+    /* YUMUŞAK CAM & AHŞAP DOKU KARTLARI + ÜZERİNE GELİNCE PARLAMA & KENAR VURGUSU */
     .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 18px; padding: 22px; box-shadow: var(--shadow);
+      background: var(--wood-grad);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.28s ease, background 0.55s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+      box-shadow: var(--card-hover-glow);
     }
     .card h3 { font-size: 1.04rem; margin-bottom: 6px; }
     .card p { color: var(--muted); font-size: 0.88rem; }
+
+    /* REPERTUVAR & DERS KARTLARINDA GÖRSEL ETİKET ŞERİTLERİ */
+    .ribbon-card {
+      padding-top: 26px;
+    }
+    .ribbon-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+    .ribbon-card.ribbon-emerald::before {
+      background: linear-gradient(90deg, #2eb872, #6ee7b7);
+    }
+    .ribbon-card.ribbon-amber::before {
+      background: linear-gradient(90deg, #f59e0b, #fcd34d);
+    }
+    .ribbon-card.ribbon-crimson::before {
+      background: linear-gradient(90deg, #e11d48, #fda4af);
+    }
 
     .tag {
       display: inline-block; padding: 4px 10px; border-radius: 999px;
@@ -207,12 +330,18 @@
 
     /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ */
     .baglama-studio-card {
-      background: linear-gradient(180deg, #1b120c 0%, #100a07 100%);
+      background: linear-gradient(180deg, rgba(32, 21, 13, 0.94) 0%, rgba(16, 10, 7, 0.96) 100%);
+      backdrop-filter: blur(18px);
       border: 1.5px solid var(--border-strong);
       border-radius: 22px;
       padding: 22px;
       color: #f7efe6;
       box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .baglama-studio-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 26px 58px rgba(212, 148, 76, 0.2);
     }
 
     .studio-top {
@@ -279,7 +408,8 @@
 
     /* HAFTALIK TAKVİM */
     .schedule-grid { display: grid; grid-template-columns: repeat(7, minmax(125px, 1fr)); gap: 10px; overflow-x: auto; }
-    .day-col { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+    .day-col { background: var(--surface); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 14px; padding: 12px; transition: border-color 0.25s ease; }
+    .day-col:hover { border-color: var(--border-strong); }
     .day-col h4 { font-size: 0.88rem; margin-bottom: 8px; text-align: center; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
     .slot-pill { display: flex; justify-content: space-between; padding: 7px 9px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; margin-bottom: 6px; border: 1px solid var(--border); }
     .slot-pill.free { background: rgba(46, 184, 114, 0.13); color: var(--ok); cursor: pointer; }
@@ -288,19 +418,19 @@
     /* DÜZENLİ PANEL İÇİ ALT SEKMELER */
     .portal-banner {
       display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
-      background: var(--surface); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
+      background: var(--wood-grad); backdrop-filter: blur(16px); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
     }
 
     .portal-grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
 
     .sub-nav {
-      display: flex; gap: 8px; flex-wrap: wrap; background: var(--surface);
+      display: flex; gap: 8px; flex-wrap: wrap; background: var(--surface); backdrop-filter: blur(12px);
       padding: 8px; border-radius: 14px; border: 1px solid var(--border); margin-bottom: 16px;
     }
 
     .sub-tab-btn {
       padding: 9px 15px; border-radius: 10px; border: 1px solid transparent;
-      background: transparent; color: var(--muted); font-weight: 700; font-size: 0.83rem; cursor: pointer;
+      background: transparent; color: var(--muted); font-weight: 700; font-size: 0.83rem; cursor: pointer; transition: all 0.2s ease;
     }
     .sub-tab-btn.active {
       background: var(--gold-glow); color: var(--gold-light); border-color: var(--border-strong);
@@ -308,6 +438,86 @@
 
     .sub-pane { display: none; }
     .sub-pane.active { display: block; }
+
+    /* ÇALIŞMA & DERS MASASI GÖRSEL KARTI */
+    .study-desk-card {
+      background: radial-gradient(circle at 85% 15%, rgba(243, 196, 139, 0.22), transparent 55%), var(--wood-grad);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .desk-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .desk-chip {
+      padding: 6px 11px;
+      border-radius: 9px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      font-size: 0.77rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    /* CANLI DERS SAHNE KARTI & DERS ÖNCESİ HAZIRLIK KONTROL LİSTESİ */
+    .live-stage-card {
+      background: radial-gradient(circle at 12% 20%, rgba(46, 184, 114, 0.24), transparent 55%), var(--wood-grad);
+      border: 2px solid var(--ok);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 34px rgba(46, 184, 114, 0.16);
+    }
+    .live-stage-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .live-pulse-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--ok);
+      margin-right: 6px;
+      box-shadow: 0 0 10px var(--ok);
+    }
+    .prep-checklist {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(46, 184, 114, 0.28);
+    }
+    .prep-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(46, 184, 114, 0.25);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .prep-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--ok);
+      cursor: pointer;
+    }
 
     /* SADECE LİNK OLARAK GÖRÜNEN PDF LİSTESİ */
     .pdf-link-list {
@@ -326,12 +536,22 @@
       border-radius: 14px;
       background: var(--surface-2);
       border: 1px solid var(--border-strong);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-
-    .live-room-card {
-      background: linear-gradient(135deg, rgba(46, 184, 114, 0.18), var(--surface));
-      border: 2px solid var(--ok); border-radius: 16px; padding: 16px 20px; margin-bottom: 16px;
-      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    .pdf-link-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+    .pdf-link-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--gold), var(--gold-light));
     }
 
     .renewal-alert-card {
@@ -344,8 +564,9 @@
     .skill-badge {
       padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
       background: var(--surface-2); font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.65;
+      transition: all 0.25s ease;
     }
-    .skill-badge.earned { opacity: 1; border-color: var(--ok); background: rgba(46, 184, 114, 0.15); font-weight: 700; }
+    .skill-badge.earned { opacity: 1; border-color: var(--ok); background: rgba(46, 184, 114, 0.15); font-weight: 700; box-shadow: 0 6px 18px rgba(46, 184, 114, 0.14); }
 
     .progress-track { width: 100%; height: 11px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
     .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--ok)); transition: width 0.25s ease; }
@@ -360,27 +581,75 @@
     }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
 
-    .feed { display: grid; gap: 10px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
-    .msg-item { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    /* DERS ARŞİVİ ZAMAN ÇİZELGESİ GÖRÜNÜMÜ */
+    .timeline-feed {
+      display: grid;
+      gap: 12px;
+      max-height: 430px;
+      overflow-y: auto;
+      padding-left: 16px;
+      padding-right: 4px;
+      border-left: 2px solid var(--border-strong);
+      margin-left: 6px;
+    }
+    .msg-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      position: relative;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .msg-item:hover {
+      border-color: var(--border-strong);
+    }
+    .timeline-feed .msg-item::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 8px var(--gold);
+    }
+    .timeline-feed .msg-item.from-ogrenci::before {
+      background: var(--ok);
+      box-shadow: 0 0 8px var(--ok);
+    }
     .msg-item.from-hoca { border-left: 4px solid var(--gold); }
     .msg-item.from-ogrenci { border-left: 4px solid var(--ok); }
-    .msg-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 0.75rem; color: var(--muted); margin-bottom: 5px; flex-wrap: wrap; }
+    .msg-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; }
+    .date-chip {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--gold-glow);
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
     .msg-body { font-size: 0.89rem; color: var(--text); white-space: pre-wrap; }
+
+    .feed { display: grid; gap: 10px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
 
     .student-list { display: grid; gap: 8px; margin-top: 10px; }
     .student-pill {
       display: flex; justify-content: space-between; align-items: center;
       padding: 10px 12px; border-radius: 11px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; font-size: 0.84rem;
+      transition: all 0.2s ease;
     }
+    .student-pill:hover { border-color: var(--border-strong); }
     .student-pill.active { border-color: var(--gold); background: var(--gold-glow); }
 
     .status-pill { padding: 4px 10px; border-radius: 999px; font-size: 0.73rem; font-weight: 700; background: var(--surface-3); color: var(--gold-light); }
     .status-pill.done { color: var(--ok); background: rgba(46, 184, 114, 0.16); }
 
-    footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 0.84rem; background: var(--header-bg); }
+    footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 0.84rem; background: var(--header-bg); backdrop-filter: blur(14px); }
 
     @media (max-width: 980px) {
-      .hero, .portal-grid, .grid-2, .grid-3, .badge-grid { grid-template-columns: 1fr; }
+      .hero, .portal-grid, .grid-2, .grid-3, .badge-grid, .prep-checklist { grid-template-columns: 1fr; }
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 560px) {
@@ -389,6 +658,13 @@
   </style>
 </head>
 <body>
+
+  <!-- KATMANLI ARKA PLAN & KAYDIRMAYA TEPKİ VEREN SAHNE IŞIĞI -->
+  <div class="stage-ambient-layer" aria-hidden="true">
+    <div class="ambient-orb orb-1" id="ambientOrb1"></div>
+    <div class="ambient-orb orb-2" id="ambientOrb2"></div>
+    <div class="ambient-orb orb-3" id="ambientOrb3"></div>
+  </div>
 
   <!-- AÇILIŞ ANİMASYONU -->
   <div id="preloader">
@@ -495,21 +771,21 @@
         </div>
       </div>
 
-      <!-- DERS ALANLARI -->
+      <!-- DERS ALANLARI (GÖRSEL ETİKET ŞERİTLİ KARTLAR) -->
       <div class="section-block">
         <div class="section-head">
           <span class="tag">Eğitim Branşları</span>
           <h2 class="section-title">Ders Alanları</h2>
         </div>
         <div class="grid-4">
-          <div class="card"><span class="tag">01</span><h3>Nota</h3><p>Porte, anahtar, tartım kalıpları ve doğru deşifre okuma.</p></div>
-          <div class="card"><span class="tag">02</span><h3>Solfej</h3><p>Müzikal kulak gelişimi, aralık duyumu ve ritmik okuma.</p></div>
-          <div class="card"><span class="tag">03</span><h3>Bağlama Düzeni</h3><p>Bağlama düzeni akort yapısı, tezene yönleri ve repertuvar.</p></div>
-          <div class="card"><span class="tag">04</span><h3>Bağlama Bozuk Düzen</h3><p>Kara/bozuk düzen akort sistemi ve yöresel tavırlar.</p></div>
-          <div class="card"><span class="tag">05</span><h3>Şelpe</h3><p>Sağ ve sol el parmak kombinasyonları, pençe ve vurma-çekme.</p></div>
-          <div class="card"><span class="tag">06</span><h3>Çalıp Söyleme</h3><p>Bağlama eşliği ile nefes kontrolü ve vokal uyumu.</p></div>
-          <div class="card"><span class="tag">07</span><h3>Güzel Sanatlara Hazırlık</h3><p>Güzel Sanatlar Liseleri yetenek sınavlarına hazırlık.</p></div>
-          <div class="card"><span class="tag">08</span><h3>Konservatuara Hazırlık</h3><p>Devlet Konservatuarları özel yetenek sınavlarına hazırlık.</p></div>
+          <div class="card ribbon-card"><span class="tag">01 • Teori</span><h3>Nota</h3><p>Porte, anahtar, tartım kalıpları ve doğru deşifre okuma.</p></div>
+          <div class="card ribbon-card"><span class="tag">02 • Kulak</span><h3>Solfej</h3><p>Müzikal kulak gelişimi, aralık duyumu ve ritmik okuma.</p></div>
+          <div class="card ribbon-card ribbon-amber"><span class="tag">03 • İcra</span><h3>Bağlama Düzeni</h3><p>Bağlama düzeni akort yapısı, tezene yönleri ve repertuvar.</p></div>
+          <div class="card ribbon-card ribbon-amber"><span class="tag">04 • Tavır</span><h3>Bağlama Bozuk Düzen</h3><p>Kara/bozuk düzen akort sistemi ve yöresel tavırlar.</p></div>
+          <div class="card ribbon-card ribbon-emerald"><span class="tag">05 • Teknik</span><h3>Şelpe</h3><p>Sağ ve sol el parmak kombinasyonları, pençe ve vurma-çekme.</p></div>
+          <div class="card ribbon-card ribbon-emerald"><span class="tag">06 • Sahne</span><h3>Çalıp Söyleme</h3><p>Bağlama eşliği ile nefes kontrolü ve vokal uyumu.</p></div>
+          <div class="card ribbon-card ribbon-crimson"><span class="tag">07 • Akademi</span><h3>Güzel Sanatlara Hazırlık</h3><p>Güzel Sanatlar Liseleri yetenek sınavlarına hazırlık.</p></div>
+          <div class="card ribbon-card ribbon-crimson"><span class="tag">08 • Konservatuar</span><h3>Konservatuara Hazırlık</h3><p>Devlet Konservatuarları özel yetenek sınavlarına hazırlık.</p></div>
         </div>
       </div>
 
@@ -555,7 +831,7 @@
           <h2 class="section-title">Mikrofonlu Akort Cihazı & Usul Metronomu</h2>
         </div>
         <div class="grid-2">
-          <div class="card">
+          <div class="card ribbon-card">
             <h3>Canlı Mikrofonlu Bağlama Akort Ölçer</h3>
             <p>Mikrofonu başlatıp bağlamanızın teline vurun:</p>
             <div class="tuner-studio">
@@ -566,7 +842,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card ribbon-card ribbon-emerald">
             <h3>Usul & Aksak Metronom (Düm / Tek)</h3>
             <div class="field-row" style="margin-top: 10px;">
               <div class="field">
@@ -609,7 +885,7 @@
           <h2 class="section-title">Ders Paketi Başvurusu</h2>
           <p class="section-sub">Başvurunuz WhatsApp üzerinden onaylandığında öğrenci şifreniz Doğukan Hoca tarafından verilir.</p>
         </div>
-        <div class="card" style="max-width: 740px;">
+        <div class="card ribbon-card" style="max-width: 740px;">
           <form id="quickRegisterForm" class="form-stack">
             <div class="field-row">
               <div class="field">
@@ -658,7 +934,7 @@
     <!-- 2. ÖĞRENCİ GİRİŞİ -->
     <section id="view-ogrenci" class="page-view">
       <!-- GİRİŞ FORMU (GİRİŞ YAPMADAN ÖNCE SADECE BU GÖRÜNÜR) -->
-      <div id="studentAuthScreen" class="card form-stack" style="max-width: 440px; margin: 20px auto;">
+      <div id="studentAuthScreen" class="card ribbon-card form-stack" style="max-width: 440px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
         <h3>Öğrenci Girişi</h3>
         <p style="font-size: 0.84rem;">Doğukan Hoca tarafından verilen kullanıcı adı ve şifrenizle giriş yapın.</p>
@@ -686,13 +962,20 @@
           <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
         </div>
 
-        <!-- CANLI DERS KARTI -->
-        <div id="studentLiveRoomCard" class="live-room-card" style="display:none;">
-          <div>
-            <span class="tag" style="color:var(--ok);">Canlı Online Ders Odası Aktif</span>
-            <h3>Doğukan Bozkurt ile Canlı Dersiniz Hazır</h3>
+        <!-- CANLI DERS SAHNE KARTI + DERS ÖNCESİ HAZIRLIK KONTROL LİSTESİ -->
+        <div id="studentLiveRoomCard" class="live-stage-card" style="display:none;">
+          <div class="live-stage-head">
+            <div>
+              <span class="tag" style="color:var(--ok);"><span class="live-pulse-dot"></span>Canlı Online Ders Sahnesi Aktif</span>
+              <h3>Doğukan Bozkurt ile Canlı Dersiniz Hazır</h3>
+            </div>
+            <a id="studentLiveRoomLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Canlı Derse Katıl →</a>
           </div>
-          <a id="studentLiveRoomLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Canlı Derse Katıl →</a>
+          <div class="prep-checklist">
+            <label class="prep-item"><input type="checkbox" /> Bağlama akordu kontrol edildi</label>
+            <label class="prep-item"><input type="checkbox" /> PDF nota & tezene hazır</label>
+            <label class="prep-item"><input type="checkbox" /> Kamera & ses bağlantısı hazır</label>
+          </div>
         </div>
 
         <!-- KUR YENİLEME UYARISI -->
@@ -705,9 +988,22 @@
           <a id="studentRenewalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm">WhatsApp ile Kur Yenile →</a>
         </div>
 
+        <!-- ÇALIŞMA & DERS MASASI GÖRSEL KARTI -->
+        <div class="study-desk-card">
+          <div>
+            <span class="tag" style="margin-bottom:4px;">Çalışma & Ders Masası</span>
+            <h3 style="font-size:1.02rem;" id="studyDeskSummaryTitle">Günlük Bağlama Çalışma Alanınız</h3>
+          </div>
+          <div class="desk-pills">
+            <span class="desk-chip" id="deskCourseChip">Branş: Bağlama Düzeni</span>
+            <span class="desk-chip" id="deskPdfCountChip">Kayıtlı PDF: 1</span>
+            <span class="desk-chip" id="deskBadgeCountChip">Onaylı Aşama: 1 / 6</span>
+          </div>
+        </div>
+
         <div class="portal-grid">
           <!-- SOL ÖZET KARTI -->
-          <div class="card form-stack">
+          <div class="card ribbon-card form-stack">
             <span class="tag">Öğrenci Bilgileri</span>
             <h3 id="memberWelcomeTitle">Hoş Geldiniz</h3>
             <p id="memberCourseInfo" style="font-size:0.84rem;"></p>
@@ -735,23 +1031,23 @@
           <div>
             <div class="sub-nav">
               <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 PDF Nota & Çalışma Linkleri</button>
-              <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">📝 Hocanın Verdiği Ödevler & Mesaj</button>
+              <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">📝 Ders Arşivi & Ödev Zaman Çizelgesi</button>
               <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-rozet">🏅 Gelişim Tablosu (Hoca Onaylı)</button>
             </div>
 
             <!-- SEKME 1: SADECE LİNK OLARAK GÖRÜNEN PDF ÇEKMECESİ -->
             <div id="pane-stu-pdf" class="sub-pane active">
-              <div class="card">
+              <div class="card ribbon-card">
                 <h3>PDF Nota & Metot Bağlantıları</h3>
                 <div class="pdf-link-list" id="studentPdfDrawer"></div>
               </div>
             </div>
 
-            <!-- SEKME 2: ÖDEVLER VE MESAJLAŞMA -->
+            <!-- SEKME 2: DERS ARŞİVİ ZAMAN ÇİZELGESİ & MESAJLAŞMA -->
             <div id="pane-stu-odev" class="sub-pane">
-              <div class="card form-stack">
-                <h3>Doğukan Hoca'nın Eklediği Ödevler & Notlar</h3>
-                <div class="feed" id="studentFeed"></div>
+              <div class="card ribbon-card ribbon-emerald form-stack">
+                <h3>Ders Arşivi & Hoca Ödev Zaman Çizelgesi</h3>
+                <div class="timeline-feed" id="studentFeed"></div>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
@@ -765,7 +1061,7 @@
 
             <!-- SEKME 3: HOCA ONAYLI GELİŞİM TABLOSU -->
             <div id="pane-stu-rozet" class="sub-pane">
-              <div class="card">
+              <div class="card ribbon-card ribbon-amber">
                 <h3>Gelişim Tablosu (Doğukan Hoca Onaylı)</h3>
                 <p style="font-size:0.84rem;">Derslerde tamamladığınız aşamalar Doğukan Hoca tarafından onaylandıkça burada aktifleşir:</p>
                 <div class="badge-grid" id="studentBadgesGrid"></div>
@@ -779,7 +1075,7 @@
     <!-- 3. HOCA GİRİŞİ -->
     <section id="view-hoca" class="page-view">
       <!-- HOCA ŞİFRE KUTUSU (GİRİŞ YAPMADAN ÖNCE SADECE BU GÖRÜNÜR) -->
-      <div id="hocaLockBox" class="card form-stack" style="max-width: 420px; margin: 20px auto;">
+      <div id="hocaLockBox" class="card ribbon-card form-stack" style="max-width: 420px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
         <h3>Hoca Girişi</h3>
         <form id="hocaPinForm" class="form-stack">
@@ -807,7 +1103,7 @@
 
         <div class="portal-grid">
           <!-- SOL SÜTUN: ÖĞRENCİ SEÇİMİ VE YENİ ÖĞRENCİ EKLEME -->
-          <div class="card form-stack">
+          <div class="card ribbon-card form-stack">
             <h3>Kayıtlı Öğrenciler</h3>
             <p style="font-size:0.78rem;">İşlem yapmak istediğiniz öğrenciye tıklayın:</p>
             <div class="student-list" id="hocaStudentList"></div>
@@ -843,14 +1139,14 @@
           <!-- SAĞ SÜTUN: SEKMELİ TEMİZ HOCA ARAÇLARI -->
           <div>
             <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / PDF Linki Ekle & Mesajlar</button>
+              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / PDF Linki Ekle & Ders Arşivi</button>
               <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur Sayacı, Canlı Ders & Gelişim Onayı</button>
               <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Takvim, Talepler & Firebase</button>
             </div>
 
-            <!-- HOCA SEKME 1: ÖDEV / PDF LİNKİ EKLEME VE MESAJ AKIŞI -->
+            <!-- HOCA SEKME 1: ÖDEV / PDF LİNKİ EKLEME VE DERS ARŞİVİ -->
             <div id="pane-hoca-odev" class="sub-pane active">
-              <div class="card form-stack">
+              <div class="card ribbon-card form-stack">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
                   <h3>Seçili Öğrenci: <span id="selectedStudentTitle" style="color:var(--gold);">Tüm Öğrenciler</span></h3>
                   <span class="status-pill" id="selectedStudentCourse">Genel</span>
@@ -892,14 +1188,14 @@
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
-                <h3>Gönderilen Ödevler & Öğrenci Mesajları</h3>
-                <div class="feed" id="hocaFeed"></div>
+                <h3>Ders Arşivi & Öğrenci Mesajları Zaman Çizelgesi</h3>
+                <div class="timeline-feed" id="hocaFeed"></div>
               </div>
             </div>
 
             <!-- HOCA SEKME 2: KUR SAYACI, CANLI DERS VE GELİŞİM ONAYI -->
             <div id="pane-hoca-kur" class="sub-pane">
-              <div class="card form-stack">
+              <div class="card ribbon-card ribbon-emerald form-stack">
                 <div id="hocaNoStudentWarn" class="msg-item">
                   Sol taraftaki listeden bir öğrenciye tıkladığınızda o öğrencinin <strong>Kur Sayacı</strong>, <strong>Gelişim Tablosu Onayı</strong> ve <strong>WhatsApp Şifre Gönderme</strong> araçları burada açılır.
                 </div>
@@ -941,7 +1237,7 @@
 
             <!-- HOCA SEKME 3: TAKVİM, BAŞVURULAR VE FIREBASE -->
             <div id="pane-hoca-takvim" class="sub-pane">
-              <div class="card form-stack">
+              <div class="card ribbon-card ribbon-amber form-stack">
                 <h3>Gelen Ders Paketi Başvuruları</h3>
                 <div class="feed" id="hocaRequestsFeed" style="max-height: 220px;"></div>
 
@@ -984,11 +1280,22 @@
     const WHATSAPP_NUMBER = "905374394992";
     const HOCA_PIN = "baglama2026";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v11";
+    const STORAGE_KEY = "dogukan_muzik_portal_v12";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
     const MAIN_METHOD_PDF_URL = "./dogukanbaglamametodu.pdf";
+
+    /* SAYFA KAYDIRMAYA TEPKİ VEREN ALTIN SAHNE IŞIĞI HAREKETİ */
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY || 0;
+      const orb1 = document.getElementById("ambientOrb1");
+      const orb2 = document.getElementById("ambientOrb2");
+      const orb3 = document.getElementById("ambientOrb3");
+      if (orb1) orb1.style.transform = `translate3d(${Math.sin(y * 0.002) * 28}px, ${y * 0.12}px, 0)`;
+      if (orb2) orb2.style.transform = `translate3d(${Math.cos(y * 0.002) * -32}px, ${-y * 0.09}px, 0)`;
+      if (orb3) orb3.style.transform = `translate3d(${Math.sin(y * 0.0018) * 24}px, ${-y * 0.07}px, 0)`;
+    }, { passive: true });
 
     /* 23 PERDE TAM BAĞLAMA NOTA VE FREKANS DİZİLİMİ */
     const FRET_RATIOS = [
@@ -1147,8 +1454,11 @@
       }
     }
 
-    function nowStr() {
-      return new Date().toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+    function nowDateTimeStr() {
+      const now = new Date();
+      const datePart = now.toLocaleDateString("tr-TR", { day: "2-digit", month: "short", year: "numeric" });
+      const timePart = now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
+      return `${datePart} • ${timePart}`;
     }
 
     function loadState() {
@@ -1549,7 +1859,7 @@
         slot: mode,
         topic: note || course,
         status: "Onay Bekliyor",
-        time: nowStr()
+        time: nowDateTimeStr()
       });
       saveState();
       renderAll();
@@ -1607,7 +1917,7 @@
         cardType: "Öğrenci Mesajı",
         link: "",
         text,
-        time: nowStr(),
+        time: nowDateTimeStr(),
         completed: false
       });
       document.getElementById("studentMsgInput").value = "";
@@ -1699,7 +2009,7 @@
         cardType,
         link,
         text,
-        time: nowStr(),
+        time: nowDateTimeStr(),
         completed: false
       });
       document.getElementById("hocaReplyInput").value = "";
@@ -1837,9 +2147,17 @@
         document.getElementById("memberWelcomeTitle").textContent = stObj.name;
         document.getElementById("memberCourseInfo").textContent = `${stObj.course} • k.adı: ${stObj.username || "-"}`;
 
+        /* ÇALIŞMA MASASI ÖZET KARTI */
+        const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : [];
+        const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
+        document.getElementById("studyDeskSummaryTitle").textContent = `${stObj.name} — Bağlama Çalışma Masası`;
+        document.getElementById("deskCourseChip").textContent = `Branş: ${stObj.course}`;
+        document.getElementById("deskPdfCountChip").textContent = `Kayıtlı PDF: ${pdfList.length}`;
+        document.getElementById("deskBadgeCountChip").textContent = `Onaylı Aşama: ${earnedList.length} / ${SKILL_BADGES.length}`;
+
         const liveCard = document.getElementById("studentLiveRoomCard");
         if (stObj.liveActive && stObj.liveLink) {
-          liveCard.style.display = "flex";
+          liveCard.style.display = "block";
           document.getElementById("studentLiveRoomLink").href = stObj.liveLink;
         } else {
           liveCard.style.display = "none";
@@ -1867,7 +2185,6 @@
 
         /* SADECE LİNK OLARAK GÖRÜNEN PDF LİSTESİ */
         const pdfDrawer = document.getElementById("studentPdfDrawer");
-        const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : [];
         pdfDrawer.innerHTML = pdfList.map((p) => `
           <div class="pdf-link-card">
             <strong style="font-size:0.92rem; color:var(--gold-light);">📘 ${escapeHtml(p.title)}</strong>
@@ -1879,7 +2196,6 @@
         `).join("");
 
         /* GELİŞİM TABLOSU (SADECE HOCA ONAYLI GÖRÜNÜM) */
-        const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
         document.getElementById("studentBadgesGrid").innerHTML = SKILL_BADGES.map((b) => {
           const earned = earnedList.includes(b.id);
           return `
@@ -1894,6 +2210,7 @@
         memberWorkspace.style.display = "none";
       }
 
+      /* DERS ARŞİVİ ZAMAN ÇİZELGESİ */
       const studentFeed = document.getElementById("studentFeed");
       const visibleForStudent = state.messages.filter((m) => {
         if (!currentStudent) return false;
@@ -1909,7 +2226,7 @@
           <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
             <div class="msg-meta">
               <strong>${escapeHtml(m.senderName)} • ${escapeHtml(m.cardType || "")}</strong>
-              <span>${escapeHtml(m.time)}</span>
+              <span class="date-chip">${escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
             ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.82rem;">PDF / Bağlantıyı Aç →</a></div>` : ""}
@@ -1922,7 +2239,7 @@
             ` : ""}
           </div>
         `).join("")
-        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz Doğukan Hoca tarafından eklenmiş bir ödev veya mesaj bulunmuyor.</p>`;
+        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz Doğukan Hoca tarafından eklenmiş bir ödev veya ders kaydı bulunmuyor.</p>`;
 
       studentFeed.querySelectorAll("[data-toggle-done]").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -2033,7 +2350,7 @@
           <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
             <div class="msg-meta">
               <strong>${escapeHtml(m.senderName)} → ${escapeHtml(m.targetStudent === "ALL" ? "Tüm Öğrenciler" : m.targetStudent)} • ${escapeHtml(m.cardType || "")}</strong>
-              <span>${m.completed ? "Öğrenci Tamamladı ✓" : escapeHtml(m.time)}</span>
+              <span class="date-chip">${m.completed ? "Tamamlandı ✓ • " : ""}${escapeHtml(m.time)}</span>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
           </div>
