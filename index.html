@@ -73,7 +73,6 @@
       transition: background-color 0.55s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s ease;
     }
 
-    /* KATMANLI ARKA PLAN & SAYFA KAYDIKÇA TEPKİ VEREN SAHNE IŞIĞI DOKUSU */
     .stage-ambient-layer {
       position: fixed;
       inset: 0;
@@ -88,24 +87,15 @@
       transition: transform 0.25s ease-out, opacity 0.6s ease;
     }
     .ambient-orb.orb-1 {
-      width: 520px;
-      height: 520px;
-      top: -90px;
-      left: 5%;
+      width: 520px; height: 520px; top: -90px; left: 5%;
       background: radial-gradient(circle, rgba(212, 148, 76, 0.24), transparent 70%);
     }
     .ambient-orb.orb-2 {
-      width: 600px;
-      height: 600px;
-      top: 38%;
-      right: -120px;
+      width: 600px; height: 600px; top: 38%; right: -120px;
       background: radial-gradient(circle, rgba(156, 93, 30, 0.18), transparent 72%);
     }
     .ambient-orb.orb-3 {
-      width: 460px;
-      height: 460px;
-      bottom: -80px;
-      left: 25%;
+      width: 460px; height: 460px; bottom: -80px; left: 25%;
       background: radial-gradient(circle, rgba(243, 196, 139, 0.14), transparent 70%);
     }
 
@@ -207,6 +197,7 @@
     .btn-ghost { background: var(--surface-2); color: var(--text); border-color: var(--border); }
     .btn-ghost:hover { border-color: var(--gold); }
     .btn-ok { background: linear-gradient(135deg, #2eb872, #15803d); color: #fff; }
+    .btn-danger { background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; }
     .btn-sm { padding: 7px 13px; font-size: 0.79rem; border-radius: 9px; }
 
     /* HERO */
@@ -222,13 +213,9 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .portrait-card {
-      background: var(--wood-grad);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-strong);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      background: var(--wood-grad); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .portrait-card:hover { transform: translateY(-3px); box-shadow: var(--card-hover-glow); }
     .portrait-media { position: relative; height: 410px; background: var(--surface-2); }
@@ -240,33 +227,17 @@
     .pill { padding: 6px 13px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: all 0.2s ease; }
     .pill:hover { border-color: var(--gold); color: var(--gold-light); }
 
-    /* ANADOLU MOTİFLİ BÖLÜM AYRAÇLARI & ÇERÇEVELER */
     .section-block {
-      margin-top: 52px;
-      padding-top: 44px;
-      position: relative;
+      margin-top: 52px; padding-top: 44px; position: relative;
     }
     .section-block::before {
       content: "❖ ── ✦ ── ❖";
-      position: absolute;
-      top: -11px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--bg);
-      padding: 0 16px;
-      color: var(--gold);
-      font-size: 0.82rem;
-      letter-spacing: 3px;
-      z-index: 2;
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      background: var(--bg); padding: 0 16px; color: var(--gold); font-size: 0.82rem; letter-spacing: 3px; z-index: 2;
       transition: background-color 0.55s ease;
     }
     .section-block::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--border-strong), var(--gold), var(--border-strong), transparent);
     }
 
@@ -278,49 +249,21 @@
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 
-    /* YUMUŞAK CAM & AHŞAP DOKU KARTLARI + ÜZERİNE GELİNCE PARLAMA & KENAR VURGUSU */
     .card {
-      background: var(--wood-grad);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
+      background: var(--wood-grad); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
       transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.28s ease, background 0.55s ease;
     }
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-strong);
-      box-shadow: var(--card-hover-glow);
-    }
+    .card:hover { transform: translateY(-3px); border-color: var(--border-strong); box-shadow: var(--card-hover-glow); }
     .card h3 { font-size: 1.04rem; margin-bottom: 6px; }
     .card p { color: var(--muted); font-size: 0.88rem; }
 
-    /* REPERTUVAR & DERS KARTLARINDA GÖRSEL ETİKET ŞERİTLERİ */
-    .ribbon-card {
-      padding-top: 26px;
-    }
-    .ribbon-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    }
-    .ribbon-card.ribbon-emerald::before {
-      background: linear-gradient(90deg, #2eb872, #6ee7b7);
-    }
-    .ribbon-card.ribbon-amber::before {
-      background: linear-gradient(90deg, #f59e0b, #fcd34d);
-    }
-    .ribbon-card.ribbon-crimson::before {
-      background: linear-gradient(90deg, #e11d48, #fda4af);
-    }
+    .ribbon-card { padding-top: 26px; }
+    .ribbon-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .ribbon-card.ribbon-emerald::before { background: linear-gradient(90deg, #2eb872, #6ee7b7); }
+    .ribbon-card.ribbon-amber::before { background: linear-gradient(90deg, #f59e0b, #fcd34d); }
+    .ribbon-card.ribbon-crimson::before { background: linear-gradient(90deg, #e11d48, #fda4af); }
 
     .tag {
       display: inline-block; padding: 4px 10px; border-radius: 999px;
@@ -331,24 +274,12 @@
     /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ */
     .baglama-studio-card {
       background: linear-gradient(180deg, rgba(32, 21, 13, 0.94) 0%, rgba(16, 10, 7, 0.96) 100%);
-      backdrop-filter: blur(18px);
-      border: 1.5px solid var(--border-strong);
-      border-radius: 22px;
-      padding: 22px;
-      color: #f7efe6;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(18px); border: 1.5px solid var(--border-strong); border-radius: 22px; padding: 22px; color: #f7efe6;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45); transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .baglama-studio-card:hover {
-      border-color: var(--gold);
-      box-shadow: 0 26px 58px rgba(212, 148, 76, 0.2);
-    }
+    .baglama-studio-card:hover { border-color: var(--gold); box-shadow: 0 26px 58px rgba(212, 148, 76, 0.2); }
 
-    .studio-top {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
-    }
-
+    .studio-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
     .tuning-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .tuning-pill {
       padding: 7px 13px; border-radius: 9px; border: 1px solid rgba(243, 196, 139, 0.24);
@@ -360,27 +291,17 @@
     .baglama-neck {
       min-width: 1480px;
       background: linear-gradient(180deg, #382010 0%, #523018 48%, #2e190b 100%);
-      border: 2px solid #7c4b23;
-      border-radius: 14px;
-      padding: 14px 16px;
-      position: relative;
+      border: 2px solid #7c4b23; border-radius: 14px; padding: 14px 16px; position: relative;
     }
 
     .string-line {
-      display: grid;
-      grid-template-columns: 105px repeat(24, minmax(52px, 1fr));
-      gap: 5px;
-      align-items: center;
-      padding: 8px 0;
-      position: relative;
+      display: grid; grid-template-columns: 105px repeat(24, minmax(52px, 1fr)); gap: 5px; align-items: center; padding: 8px 0; position: relative;
     }
-
     .string-line::before {
       content: ""; position: absolute; left: 105px; right: 0; top: 50%; height: 2px;
       background: linear-gradient(90deg, #d6c5b3, #ffffff, #b89f82); opacity: 0.36; pointer-events: none;
     }
     .string-line.vibrating::before { height: 3px; opacity: 0.95; background: #f3c48b; box-shadow: 0 0 10px #f3c48b; }
-
     .string-name { font-size: 0.78rem; font-weight: 800; color: #f3c48b; z-index: 2; }
 
     .fret-node {
@@ -389,8 +310,7 @@
       color: #fff; font-weight: 700; font-size: 0.73rem; cursor: pointer; text-align: center; transition: all 0.14s ease;
     }
     .fret-node:hover, .fret-node.active {
-      background: linear-gradient(135deg, #f3c48b, #d4944c); color: #140c07;
-      border-color: #fff; transform: translateY(-2px);
+      background: linear-gradient(135deg, #f3c48b, #d4944c); color: #140c07; border-color: #fff; transform: translateY(-2px);
     }
     .fret-node small { display: block; font-size: 0.6rem; opacity: 0.75; }
 
@@ -407,13 +327,18 @@
     .beat-dot.active-tek { background: var(--ok); color: #fff; }
 
     /* HAFTALIK TAKVİM */
-    .schedule-grid { display: grid; grid-template-columns: repeat(7, minmax(125px, 1fr)); gap: 10px; overflow-x: auto; }
+    .schedule-grid { display: grid; grid-template-columns: repeat(7, minmax(135px, 1fr)); gap: 10px; overflow-x: auto; }
     .day-col { background: var(--surface); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 14px; padding: 12px; transition: border-color 0.25s ease; }
     .day-col:hover { border-color: var(--border-strong); }
     .day-col h4 { font-size: 0.88rem; margin-bottom: 8px; text-align: center; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
-    .slot-pill { display: flex; justify-content: space-between; padding: 7px 9px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; margin-bottom: 6px; border: 1px solid var(--border); }
+    .slot-pill { display: flex; justify-content: space-between; align-items: center; gap: 4px; padding: 7px 9px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; margin-bottom: 6px; border: 1px solid var(--border); }
     .slot-pill.free { background: rgba(46, 184, 114, 0.13); color: var(--ok); cursor: pointer; }
-    .slot-pill.busy { background: rgba(239, 68, 68, 0.12); color: var(--danger); opacity: 0.75; }
+    .slot-pill.busy { background: rgba(239, 68, 68, 0.12); color: var(--danger); opacity: 0.82; }
+    .slot-del-btn {
+      background: transparent; border: none; color: var(--muted); font-weight: 800; font-size: 0.78rem;
+      cursor: pointer; padding: 0 3px; line-height: 1;
+    }
+    .slot-del-btn:hover { color: var(--danger); }
 
     /* DÜZENLİ PANEL İÇİ ALT SEKMELER */
     .portal-banner {
@@ -421,7 +346,7 @@
       background: var(--wood-grad); backdrop-filter: blur(16px); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
     }
 
-    .portal-grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
+    .portal-grid { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
 
     .sub-nav {
       display: flex; gap: 8px; flex-wrap: wrap; background: var(--surface); backdrop-filter: blur(12px);
@@ -432,127 +357,48 @@
       padding: 9px 15px; border-radius: 10px; border: 1px solid transparent;
       background: transparent; color: var(--muted); font-weight: 700; font-size: 0.83rem; cursor: pointer; transition: all 0.2s ease;
     }
-    .sub-tab-btn.active {
-      background: var(--gold-glow); color: var(--gold-light); border-color: var(--border-strong);
-    }
+    .sub-tab-btn.active { background: var(--gold-glow); color: var(--gold-light); border-color: var(--border-strong); }
 
     .sub-pane { display: none; }
     .sub-pane.active { display: block; }
 
-    /* ÇALIŞMA & DERS MASASI GÖRSEL KARTI */
     .study-desk-card {
       background: radial-gradient(circle at 85% 15%, rgba(243, 196, 139, 0.22), transparent 55%), var(--wood-grad);
-      border: 1px solid var(--border-strong);
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
+      border: 1px solid var(--border-strong); border-radius: 16px; padding: 16px 18px; margin-bottom: 16px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
     }
-    .desk-pills {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .desk-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .desk-chip {
-      padding: 6px 11px;
-      border-radius: 9px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      font-size: 0.77rem;
-      font-weight: 700;
-      color: var(--gold-light);
+      padding: 6px 11px; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--border);
+      font-size: 0.77rem; font-weight: 700; color: var(--gold-light);
     }
 
-    /* CANLI DERS SAHNE KARTI & DERS ÖNCESİ HAZIRLIK KONTROL LİSTESİ */
     .live-stage-card {
       background: radial-gradient(circle at 12% 20%, rgba(46, 184, 114, 0.24), transparent 55%), var(--wood-grad);
-      border: 2px solid var(--ok);
-      border-radius: 18px;
-      padding: 18px 20px;
-      margin-bottom: 18px;
+      border: 2px solid var(--ok); border-radius: 18px; padding: 18px 20px; margin-bottom: 18px;
       box-shadow: 0 14px 34px rgba(46, 184, 114, 0.16);
     }
-    .live-stage-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
+    .live-stage-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
     .live-pulse-dot {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--ok);
-      margin-right: 6px;
-      box-shadow: 0 0 10px var(--ok);
+      display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--ok); margin-right: 6px; box-shadow: 0 0 10px var(--ok);
     }
     .prep-checklist {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(46, 184, 114, 0.28);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 12px; border-top: 1px solid rgba(46, 184, 114, 0.28);
     }
     .prep-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.22);
-      border: 1px solid rgba(46, 184, 114, 0.25);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
+      display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px;
+      background: rgba(0, 0, 0, 0.22); border: 1px solid rgba(46, 184, 114, 0.25); font-size: 0.78rem; font-weight: 600; cursor: pointer;
     }
-    .prep-item input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--ok);
-      cursor: pointer;
-    }
+    .prep-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--ok); cursor: pointer; }
 
-    /* SADECE LİNK OLARAK GÖRÜNEN PDF LİSTESİ */
-    .pdf-link-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
+    .pdf-link-list { display: grid; gap: 10px; margin-top: 12px; }
     .pdf-link-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding: 15px 18px;
-      border-radius: 14px;
-      background: var(--surface-2);
-      border: 1px solid var(--border-strong);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
+      padding: 15px 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border-strong);
+      position: relative; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .pdf-link-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--gold);
-    }
-    .pdf-link-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(180deg, var(--gold), var(--gold-light));
-    }
+    .pdf-link-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+    .pdf-link-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--gold), var(--gold-light)); }
 
     .renewal-alert-card {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), var(--surface));
@@ -581,62 +427,31 @@
     }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
 
-    /* DERS ARŞİVİ ZAMAN ÇİZELGESİ GÖRÜNÜMÜ */
     .timeline-feed {
-      display: grid;
-      gap: 12px;
-      max-height: 430px;
-      overflow-y: auto;
-      padding-left: 16px;
-      padding-right: 4px;
-      border-left: 2px solid var(--border-strong);
-      margin-left: 6px;
+      display: grid; gap: 12px; max-height: 430px; overflow-y: auto;
+      padding-left: 16px; padding-right: 4px; border-left: 2px solid var(--border-strong); margin-left: 6px;
     }
     .msg-item {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      position: relative;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px;
+      position: relative; transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .msg-item:hover {
-      border-color: var(--border-strong);
-    }
+    .msg-item:hover { border-color: var(--border-strong); }
     .timeline-feed .msg-item::before {
-      content: "";
-      position: absolute;
-      left: -22px;
-      top: 16px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 8px var(--gold);
+      content: ""; position: absolute; left: -22px; top: 16px; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold); border: 2px solid var(--bg); box-shadow: 0 0 8px var(--gold);
     }
-    .timeline-feed .msg-item.from-ogrenci::before {
-      background: var(--ok);
-      box-shadow: 0 0 8px var(--ok);
-    }
+    .timeline-feed .msg-item.from-ogrenci::before { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
     .msg-item.from-hoca { border-left: 4px solid var(--gold); }
     .msg-item.from-ogrenci { border-left: 4px solid var(--ok); }
-    .msg-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; }
-    .date-chip {
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: var(--gold-glow);
-      color: var(--gold-light);
-      font-weight: 700;
-      font-size: 0.7rem;
-    }
+    .msg-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; align-items: center; }
+    .date-chip { padding: 2px 8px; border-radius: 999px; background: var(--gold-glow); color: var(--gold-light); font-weight: 700; font-size: 0.7rem; }
     .msg-body { font-size: 0.89rem; color: var(--text); white-space: pre-wrap; }
 
     .feed { display: grid; gap: 10px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
 
     .student-list { display: grid; gap: 8px; margin-top: 10px; }
     .student-pill {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
       padding: 10px 12px; border-radius: 11px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; font-size: 0.84rem;
       transition: all 0.2s ease;
     }
@@ -771,7 +586,7 @@
         </div>
       </div>
 
-      <!-- DERS ALANLARI (GÖRSEL ETİKET ŞERİTLİ KARTLAR) -->
+      <!-- DERS ALANLARI -->
       <div class="section-block">
         <div class="section-head">
           <span class="tag">Eğitim Branşları</span>
@@ -933,7 +748,6 @@
 
     <!-- 2. ÖĞRENCİ GİRİŞİ -->
     <section id="view-ogrenci" class="page-view">
-      <!-- GİRİŞ FORMU (GİRİŞ YAPMADAN ÖNCE SADECE BU GÖRÜNÜR) -->
       <div id="studentAuthScreen" class="card ribbon-card form-stack" style="max-width: 440px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
         <h3>Öğrenci Girişi</h3>
@@ -952,7 +766,6 @@
         </form>
       </div>
 
-      <!-- ÖĞRENCİ ÇALIŞMA ALANI (SADECE GİRİŞ YAPTIKTAN SONRA AÇILIR) -->
       <div id="studentMemberWorkspace" style="display:none;">
         <div class="portal-banner">
           <div>
@@ -962,7 +775,6 @@
           <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
         </div>
 
-        <!-- CANLI DERS SAHNE KARTI + DERS ÖNCESİ HAZIRLIK KONTROL LİSTESİ -->
         <div id="studentLiveRoomCard" class="live-stage-card" style="display:none;">
           <div class="live-stage-head">
             <div>
@@ -978,7 +790,6 @@
           </div>
         </div>
 
-        <!-- KUR YENİLEME UYARISI -->
         <div id="studentRenewalAlert" class="renewal-alert-card" style="display:none;">
           <div>
             <span class="tag" style="color:var(--warn);">Kur Tamamlandı</span>
@@ -988,7 +799,6 @@
           <a id="studentRenewalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm">WhatsApp ile Kur Yenile →</a>
         </div>
 
-        <!-- ÇALIŞMA & DERS MASASI GÖRSEL KARTI -->
         <div class="study-desk-card">
           <div>
             <span class="tag" style="margin-bottom:4px;">Çalışma & Ders Masası</span>
@@ -1002,7 +812,6 @@
         </div>
 
         <div class="portal-grid">
-          <!-- SOL ÖZET KARTI -->
           <div class="card ribbon-card form-stack">
             <span class="tag">Öğrenci Bilgileri</span>
             <h3 id="memberWelcomeTitle">Hoş Geldiniz</h3>
@@ -1027,7 +836,6 @@
             </div>
           </div>
 
-          <!-- SAĞ SEKMELİ DÜZENLİ ALAN -->
           <div>
             <div class="sub-nav">
               <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 PDF Nota & Çalışma Linkleri</button>
@@ -1035,7 +843,6 @@
               <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-rozet">🏅 Gelişim Tablosu (Hoca Onaylı)</button>
             </div>
 
-            <!-- SEKME 1: SADECE LİNK OLARAK GÖRÜNEN PDF ÇEKMECESİ -->
             <div id="pane-stu-pdf" class="sub-pane active">
               <div class="card ribbon-card">
                 <h3>PDF Nota & Metot Bağlantıları</h3>
@@ -1043,7 +850,6 @@
               </div>
             </div>
 
-            <!-- SEKME 2: DERS ARŞİVİ ZAMAN ÇİZELGESİ & MESAJLAŞMA -->
             <div id="pane-stu-odev" class="sub-pane">
               <div class="card ribbon-card ribbon-emerald form-stack">
                 <h3>Ders Arşivi & Hoca Ödev Zaman Çizelgesi</h3>
@@ -1059,7 +865,6 @@
               </div>
             </div>
 
-            <!-- SEKME 3: HOCA ONAYLI GELİŞİM TABLOSU -->
             <div id="pane-stu-rozet" class="sub-pane">
               <div class="card ribbon-card ribbon-amber">
                 <h3>Gelişim Tablosu (Doğukan Hoca Onaylı)</h3>
@@ -1074,7 +879,6 @@
 
     <!-- 3. HOCA GİRİŞİ -->
     <section id="view-hoca" class="page-view">
-      <!-- HOCA ŞİFRE KUTUSU (GİRİŞ YAPMADAN ÖNCE SADECE BU GÖRÜNÜR) -->
       <div id="hocaLockBox" class="card ribbon-card form-stack" style="max-width: 420px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
         <h3>Hoca Girişi</h3>
@@ -1088,12 +892,11 @@
         </form>
       </div>
 
-      <!-- HOCA YÖNETİM PANELİ VE YEDEK İNDİRME (SADECE HOCA GİRİŞ YAPTIKTAN SONRA AÇILIR) -->
       <div id="hocaWorkspace" style="display:none;">
         <div class="portal-banner">
           <div>
             <span class="tag">Eğitmen Kontrol Paneli</span>
-            <h2 class="section-title" style="font-size: 1.65rem;">Doğukan Bozkurt — Öğrenci & Ödev Yönetimi</h2>
+            <h2 class="section-title" style="font-size: 1.65rem;">Doğukan Bozkurt — Öğrenci & Ders Yönetimi</h2>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
             <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Yedek İndir (JSON)</button>
@@ -1102,10 +905,10 @@
         </div>
 
         <div class="portal-grid">
-          <!-- SOL SÜTUN: ÖĞRENCİ SEÇİMİ VE YENİ ÖĞRENCİ EKLEME -->
+          <!-- SOL SÜTUN: ÖĞRENCİ LİSTESİ, SİLME & YENİ ÖĞRENCİ EKLEME -->
           <div class="card ribbon-card form-stack">
             <h3>Kayıtlı Öğrenciler</h3>
-            <p style="font-size:0.78rem;">İşlem yapmak istediğiniz öğrenciye tıklayın:</p>
+            <p style="font-size:0.78rem;">Seçmek için satıra tıklayın; silmek için <strong>Sil</strong> butonunu kullanın:</p>
             <div class="student-list" id="hocaStudentList"></div>
 
             <hr style="border:none; border-top:1px solid var(--border);" />
@@ -1136,15 +939,15 @@
             </form>
           </div>
 
-          <!-- SAĞ SÜTUN: SEKMELİ TEMİZ HOCA ARAÇLARI -->
+          <!-- SAĞ SÜTUN: SEKMELİ HOCA ARAÇLARI -->
           <div>
             <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / PDF Linki Ekle & Ders Arşivi</button>
-              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur Sayacı, Canlı Ders & Gelişim Onayı</button>
-              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Takvim, Talepler & Firebase</button>
+              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / PDF Linki & Ders Arşivi</button>
+              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur, Öğrenci Düzenleme & Onay</button>
+              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Haftalık Saat Seçimi & Ayarlar</button>
             </div>
 
-            <!-- HOCA SEKME 1: ÖDEV / PDF LİNKİ EKLEME VE DERS ARŞİVİ -->
+            <!-- HOCA SEKME 1 -->
             <div id="pane-hoca-odev" class="sub-pane active">
               <div class="card ribbon-card form-stack">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
@@ -1152,7 +955,6 @@
                   <span class="status-pill" id="selectedStudentCourse">Genel</span>
                 </div>
 
-                <!-- DOĞRUDAN PDF LİNKİ EKLEME KUTUSU -->
                 <div class="msg-item">
                   <strong>Öğrenciye Yeni PDF / Nota Linki Ekle</strong>
                   <form id="hocaAddPdfForm" class="field-row" style="margin-top:8px;">
@@ -1193,17 +995,41 @@
               </div>
             </div>
 
-            <!-- HOCA SEKME 2: KUR SAYACI, CANLI DERS VE GELİŞİM ONAYI -->
+            <!-- HOCA SEKME 2: KUR SAYACI, ÖĞRENCİ DÜZENLEME / SİLME & GELİŞİM ONAYI -->
             <div id="pane-hoca-kur" class="sub-pane">
               <div class="card ribbon-card ribbon-emerald form-stack">
                 <div id="hocaNoStudentWarn" class="msg-item">
-                  Sol taraftaki listeden bir öğrenciye tıkladığınızda o öğrencinin <strong>Kur Sayacı</strong>, <strong>Gelişim Tablosu Onayı</strong> ve <strong>WhatsApp Şifre Gönderme</strong> araçları burada açılır.
+                  Sol taraftaki listeden bir öğrenciye tıkladığınızda o öğrencinin <strong>Kur Sayacı</strong>, <strong>Branş/Paket Güncelleme</strong>, <strong>Silme</strong>, <strong>Gelişim Onayı</strong> ve <strong>WhatsApp Şifre Gönderme</strong> araçları burada açılır.
                 </div>
 
                 <div id="hocaStudentToolsCard" style="display:none;" class="form-stack">
                   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                     <h3 id="hocaToolsStudentName">Öğrenci Yönetimi</h3>
-                    <a id="hocaSendPassWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Giriş Şifresini WhatsApp'tan Gönder →</a>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                      <a id="hocaSendPassWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Şifreyi WhatsApp'tan Gönder →</a>
+                      <button type="button" id="hocaDeleteSelectedStudentBtn" class="btn btn-danger btn-sm">Öğrenciyi Sil</button>
+                    </div>
+                  </div>
+
+                  <!-- ÖĞRENCİ BRANŞ VE KUR SAYISI GÜNCELLEME -->
+                  <div class="msg-item">
+                    <strong>Öğrenci Branş & Kur Paketi Düzenle</strong>
+                    <div class="field-row" style="margin-top:8px;">
+                      <select id="editStuCourseSelect">
+                        <option>Bağlama Düzeni</option>
+                        <option>Bağlama Bozuk Düzen</option>
+                        <option>Nota</option>
+                        <option>Solfej</option>
+                        <option>Şelpe</option>
+                        <option>Çalıp Söyleme</option>
+                        <option>Güzel Sanatlara Hazırlık</option>
+                        <option>Konservatuara Hazırlık</option>
+                      </select>
+                      <div style="display:flex; gap:8px;">
+                        <input type="number" id="editStuPkgInput" min="1" max="24" value="4" title="Toplam Kur Ders Sayısı" />
+                        <button type="button" id="saveStuMetaBtn" class="btn btn-sm" style="white-space:nowrap;">Kaydet</button>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="grid-2">
@@ -1235,16 +1061,41 @@
               </div>
             </div>
 
-            <!-- HOCA SEKME 3: TAKVİM, BAŞVURULAR VE FIREBASE -->
+            <!-- HOCA SEKME 3: HAFTALIK SAAT SEÇİMİ, EKLEME/SİLME, BAŞVURULAR, ŞİFRE & FIREBASE -->
             <div id="pane-hoca-takvim" class="sub-pane">
               <div class="card ribbon-card ribbon-amber form-stack">
                 <h3>Gelen Ders Paketi Başvuruları</h3>
-                <div class="feed" id="hocaRequestsFeed" style="max-height: 220px;"></div>
+                <div class="feed" id="hocaRequestsFeed" style="max-height: 200px;"></div>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
-                <h3>Haftalık Ders Saatlerini Dolu / Müsait Yap</h3>
+                <h3>Haftalık Ders Saatlerini Seç, Ekle veya Sil</h3>
+                <p style="font-size:0.8rem;">Saate tıklayarak <strong>Müsait / Dolu</strong> yapabilir, yeni saat ekleyebilir veya <strong>×</strong> ile silebilirsiniz:</p>
+                <form id="hocaAddSlotForm" class="field-row">
+                  <select id="slotDaySelect">
+                    <option>Pazartesi</option>
+                    <option>Salı</option>
+                    <option>Çarşamba</option>
+                    <option>Perşembe</option>
+                    <option>Cuma</option>
+                    <option>Cumartesi</option>
+                    <option>Pazar</option>
+                  </select>
+                  <div style="display:flex; gap:8px;">
+                    <input type="time" id="slotTimeInput" value="20:00" required />
+                    <button type="submit" class="btn btn-sm" style="white-space:nowrap;">Saat Ekle</button>
+                  </div>
+                </form>
                 <div class="schedule-grid" id="hocaScheduleGrid"></div>
+
+                <hr style="border:none; border-top:1px solid var(--border);" />
+
+                <h3>Hoca Giriş Şifresini Değiştir</h3>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <input type="password" id="newHocaPinInput" placeholder="Yeni hoca şifresi" style="flex:1;" />
+                  <button type="button" id="saveHocaPinBtn" class="btn btn-sm">Şifreyi Güncelle</button>
+                </div>
+                <span id="hocaPinSaveStatus" style="font-size:0.8rem; color:var(--ok); font-weight:700;"></span>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
@@ -1278,13 +1129,22 @@
 
   <script>
     const WHATSAPP_NUMBER = "905374394992";
-    const HOCA_PIN = "baglama2026";
+    const DEFAULT_HOCA_PIN = "baglama2026";
+    const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v12";
+    const STORAGE_KEY = "dogukan_muzik_portal_v13";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
     const MAIN_METHOD_PDF_URL = "./dogukanbaglamametodu.pdf";
+
+    function getHocaPin() {
+      try {
+        return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN;
+      } catch (_) {
+        return DEFAULT_HOCA_PIN;
+      }
+    }
 
     /* SAYFA KAYDIRMAYA TEPKİ VEREN ALTIN SAHNE IŞIĞI HAREKETİ */
     window.addEventListener("scroll", () => {
@@ -1333,7 +1193,6 @@
 
     let currentTuningKey = "baglama";
 
-    /* KALICI TEMA YÖNETİMİ */
     function applyTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
       document.getElementById("themeIcon").textContent = theme === "dark" ? "☀️" : "🌙";
@@ -1359,7 +1218,6 @@
       }, 1350);
     });
 
-    /* ALT SEKMELERİN ÇALIŞMASI */
     document.querySelectorAll("[data-stu-tab]").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll("[data-stu-tab]").forEach((b) => b.classList.remove("active"));
@@ -1507,6 +1365,15 @@
         }
       } catch (_) {}
     }
+
+    document.getElementById("saveHocaPinBtn").addEventListener("click", () => {
+      const nextPin = document.getElementById("newHocaPinInput").value.trim();
+      if (!nextPin) return;
+      try { localStorage.setItem(HOCA_PIN_KEY, nextPin); } catch (_) {}
+      document.getElementById("newHocaPinInput").value = "";
+      document.getElementById("hocaPinSaveStatus").textContent = "Yeni hoca şifresi kaydedildi ✓";
+      setTimeout(() => { document.getElementById("hocaPinSaveStatus").textContent = ""; }, 2500);
+    });
 
     document.getElementById("saveFirebaseUrlBtn").addEventListener("click", () => {
       const val = document.getElementById("firebaseConfigInput").value.trim();
@@ -1661,7 +1528,6 @@
       });
     });
 
-    /* MİKROFONLU CANLI AKORT */
     const NOTE_NAMES = ["Do (C)", "Do# (C#)", "Re (D)", "Re# (D#)", "Mi (E)", "Fa (F)", "Fa# (F#)", "Sol (G)", "Sol# (G#)", "La (A)", "Sib (Bb)", "Si (B)"];
 
     function autoCorrelate(buf, sampleRate) {
@@ -1735,7 +1601,6 @@
       }
     });
 
-    /* USUL METRONOMU */
     const USUL_PATTERNS = {
       "4": ["Düm", "Tek", "Tek", "Tek"],
       "5": ["Düm", "Tek", "Düm", "Tek", "Tek"],
@@ -1803,7 +1668,6 @@
       status.textContent = `Çalıyor: ${bpm} BPM`;
     });
 
-    /* ÖĞRENCİ KAYIT VE YÖNETİM FONKSİYONLARI */
     function upsertStudent(name, course, phone = "", mode = "", username = "", password = "", pkgTotal = 4) {
       const cleanUser = (username || name).toLowerCase().replace(/[^a-z0-9ğüşıöç]/gi, "");
       const existing = state.students.find(
@@ -1841,6 +1705,17 @@
       };
       state.students.push(created);
       return created;
+    }
+
+    function deleteStudentById(stuId) {
+      const target = state.students.find((s) => s.id === stuId);
+      if (!target) return;
+      if (!confirm(`${target.name} adlı öğrenciyi silmek istediğinize emin misiniz?`)) return;
+      state.students = state.students.filter((s) => s.id !== stuId);
+      if (selectedHocaStudent === target.name) selectedHocaStudent = "ALL";
+      if (currentStudent && currentStudent.id === stuId) currentStudent = null;
+      saveState();
+      renderAll();
     }
 
     document.getElementById("quickRegisterForm").addEventListener("submit", (e) => {
@@ -1929,7 +1804,7 @@
     document.getElementById("hocaPinForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const pin = document.getElementById("hocaPinInput").value.trim();
-      if (pin === HOCA_PIN) {
+      if (pin === getHocaPin()) {
         document.getElementById("hocaLockBox").style.display = "none";
         document.getElementById("hocaWorkspace").style.display = "block";
         document.getElementById("hocaPinError").textContent = "";
@@ -1967,7 +1842,21 @@
       setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
     });
 
-    /* HOCA PDF LİNKİ EKLEME */
+    document.getElementById("hocaDeleteSelectedStudentBtn").addEventListener("click", () => {
+      const found = state.students.find((s) => s.name === selectedHocaStudent);
+      if (found) deleteStudentById(found.id);
+    });
+
+    document.getElementById("saveStuMetaBtn").addEventListener("click", () => {
+      const stu = state.students.find((s) => s.name === selectedHocaStudent);
+      if (!stu) return;
+      stu.course = document.getElementById("editStuCourseSelect").value;
+      stu.lessonsTotal = Math.max(1, parseInt(document.getElementById("editStuPkgInput").value, 10) || 4);
+      if ((stu.lessonsDone || 0) > stu.lessonsTotal) stu.lessonsDone = stu.lessonsTotal;
+      saveState();
+      renderAll();
+    });
+
     document.getElementById("hocaAddPdfForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("hocaPdfTitle").value.trim();
@@ -2016,6 +1905,21 @@
       document.getElementById("hocaResourceLink").value = "";
       saveState();
       renderAll();
+    });
+
+    document.getElementById("hocaAddSlotForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const dayName = document.getElementById("slotDaySelect").value;
+      const timeVal = document.getElementById("slotTimeInput").value.trim();
+      if (!timeVal) return;
+      const dayObj = state.schedule.find((d) => d.day === dayName);
+      if (!dayObj) return;
+      if (!dayObj.slots.some((s) => s.time === timeVal)) {
+        dayObj.slots.push({ time: timeVal, busy: false });
+        dayObj.slots.sort((a, b) => a.time.localeCompare(b.time));
+        saveState();
+        renderSchedules();
+      }
     });
 
     document.getElementById("hocaIncLessonBtn").addEventListener("click", () => {
@@ -2111,17 +2015,32 @@
             ${d.slots.map((s, sIdx) => `
               <div class="slot-pill ${s.busy ? "busy" : "free"}" style="cursor:pointer;" data-toggle-day="${dIdx}" data-toggle-slot="${sIdx}">
                 <span>${escapeHtml(s.time)}</span>
-                <span>${s.busy ? "Dolu" : "Müsait"}</span>
+                <div style="display:flex; align-items:center; gap:5px;">
+                  <span>${s.busy ? "Dolu" : "Müsait"}</span>
+                  <button type="button" class="slot-del-btn" title="Saati Sil" data-del-day="${dIdx}" data-del-slot="${sIdx}">×</button>
+                </div>
               </div>
             `).join("")}
           </div>
         `).join("");
 
         hocaGrid.querySelectorAll("[data-toggle-day]").forEach((el) => {
-          el.addEventListener("click", () => {
+          el.addEventListener("click", (e) => {
+            if (e.target.closest("[data-del-day]")) return;
             const dIdx = parseInt(el.dataset.toggleDay, 10);
             const sIdx = parseInt(el.dataset.toggleSlot, 10);
             state.schedule[dIdx].slots[sIdx].busy = !state.schedule[dIdx].slots[sIdx].busy;
+            saveState();
+            renderSchedules();
+          });
+        });
+
+        hocaGrid.querySelectorAll("[data-del-day]").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const dIdx = parseInt(btn.dataset.delDay, 10);
+            const sIdx = parseInt(btn.dataset.delSlot, 10);
+            state.schedule[dIdx].slots.splice(sIdx, 1);
             saveState();
             renderSchedules();
           });
@@ -2147,7 +2066,6 @@
         document.getElementById("memberWelcomeTitle").textContent = stObj.name;
         document.getElementById("memberCourseInfo").textContent = `${stObj.course} • k.adı: ${stObj.username || "-"}`;
 
-        /* ÇALIŞMA MASASI ÖZET KARTI */
         const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : [];
         const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
         document.getElementById("studyDeskSummaryTitle").textContent = `${stObj.name} — Bağlama Çalışma Masası`;
@@ -2183,7 +2101,6 @@
         document.getElementById("studentPracticeBar").style.width = Math.min(100, Math.round((mins / 180) * 100)) + "%";
         document.getElementById("studentPracticeText").textContent = `${mins} / 180 dk`;
 
-        /* SADECE LİNK OLARAK GÖRÜNEN PDF LİSTESİ */
         const pdfDrawer = document.getElementById("studentPdfDrawer");
         pdfDrawer.innerHTML = pdfList.map((p) => `
           <div class="pdf-link-card">
@@ -2195,7 +2112,6 @@
           </div>
         `).join("");
 
-        /* GELİŞİM TABLOSU (SADECE HOCA ONAYLI GÖRÜNÜM) */
         document.getElementById("studentBadgesGrid").innerHTML = SKILL_BADGES.map((b) => {
           const earned = earnedList.includes(b.id);
           return `
@@ -2210,7 +2126,6 @@
         memberWorkspace.style.display = "none";
       }
 
-      /* DERS ARŞİVİ ZAMAN ÇİZELGESİ */
       const studentFeed = document.getElementById("studentFeed");
       const visibleForStudent = state.messages.filter((m) => {
         if (!currentStudent) return false;
@@ -2252,7 +2167,7 @@
         });
       });
 
-      /* HOCA ÖĞRENCİ LİSTESİ */
+      /* HOCA ÖĞRENCİ LİSTESİ + ÖĞRENCİ SİLME BUTONU */
       const sList = document.getElementById("hocaStudentList");
       sList.innerHTML = [
         `<div class="student-pill ${selectedHocaStudent === "ALL" ? "active" : ""}" data-select-s="ALL">
@@ -2270,16 +2185,27 @@
                   k.adı: ${escapeHtml(s.username)} • şifre: ${escapeHtml(s.password)}
                 </span>
               </div>
-              <span class="status-pill ${d >= t ? "done" : ""}">${d}/${t}</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="status-pill ${d >= t ? "done" : ""}">${d}/${t}</span>
+                <button type="button" class="btn btn-danger btn-sm" data-del-stu="${escapeHtml(s.id)}">Sil</button>
+              </div>
             </div>
           `;
         })
       ].join("");
 
       sList.querySelectorAll("[data-select-s]").forEach((el) => {
-        el.addEventListener("click", () => {
+        el.addEventListener("click", (e) => {
+          if (e.target.closest("[data-del-stu]")) return;
           selectedHocaStudent = el.dataset.selectS;
           renderAll();
+        });
+      });
+
+      sList.querySelectorAll("[data-del-stu]").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          deleteStudentById(btn.dataset.delStu);
         });
       });
 
@@ -2302,6 +2228,8 @@
         document.getElementById("hocaToolsStudentName").textContent = `${foundStudent.name} (k.adı: ${foundStudent.username} / şifre: ${foundStudent.password})`;
         document.getElementById("hocaCourseCounterLabel").textContent = `${d} / ${t} Ders İşlendi`;
         document.getElementById("hocaLiveLinkInput").value = foundStudent.liveLink || "";
+        document.getElementById("editStuCourseSelect").value = foundStudent.course || "Bağlama Düzeni";
+        document.getElementById("editStuPkgInput").value = t;
 
         const stuPhone = formatPhoneForWa(foundStudent.phone);
         const passMsg = `Merhaba ${foundStudent.name}, Doğukan Bozkurt Müzik & Bağlama Akademisi öğrenci giriş bilgilerin:\n\nKullanıcı Adı: ${foundStudent.username}\nŞifre: ${foundStudent.password}`;
@@ -2350,12 +2278,23 @@
           <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
             <div class="msg-meta">
               <strong>${escapeHtml(m.senderName)} → ${escapeHtml(m.targetStudent === "ALL" ? "Tüm Öğrenciler" : m.targetStudent)} • ${escapeHtml(m.cardType || "")}</strong>
-              <span class="date-chip">${m.completed ? "Tamamlandı ✓ • " : ""}${escapeHtml(m.time)}</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="date-chip">${m.completed ? "Tamamlandı ✓ • " : ""}${escapeHtml(m.time)}</span>
+                <button type="button" class="slot-del-btn" title="Kaydı Sil" data-del-msg="${escapeHtml(m.id)}">×</button>
+              </div>
             </div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
           </div>
         `).join("")
         : `<p style="color:var(--muted); font-size:0.85rem;">Henüz eklenmiş ödev veya mesaj yok.</p>`;
+
+      hocaFeed.querySelectorAll("[data-del-msg]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.messages = state.messages.filter((x) => x.id !== btn.dataset.delMsg);
+          saveState();
+          renderAll();
+        });
+      });
 
       const reqFeed = document.getElementById("hocaRequestsFeed");
       reqFeed.innerHTML = state.requests.length
