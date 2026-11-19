@@ -184,10 +184,32 @@
     .nav-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .portal-switch { display: flex; gap: 5px; background: var(--surface-2); padding: 5px; border-radius: 14px; border: 1px solid var(--border); }
     .tab-btn {
-      padding: 9px 16px; border-radius: 10px; border: none; background: transparent;
+      position: relative; padding: 9px 16px; border-radius: 10px; border: none; background: transparent;
       color: var(--muted); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.25s ease;
     }
     .tab-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff; box-shadow: 0 4px 14px rgba(212, 148, 76, 0.35); }
+    .nav-badge-dot {
+      display: none; position: absolute; top: 5px; right: 6px; min-width: 16px; height: 16px; padding: 0 4px;
+      border-radius: 999px; background: var(--danger); color: #fff; font-size: 0.65rem; font-weight: 800;
+      align-items: center; justify-content: center; line-height: 1;
+    }
+    .nav-badge-dot.show { display: inline-flex; }
+
+    /* SAYFA GİRİŞİNDE MESAJ BİLDİRİM BANNERİ */
+    .incoming-msg-alert {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(212, 148, 76, 0.22), rgba(46, 184, 114, 0.14));
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .incoming-msg-alert.show { display: flex; animation: fadeUp 0.3s ease; }
 
     .theme-toggle-btn {
       display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px;
@@ -197,7 +219,7 @@
     }
     .theme-toggle-btn:hover { border-color: var(--gold); box-shadow: 0 0 18px var(--gold-glow); }
 
-    .page-view { display: none; padding: 38px 0 72px; animation: fadeUp 0.35s ease; }
+    .page-view { display: none; padding: 30px 0 72px; animation: fadeUp 0.35s ease; }
     .page-view.active { display: block; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -282,7 +304,7 @@
       color: var(--gold-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
     }
 
-    /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ + GERÇEK BAĞLAMA SES KONTROLLERİ */
+    /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ */
     .baglama-studio-card {
       background: linear-gradient(180deg, rgba(32, 21, 13, 0.94) 0%, rgba(16, 10, 7, 0.96) 100%);
       backdrop-filter: blur(18px); border: 1.5px solid var(--border-strong); border-radius: 22px; padding: 22px; color: #f7efe6;
@@ -356,7 +378,6 @@
     }
     .fret-node small { display: block; font-size: 0.6rem; opacity: 0.75; }
 
-    /* AKORT VE METRONOM */
     .tuner-studio { text-align: center; padding: 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); margin-top: 10px; }
     .tuner-big-note { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; color: var(--gold); line-height: 1; }
     .tuner-sub-info { font-size: 0.85rem; color: var(--muted); margin-top: 5px; font-weight: 600; }
@@ -375,7 +396,6 @@
       0% { transform: translateY(0) scale(1); } 45% { transform: translateY(-5px) scale(1.07); } 100% { transform: translateY(0) scale(1); }
     }
 
-    /* HAFTALIK TAKVİM */
     .schedule-grid { display: grid; grid-template-columns: repeat(7, minmax(135px, 1fr)); gap: 10px; overflow-x: auto; }
     .day-col { background: var(--surface); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 14px; padding: 12px; transition: border-color 0.25s ease; }
     .day-col:hover { border-color: var(--border-strong); }
@@ -386,7 +406,6 @@
     .slot-del-btn { background: transparent; border: none; color: var(--muted); font-weight: 800; font-size: 0.78rem; cursor: pointer; padding: 0 3px; line-height: 1; }
     .slot-del-btn:hover { color: var(--danger); }
 
-    /* PANELİ SEKMELERİ */
     .portal-banner {
       display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
       background: var(--wood-grad); backdrop-filter: blur(16px); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
@@ -580,8 +599,14 @@
       <div class="nav-controls">
         <div class="portal-switch" role="tablist">
           <button class="tab-btn active" data-go="vitrin">Ana Sayfa</button>
-          <button class="tab-btn" data-go="ogrenci">Öğrenci Girişi</button>
-          <button class="tab-btn" data-go="hoca">Hoca Girişi</button>
+          <button class="tab-btn" data-go="ogrenci">
+            Öğrenci Girişi
+            <span class="nav-badge-dot" id="stuNavBadge">0</span>
+          </button>
+          <button class="tab-btn" data-go="hoca">
+            Hoca Girişi
+            <span class="nav-badge-dot" id="hocaNavBadge">0</span>
+          </button>
         </div>
 
         <button type="button" id="globalThemeBtn" class="theme-toggle-btn">
@@ -593,6 +618,15 @@
   </header>
 
   <main class="container">
+    <!-- SAYFA GİRİŞİNDE ÖĞRENCİ / HOCA MESAJ BİLDİRİMİ -->
+    <div id="incomingMsgBanner" class="incoming-msg-alert">
+      <div>
+        <span class="tag" style="margin-bottom:2px;">Yeni Mesaj Bildirimi</span>
+        <div id="incomingMsgText" style="font-size:0.88rem; font-weight:700;"></div>
+      </div>
+      <button type="button" id="openMsgFromBannerBtn" class="btn btn-sm">Mesajlara Git →</button>
+    </div>
+
     <section id="view-vitrin" class="page-view active">
       <div class="hero">
         <div>
@@ -650,7 +684,6 @@
         </div>
       </div>
 
-      <!-- 23 PERDELİ TAM İNTERAKTİF BAĞLAMA SAPI & GERÇEK BAĞLAMA SESİ -->
       <div id="baglama-studyosu" class="section-block">
         <div class="section-head">
           <span class="tag">23 Perde Tam Klavye & Gerçek Bağlama Tınısı</span>
@@ -750,7 +783,7 @@
         <div class="section-head">
           <span class="tag">Kayıt & Başvuru</span>
           <h2 class="section-title">Ders Paketi Başvurusu</h2>
-          <p class="section-sub">Başvurunuz WhatsApp üzerinden onaylandığında öğrenci şifreniz Doğukan Hoca tarafından verilir.</p>
+          <p class="section-sub">Başvurunuz WhatsApp üzerinden onaylandığında öğrenci giriş bilgileriniz Doğukan Hoca tarafından verilir.</p>
         </div>
         <div class="card ribbon-card" style="max-width: 740px;">
           <form id="quickRegisterForm" class="form-stack">
@@ -798,11 +831,12 @@
       </div>
     </section>
 
+    <!-- 2. ÖĞRENCİ GİRİŞİ & MESAJLAŞMA -->
     <section id="view-ogrenci" class="page-view">
       <div id="studentAuthScreen" class="card ribbon-card form-stack" style="max-width: 440px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
         <h3>Öğrenci Girişi</h3>
-        <p style="font-size: 0.84rem;">Doğukan Hoca tarafından verilen kullanıcı adı ve şifrenizle giriş yapın.</p>
+        <p style="font-size: 0.84rem;">Kullanıcı adı ve şifrenizle giriş yapın. Sayfayı yenilediğinizde oturumunuz korunur.</p>
         <form id="memberLoginForm" class="form-stack">
           <div class="field">
             <label for="loginUser">Kullanıcı Adı</label>
@@ -824,6 +858,15 @@
             <h2 class="section-title" style="font-size: 1.65rem;">Çalışma & Ders Takip Ekranı</h2>
           </div>
           <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
+        </div>
+
+        <div id="firstLoginSetupCard" class="card ribbon-card ribbon-amber" style="display:none; margin-bottom:16px;">
+          <h3>İlk Giriş: Kendi Şifrenizi Belirleyin</h3>
+          <p style="font-size:0.84rem; margin-bottom:10px;">Hesabınıza özel yeni şifrenizi buradan ayarlayabilirsiniz:</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; max-width:440px;">
+            <input type="password" id="firstSetPassInput" placeholder="Yeni şifreniz" style="flex:1;" />
+            <button type="button" id="firstSetPassBtn" class="btn btn-sm">Şifremi Kaydet</button>
+          </div>
         </div>
 
         <div id="studentLiveRoomCard" class="live-stage-card" style="display:none;">
@@ -885,12 +928,21 @@
               <span id="studentPracticeText">0 / 180 dk</span>
               <button type="button" id="addPracticeBtn" class="btn btn-ghost btn-sm">+30 dk Ekle</button>
             </div>
+
+            <hr style="border:none; border-top:1px solid var(--border);" />
+
+            <h3>Şifremi Değiştir</h3>
+            <div style="display:flex; gap:8px;">
+              <input type="password" id="studentChangePassInput" placeholder="Yeni şifreniz" />
+              <button type="button" id="studentChangePassBtn" class="btn btn-sm" style="white-space:nowrap;">Güncelle</button>
+            </div>
+            <span id="studentPassStatus" style="font-size:0.78rem; color:var(--ok); font-weight:700;"></span>
           </div>
 
           <div>
             <div class="sub-nav">
               <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 PDF Nota & Çalışma Linkleri</button>
-              <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">📝 Ders Arşivi & Ödev Zaman Çizelgesi</button>
+              <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">💬 Hocayla Mesajlaşma & Ödevler</button>
               <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-rozet">🏅 Gelişim Tablosu (Hoca Onaylı)</button>
             </div>
 
@@ -903,16 +955,15 @@
 
             <div id="pane-stu-odev" class="sub-pane">
               <div class="card ribbon-card ribbon-emerald form-stack">
-                <h3>Ders Arşivi & Hoca Ödev Zaman Çizelgesi</h3>
-                <div class="timeline-feed" id="studentFeed"></div>
+                <h3>Doğukan Hoca ile Mesajlaşma & Ders Arşivi</h3>
+                <form id="studentMsgForm" class="form-stack">
+                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz ödevi çalıştım, bir sorum var veya şu gün ders talep ediyorum..." required></textarea>
+                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Hocaya Mesaj Gönder</button>
+                </form>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
-                <h3>Hocaya Mesaj veya Ders Saat Talebi Gönder</h3>
-                <form id="studentMsgForm" class="form-stack">
-                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz ödevi çalıştım veya şu gün ders talep ediyorum..." required></textarea>
-                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Hocaya Gönder</button>
-                </form>
+                <div class="timeline-feed" id="studentFeed"></div>
               </div>
             </div>
 
@@ -928,6 +979,7 @@
       </div>
     </section>
 
+    <!-- 3. HOCA GİRİŞİ & MESAJLAŞMA -->
     <section id="view-hoca" class="page-view">
       <div id="hocaLockBox" class="card ribbon-card form-stack" style="max-width: 420px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
@@ -990,7 +1042,7 @@
 
           <div>
             <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">📝 Ödev / PDF Linki & Ders Arşivi</button>
+              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">💬 Öğrenci Mesajlaşma & Ödevler</button>
               <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur, Öğrenci Düzenleme & Onay</button>
               <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Haftalık Saat Seçimi & Ayarlar</button>
             </div>
@@ -1016,10 +1068,10 @@
                 <form id="hocaReplyForm" class="form-stack">
                   <div class="field-row">
                     <div class="field">
-                      <label for="hocaCardType">Ödev / Bildirim Başlığı</label>
+                      <label for="hocaCardType">Mesaj / Ödev Türü</label>
                       <select id="hocaCardType">
-                        <option value="Ders Notu / Ödev">Ders Notu / Ödev</option>
-                        <option value="Teknik / Tezene Notu">Teknik / Tezene Notu</option>
+                        <option value="Hoca Mesajı / Ödev">Hoca Mesajı / Ödev</option>
+                        <option value="Ders Notu">Ders Notu</option>
                         <option value="Genel Duyuru">Genel Duyuru</option>
                       </select>
                     </div>
@@ -1029,15 +1081,15 @@
                     </div>
                   </div>
                   <div class="field">
-                    <label for="hocaReplyInput">Öğrenciye Eklenecek Ödev veya Ders Notu</label>
-                    <textarea id="hocaReplyInput" rows="3" placeholder="Öğrenciye göndermek istediğiniz ödev veya çalışma notunu yazın..." required></textarea>
+                    <label for="hocaReplyInput">Öğrenciye Mesaj veya Ödev Yaz</label>
+                    <textarea id="hocaReplyInput" rows="3" placeholder="Seçili öğrenciye mesajınızı veya ödevinizi yazın..." required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Öğrenci Ekranına Gönder</button>
+                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Mesajı Gönder</button>
                 </form>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
-                <h3>Ders Arşivi & Öğrenci Mesajları Zaman Çizelgesi</h3>
+                <h3>Mesajlaşma & Ders Arşivi Zaman Çizelgesi</h3>
                 <div class="timeline-feed" id="hocaFeed"></div>
               </div>
             </div>
@@ -1045,16 +1097,13 @@
             <div id="pane-hoca-kur" class="sub-pane">
               <div class="card ribbon-card ribbon-emerald form-stack">
                 <div id="hocaNoStudentWarn" class="msg-item">
-                  Sol taraftaki listeden bir öğrenciye tıkladığınızda o öğrencinin <strong>Kur Sayacı</strong>, <strong>Branş/Paket Güncelleme</strong>, <strong>Silme</strong>, <strong>Gelişim Onayı</strong> ve <strong>WhatsApp Şifre Gönderme</strong> araçları burada açılır.
+                  Sol taraftaki listeden bir öğrenciye tıkladığınızda o öğrencinin <strong>Kur Sayacı</strong>, <strong>Branş/Paket Güncelleme</strong>, <strong>Silme</strong> ve <strong>Gelişim Onayı</strong> araçları burada açılır.
                 </div>
 
                 <div id="hocaStudentToolsCard" style="display:none;" class="form-stack">
                   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                     <h3 id="hocaToolsStudentName">Öğrenci Yönetimi</h3>
-                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                      <a id="hocaSendPassWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Şifreyi WhatsApp'tan Gönder →</a>
-                      <button type="button" id="hocaDeleteSelectedStudentBtn" class="btn btn-danger btn-sm">Öğrenciyi Sil</button>
-                    </div>
+                    <button type="button" id="hocaDeleteSelectedStudentBtn" class="btn btn-danger btn-sm">Öğrenciyi Sil</button>
                   </div>
 
                   <div class="msg-item">
@@ -1176,7 +1225,8 @@
     const DEFAULT_HOCA_PIN = "baglama2026";
     const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v15";
+    const STORAGE_KEY = "dogukan_muzik_portal_v17";
+    const SESSION_KEY = "dogukan_portal_session_v1";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
@@ -1185,6 +1235,20 @@
     function getHocaPin() {
       try { return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN; } catch (_) { return DEFAULT_HOCA_PIN; }
     }
+
+    function loadSession() {
+      try {
+        const raw = localStorage.getItem(SESSION_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      return { view: "vitrin", hocaLoggedIn: false, studentId: null };
+    }
+
+    function saveSession(sess) {
+      try { localStorage.setItem(SESSION_KEY, JSON.stringify(sess)); } catch (_) {}
+    }
+
+    let sessionState = loadSession();
 
     window.addEventListener("scroll", () => {
       const y = window.scrollY || 0;
@@ -1196,7 +1260,6 @@
       if (orb3) orb3.style.transform = `translate3d(${Math.sin(y * 0.0018) * 24}px, ${-y * 0.07}px, 0)`;
     }, { passive: true });
 
-    /* 23 PERDE TAM BAĞLAMA NOTA VE FREKANS DİZİLİMİ */
     const FRET_RATIOS = [
       { p: 0, r: 1.000 }, { p: 1, r: 1.059 }, { p: 2, r: 1.090 }, { p: 3, r: 1.122 },
       { p: 4, r: 1.189 }, { p: 5, r: 1.225 }, { p: 6, r: 1.260 }, { p: 7, r: 1.335 },
@@ -1314,6 +1377,7 @@
           name: "Emre Yılmaz",
           username: "emre",
           password: "1234",
+          passwordSetByStudent: false,
           course: "Bağlama Düzeni",
           phone: "0500 000 00 00",
           mode: "Aylık 4 Ders Paketi",
@@ -1338,9 +1402,19 @@
     };
 
     let state = loadState();
-    let currentStudent = null;
+    let currentStudent = sessionState.studentId
+      ? (state.students.find((s) => s.id === sessionState.studentId) || null)
+      : null;
+    let hocaLoggedIn = Boolean(sessionState.hocaLoggedIn);
     let selectedHocaStudent = "ALL";
     let justUnlockedBadgeId = null;
+
+    function syncSession() {
+      sessionState.view = document.querySelector(".page-view.active")?.id?.replace("view-", "") || "vitrin";
+      sessionState.hocaLoggedIn = hocaLoggedIn;
+      sessionState.studentId = currentStudent ? currentStudent.id : null;
+      saveSession(sessionState);
+    }
 
     function ensureMethodPdfForAllStudents(stObj) {
       if (!stObj || !Array.isArray(stObj.students)) return;
@@ -1409,6 +1483,9 @@
             requests: Array.isArray(data.requests) ? data.requests : [],
             schedule: Array.isArray(data.schedule) ? data.schedule : state.schedule
           };
+          if (currentStudent) {
+            currentStudent = state.students.find((s) => s.id === currentStudent.id) || null;
+          }
           saveState();
           renderAll();
         }
@@ -1454,18 +1531,31 @@
       document.getElementById("brandLogoFallback").style.display = "inline";
     }
 
-    function goView(viewName) {
+    function goView(viewName, scrollTop = true) {
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === viewName));
       document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + viewName));
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      syncSession();
+      if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
       renderAll();
     }
 
     document.querySelectorAll("[data-go]").forEach((el) => {
-      el.addEventListener("click", () => goView(el.dataset.go));
+      el.addEventListener("click", () => goView(el.dataset.go, true));
     });
 
-    /* GELİŞMİŞ ÇİFT TELLİ BAĞLAMA SES SENTEZLEYİCİ */
+    document.getElementById("openMsgFromBannerBtn").addEventListener("click", () => {
+      if (currentStudent) {
+        goView("ogrenci", true);
+        const odevTab = document.querySelector('[data-stu-tab="pane-stu-odev"]');
+        if (odevTab) odevTab.click();
+      } else {
+        goView("hoca", true);
+        const hocaOdevTab = document.querySelector('[data-hoca-tab="pane-hoca-odev"]');
+        if (hocaOdevTab) hocaOdevTab.click();
+      }
+    });
+
+    /* ÇİFT TELLİ BAĞLAMA SES SENTEZLEYİCİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
@@ -1484,7 +1574,6 @@
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      /* 1. Tezene (mızrap) tel sürtünme & kılavuz tıklaması */
       const clickLen = Math.floor(ctx.sampleRate * 0.032);
       const noiseBuf = ctx.createBuffer(1, clickLen, ctx.sampleRate);
       const output = noiseBuf.getChannelData(0);
@@ -1504,7 +1593,6 @@
       noiseGain.connect(ctx.destination);
       noise.start(now);
 
-      /* 2. Çift tel (kurs) + oktav/rezonans harmonikleri */
       const harmonics = [
         { mult: 1.0, type: "sawtooth", amp: 0.21 * velocity, decay: durationSec },
         { mult: 1.0022, type: "sawtooth", amp: 0.16 * velocity, decay: durationSec * 0.94 },
@@ -1512,7 +1600,6 @@
         { mult: 3.0, type: "sine", amp: 0.055 * velocity, decay: durationSec * 0.42 }
       ];
 
-      /* 3. Bağlama teknesi (ahşap gövde) rezonans filtresi */
       const bodyFilter = ctx.createBiquadFilter();
       bodyFilter.type = "lowpass";
       bodyFilter.Q.setValueAtTime(1.6, now);
@@ -1587,7 +1674,6 @@
       });
     });
 
-    /* HIZLI BAĞLAMA SES KISAYOLLARI */
     document.getElementById("playOpenStringsBtn").addEventListener("click", () => {
       const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
       playBaglamaSound(cfg.ustBase, 1.9, 0.85);
@@ -1793,6 +1879,7 @@
         name,
         username: cleanUser,
         password: password || String(Math.floor(1000 + Math.random() * 9000)),
+        passwordSetByStudent: false,
         course,
         phone,
         mode,
@@ -1822,6 +1909,7 @@
       if (selectedHocaStudent === target.name) selectedHocaStudent = "ALL";
       if (currentStudent && currentStudent.id === stuId) currentStudent = null;
       saveState();
+      syncSession();
       renderAll();
     }
 
@@ -1846,7 +1934,7 @@
       saveState();
       renderAll();
 
-      const waMsg = `Merhaba Doğukan Bozkurt Hocam, ders paketi kaydı, ödeme bilgisi ve öğrenci portalı şifresi için başvuruyorum.\n\nAd Soyad: ${name}\nTelefon: ${phone}\nDers Alanı: ${course}\nPaket: ${mode}\nNot: ${note || "-"}`;
+      const waMsg = `Merhaba Doğukan Bozkurt Hocam, ders paketi kaydı ve ödeme bilgisi için başvuruyorum.\n\nAd Soyad: ${name}\nTelefon: ${phone}\nDers Alanı: ${course}\nPaket: ${mode}\nNot: ${note || "-"}`;
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`, "_blank", "noopener,noreferrer");
     });
 
@@ -1866,13 +1954,45 @@
 
       currentStudent = found;
       document.getElementById("memberLoginError").textContent = "";
+      syncSession();
       renderAll();
+    });
+
+    document.getElementById("firstSetPassBtn").addEventListener("click", () => {
+      if (!currentStudent) return;
+      const newPass = document.getElementById("firstSetPassInput").value.trim();
+      if (!newPass) return;
+      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent;
+      st.password = newPass;
+      st.passwordSetByStudent = true;
+      currentStudent = st;
+      document.getElementById("firstSetPassInput").value = "";
+      saveState();
+      renderAll();
+      document.getElementById("studentPassStatus").textContent = "Yeni şifreniz ayarlandı ✓";
+      setTimeout(() => { document.getElementById("studentPassStatus").textContent = ""; }, 2500);
+    });
+
+    document.getElementById("studentChangePassBtn").addEventListener("click", () => {
+      if (!currentStudent) return;
+      const newPass = document.getElementById("studentChangePassInput").value.trim();
+      if (!newPass) return;
+      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent;
+      st.password = newPass;
+      st.passwordSetByStudent = true;
+      currentStudent = st;
+      document.getElementById("studentChangePassInput").value = "";
+      saveState();
+      renderAll();
+      document.getElementById("studentPassStatus").textContent = "Şifreniz güncellendi ✓";
+      setTimeout(() => { document.getElementById("studentPassStatus").textContent = ""; }, 2500);
     });
 
     document.getElementById("studentLogoutBtn").addEventListener("click", () => {
       currentStudent = null;
       document.getElementById("loginUser").value = "";
       document.getElementById("loginPass").value = "";
+      syncSession();
       renderAll();
     });
 
@@ -1900,7 +2020,9 @@
         link: "",
         text,
         time: nowDateTimeStr(),
-        completed: false
+        completed: false,
+        readByHoca: false,
+        readByStudent: true
       });
       document.getElementById("studentMsgInput").value = "";
       saveState();
@@ -1911,9 +2033,11 @@
       e.preventDefault();
       const pin = document.getElementById("hocaPinInput").value.trim();
       if (pin === getHocaPin()) {
+        hocaLoggedIn = true;
         document.getElementById("hocaLockBox").style.display = "none";
         document.getElementById("hocaWorkspace").style.display = "block";
         document.getElementById("hocaPinError").textContent = "";
+        syncSession();
         renderAll();
       } else {
         document.getElementById("hocaPinError").textContent = "Hatalı eğitmen şifresi.";
@@ -1921,9 +2045,12 @@
     });
 
     document.getElementById("hocaLogoutBtn").addEventListener("click", () => {
+      hocaLoggedIn = false;
       document.getElementById("hocaPinInput").value = "";
       document.getElementById("hocaWorkspace").style.display = "none";
       document.getElementById("hocaLockBox").style.display = "grid";
+      syncSession();
+      renderAll();
     });
 
     document.getElementById("hocaAddStudentForm").addEventListener("submit", (e) => {
@@ -2005,7 +2132,9 @@
         link,
         text,
         time: nowDateTimeStr(),
-        completed: false
+        completed: false,
+        readByHoca: true,
+        readByStudent: false
       });
       document.getElementById("hocaReplyInput").value = "";
       document.getElementById("hocaResourceLink").value = "";
@@ -2082,14 +2211,6 @@
       URL.revokeObjectURL(url);
     });
 
-    function formatPhoneForWa(rawPhone) {
-      const digits = String(rawPhone || "").replace(/\D/g, "");
-      if (!digits) return "";
-      if (digits.startsWith("90")) return digits;
-      if (digits.startsWith("0")) return "9" + digits;
-      return "90" + digits;
-    }
-
     function renderSchedules() {
       const pubGrid = document.getElementById("publicScheduleGrid");
       const hocaGrid = document.getElementById("hocaScheduleGrid");
@@ -2154,10 +2275,64 @@
       }
     }
 
+    function updateMessageNotifications() {
+      const hocaBadge = document.getElementById("hocaNavBadge");
+      const stuBadge = document.getElementById("stuNavBadge");
+      const banner = document.getElementById("incomingMsgBanner");
+      const bannerText = document.getElementById("incomingMsgText");
+
+      const unreadFromStudents = state.messages.filter((m) => m.sender === "ogrenci" && !m.readByHoca);
+      if (unreadFromStudents.length > 0) {
+        hocaBadge.textContent = String(unreadFromStudents.length);
+        hocaBadge.classList.add("show");
+      } else {
+        hocaBadge.classList.remove("show");
+      }
+
+      let unreadForCurrentStudent = [];
+      if (currentStudent) {
+        unreadForCurrentStudent = state.messages.filter(
+          (m) => m.sender === "hoca" &&
+          !m.readByStudent &&
+          (m.targetStudent === "ALL" || m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase())
+        );
+        if (unreadForCurrentStudent.length > 0) {
+          stuBadge.textContent = String(unreadForCurrentStudent.length);
+          stuBadge.classList.add("show");
+        } else {
+          stuBadge.classList.remove("show");
+        }
+      } else {
+        stuBadge.classList.remove("show");
+      }
+
+      if (currentStudent && unreadForCurrentStudent.length > 0) {
+        const latest = unreadForCurrentStudent[0];
+        bannerText.textContent = `Doğukan Bozkurt hocanızdan ${unreadForCurrentStudent.length} yeni mesaj var: "${latest.text.slice(0, 75)}"`;
+        banner.classList.add("show");
+      } else if (!currentStudent && unreadFromStudents.length > 0) {
+        const senders = [...new Set(unreadFromStudents.map((m) => m.senderName))];
+        bannerText.textContent = `${senders.join(", ")} adlı öğrenciden ${unreadFromStudents.length} yeni mesaj var!`;
+        banner.classList.add("show");
+      } else {
+        banner.classList.remove("show");
+      }
+    }
+
     function renderAll() {
       ensureMethodPdfForAllStudents(state);
       renderUsulBeats();
       renderSchedules();
+      updateMessageNotifications();
+
+      /* HOCA OTURUMU KORUMA */
+      if (hocaLoggedIn) {
+        document.getElementById("hocaLockBox").style.display = "none";
+        document.getElementById("hocaWorkspace").style.display = "block";
+      } else {
+        document.getElementById("hocaLockBox").style.display = "grid";
+        document.getElementById("hocaWorkspace").style.display = "none";
+      }
 
       const authScreen = document.getElementById("studentAuthScreen");
       const memberWorkspace = document.getElementById("studentMemberWorkspace");
@@ -2166,8 +2341,10 @@
         authScreen.style.display = "none";
         memberWorkspace.style.display = "block";
 
-        const stObj = state.students.find((s) => s.name.toLowerCase() === currentStudent.name.toLowerCase()) || currentStudent;
+        const stObj = state.students.find((s) => s.id === currentStudent.id || s.name.toLowerCase() === currentStudent.name.toLowerCase()) || currentStudent;
         currentStudent = stObj;
+
+        document.getElementById("firstLoginSetupCard").style.display = stObj.passwordSetByStudent ? "none" : "block";
 
         document.getElementById("memberWelcomeTitle").textContent = stObj.name;
         document.getElementById("memberCourseInfo").textContent = `${stObj.course} • k.adı: ${stObj.username || "-"}`;
@@ -2261,13 +2438,14 @@
             ` : ""}
           </div>
         `).join("")
-        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz Doğukan Hoca tarafından eklenmiş bir ödev veya ders kaydı bulunmuyor.</p>`;
+        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz mesaj veya ödev kaydı bulunmuyor.</p>`;
 
       studentFeed.querySelectorAll("[data-toggle-done]").forEach((btn) => {
         btn.addEventListener("click", () => {
           const item = state.messages.find((x) => x.id === btn.dataset.toggleDone);
           if (item) {
             item.completed = !item.completed;
+            item.readByStudent = true;
             saveState();
             renderAll();
           }
@@ -2283,10 +2461,11 @@
         ...state.students.map((s) => {
           const d = s.lessonsDone || 0;
           const t = s.lessonsTotal || 4;
+          const stuUnread = state.messages.filter((m) => m.sender === "ogrenci" && !m.readByHoca && m.senderName.toLowerCase() === s.name.toLowerCase()).length;
           return `
             <div class="student-pill ${selectedHocaStudent === s.name ? "active" : ""}" data-select-s="${escapeHtml(s.name)}">
               <div>
-                <strong>${escapeHtml(s.name)}</strong>
+                <strong>${escapeHtml(s.name)} ${stuUnread > 0 ? `<span class="status-pill done" style="margin-left:4px;">${stuUnread} yeni mesaj</span>` : ""}</strong>
                 <span style="display:block; font-size:0.73rem; color:var(--muted);">
                   k.adı: ${escapeHtml(s.username)} • şifre: ${escapeHtml(s.password)}
                 </span>
@@ -2304,6 +2483,12 @@
         el.addEventListener("click", (e) => {
           if (e.target.closest("[data-del-stu]")) return;
           selectedHocaStudent = el.dataset.selectS;
+          state.messages.forEach((m) => {
+            if (m.sender === "ogrenci" && (selectedHocaStudent === "ALL" || m.senderName.toLowerCase() === selectedHocaStudent.toLowerCase())) {
+              m.readByHoca = true;
+            }
+          });
+          saveState();
           renderAll();
         });
       });
@@ -2336,12 +2521,6 @@
         document.getElementById("hocaLiveLinkInput").value = foundStudent.liveLink || "";
         document.getElementById("editStuCourseSelect").value = foundStudent.course || "Bağlama Düzeni";
         document.getElementById("editStuPkgInput").value = t;
-
-        const stuPhone = formatPhoneForWa(foundStudent.phone);
-        const passMsg = `Merhaba ${foundStudent.name}, Doğukan Bozkurt Müzik & Bağlama Akademisi öğrenci giriş bilgilerin:\n\nKullanıcı Adı: ${foundStudent.username}\nŞifre: ${foundStudent.password}`;
-        document.getElementById("hocaSendPassWaBtn").href = stuPhone
-          ? `https://wa.me/${stuPhone}?text=${encodeURIComponent(passMsg)}`
-          : `https://wa.me/?text=${encodeURIComponent(passMsg)}`;
 
         if (!Array.isArray(foundStudent.badges)) foundStudent.badges = [];
         badgeControlGrid.innerHTML = SKILL_BADGES.map((b) => {
@@ -2399,7 +2578,7 @@
             <div class="msg-body">${escapeHtml(m.text)}</div>
           </div>
         `).join("")
-        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz eklenmiş ödev veya mesaj yok.</p>`;
+        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz mesaj veya ödev kaydı yok.</p>`;
 
       hocaFeed.querySelectorAll("[data-del-msg]").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -2419,7 +2598,7 @@
             </div>
             <div class="msg-body">${escapeHtml(r.slot)} — ${escapeHtml(r.topic)}</div>
             <div style="margin-top:8px;">
-              <button type="button" class="btn btn-sm" data-approve="${escapeHtml(r.id)}">Onayla & Şifre Gönder</button>
+              <button type="button" class="btn btn-sm" data-approve="${escapeHtml(r.id)}">Öğrenci Kaydını Onayla</button>
             </div>
           </div>
         `).join("")
@@ -2434,14 +2613,6 @@
             selectedHocaStudent = stu.name;
             saveState();
             renderAll();
-
-            const stuPhone = formatPhoneForWa(stu.phone);
-            const waText = `Merhaba ${stu.name}, Doğukan Bozkurt Müzik & Bağlama Akademisi ders paketin onaylandı.\n\nÖğrenci Girişi Bilgilerin:\nKullanıcı Adı: ${stu.username}\nŞifre: ${stu.password}`;
-            window.open(
-              stuPhone ? `https://wa.me/${stuPhone}?text=${encodeURIComponent(waText)}` : `https://wa.me/?text=${encodeURIComponent(waText)}`,
-              "_blank",
-              "noopener,noreferrer"
-            );
           }
         });
       });
@@ -2454,6 +2625,13 @@
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;");
     }
+
+    /* SAYFA YENİLENDİĞİNDE KALINAN SEKMİYİ VE OTURUMU KORU */
+    (function restoreInitialView() {
+      const targetView = sessionState.view || "vitrin";
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === targetView));
+      document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + targetView));
+    })();
 
     renderBaglamaNeck();
     renderAll();
