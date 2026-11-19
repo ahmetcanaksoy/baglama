@@ -690,7 +690,6 @@
         </div>
       </div>
 
-      <!-- 23 PERDELİ TAM İNTERAKTİF BAĞLAMA SAPI & TÜRKÜ ÇALAR -->
       <div id="baglama-studyosu" class="section-block">
         <div class="section-head">
           <span class="tag">23 Perde Tam Klavye & Gerçek Bağlama Tınısı</span>
@@ -1244,8 +1243,8 @@
     const DEFAULT_HOCA_PIN = "baglama2026";
     const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v18";
-    const SESSION_KEY = "dogukan_portal_session_v1";
+    const STORAGE_KEY = "dogukan_muzik_portal_v19";
+    const AUTH_PERSIST_KEY = "dogukan_auth_persist_v1";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
@@ -1255,19 +1254,32 @@
       try { return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN; } catch (_) { return DEFAULT_HOCA_PIN; }
     }
 
-    function loadSession() {
+    function readAuthPersist() {
       try {
-        const raw = localStorage.getItem(SESSION_KEY);
-        if (raw) return JSON.parse(raw);
+        const raw = localStorage.getItem(AUTH_PERSIST_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            view: typeof parsed.view === "string" ? parsed.view : "vitrin",
+            hocaLoggedIn: Boolean(parsed.hocaLoggedIn),
+            studentId: parsed.studentId || null
+          };
+        }
       } catch (_) {}
       return { view: "vitrin", hocaLoggedIn: false, studentId: null };
     }
 
-    function saveSession(sess) {
-      try { localStorage.setItem(SESSION_KEY, JSON.stringify(sess)); } catch (_) {}
+    function writeAuthPersist(data) {
+      try {
+        localStorage.setItem(AUTH_PERSIST_KEY, JSON.stringify({
+          view: data.view || "vitrin",
+          hocaLoggedIn: Boolean(data.hocaLoggedIn),
+          studentId: data.studentId || null
+        }));
+      } catch (_) {}
     }
 
-    let sessionState = loadSession();
+    let authPersist = readAuthPersist();
 
     window.addEventListener("scroll", () => {
       const y = window.scrollY || 0;
@@ -1421,18 +1433,21 @@
     };
 
     let state = loadState();
-    let currentStudent = sessionState.studentId
-      ? (state.students.find((s) => s.id === sessionState.studentId) || null)
+    let currentStudent = authPersist.studentId
+      ? (state.students.find((s) => s.id === authPersist.studentId) || null)
       : null;
-    let hocaLoggedIn = Boolean(sessionState.hocaLoggedIn);
+    let hocaLoggedIn = Boolean(authPersist.hocaLoggedIn);
     let selectedHocaStudent = "ALL";
     let justUnlockedBadgeId = null;
 
-    function syncSession() {
-      sessionState.view = document.querySelector(".page-view.active")?.id?.replace("view-", "") || "vitrin";
-      sessionState.hocaLoggedIn = hocaLoggedIn;
-      sessionState.studentId = currentStudent ? currentStudent.id : null;
-      saveSession(sessionState);
+    function persistAuthState() {
+      const activeView = document.querySelector(".page-view.active")?.id?.replace("view-", "") || "vitrin";
+      authPersist = {
+        view: activeView,
+        hocaLoggedIn: Boolean(hocaLoggedIn),
+        studentId: currentStudent ? currentStudent.id : null
+      };
+      writeAuthPersist(authPersist);
     }
 
     function ensureMethodPdfForAllStudents(stObj) {
@@ -1502,8 +1517,8 @@
             requests: Array.isArray(data.requests) ? data.requests : [],
             schedule: Array.isArray(data.schedule) ? data.schedule : state.schedule
           };
-          if (currentStudent) {
-            currentStudent = state.students.find((s) => s.id === currentStudent.id) || null;
+          if (authPersist.studentId) {
+            currentStudent = state.students.find((s) => s.id === authPersist.studentId) || null;
           }
           saveState();
           renderAll();
@@ -1553,7 +1568,7 @@
     function goView(viewName, scrollTop = true) {
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === viewName));
       document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + viewName));
-      syncSession();
+      persistAuthState();
       if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
       renderAll();
     }
@@ -1698,7 +1713,6 @@
       });
     }
 
-    /* TÜRKÜ ÇALAR (OTOMATİK BAĞLAMA MELODİ DİZİLERİ) */
     const TURKU_CATALOG = {
       uzunince: {
         title: "Uzun İnce Bir Yoldayım",
@@ -2062,7 +2076,7 @@
       if (selectedHocaStudent === target.name) selectedHocaStudent = "ALL";
       if (currentStudent && currentStudent.id === stuId) currentStudent = null;
       saveState();
-      syncSession();
+      persistAuthState();
       renderAll();
     }
 
@@ -2107,7 +2121,7 @@
 
       currentStudent = found;
       document.getElementById("memberLoginError").textContent = "";
-      syncSession();
+      persistAuthState();
       renderAll();
     });
 
@@ -2145,7 +2159,7 @@
       currentStudent = null;
       document.getElementById("loginUser").value = "";
       document.getElementById("loginPass").value = "";
-      syncSession();
+      persistAuthState();
       renderAll();
     });
 
@@ -2190,7 +2204,7 @@
         document.getElementById("hocaLockBox").style.display = "none";
         document.getElementById("hocaWorkspace").style.display = "block";
         document.getElementById("hocaPinError").textContent = "";
-        syncSession();
+        persistAuthState();
         renderAll();
       } else {
         document.getElementById("hocaPinError").textContent = "Hatalı eğitmen şifresi.";
@@ -2202,7 +2216,7 @@
       document.getElementById("hocaPinInput").value = "";
       document.getElementById("hocaWorkspace").style.display = "none";
       document.getElementById("hocaLockBox").style.display = "grid";
-      syncSession();
+      persistAuthState();
       renderAll();
     });
 
@@ -2778,8 +2792,9 @@
         .replaceAll('"', "&quot;");
     }
 
+    /* SAYFA YENİLENDİĞİNDE SEKMİYİ VE GİRİŞİ GERİ YÜKLE */
     (function restoreInitialView() {
-      const targetView = sessionState.view || "vitrin";
+      const targetView = authPersist.view || "vitrin";
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === targetView));
       document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + targetView));
     })();
