@@ -73,7 +73,6 @@
       transition: background-color 0.55s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s ease;
     }
 
-    /* KATMANLI ARKA PLAN & AĞIR ÇEKİM SÜZÜLEN KEHRİBAR IŞIK KÜRELERİ */
     .stage-ambient-layer {
       position: fixed;
       inset: 0;
@@ -120,7 +119,7 @@
       font-family: "Cormorant Garamond", Georgia, serif;
     }
 
-    /* AÇILIŞ ANİMASYONU + BAĞLAMA TELİNDEN YAYILAN SES DALGALARI / IŞIK HALKALARI */
+    /* AÇILIŞ ANİMASYONU */
     #preloader {
       position: fixed;
       inset: 0;
@@ -137,15 +136,9 @@
     #preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
     .ozan-scene { position: relative; width: 210px; height: 210px; display: grid; place-items: center; }
     .sound-wave-ring {
-      position: absolute;
-      width: 118px;
-      height: 118px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(243, 196, 139, 0.55);
-      box-shadow: 0 0 18px rgba(212, 148, 76, 0.25);
-      opacity: 0;
-      pointer-events: none;
-      animation: waveRipple 2.1s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      position: absolute; width: 118px; height: 118px; border-radius: 50%;
+      border: 1.5px solid rgba(243, 196, 139, 0.55); box-shadow: 0 0 18px rgba(212, 148, 76, 0.25);
+      opacity: 0; pointer-events: none; animation: waveRipple 2.1s cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
     .sound-wave-ring.w2 { animation-delay: 0.7s; }
     .sound-wave-ring.w3 { animation-delay: 1.4s; }
@@ -289,7 +282,7 @@
       color: var(--gold-light); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
     }
 
-    /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ + TEL TİTREŞİMİ & IŞIK İZİ */
+    /* 23 PERDELİ TAM BAĞLAMA KLAVYESİ + GERÇEK BAĞLAMA SES KONTROLLERİ */
     .baglama-studio-card {
       background: linear-gradient(180deg, rgba(32, 21, 13, 0.94) 0%, rgba(16, 10, 7, 0.96) 100%);
       backdrop-filter: blur(18px); border: 1.5px solid var(--border-strong); border-radius: 22px; padding: 22px; color: #f7efe6;
@@ -297,13 +290,26 @@
     }
     .baglama-studio-card:hover { border-color: var(--gold); box-shadow: 0 26px 58px rgba(212, 148, 76, 0.2); }
 
-    .studio-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+    .studio-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
     .tuning-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .tuning-pill {
       padding: 7px 13px; border-radius: 9px; border: 1px solid rgba(243, 196, 139, 0.24);
-      background: rgba(255, 255, 255, 0.04); color: #d8c7b5; font-size: 0.79rem; font-weight: 700; cursor: pointer;
+      background: rgba(255, 255, 255, 0.04); color: #d8c7b5; font-size: 0.79rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease;
     }
+    .tuning-pill:hover { border-color: var(--gold); color: #fff; }
     .tuning-pill.active { background: linear-gradient(135deg, #d4944c, #9c5d1e); color: #fff; border-color: transparent; }
+
+    .quick-sound-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(243, 196, 139, 0.16); margin-bottom: 14px;
+    }
+    .quick-sound-btn {
+      padding: 6px 11px; border-radius: 8px; border: 1px solid rgba(243, 196, 139, 0.28);
+      background: rgba(212, 148, 76, 0.12); color: #f3c48b; font-size: 0.76rem; font-weight: 700; cursor: pointer;
+      transition: all 0.16s ease;
+    }
+    .quick-sound-btn:hover { background: linear-gradient(135deg, #f3c48b, #d4944c); color: #140c07; }
 
     .neck-scroll { overflow-x: auto; padding-bottom: 10px; }
     .baglama-neck {
@@ -328,15 +334,10 @@
       height: 3px; opacity: 0.96; background: #f3c48b; box-shadow: 0 0 12px #f3c48b;
       animation: stringVibrate 0.11s linear 6;
     }
-    .string-line.vibrating::after {
-      animation: lightTrailSweep 0.65s ease-out forwards;
-    }
+    .string-line.vibrating::after { animation: lightTrailSweep 0.65s ease-out forwards; }
     @keyframes stringVibrate {
-      0% { transform: translateY(0); }
-      25% { transform: translateY(-2.5px); }
-      50% { transform: translateY(0); }
-      75% { transform: translateY(2.5px); }
-      100% { transform: translateY(0); }
+      0% { transform: translateY(0); } 25% { transform: translateY(-2.5px); }
+      50% { transform: translateY(0); } 75% { transform: translateY(2.5px); } 100% { transform: translateY(0); }
     }
     @keyframes lightTrailSweep {
       0% { left: 105px; opacity: 0.95; width: 70px; }
@@ -355,7 +356,7 @@
     }
     .fret-node small { display: block; font-size: 0.6rem; opacity: 0.75; }
 
-    /* AKORT VE METRONOM + DÜM/TEK İVMESİ */
+    /* AKORT VE METRONOM */
     .tuner-studio { text-align: center; padding: 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); margin-top: 10px; }
     .tuner-big-note { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; color: var(--gold); line-height: 1; }
     .tuner-sub-info { font-size: 0.85rem; color: var(--muted); margin-top: 5px; font-weight: 600; }
@@ -371,9 +372,7 @@
     .beat-dot.active-dum { background: var(--gold); color: #fff; animation: beatSurge 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
     .beat-dot.active-tek { background: var(--ok); color: #fff; animation: beatSurge 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes beatSurge {
-      0% { transform: translateY(0) scale(1); }
-      45% { transform: translateY(-5px) scale(1.07); }
-      100% { transform: translateY(0) scale(1); }
+      0% { transform: translateY(0) scale(1); } 45% { transform: translateY(-5px) scale(1.07); } 100% { transform: translateY(0) scale(1); }
     }
 
     /* HAFTALIK TAKVİM */
@@ -384,36 +383,28 @@
     .slot-pill { display: flex; justify-content: space-between; align-items: center; gap: 4px; padding: 7px 9px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; margin-bottom: 6px; border: 1px solid var(--border); }
     .slot-pill.free { background: rgba(46, 184, 114, 0.13); color: var(--ok); cursor: pointer; }
     .slot-pill.busy { background: rgba(239, 68, 68, 0.12); color: var(--danger); opacity: 0.82; }
-    .slot-del-btn {
-      background: transparent; border: none; color: var(--muted); font-weight: 800; font-size: 0.78rem;
-      cursor: pointer; padding: 0 3px; line-height: 1;
-    }
+    .slot-del-btn { background: transparent; border: none; color: var(--muted); font-weight: 800; font-size: 0.78rem; cursor: pointer; padding: 0 3px; line-height: 1; }
     .slot-del-btn:hover { color: var(--danger); }
 
-    /* DÜZENLİ PANEL İÇİ ALT SEKMELER + YUMUŞAK SÜZÜLME GEÇİŞİ */
+    /* PANELİ SEKMELERİ */
     .portal-banner {
       display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
       background: var(--wood-grad); backdrop-filter: blur(16px); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
     }
-
     .portal-grid { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
-
     .sub-nav {
       display: flex; gap: 8px; flex-wrap: wrap; background: var(--surface); backdrop-filter: blur(12px);
       padding: 8px; border-radius: 14px; border: 1px solid var(--border); margin-bottom: 16px;
     }
-
     .sub-tab-btn {
       padding: 9px 15px; border-radius: 10px; border: 1px solid transparent;
       background: transparent; color: var(--muted); font-weight: 700; font-size: 0.83rem; cursor: pointer; transition: all 0.2s ease;
     }
     .sub-tab-btn.active { background: var(--gold-glow); color: var(--gold-light); border-color: var(--border-strong); }
-
     .sub-pane { display: none; }
     .sub-pane.active { display: block; animation: paneSlideIn 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes paneSlideIn {
-      0% { opacity: 0; transform: translateX(10px) translateY(4px); }
-      100% { opacity: 1; transform: translateX(0) translateY(0); }
+      0% { opacity: 0; transform: translateX(10px) translateY(4px); } 100% { opacity: 1; transform: translateX(0) translateY(0); }
     }
 
     .study-desk-card {
@@ -422,33 +413,22 @@
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
     }
     .desk-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .desk-chip {
-      padding: 6px 11px; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--border);
-      font-size: 0.77rem; font-weight: 700; color: var(--gold-light);
-    }
+    .desk-chip { padding: 6px 11px; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--border); font-size: 0.77rem; font-weight: 700; color: var(--gold-light); }
 
-    /* CANLI DERS SAHNE KARTI — NEFES ALAN CANLILIK HALKASI */
     .live-stage-card {
       background: radial-gradient(circle at 12% 20%, rgba(46, 184, 114, 0.24), transparent 55%), var(--wood-grad);
-      border: 2px solid var(--ok); border-radius: 18px; padding: 18px 20px; margin-bottom: 18px;
-      animation: liveBreath 2.6s ease-in-out infinite;
+      border: 2px solid var(--ok); border-radius: 18px; padding: 18px 20px; margin-bottom: 18px; animation: liveBreath 2.6s ease-in-out infinite;
     }
     @keyframes liveBreath {
       0%, 100% { box-shadow: 0 0 0 0 rgba(46, 184, 114, 0.35), 0 14px 34px rgba(46, 184, 114, 0.14); }
       50% { box-shadow: 0 0 0 7px rgba(46, 184, 114, 0), 0 16px 40px rgba(46, 184, 114, 0.28); }
     }
     .live-stage-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-    .live-pulse-dot {
-      display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--ok); margin-right: 6px;
-      animation: dotPulse 1.6s ease-in-out infinite;
-    }
+    .live-pulse-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--ok); margin-right: 6px; animation: dotPulse 1.6s ease-in-out infinite; }
     @keyframes dotPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 6px var(--ok); }
-      50% { transform: scale(1.35); box-shadow: 0 0 14px var(--ok); }
+      0%, 100% { transform: scale(1); box-shadow: 0 0 6px var(--ok); } 50% { transform: scale(1.35); box-shadow: 0 0 14px var(--ok); }
     }
-    .prep-checklist {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 12px; border-top: 1px solid rgba(46, 184, 114, 0.28);
-    }
+    .prep-checklist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 12px; border-top: 1px solid rgba(46, 184, 114, 0.28); }
     .prep-item {
       display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px;
       background: rgba(0, 0, 0, 0.22); border: 1px solid rgba(46, 184, 114, 0.25); font-size: 0.78rem; font-weight: 600; cursor: pointer;
@@ -470,20 +450,13 @@
       display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
     }
 
-    /* GELİŞİM ROZETİ — HOCA ONAYLADIĞINDA PARLAYARAK AÇILMA */
     .badge-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
     .skill-badge {
       padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
-      background: var(--surface-2); font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.65;
-      transition: all 0.25s ease;
+      background: var(--surface-2); font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.65; transition: all 0.25s ease;
     }
-    .skill-badge.earned {
-      opacity: 1; border-color: var(--ok); background: rgba(46, 184, 114, 0.16); font-weight: 700;
-      box-shadow: 0 6px 20px rgba(46, 184, 114, 0.18);
-    }
-    .skill-badge.badge-just-unlocked {
-      animation: badgeUnlockPop 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    }
+    .skill-badge.earned { opacity: 1; border-color: var(--ok); background: rgba(46, 184, 114, 0.16); font-weight: 700; box-shadow: 0 6px 20px rgba(46, 184, 114, 0.18); }
+    .skill-badge.badge-just-unlocked { animation: badgeUnlockPop 0.75s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes badgeUnlockPop {
       0% { transform: scale(0.92); box-shadow: 0 0 0 0 rgba(46, 184, 114, 0.85); background: rgba(46, 184, 114, 0.42); }
       55% { transform: scale(1.04); box-shadow: 0 0 26px rgba(46, 184, 114, 0.65); }
@@ -524,7 +497,6 @@
     .msg-body { font-size: 0.89rem; color: var(--text); white-space: pre-wrap; }
 
     .feed { display: grid; gap: 10px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
-
     .student-list { display: grid; gap: 8px; margin-top: 10px; }
     .student-pill {
       display: flex; justify-content: space-between; align-items: center; gap: 8px;
@@ -550,14 +522,12 @@
 </head>
 <body>
 
-  <!-- KATMANLI ARKA PLAN & AĞIR ÇEKİM SÜZÜLEN KEHRİBAR IŞIK KÜRELERİ -->
   <div class="stage-ambient-layer" aria-hidden="true">
     <div class="ambient-orb orb-1" id="ambientOrb1"></div>
     <div class="ambient-orb orb-2" id="ambientOrb2"></div>
     <div class="ambient-orb orb-3" id="ambientOrb3"></div>
   </div>
 
-  <!-- AÇILIŞ ANİMASYONU + BAĞLAMA TELİNDEN YAYILAN SES DALGALARI -->
   <div id="preloader">
     <div class="ozan-scene">
       <span class="sound-wave-ring"></span>
@@ -594,7 +564,6 @@
     <div class="loader-bar"><span></span></div>
   </div>
 
-  <!-- ÜST MENÜ -->
   <header>
     <div class="container nav">
       <div class="brand" data-go="vitrin">
@@ -624,7 +593,6 @@
   </header>
 
   <main class="container">
-    <!-- 1. ANA SAYFA -->
     <section id="view-vitrin" class="page-view active">
       <div class="hero">
         <div>
@@ -665,7 +633,6 @@
         </div>
       </div>
 
-      <!-- DERS ALANLARI -->
       <div class="section-block">
         <div class="section-head">
           <span class="tag">Eğitim Branşları</span>
@@ -686,9 +653,9 @@
       <!-- 23 PERDELİ TAM İNTERAKTİF BAĞLAMA SAPI & GERÇEK BAĞLAMA SESİ -->
       <div id="baglama-studyosu" class="section-block">
         <div class="section-head">
-          <span class="tag">23 Perde Tam Klavye & Gerçek Bağlama Sesi</span>
+          <span class="tag">23 Perde Tam Klavye & Gerçek Bağlama Tınısı</span>
           <h2 class="section-title">İnteraktif Bağlama Sapı & Düzen Simülatörü</h2>
-          <p class="section-sub">Alt, orta ve üst tel üzerindeki 23 perdenin tamamına tıklayarak gerçek bağlama tınısını dinleyin (Sağa doğru kaydırabilirsiniz).</p>
+          <p class="section-sub">Alt, orta ve üst tel üzerindeki 23 perdenin tamamına tıklayarak çift telli bağlama tınısını dinleyin.</p>
         </div>
 
         <div class="baglama-studio-card">
@@ -700,7 +667,16 @@
               <button type="button" class="tuning-pill active" data-tuning="baglama">Bağlama Düzeni</button>
               <button type="button" class="tuning-pill" data-tuning="bozuk">Bozuk (Kara) Düzen</button>
               <button type="button" class="tuning-pill" data-tuning="misket">Misket Düzeni</button>
+              <button type="button" class="tuning-pill" data-tuning="asik">Aşık / Müstezat</button>
             </div>
+          </div>
+
+          <div class="quick-sound-bar">
+            <span style="font-size:0.76rem; font-weight:700; color:#d8c7b5; margin-right:4px;">Hızlı Sesler:</span>
+            <button type="button" class="quick-sound-btn" id="playOpenStringsBtn">🎸 Açık Telleri Çal</button>
+            <button type="button" class="quick-sound-btn" id="playKararBtn">🎶 Karar Sesi</button>
+            <button type="button" class="quick-sound-btn" id="playKomaScaleBtn">🎼 Koma / Seyir Dizisi</button>
+            <button type="button" class="quick-sound-btn" id="playTezeneRollBtn">⚡ Hızlı Tezene Tarama</button>
           </div>
 
           <div class="neck-scroll">
@@ -712,13 +688,12 @@
           </div>
 
           <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <span id="fretboardStatus" style="font-weight:700; color:#f3c48b;">Seçili Perde: Bir perdeye tıklayın</span>
-            <span style="font-size:0.78rem; color:#b8a593;">0'dan 23. Perdeye Tam Nota Dizilimi</span>
+            <span id="fretboardStatus" style="font-weight:700; color:#f3c48b;">Seçili Perde: Bir perdeye tıklayın veya hızlı ses seçin</span>
+            <span style="font-size:0.78rem; color:#b8a593;">0'dan 23. Perdeye Tam Nota Dizilimi • Çift Tel Rezonansı</span>
           </div>
         </div>
       </div>
 
-      <!-- AKORT & METRONOM -->
       <div class="section-block">
         <div class="section-head">
           <span class="tag">Çalışma Araçları</span>
@@ -762,7 +737,6 @@
         </div>
       </div>
 
-      <!-- HAFTALIK DERS SAATLERİ -->
       <div class="section-block">
         <div class="section-head">
           <span class="tag">Ders Programı</span>
@@ -772,7 +746,6 @@
         <div class="schedule-grid" id="publicScheduleGrid"></div>
       </div>
 
-      <!-- DERS BAŞVURUSU -->
       <div id="basvuru-bolumu" class="section-block">
         <div class="section-head">
           <span class="tag">Kayıt & Başvuru</span>
@@ -825,7 +798,6 @@
       </div>
     </section>
 
-    <!-- 2. ÖĞRENCİ GİRİŞİ -->
     <section id="view-ogrenci" class="page-view">
       <div id="studentAuthScreen" class="card ribbon-card form-stack" style="max-width: 440px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
@@ -956,7 +928,6 @@
       </div>
     </section>
 
-    <!-- 3. HOCA GİRİŞİ -->
     <section id="view-hoca" class="page-view">
       <div id="hocaLockBox" class="card ribbon-card form-stack" style="max-width: 420px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
@@ -1205,21 +1176,16 @@
     const DEFAULT_HOCA_PIN = "baglama2026";
     const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
     const DEFAULT_FIREBASE_DB_URL = "";
-    const STORAGE_KEY = "dogukan_muzik_portal_v14";
+    const STORAGE_KEY = "dogukan_muzik_portal_v15";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const FB_URL_KEY = "dogukan_firebase_url";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
     const MAIN_METHOD_PDF_URL = "./dogukanbaglamametodu.pdf";
 
     function getHocaPin() {
-      try {
-        return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN;
-      } catch (_) {
-        return DEFAULT_HOCA_PIN;
-      }
+      try { return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN; } catch (_) { return DEFAULT_HOCA_PIN; }
     }
 
-    /* SAYFA KAYDIRMAYA TEPKİ VEREN ALTIN SAHNE IŞIĞI HAREKETİ */
     window.addEventListener("scroll", () => {
       const y = window.scrollY || 0;
       const orb1 = document.getElementById("ambientOrb1");
@@ -1261,6 +1227,13 @@
         altNames: ["Re","Mib","Mib2","Mi","Fa","Fa#2","Fa#","Sol","Sol#","Lab","La","Sib2","Si","Do","Do#2","Do#","Re","Mib2","Mi","Fa","Fa#2","Fa#","Sol","La"],
         ortaNames: ["Sol","Lab","Lab2","La","Sib","Sib2","Si","Do","Do#2","Do#","Re","Mib2","Mi","Fa","Fa#2","Fa#","Sol","Lab2","La","Sib","Sib2","Si","Do","Re"],
         ustNames: ["Fa#","Sol","Sol#2","Sol#","La","Sib2","Si","Do","Do#2","Do#","Re","Mib2","Mi","Fa","Fa#2","Fa#","Sol","Sol#2","La","Sib","Sib2","Si","Do","Re"]
+      },
+      asik: {
+        title: "Aktif Düzen: Aşık / Müstezat Düzeni (Alt: Mi • Orta: La • Üst: Si)",
+        altBase: 329.63, ortaBase: 220.00, ustBase: 246.94,
+        altNames: ["Mi","Fa","Fa#2","Fa#","Sol","Sol#2","Sol#","La","Sib2","Si","Do","Do#2","Do#","Re","Mib2","Mi","Fa","Fa#2","Fa#","Sol","Sol#","La","Si","Do"],
+        ortaNames: ["La","Sib","Sib2","Si","Do","Do#2","Do#","Re","Mib2","Mi","Fa","Fa#2","Fa#","Sol","Lab2","La","Sib","Sib2","Si","Do","Do#","Re","Mi","Fa"],
+        ustNames: ["Si","Do","Do#2","Do#","Re","Mib2","Mi","Fa","Fa#2","Fa#","Sol","Lab2","La","Sib","Sib2","Si","Do","Do#2","Re","Mib","Mi","Fa","Fa#","Sol"]
       }
     };
 
@@ -1385,11 +1358,7 @@
     }
 
     function getActiveFirebaseUrl() {
-      try {
-        return localStorage.getItem(FB_URL_KEY) || DEFAULT_FIREBASE_DB_URL;
-      } catch (_) {
-        return DEFAULT_FIREBASE_DB_URL;
-      }
+      try { return localStorage.getItem(FB_URL_KEY) || DEFAULT_FIREBASE_DB_URL; } catch (_) { return DEFAULT_FIREBASE_DB_URL; }
     }
 
     function nowDateTimeStr() {
@@ -1496,7 +1465,7 @@
       el.addEventListener("click", () => goView(el.dataset.go));
     });
 
-    /* GERÇEKÇİ BAĞLAMA SES SENTEZLEYİCİ */
+    /* GELİŞMİŞ ÇİFT TELLİ BAĞLAMA SES SENTEZLEYİCİ */
     let audioCtx = null;
     let micStream = null;
     let analyser = null;
@@ -1510,39 +1479,45 @@
       return audioCtx;
     }
 
-    function playBaglamaSound(freq) {
+    function playBaglamaSound(freq, durationSec = 1.85, velocity = 1.0) {
       const ctx = ensureAudioCtx();
       if (!ctx) return;
       const now = ctx.currentTime;
 
-      const noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 0.025, ctx.sampleRate);
+      /* 1. Tezene (mızrap) tel sürtünme & kılavuz tıklaması */
+      const clickLen = Math.floor(ctx.sampleRate * 0.032);
+      const noiseBuf = ctx.createBuffer(1, clickLen, ctx.sampleRate);
       const output = noiseBuf.getChannelData(0);
-      for (let i = 0; i < noiseBuf.length; i++) {
-        output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.006));
+      for (let i = 0; i < clickLen; i++) {
+        output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.007));
       }
       const noise = ctx.createBufferSource();
       noise.buffer = noiseBuf;
       const noiseFilter = ctx.createBiquadFilter();
       noiseFilter.type = "bandpass";
-      noiseFilter.frequency.setValueAtTime(freq * 3.2, now);
+      noiseFilter.frequency.setValueAtTime(Math.min(4800, freq * 3.8), now);
+      noiseFilter.Q.setValueAtTime(2.4, now);
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.28, now);
+      noiseGain.gain.setValueAtTime(0.34 * velocity, now);
       noise.connect(noiseFilter);
       noiseFilter.connect(noiseGain);
       noiseGain.connect(ctx.destination);
       noise.start(now);
 
+      /* 2. Çift tel (kurs) + oktav/rezonans harmonikleri */
       const harmonics = [
-        { mult: 1, type: "sawtooth", amp: 0.22, decay: 1.55 },
-        { mult: 1.0018, type: "sawtooth", amp: 0.16, decay: 1.45 },
-        { mult: 2, type: "triangle", amp: 0.11, decay: 0.95 },
-        { mult: 3, type: "sine", amp: 0.05, decay: 0.55 }
+        { mult: 1.0, type: "sawtooth", amp: 0.21 * velocity, decay: durationSec },
+        { mult: 1.0022, type: "sawtooth", amp: 0.16 * velocity, decay: durationSec * 0.94 },
+        { mult: 2.0, type: "triangle", amp: 0.12 * velocity, decay: durationSec * 0.65 },
+        { mult: 3.0, type: "sine", amp: 0.055 * velocity, decay: durationSec * 0.42 }
       ];
 
+      /* 3. Bağlama teknesi (ahşap gövde) rezonans filtresi */
       const bodyFilter = ctx.createBiquadFilter();
       bodyFilter.type = "lowpass";
-      bodyFilter.frequency.setValueAtTime(freq * 6.5, now);
-      bodyFilter.frequency.exponentialRampToValueAtTime(freq * 1.6, now + 0.9);
+      bodyFilter.Q.setValueAtTime(1.6, now);
+      bodyFilter.frequency.setValueAtTime(Math.min(6200, freq * 7.5), now);
+      bodyFilter.frequency.exponentialRampToValueAtTime(Math.max(140, freq * 1.55), now + durationSec * 0.68);
       bodyFilter.connect(ctx.destination);
 
       harmonics.forEach((h) => {
@@ -1550,13 +1525,24 @@
         const g = ctx.createGain();
         osc.type = h.type;
         osc.frequency.setValueAtTime(freq * h.mult, now);
-        g.gain.setValueAtTime(h.amp, now);
-        g.gain.exponentialRampToValueAtTime(0.0008, now + h.decay);
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.linearRampToValueAtTime(h.amp, now + 0.006);
+        g.gain.exponentialRampToValueAtTime(0.0007, now + h.decay);
         osc.connect(g);
         g.connect(bodyFilter);
         osc.start(now);
-        osc.stop(now + h.decay + 0.05);
+        osc.stop(now + h.decay + 0.06);
       });
+    }
+
+    function triggerStringVisual(rowId) {
+      document.querySelectorAll(".string-line").forEach((r) => r.classList.remove("vibrating"));
+      const rEl = document.getElementById(rowId);
+      if (rEl) {
+        void rEl.offsetWidth;
+        rEl.classList.add("vibrating");
+        setTimeout(() => rEl.classList.remove("vibrating"), 720);
+      }
     }
 
     function renderBaglamaNeck() {
@@ -1585,16 +1571,8 @@
           document.querySelectorAll(".fret-node").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           const freq = parseFloat(btn.dataset.freq);
-          playBaglamaSound(freq);
-
-          const rId = btn.dataset.row;
-          document.querySelectorAll(".string-line").forEach((r) => r.classList.remove("vibrating"));
-          const rEl = document.getElementById(rId);
-          if (rEl) {
-            void rEl.offsetWidth;
-            rEl.classList.add("vibrating");
-            setTimeout(() => rEl.classList.remove("vibrating"), 700);
-          }
+          playBaglamaSound(freq, 1.9, 1.0);
+          triggerStringVisual(btn.dataset.row);
           document.getElementById("fretboardStatus").textContent = `Çalınan Nota: ${btn.dataset.note} • ${freq} Hz`;
         });
       });
@@ -1607,6 +1585,51 @@
         currentTuningKey = btn.dataset.tuning;
         renderBaglamaNeck();
       });
+    });
+
+    /* HIZLI BAĞLAMA SES KISAYOLLARI */
+    document.getElementById("playOpenStringsBtn").addEventListener("click", () => {
+      const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
+      playBaglamaSound(cfg.ustBase, 1.9, 0.85);
+      setTimeout(() => playBaglamaSound(cfg.ortaBase, 1.9, 0.92), 110);
+      setTimeout(() => {
+        playBaglamaSound(cfg.altBase, 2.1, 1.0);
+        triggerStringVisual("row-alt");
+      }, 220);
+      document.getElementById("fretboardStatus").textContent = `Açık Teller: Üst (${cfg.ustNames[0]}) • Orta (${cfg.ortaNames[0]}) • Alt (${cfg.altNames[0]})`;
+    });
+
+    document.getElementById("playKararBtn").addEventListener("click", () => {
+      const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
+      playBaglamaSound(cfg.altBase, 2.3, 1.05);
+      triggerStringVisual("row-alt");
+      document.getElementById("fretboardStatus").textContent = `Karar Sesi: Alt Tel ${cfg.altNames[0]} • ${cfg.altBase.toFixed(2)} Hz`;
+    });
+
+    document.getElementById("playKomaScaleBtn").addEventListener("click", () => {
+      const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
+      const steps = [0, 2, 3, 5, 7, 10, 12];
+      steps.forEach((stepIdx, i) => {
+        setTimeout(() => {
+          const f = (cfg.altBase * FRET_RATIOS[stepIdx].r).toFixed(2);
+          playBaglamaSound(parseFloat(f), 1.15, 0.92);
+          triggerStringVisual("row-alt");
+          document.getElementById("fretboardStatus").textContent = `Seyir / Koma: ${cfg.altNames[stepIdx]} (${stepIdx}. Perde) • ${f} Hz`;
+        }, i * 240);
+      });
+    });
+
+    document.getElementById("playTezeneRollBtn").addEventListener("click", () => {
+      const cfg = TUNING_SETS[currentTuningKey] || TUNING_SETS.baglama;
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const isAlt = i % 2 === 0;
+          const f = isAlt ? cfg.altBase : cfg.ortaBase;
+          playBaglamaSound(f, 0.85, isAlt ? 1.0 : 0.78);
+          triggerStringVisual(isAlt ? "row-alt" : "row-orta");
+        }, i * 115);
+      }
+      document.getElementById("fretboardStatus").textContent = `Hızlı Tezene Tarama (${cfg.altNames[0]} / ${cfg.ortaNames[0]})`;
     });
 
     const NOTE_NAMES = ["Do (C)", "Do# (C#)", "Re (D)", "Re# (D#)", "Mi (E)", "Fa (F)", "Fa# (F#)", "Sol (G)", "Sol# (G#)", "La (A)", "Sib (Bb)", "Si (B)"];
@@ -1884,7 +1907,6 @@
       renderAll();
     });
 
-    /* HOCA PANELİ İŞLEMLERİ */
     document.getElementById("hocaPinForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const pin = document.getElementById("hocaPinInput").value.trim();
