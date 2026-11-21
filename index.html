@@ -79,28 +79,15 @@
     .ambient-orb {
       position: absolute; border-radius: 50%; filter: blur(88px); will-change: transform; transition: opacity 0.6s ease;
     }
-    .ambient-orb.orb-1 {
-      width: 520px; height: 520px; top: -90px; left: 5%;
-      background: radial-gradient(circle, rgba(212, 148, 76, 0.24), transparent 70%);
-      animation: orbDrift1 18s ease-in-out infinite alternate;
-    }
-    .ambient-orb.orb-2 {
-      width: 600px; height: 600px; top: 38%; right: -120px;
-      background: radial-gradient(circle, rgba(156, 93, 30, 0.18), transparent 72%);
-      animation: orbDrift2 22s ease-in-out infinite alternate;
-    }
-    .ambient-orb.orb-3 {
-      width: 460px; height: 460px; bottom: -80px; left: 25%;
-      background: radial-gradient(circle, rgba(243, 196, 139, 0.14), transparent 70%);
-      animation: orbDrift3 20s ease-in-out infinite alternate;
-    }
+    .ambient-orb.orb-1 { width: 520px; height: 520px; top: -90px; left: 5%; background: radial-gradient(circle, rgba(212, 148, 76, 0.24), transparent 70%); animation: orbDrift1 18s ease-in-out infinite alternate; }
+    .ambient-orb.orb-2 { width: 600px; height: 600px; top: 38%; right: -120px; background: radial-gradient(circle, rgba(156, 93, 30, 0.18), transparent 72%); animation: orbDrift2 22s ease-in-out infinite alternate; }
+    .ambient-orb.orb-3 { width: 460px; height: 460px; bottom: -80px; left: 25%; background: radial-gradient(circle, rgba(243, 196, 139, 0.14), transparent 70%); animation: orbDrift3 20s ease-in-out infinite alternate; }
     @keyframes orbDrift1 { 0% { margin-left: 0; margin-top: 0; } 100% { margin-left: 48px; margin-top: 34px; } }
     @keyframes orbDrift2 { 0% { margin-right: 0; margin-top: 0; } 100% { margin-right: 54px; margin-top: -38px; } }
     @keyframes orbDrift3 { 0% { margin-left: 0; margin-bottom: 0; } 100% { margin-left: -40px; margin-bottom: 30px; } }
 
     h1, h2, .serif-title { font-family: "Cormorant Garamond", Georgia, serif; }
 
-    /* AÇILIŞ ANİMASYONU */
     #preloader {
       position: fixed; inset: 0; z-index: 9999;
       background: radial-gradient(circle at center, #1e130c 0%, #090604 100%); color: #f5e6d3;
@@ -130,7 +117,7 @@
     .loader-bar span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, #9c5d1e, #f3c48b); animation: loadBar 1.4s ease forwards; }
     @keyframes loadBar { to { width: 100%; } }
 
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 22px; }
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 22px; }
 
     header {
       position: sticky; top: 0; z-index: 100; background: var(--header-bg);
@@ -195,6 +182,9 @@
     .btn-ok { background: linear-gradient(135deg, #2eb872, #15803d); color: #fff; }
     .btn-danger { background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; }
     .btn-sm { padding: 7px 13px; font-size: 0.79rem; border-radius: 9px; }
+    
+    /* İri ve Geniş Butonlar İçin (Örn: Hoca Mesaj Gönder) */
+    .btn-lg { padding: 14px 26px; font-size: 1rem; width: 100%; box-shadow: 0 6px 18px rgba(212, 148, 76, 0.25); }
 
     .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 38px; align-items: center; margin-bottom: 44px; }
     .eyebrow {
@@ -219,8 +209,10 @@
     .portrait-fallback.active { display: flex; }
     .portrait-foot { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; background: var(--surface); }
     .social-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pill { padding: 6px 13px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: all 0.2s ease; }
+    .pill { padding: 6px 13px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 4px; }
     .pill:hover { border-color: var(--gold); color: var(--gold-light); }
+    .pill-wa { border-color: rgba(46, 184, 114, 0.4); color: var(--ok); background: rgba(46, 184, 114, 0.08); }
+    .pill-wa:hover { border-color: var(--ok); color: #fff; background: var(--ok); box-shadow: 0 4px 12px rgba(46, 184, 114, 0.3); }
 
     .section-block { margin-top: 52px; padding-top: 44px; position: relative; }
     .section-block::before {
@@ -291,25 +283,29 @@
 
     .portal-banner {
       display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
-      background: var(--wood-grad); backdrop-filter: blur(16px); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 18px;
+      background: var(--wood-grad); backdrop-filter: blur(16px); border: 1px solid var(--border-strong); border-radius: 18px; padding: 18px 22px; margin-bottom: 24px;
     }
-    .portal-grid { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
+    
+    /* Geliştirilmiş ve Genişletilmiş Izgara Yapısı */
+    .portal-grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
+    
     .sub-nav {
-      display: flex; gap: 8px; flex-wrap: wrap; background: var(--surface); backdrop-filter: blur(12px);
-      padding: 8px; border-radius: 14px; border: 1px solid var(--border); margin-bottom: 16px;
+      display: flex; gap: 10px; flex-wrap: wrap; background: var(--surface); backdrop-filter: blur(12px);
+      padding: 10px; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px;
     }
     .sub-tab-btn {
-      padding: 9px 15px; border-radius: 10px; border: 1px solid transparent;
-      background: transparent; color: var(--muted); font-weight: 700; font-size: 0.83rem; cursor: pointer; transition: all 0.2s ease;
+      flex: 1; text-align: center; min-width: 150px;
+      padding: 12px 18px; border-radius: 12px; border: 1px solid transparent;
+      background: transparent; color: var(--muted); font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s ease;
     }
-    .sub-tab-btn.active { background: var(--gold-glow); color: var(--gold-light); border-color: var(--border-strong); }
+    .sub-tab-btn.active { background: var(--gold-glow); color: var(--gold-light); border-color: var(--border-strong); box-shadow: 0 4px 16px rgba(212, 148, 76, 0.12); }
     .sub-pane { display: none; }
     .sub-pane.active { display: block; animation: paneSlideIn 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes paneSlideIn { 0% { opacity: 0; transform: translateX(10px) translateY(4px); } 100% { opacity: 1; transform: translateX(0) translateY(0); } }
 
     .study-desk-card {
       background: radial-gradient(circle at 85% 15%, rgba(243, 196, 139, 0.22), transparent 55%), var(--wood-grad);
-      border: 1px solid var(--border-strong); border-radius: 16px; padding: 16px 18px; margin-bottom: 16px;
+      border: 1px solid var(--border-strong); border-radius: 16px; padding: 16px 18px; margin-bottom: 20px;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
     }
     .desk-pills { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -317,7 +313,7 @@
 
     .live-stage-card {
       background: radial-gradient(circle at 12% 20%, rgba(46, 184, 114, 0.24), transparent 55%), var(--wood-grad);
-      border: 2px solid var(--ok); border-radius: 18px; padding: 18px 20px; margin-bottom: 18px; animation: liveBreath 2.6s ease-in-out infinite;
+      border: 2px solid var(--ok); border-radius: 18px; padding: 18px 20px; margin-bottom: 20px; animation: liveBreath 2.6s ease-in-out infinite;
     }
     @keyframes liveBreath {
       0%, 100% { box-shadow: 0 0 0 0 rgba(46, 184, 114, 0.35), 0 14px 34px rgba(46, 184, 114, 0.14); }
@@ -333,95 +329,97 @@
     }
     .prep-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--ok); cursor: pointer; }
 
-    .pdf-link-list { display: grid; gap: 10px; margin-top: 12px; }
+    .pdf-link-list { display: grid; gap: 12px; margin-top: 16px; }
     .pdf-link-card {
       display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap;
-      padding: 15px 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border-strong);
+      padding: 16px 20px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border-strong);
       position: relative; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .pdf-link-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+    .pdf-link-card:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 8px 24px rgba(212, 148, 76, 0.12); }
     .pdf-link-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--gold), var(--gold-light)); }
 
     .renewal-alert-card {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), var(--surface));
-      border: 2px solid var(--warn); border-radius: 16px; padding: 16px 20px; margin-bottom: 16px;
+      border: 2px solid var(--warn); border-radius: 16px; padding: 16px 20px; margin-bottom: 20px;
       display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
     }
 
-    .badge-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+    .badge-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
     .skill-badge {
-      padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
-      background: var(--surface-2); font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.65; transition: all 0.25s ease;
+      padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--surface-2); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.65; transition: all 0.25s ease;
     }
-    .skill-badge.earned { opacity: 1; border-color: var(--ok); background: rgba(46, 184, 114, 0.16); font-weight: 700; box-shadow: 0 6px 20px rgba(46, 184, 114, 0.18); }
+    .skill-badge.earned { opacity: 1; border-color: var(--ok); background: rgba(46, 184, 114, 0.12); font-weight: 700; box-shadow: 0 6px 20px rgba(46, 184, 114, 0.18); }
     .skill-badge.badge-just-unlocked { animation: badgeUnlockPop 0.75s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes badgeUnlockPop {
       0% { transform: scale(0.92); box-shadow: 0 0 0 0 rgba(46, 184, 114, 0.85); background: rgba(46, 184, 114, 0.42); }
       55% { transform: scale(1.04); box-shadow: 0 0 26px rgba(46, 184, 114, 0.65); }
-      100% { transform: scale(1); box-shadow: 0 6px 20px rgba(46, 184, 114, 0.18); background: rgba(46, 184, 114, 0.16); }
+      100% { transform: scale(1); box-shadow: 0 6px 20px rgba(46, 184, 114, 0.18); background: rgba(46, 184, 114, 0.12); }
     }
 
-    .progress-track { width: 100%; height: 11px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
-    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--ok)); transition: width 0.25s ease; }
+    .progress-track { width: 100%; height: 14px; background: var(--surface-3); border-radius: 999px; overflow: hidden; margin: 10px 0; border: 1px solid var(--border); box-shadow: inset 0 2px 6px rgba(0,0,0,0.4); }
+    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--ok)); transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
 
-    .form-stack { display: grid; gap: 12px; }
-    .field { display: flex; flex-direction: column; gap: 5px; }
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    label { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+    .form-stack { display: grid; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
     
     input, select, textarea {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
-      padding: 11px 13px; border-radius: 11px; font-size: 0.88rem; font-family: inherit; width: 100%;
+      padding: 12px 16px; border-radius: 12px; font-size: 0.95rem; font-family: inherit; width: 100%;
     }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(212, 148, 76, 0.2); }
 
-    /* Yeni Şifre Göz İkonu İçin Tasarım */
     .password-wrapper { position: relative; display: flex; align-items: center; }
-    .password-wrapper input { width: 100%; padding-right: 42px; }
+    .password-wrapper input { width: 100%; padding-right: 48px; }
     .eye-btn { 
-      position: absolute; right: 10px; background: none; border: none; 
-      cursor: pointer; font-size: 1.1rem; color: var(--muted); opacity: 0.7; padding: 0; display: grid; place-items: center;
+      position: absolute; right: 12px; background: none; border: none; 
+      cursor: pointer; font-size: 1.2rem; color: var(--muted); opacity: 0.7; padding: 0; display: grid; place-items: center;
     }
-    .eye-btn:hover { opacity: 1; }
+    .eye-btn:hover { opacity: 1; color: var(--gold-light); }
 
+    /* Timeline Mesajlaşma Modülü Genişletildi */
     .timeline-feed {
-      display: grid; gap: 12px; max-height: 430px; overflow-y: auto;
-      padding-left: 16px; padding-right: 4px; border-left: 2px solid var(--border-strong); margin-left: 6px;
+      display: grid; gap: 16px; max-height: 550px; overflow-y: auto;
+      padding-left: 20px; padding-right: 8px; border-left: 3px solid var(--border-strong); margin-left: 8px;
     }
     .msg-item {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; padding: 18px;
       position: relative; transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .msg-item:hover { border-color: var(--border-strong); }
+    .msg-item:hover { border-color: var(--border-strong); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
     .timeline-feed .msg-item::before {
-      content: ""; position: absolute; left: -22px; top: 16px; width: 10px; height: 10px; border-radius: 50%;
-      background: var(--gold); border: 2px solid var(--bg); box-shadow: 0 0 8px var(--gold);
+      content: ""; position: absolute; left: -27px; top: 20px; width: 12px; height: 12px; border-radius: 50%;
+      background: var(--gold); border: 3px solid var(--bg); box-shadow: 0 0 10px var(--gold);
     }
-    .timeline-feed .msg-item.from-ogrenci::before { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
-    .msg-item.from-hoca { border-left: 4px solid var(--gold); }
-    .msg-item.from-ogrenci { border-left: 4px solid var(--ok); }
-    .msg-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; align-items: center; }
-    .date-chip { padding: 2px 8px; border-radius: 999px; background: var(--gold-glow); color: var(--gold-light); font-weight: 700; font-size: 0.7rem; }
-    .msg-body { font-size: 0.89rem; color: var(--text); white-space: pre-wrap; }
+    .timeline-feed .msg-item.from-ogrenci::before { background: var(--ok); box-shadow: 0 0 10px var(--ok); }
+    .msg-item.from-hoca { border-left: 5px solid var(--gold); }
+    .msg-item.from-ogrenci { border-left: 5px solid var(--ok); }
+    .msg-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+    .date-chip { padding: 4px 10px; border-radius: 999px; background: var(--gold-glow); color: var(--gold-light); font-weight: 700; font-size: 0.75rem; }
+    .msg-body { font-size: 0.95rem; color: var(--text); white-space: pre-wrap; line-height: 1.6; }
 
-    .feed { display: grid; gap: 10px; max-height: 400px; overflow-y: auto; padding-right: 4px; }
-    .student-list { display: grid; gap: 8px; margin-top: 10px; }
+    /* Öğrenci Listesi Tasarımı (Hoca Paneli) */
+    .hoca-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .student-list-container { max-height: 700px; overflow-y: auto; padding-right: 8px; display: flex; flex-direction: column; gap: 10px; }
     .student-pill {
-      display: flex; justify-content: space-between; align-items: center; gap: 8px;
-      padding: 10px 12px; border-radius: 11px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; font-size: 0.84rem;
-      transition: all 0.2s ease;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      padding: 14px 16px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; font-size: 0.9rem;
+      transition: all 0.25s ease;
     }
-    .student-pill:hover { border-color: var(--border-strong); }
-    .student-pill.active { border-color: var(--gold); background: var(--gold-glow); }
+    .student-pill:hover { border-color: var(--border-strong); transform: translateX(4px); }
+    .student-pill.active { border-color: var(--gold); background: var(--gold-glow); box-shadow: 0 4px 16px rgba(212, 148, 76, 0.15); }
 
     .status-pill { padding: 4px 10px; border-radius: 999px; font-size: 0.73rem; font-weight: 700; background: var(--surface-3); color: var(--gold-light); }
     .status-pill.done { color: var(--ok); background: rgba(46, 184, 114, 0.16); }
 
-    footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 0.84rem; background: var(--header-bg); backdrop-filter: blur(14px); }
+    footer { border-top: 1px solid var(--border); padding: 40px 0 60px; color: var(--muted); font-size: 0.9rem; background: var(--header-bg); backdrop-filter: blur(14px); }
 
     @media (max-width: 980px) {
       .hero, .portal-grid, .grid-2, .grid-3, .badge-grid, .prep-checklist { grid-template-columns: 1fr; }
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .sub-tab-btn { min-width: 100%; }
     }
     @media (max-width: 560px) {
       .grid-4, .field-row { grid-template-columns: 1fr; }
@@ -437,6 +435,7 @@
   </div>
 
   <div id="preloader">
+    <!-- Ozan animasyonu aynı -->
     <div class="ozan-scene">
       <span class="sound-wave-ring"></span>
       <span class="sound-wave-ring w2"></span>
@@ -488,20 +487,10 @@
       <div class="nav-controls">
         <div class="portal-switch" role="tablist">
           <button class="tab-btn active" data-go="vitrin">Ana Sayfa</button>
-          <button class="tab-btn" data-go="ogrenci">
-            Öğrenci Girişi
-            <span class="nav-badge-dot" id="stuNavBadge">0</span>
-          </button>
-          <button class="tab-btn" data-go="hoca">
-            Hoca Girişi
-            <span class="nav-badge-dot" id="hocaNavBadge">0</span>
-          </button>
+          <button class="tab-btn" data-go="ogrenci">Öğrenci Girişi <span class="nav-badge-dot" id="stuNavBadge">0</span></button>
+          <button class="tab-btn" data-go="hoca">Hoca Girişi <span class="nav-badge-dot" id="hocaNavBadge">0</span></button>
         </div>
-
-        <button type="button" id="globalThemeBtn" class="theme-toggle-btn">
-          <span id="themeIcon">☀️</span>
-          <span id="themeLabel">Açık Tema</span>
-        </button>
+        <button type="button" id="globalThemeBtn" class="theme-toggle-btn"><span id="themeIcon">☀️</span><span id="themeLabel">Açık Tema</span></button>
       </div>
     </div>
   </header>
@@ -515,6 +504,7 @@
       <button type="button" id="openMsgFromBannerBtn" class="btn btn-sm">Mesajlara Git →</button>
     </div>
 
+    <!-- VİTRİN BÖLÜMÜ -->
     <section id="view-vitrin" class="page-view active">
       <div class="hero">
         <div>
@@ -534,11 +524,9 @@
         <div class="portrait-card">
           <div class="portrait-media">
             <img id="instructorPhoto" src="./dogukan.jpg" alt="Doğukan Bozkurt" onerror="handlePhotoError(this)" />
-            <!-- Yeni Şık SVG Avatar Fallback Sistemi -->
             <div class="portrait-fallback" id="instructorFallback" style="align-items: center; justify-content: center; text-align: center;">
               <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; opacity: 0.8;">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
               </svg>
               <h3 class="serif-title" style="font-size: 1.5rem; color:var(--text);">Doğukan Bozkurt</h3>
               <p style="color: var(--muted); font-size: 0.88rem;">Eğitmen Profili</p>
@@ -547,17 +535,19 @@
           <div class="portrait-foot">
             <div>
               <strong style="font-size:0.92rem;">Doğukan Bozkurt</strong>
-              <span style="display:block; font-size: 0.78rem; color: var(--muted);">WhatsApp: 0 537 439 49 92</span>
+              <span style="display:block; font-size: 0.78rem; color: var(--muted);">Eğitmen & Müzisyen</span>
             </div>
+            <!-- WHATSAPP BUTONU DÜZENLENDİ -->
             <div class="social-pills">
+              <a href="https://wa.me/905374394992" target="_blank" rel="noopener noreferrer" class="pill pill-wa">💬 WhatsApp</a>
               <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="pill">YouTube</a>
               <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="pill">Instagram</a>
-              <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="pill">Facebook</a>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Diğer Vitrin İçerikleri Aynı -->
       <div class="section-block">
         <div class="section-head">
           <span class="tag">Eğitim Branşları</span>
@@ -591,7 +581,6 @@
               <button type="button" id="micTunerBtn" class="btn btn-sm">Mikrofonu Başlat</button>
             </div>
           </div>
-
           <div class="card ribbon-card ribbon-emerald">
             <h3>Usul & Aksak Metronom (Düm / Tek)</h3>
             <div class="field-row" style="margin-top: 10px;">
@@ -673,23 +662,23 @@
               <label for="regNote">Seçtiğiniz Gün / Saat veya Notunuz</label>
               <textarea id="regNote" rows="2" placeholder="Takvimden seçtiğiniz saat veya notunuz..."></textarea>
             </div>
-            <button type="submit" class="btn">WhatsApp ile Ödeme & Kayıt Onayına Geç →</button>
+            <button type="submit" class="btn btn-lg">WhatsApp ile Ödeme & Kayıt Onayına Geç →</button>
           </form>
         </div>
       </div>
     </section>
 
+    <!-- ÖĞRENCİ PANELİ (YENİ GENİŞ TASARIM) -->
     <section id="view-ogrenci" class="page-view">
       <div id="studentAuthScreen" class="card ribbon-card form-stack" style="max-width: 440px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Öğrenci Portalı</span>
         <h3>Öğrenci Girişi</h3>
-        <p style="font-size: 0.84rem;">Kullanıcı adı ve şifrenizle giriş yapın. Sayfayı yenilediğinizde oturumunuz korunur.</p>
+        <p style="font-size: 0.84rem;">Kullanıcı adı ve şifrenizle giriş yapın.</p>
         <form id="memberLoginForm" class="form-stack">
           <div class="field">
             <label for="loginUser">Kullanıcı Adı</label>
             <input type="text" id="loginUser" placeholder="Kullanıcı adınız" required />
           </div>
-          <!-- Şifre Göz İkonu Modülü -->
           <div class="field">
             <label for="loginPass">Şifre</label>
             <div class="password-wrapper">
@@ -697,7 +686,7 @@
               <button type="button" class="eye-btn" onclick="togglePassword('loginPass')">👁️</button>
             </div>
           </div>
-          <button type="submit" class="btn">Giriş Yap</button>
+          <button type="submit" class="btn btn-lg">Giriş Yap</button>
           <span id="memberLoginError" style="font-size:0.82rem; font-weight:700; color:var(--danger);"></span>
         </form>
       </div>
@@ -706,12 +695,13 @@
         <div class="portal-banner">
           <div>
             <span class="tag">Öğrenci Portalı</span>
-            <h2 class="section-title" style="font-size: 1.65rem;">Çalışma & Ders Takip Ekranı</h2>
+            <h2 class="section-title" style="font-size: 1.8rem;" id="memberWelcomeTitle">Hoş Geldiniz</h2>
+            <p id="memberCourseInfo" style="font-size:0.95rem; color:var(--muted);"></p>
           </div>
-          <button type="button" id="studentLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
+          <button type="button" id="studentLogoutBtn" class="btn btn-ghost">Çıkış Yap</button>
         </div>
 
-        <div id="firstLoginSetupCard" class="card ribbon-card ribbon-amber" style="display:none; margin-bottom:16px;">
+        <div id="firstLoginSetupCard" class="card ribbon-card ribbon-amber" style="display:none; margin-bottom:24px;">
           <h3>İlk Giriş: Kendi Şifrenizi Belirleyin</h3>
           <p style="font-size:0.84rem; margin-bottom:10px;">Hesabınıza özel yeni şifrenizi buradan ayarlayabilirsiniz:</p>
           <div style="display:flex; gap:8px; flex-wrap:wrap; max-width:440px;">
@@ -719,7 +709,7 @@
               <input type="password" id="firstSetPassInput" placeholder="Yeni şifreniz" />
               <button type="button" class="eye-btn" onclick="togglePassword('firstSetPassInput')">👁️</button>
             </div>
-            <button type="button" id="firstSetPassBtn" class="btn btn-sm">Şifremi Kaydet</button>
+            <button type="button" id="firstSetPassBtn" class="btn btn-sm">Kaydet</button>
           </div>
         </div>
 
@@ -729,12 +719,12 @@
               <span class="tag" style="color:var(--ok);"><span class="live-pulse-dot"></span>Canlı Online Ders Sahnesi Aktif</span>
               <h3>Doğukan Bozkurt ile Canlı Dersiniz Hazır</h3>
             </div>
-            <a id="studentLiveRoomLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-sm">Canlı Derse Katıl →</a>
+            <a id="studentLiveRoomLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok btn-lg" style="width:fit-content;">Canlı Derse Katıl →</a>
           </div>
           <div class="prep-checklist">
             <label class="prep-item"><input type="checkbox" /> Bağlama akordu kontrol edildi</label>
-            <label class="prep-item"><input type="checkbox" /> PDF nota & tezene hazır</label>
-            <label class="prep-item"><input type="checkbox" /> Kamera & ses bağlantısı hazır</label>
+            <label class="prep-item"><input type="checkbox" /> PDF nota hazır</label>
+            <label class="prep-item"><input type="checkbox" /> Kamera & ses hazır</label>
           </div>
         </div>
 
@@ -744,107 +734,94 @@
             <h3>Bu Ayki Ders Paketiniz Tamamlandı</h3>
             <p style="font-size:0.84rem; color:var(--muted);">Yeni kur planlaması ve aylık ödeme için WhatsApp'tan iletişime geçebilirsiniz.</p>
           </div>
-          <a id="studentRenewalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm">WhatsApp ile Kur Yenile →</a>
+          <a id="studentRenewalWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ok">WhatsApp ile Kur Yenile →</a>
         </div>
 
-        <div class="study-desk-card">
-          <div>
-            <span class="tag" style="margin-bottom:4px;">Çalışma & Ders Masası</span>
-            <h3 style="font-size:1.02rem;" id="studyDeskSummaryTitle">Günlük Bağlama Çalışma Alanınız</h3>
-          </div>
-          <div class="desk-pills">
-            <span class="desk-chip" id="deskCourseChip">Branş: Bağlama Düzeni</span>
-            <span class="desk-chip" id="deskPdfCountChip">Kayıtlı Materyal: 1</span>
-            <span class="desk-chip" id="deskBadgeCountChip">Onaylı Aşama: 1 / 6</span>
-          </div>
-        </div>
-
-        <div class="portal-grid">
-          <div class="card ribbon-card form-stack">
-            <span class="tag">Öğrenci Bilgileri</span>
-            <h3 id="memberWelcomeTitle">Hoş Geldiniz</h3>
-            <p id="memberCourseInfo" style="font-size:0.84rem;"></p>
-
-            <hr style="border:none; border-top:1px solid var(--border);" />
-
+        <!-- ÖĞRENCİ ÖZET BİLGİLERİ (YATAY GENİŞ TASARIM) -->
+        <div class="grid-2" style="margin-bottom: 24px;">
+          <div class="card ribbon-card">
             <h3>Aylık Kur Sayacı</h3>
             <div class="progress-track"><div class="progress-fill" id="studentCourseLessonBar"></div></div>
-            <div style="display:flex; justify-content:space-between; font-size:0.82rem; font-weight:700;">
+            <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight:700;">
               <span id="studentCourseLessonText">0 / 4 Ders</span>
               <span id="studentCourseRemainingBadge" style="color:var(--gold);">4 Ders Kaldı</span>
             </div>
-
-            <hr style="border:none; border-top:1px solid var(--border);" />
-
+          </div>
+          <div class="card ribbon-card ribbon-emerald">
             <h3>Haftalık Çalışma Süresi (dk)</h3>
             <div class="progress-track"><div class="progress-fill" id="studentPracticeBar"></div></div>
-            <div style="display:flex; justify-content:space-between; font-size:0.82rem; font-weight:700; margin-bottom:4px;">
+            <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight:700; margin-bottom:10px;">
               <span id="studentPracticeText">0 / 180 dk</span>
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
-              <input type="number" id="studentPracticeInput" min="0" max="2000" placeholder="Dakika girin" />
-              <button type="button" id="savePracticeMinsBtn" class="btn btn-sm" style="white-space:nowrap;">Kaydet</button>
+              <input type="number" id="studentPracticeInput" min="0" max="2000" placeholder="Örn: 60" style="padding: 8px 12px;"/>
+              <button type="button" id="savePracticeMinsBtn" class="btn" style="padding: 8px 16px;">Kaydet</button>
             </div>
-            <span id="practiceSaveStatus" style="font-size:0.78rem; color:var(--ok); font-weight:700;"></span>
+            <span id="practiceSaveStatus" style="font-size:0.78rem; color:var(--ok); font-weight:700; display:block; margin-top:4px;"></span>
+          </div>
+        </div>
+
+        <!-- ANA İÇERİK SEKME MENÜSÜ -->
+        <div class="sub-nav">
+          <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 Eğitim Materyalleri</button>
+          <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">💬 Mesajlar & Ödevler</button>
+          <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-rozet">🏅 Gelişim Tablosu</button>
+          <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-ayarlar">⚙️ Profil & Ayarlar</button>
+        </div>
+
+        <div id="pane-stu-pdf" class="sub-pane active">
+          <div class="card ribbon-card">
+            <h3 style="font-size:1.3rem;">PDF Nota & Metot Bağlantıları</h3>
+            <div class="pdf-link-list" id="studentPdfDrawer"></div>
+            
+            <hr style="border:none; border-top:1px solid var(--border); margin: 30px 0;" />
+            
+            <h3 style="font-size:1.3rem;">🎬 Video Ders Arşivi</h3>
+            <div class="pdf-link-list" id="studentVideoDrawer"></div>
+          </div>
+        </div>
+
+        <div id="pane-stu-odev" class="sub-pane">
+          <div class="card ribbon-card ribbon-emerald form-stack">
+            <h3 style="font-size:1.3rem;">Doğukan Hoca ile Mesajlaşma</h3>
+            <form id="studentMsgForm" class="form-stack">
+              <textarea id="studentMsgInput" rows="4" placeholder="Hocam verdiğiniz ödevi çalıştım, bir sorum var veya şu gün ders talep ediyorum..." required></textarea>
+              <button type="submit" class="btn btn-lg">Hocaya Mesaj Gönder</button>
+            </form>
 
             <hr style="border:none; border-top:1px solid var(--border);" />
+            <h3 style="font-size:1.2rem;">Ders Arşivi & Geçmiş Mesajlar</h3>
+            <div class="timeline-feed" id="studentFeed"></div>
+          </div>
+        </div>
 
-            <h3>Şifremi Değiştir</h3>
-            <div style="display:flex; gap:8px;">
-              <div class="password-wrapper" style="flex:1;">
+        <div id="pane-stu-rozet" class="sub-pane">
+          <div class="card ribbon-card ribbon-amber">
+            <h3 style="font-size:1.3rem;">Gelişim Tablosu (Doğukan Hoca Onaylı)</h3>
+            <p style="font-size:0.95rem;">Derslerde tamamladığınız aşamalar Doğukan Hoca tarafından onaylandıkça burada aktifleşir:</p>
+            <div class="badge-grid" id="studentBadgesGrid"></div>
+          </div>
+        </div>
+        
+        <!-- YENİ AYARLAR SEKMESİ -->
+        <div id="pane-stu-ayarlar" class="sub-pane">
+          <div class="card ribbon-card ribbon-crimson form-stack" style="max-width: 500px;">
+            <h3 style="font-size:1.3rem;">Hesap Ayarları</h3>
+            <div class="field">
+              <label>Şifremi Değiştir</label>
+              <div class="password-wrapper">
                 <input type="password" id="studentChangePassInput" placeholder="Yeni şifreniz" />
                 <button type="button" class="eye-btn" onclick="togglePassword('studentChangePassInput')">👁️</button>
               </div>
-              <button type="button" id="studentChangePassBtn" class="btn btn-sm" style="white-space:nowrap;">Güncelle</button>
             </div>
-            <span id="studentPassStatus" style="font-size:0.78rem; color:var(--ok); font-weight:700;"></span>
-          </div>
-
-          <div>
-            <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-stu-tab="pane-stu-pdf">📘 PDF & 🎬 Video Dersler</button>
-              <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-odev">💬 Hocayla Mesajlaşma & Ödevler</button>
-              <button type="button" class="sub-tab-btn" data-stu-tab="pane-stu-rozet">🏅 Gelişim Tablosu (Hoca Onaylı)</button>
-            </div>
-
-            <div id="pane-stu-pdf" class="sub-pane active">
-              <div class="card ribbon-card">
-                <h3>PDF Nota & Metot Bağlantıları</h3>
-                <div class="pdf-link-list" id="studentPdfDrawer"></div>
-                
-                <hr style="border:none; border-top:1px solid var(--border); margin: 20px 0;" />
-                
-                <h3>🎬 Video Ders Arşivi</h3>
-                <div class="pdf-link-list" id="studentVideoDrawer"></div>
-              </div>
-            </div>
-
-            <div id="pane-stu-odev" class="sub-pane">
-              <div class="card ribbon-card ribbon-emerald form-stack">
-                <h3>Doğukan Hoca ile Mesajlaşma & Ders Arşivi</h3>
-                <form id="studentMsgForm" class="form-stack">
-                  <textarea id="studentMsgInput" rows="3" placeholder="Hocam verdiğiniz ödevi çalıştım, bir sorum var veya şu gün ders talep ediyorum..." required></textarea>
-                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Hocaya Mesaj Gönder</button>
-                </form>
-
-                <hr style="border:none; border-top:1px solid var(--border);" />
-
-                <div class="timeline-feed" id="studentFeed"></div>
-              </div>
-            </div>
-
-            <div id="pane-stu-rozet" class="sub-pane">
-              <div class="card ribbon-card ribbon-amber">
-                <h3>Gelişim Tablosu (Doğukan Hoca Onaylı)</h3>
-                <p style="font-size:0.84rem;">Derslerde tamamladığınız aşamalar Doğukan Hoca tarafından onaylandıkça burada aktifleşir:</p>
-                <div class="badge-grid" id="studentBadgesGrid"></div>
-              </div>
-            </div>
+            <button type="button" id="studentChangePassBtn" class="btn">Şifreyi Güncelle</button>
+            <span id="studentPassStatus" style="font-size:0.85rem; color:var(--ok); font-weight:700;"></span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- HOCA PANELİ (YENİ DÜZENLİ TASARIM) -->
     <section id="view-hoca" class="page-view">
       <div id="hocaLockBox" class="card ribbon-card form-stack" style="max-width: 420px; margin: 20px auto;">
         <span class="tag" style="width:fit-content;">Eğitmen Girişi</span>
@@ -857,7 +834,7 @@
               <button type="button" class="eye-btn" onclick="togglePassword('hocaPinInput')">👁️</button>
             </div>
           </div>
-          <button type="submit" class="btn">Paneli Aç</button>
+          <button type="submit" class="btn btn-lg">Paneli Aç</button>
           <span id="hocaPinError" style="font-size:0.82rem; font-weight:700; color:var(--danger);"></span>
         </form>
       </div>
@@ -866,88 +843,43 @@
         <div class="portal-banner">
           <div>
             <span class="tag">Eğitmen Kontrol Paneli</span>
-            <h2 class="section-title" style="font-size: 1.65rem;">Doğukan Bozkurt — Öğrenci & Ders Yönetimi</h2>
+            <h2 class="section-title" style="font-size: 1.8rem;">Öğrenci & Ders Yönetimi</h2>
           </div>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <button type="button" id="exportDataBtn" class="btn btn-ghost btn-sm">Yedek İndir (JSON)</button>
-            <button type="button" id="hocaLogoutBtn" class="btn btn-ghost btn-sm">Çıkış Yap</button>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button type="button" id="exportDataBtn" class="btn btn-ghost">Yedek İndir</button>
+            <button type="button" id="hocaLogoutBtn" class="btn btn-ghost">Çıkış Yap</button>
           </div>
         </div>
 
         <div class="portal-grid">
-          <div class="card ribbon-card form-stack">
-            <h3>Kayıtlı Öğrenciler</h3>
-            <p style="font-size:0.78rem;">Seçmek için satıra tıklayın; silmek için <strong>Sil</strong> butonunu kullanın:</p>
-            <div class="student-list" id="hocaStudentList"></div>
-
-            <hr style="border:none; border-top:1px solid var(--border);" />
-
-            <h3>Yeni Üye Öğrenci Ekle</h3>
-            <form id="hocaAddStudentForm" class="form-stack">
-              <input type="text" id="newStuName" placeholder="Öğrenci Ad Soyad" required />
-              <input type="tel" id="newStuPhone" placeholder="WhatsApp Numarası (05XX...)" />
-              <div class="field-row">
-                <input type="text" id="newStuUser" placeholder="Kullanıcı Adı" required />
-                <div class="password-wrapper">
-                  <input type="password" id="newStuPass" placeholder="Şifre" required />
-                  <button type="button" class="eye-btn" onclick="togglePassword('newStuPass')">👁️</button>
-                </div>
-              </div>
-              <div class="field-row">
-                <select id="newStuCourse">
-                  <option>Bağlama Düzeni</option>
-                  <option>Bağlama Bozuk Düzen</option>
-                  <option>Nota</option>
-                  <option>Solfej</option>
-                  <option>Şelpe</option>
-                  <option>Çalıp Söyleme</option>
-                  <option>Güzel Sanatlara Hazırlık</option>
-                  <option>Konservatuara Hazırlık</option>
-                </select>
-                <input type="number" id="newStuPkg" min="1" max="24" value="4" title="Kur Ders Sayısı" />
-              </div>
-              <button type="submit" class="btn btn-sm">Öğrenciyi Ekle</button>
-              <span id="hocaAddStuStatus" style="font-size:0.8rem; font-weight:700; color:var(--ok);"></span>
-            </form>
+          <!-- SOL TARAF: SADECE ÖĞRENCİ LİSTESİ -->
+          <div class="hoca-sidebar">
+            <div class="card ribbon-card form-stack" style="height: 100%;">
+              <h3 style="font-size:1.2rem;">Kayıtlı Öğrenciler</h3>
+              <p style="font-size:0.85rem; color:var(--muted);">Seçmek için satıra tıklayın:</p>
+              <div class="student-list-container" id="hocaStudentList"></div>
+            </div>
           </div>
 
+          <!-- SAĞ TARAF: SEKMELER VE YÖNETİM -->
           <div>
             <div class="sub-nav">
-              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">💬 Öğrenci Mesajlaşma & Materyal</button>
-              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur, Öğrenci Düzenleme & Onay</button>
-              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Haftalık Saat Seçimi & Ayarlar</button>
+              <button type="button" class="sub-tab-btn active" data-hoca-tab="pane-hoca-odev">💬 Mesaj & Materyal</button>
+              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-kur">🎯 Kur & Onay</button>
+              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-takvim">📅 Takvim Yönetimi</button>
+              <button type="button" class="sub-tab-btn" data-hoca-tab="pane-hoca-ekle">⚙️ Ayarlar & Öğrenci Ekle</button>
             </div>
 
             <div id="pane-hoca-odev" class="sub-pane active">
               <div class="card ribbon-card form-stack">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                  <h3>Seçili Öğrenci: <span id="selectedStudentTitle" style="color:var(--gold);">Tüm Öğrenciler</span></h3>
-                  <span class="status-pill" id="selectedStudentCourse">Genel</span>
+                  <h3 style="font-size:1.4rem;">Aktif Öğrenci: <span id="selectedStudentTitle" style="color:var(--gold);">Tüm Öğrenciler</span></h3>
+                  <span class="status-pill" id="selectedStudentCourse" style="font-size:0.9rem;">Genel</span>
                 </div>
+                
+                <hr style="border:none; border-top:1px solid var(--border);" />
 
-                <div class="msg-item">
-                  <strong>Öğrenciye Yeni PDF / Nota Linki Ekle</strong>
-                  <form id="hocaAddPdfForm" class="field-row" style="margin-top:8px;">
-                    <input type="text" id="hocaPdfTitle" placeholder="PDF Başlığı (Örn: Egzersiz Notası PDF)" required />
-                    <div style="display:flex; gap:8px;">
-                      <input type="text" id="hocaPdfUrl" placeholder="PDF Linki (Örn: ./dosya.pdf veya https://...)" required />
-                      <button type="submit" class="btn btn-sm" style="white-space:nowrap;">PDF Linki Ekle</button>
-                    </div>
-                  </form>
-                </div>
-
-                <!-- Video Ekleme Modülü -->
-                <div class="msg-item">
-                  <strong>Öğrenciye Yeni Video Ders Arşivi Ekle</strong>
-                  <form id="hocaAddVideoForm" class="field-row" style="margin-top:8px;">
-                    <input type="text" id="hocaVideoTitle" placeholder="Video Başlığı (Örn: Bozuk Düzen 1. Ders)" required />
-                    <div style="display:flex; gap:8px;">
-                      <input type="url" id="hocaVideoUrl" placeholder="YouTube Linki" required />
-                      <button type="submit" class="btn btn-sm" style="white-space:nowrap;">Video Ekle</button>
-                    </div>
-                  </form>
-                </div>
-
+                <!-- BÜYÜTÜLMÜŞ MESAJ GÖNDERME ALANI -->
                 <form id="hocaReplyForm" class="form-stack">
                   <div class="field-row">
                     <div class="field">
@@ -959,39 +891,61 @@
                       </select>
                     </div>
                     <div class="field">
-                      <label for="hocaResourceLink">Ek Bağlantı (İsteğe Bağlı)</label>
-                      <input type="text" id="hocaResourceLink" placeholder="https://... veya ./dogukanbaglamametodu.pdf" />
+                      <label for="hocaResourceLink">Ek Link / Referans (İsteğe Bağlı)</label>
+                      <input type="text" id="hocaResourceLink" placeholder="https://..." />
                     </div>
                   </div>
                   <div class="field">
                     <label for="hocaReplyInput">Öğrenciye Mesaj veya Ödev Yaz</label>
-                    <textarea id="hocaReplyInput" rows="3" placeholder="Seçili öğrenciye mesajınızı veya ödevinizi yazın..." required></textarea>
+                    <textarea id="hocaReplyInput" rows="5" placeholder="Seçili öğrenciye mesajınızı veya ödevinizi detaylıca yazın..." required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-sm" style="width:fit-content;">Mesajı Gönder</button>
+                  <!-- Buton kocaman ve belirgin yapıldı -->
+                  <button type="submit" class="btn btn-lg" style="background: linear-gradient(135deg, #2eb872, #15803d);">📩 Öğrenciye Mesaj Gönder</button>
                 </form>
 
-                <hr style="border:none; border-top:1px solid var(--border);" />
+                <hr style="border:none; border-top:1px solid var(--border); margin: 20px 0;" />
 
-                <h3>Mesajlaşma & Ders Arşivi Zaman Çizelgesi</h3>
+                <div class="grid-2">
+                  <div class="msg-item">
+                    <strong>📘 Yeni PDF Ekle</strong>
+                    <form id="hocaAddPdfForm" class="form-stack" style="margin-top:10px;">
+                      <input type="text" id="hocaPdfTitle" placeholder="PDF Başlığı" required />
+                      <input type="text" id="hocaPdfUrl" placeholder="PDF Linki" required />
+                      <button type="submit" class="btn">Ekle</button>
+                    </form>
+                  </div>
+                  <div class="msg-item">
+                    <strong>🎬 Yeni Video Ekle</strong>
+                    <form id="hocaAddVideoForm" class="form-stack" style="margin-top:10px;">
+                      <input type="text" id="hocaVideoTitle" placeholder="Video Başlığı" required />
+                      <input type="url" id="hocaVideoUrl" placeholder="YouTube Linki" required />
+                      <button type="submit" class="btn">Ekle</button>
+                    </form>
+                  </div>
+                </div>
+
+                <hr style="border:none; border-top:1px solid var(--border); margin: 20px 0;" />
+
+                <h3 style="font-size:1.2rem;">Ders Arşivi & Geçmiş Mesajlar</h3>
                 <div class="timeline-feed" id="hocaFeed"></div>
               </div>
             </div>
 
             <div id="pane-hoca-kur" class="sub-pane">
               <div class="card ribbon-card ribbon-emerald form-stack">
-                <div id="hocaNoStudentWarn" class="msg-item">
-                  Sol taraftaki listeden bir öğrenciye tıkladığınızda o öğrencinin <strong>Kur Sayacı</strong>, <strong>Branş/Paket Güncelleme</strong>, <strong>Silme</strong> ve <strong>Gelişim Onayı</strong> araçları burada açılır.
+                <div id="hocaNoStudentWarn" class="msg-item" style="border-color:var(--warn); background:rgba(245,158,11,0.1);">
+                  Sol taraftaki listeden <strong>spesifik bir öğrenci seçmelisiniz</strong>. (Tüm Öğrenciler modunda bu sayfa kullanılamaz).
                 </div>
 
                 <div id="hocaStudentToolsCard" style="display:none;" class="form-stack">
                   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                    <h3 id="hocaToolsStudentName">Öğrenci Yönetimi</h3>
-                    <button type="button" id="hocaDeleteSelectedStudentBtn" class="btn btn-danger btn-sm">Öğrenciyi Sil</button>
+                    <h3 id="hocaToolsStudentName" style="font-size:1.3rem;">Öğrenci Yönetimi</h3>
+                    <button type="button" id="hocaDeleteSelectedStudentBtn" class="btn btn-danger">Öğrenciyi Sil</button>
                   </div>
 
                   <div class="msg-item">
                     <strong>Öğrenci Branş & Kur Paketi Düzenle</strong>
-                    <div class="field-row" style="margin-top:8px;">
+                    <div class="field-row" style="margin-top:12px;">
                       <select id="editStuCourseSelect">
                         <option>Bağlama Düzeni</option>
                         <option>Bağlama Bozuk Düzen</option>
@@ -1003,8 +957,8 @@
                         <option>Konservatuara Hazırlık</option>
                       </select>
                       <div style="display:flex; gap:8px;">
-                        <input type="number" id="editStuPkgInput" min="1" max="24" value="4" title="Toplam Kur Ders Sayısı" />
-                        <button type="button" id="saveStuMetaBtn" class="btn btn-sm" style="white-space:nowrap;">Kaydet</button>
+                        <input type="number" id="editStuPkgInput" min="1" max="24" title="Toplam Kur Ders Sayısı" />
+                        <button type="button" id="saveStuMetaBtn" class="btn">Kaydet</button>
                       </div>
                     </div>
                   </div>
@@ -1012,20 +966,19 @@
                   <div class="grid-2">
                     <div class="msg-item">
                       <strong>Aylık Ders / Kur Sayacı</strong>
-                      <p id="hocaCourseCounterLabel" style="font-size:0.9rem; margin:6px 0; font-weight:700; color:var(--gold);">0 / 4 Ders</p>
-                      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-                        <button type="button" id="hocaIncLessonBtn" class="btn btn-sm">+1 Ders İşlendi</button>
-                        <button type="button" id="hocaDecLessonBtn" class="btn btn-ghost btn-sm">-1</button>
-                        <button type="button" id="hocaResetCourseBtn" class="btn btn-ghost btn-sm">Yeni Kura Sıfırla</button>
+                      <p id="hocaCourseCounterLabel" style="font-size:1.1rem; margin:10px 0; font-weight:700; color:var(--gold);">0 / 4 Ders</p>
+                      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <button type="button" id="hocaIncLessonBtn" class="btn">+1 Ders İşlendi</button>
+                        <button type="button" id="hocaDecLessonBtn" class="btn btn-ghost">-1</button>
+                        <button type="button" id="hocaResetCourseBtn" class="btn btn-ghost" style="width:100%;">Yeni Kura Sıfırla</button>
                       </div>
                     </div>
-
                     <div class="msg-item">
-                      <strong>Canlı Online Ders Odası Linki</strong>
-                      <input type="url" id="hocaLiveLinkInput" placeholder="https://meet.google.com/..." style="margin-top:6px;" />
-                      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-                        <button type="button" id="hocaActivateLiveBtn" class="btn btn-ok btn-sm">Dersi Başlat</button>
-                        <button type="button" id="hocaCloseLiveBtn" class="btn btn-ghost btn-sm">Kapat</button>
+                      <strong>Canlı Online Ders Odası</strong>
+                      <input type="url" id="hocaLiveLinkInput" placeholder="https://meet.google.com/..." style="margin-top:10px;" />
+                      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button type="button" id="hocaActivateLiveBtn" class="btn btn-ok" style="flex:1;">Dersi Başlat</button>
+                        <button type="button" id="hocaCloseLiveBtn" class="btn btn-ghost">Kapat</button>
                       </div>
                     </div>
                   </div>
@@ -1040,13 +993,13 @@
 
             <div id="pane-hoca-takvim" class="sub-pane">
               <div class="card ribbon-card ribbon-amber form-stack">
-                <h3>Gelen Ders Paketi Başvuruları</h3>
-                <div class="feed" id="hocaRequestsFeed" style="max-height: 200px;"></div>
+                <h3 style="font-size:1.3rem;">Gelen Ders Paketi Başvuruları</h3>
+                <div class="feed" id="hocaRequestsFeed" style="max-height: 250px;"></div>
 
                 <hr style="border:none; border-top:1px solid var(--border);" />
 
-                <h3>Haftalık Ders Saatlerini Seç, Ekle veya Sil</h3>
-                <p style="font-size:0.8rem;">Saate tıklayarak <strong>Müsait / Dolu</strong> yapabilir, yeni saat ekleyebilir veya <strong>×</strong> ile silebilirsiniz:</p>
+                <h3 style="font-size:1.3rem;">Haftalık Ders Saatlerini Yönet</h3>
+                <p style="font-size:0.9rem;">Saate tıklayarak <strong>Müsait / Dolu</strong> yapabilir, yeni saat ekleyebilir veya <strong>×</strong> ile silebilirsiniz:</p>
                 <form id="hocaAddSlotForm" class="field-row">
                   <select id="slotDaySelect">
                     <option>Pazartesi</option>
@@ -1059,24 +1012,60 @@
                   </select>
                   <div style="display:flex; gap:8px;">
                     <input type="time" id="slotTimeInput" value="20:00" required />
-                    <button type="submit" class="btn btn-sm" style="white-space:nowrap;">Saat Ekle</button>
+                    <button type="submit" class="btn">Saat Ekle</button>
                   </div>
                 </form>
-                <div class="schedule-grid" id="hocaScheduleGrid"></div>
-
-                <hr style="border:none; border-top:1px solid var(--border);" />
-
-                <h3>Hoca Giriş Şifresini Değiştir</h3>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                  <div class="password-wrapper" style="flex:1;">
+                <div class="schedule-grid" id="hocaScheduleGrid" style="margin-top: 10px;"></div>
+              </div>
+            </div>
+            
+            <!-- YENİ AYARLAR VE ÖĞRENCİ EKLEME SEKMESİ -->
+            <div id="pane-hoca-ekle" class="sub-pane">
+              <div class="card ribbon-card ribbon-crimson form-stack">
+                <h3 style="font-size:1.4rem;">Yeni Üye Öğrenci Ekle</h3>
+                <form id="hocaAddStudentForm" class="form-stack">
+                  <div class="field-row">
+                    <input type="text" id="newStuName" placeholder="Öğrenci Ad Soyad" required />
+                    <input type="tel" id="newStuPhone" placeholder="WhatsApp Numarası (05XX...)" />
+                  </div>
+                  <div class="field-row">
+                    <input type="text" id="newStuUser" placeholder="Kullanıcı Adı" required />
+                    <div class="password-wrapper">
+                      <input type="password" id="newStuPass" placeholder="Şifre" required />
+                      <button type="button" class="eye-btn" onclick="togglePassword('newStuPass')">👁️</button>
+                    </div>
+                  </div>
+                  <div class="field-row">
+                    <select id="newStuCourse">
+                      <option>Bağlama Düzeni</option>
+                      <option>Bağlama Bozuk Düzen</option>
+                      <option>Nota</option>
+                      <option>Solfej</option>
+                      <option>Şelpe</option>
+                      <option>Çalıp Söyleme</option>
+                      <option>Güzel Sanatlara Hazırlık</option>
+                      <option>Konservatuara Hazırlık</option>
+                    </select>
+                    <input type="number" id="newStuPkg" min="1" max="24" value="4" title="Kur Ders Sayısı" placeholder="Aylık Ders Sayısı" />
+                  </div>
+                  <button type="submit" class="btn btn-lg">Sisteme Öğrenciyi Ekle</button>
+                  <span id="hocaAddStuStatus" style="font-size:0.9rem; font-weight:700; color:var(--ok); text-align:center;"></span>
+                </form>
+                
+                <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;" />
+                
+                <h3 style="font-size:1.3rem;">Hoca Giriş Şifresini Değiştir</h3>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                  <div class="password-wrapper" style="flex:1; min-width:200px;">
                     <input type="password" id="newHocaPinInput" placeholder="Yeni hoca şifresi" />
                     <button type="button" class="eye-btn" onclick="togglePassword('newHocaPinInput')">👁️</button>
                   </div>
-                  <button type="button" id="saveHocaPinBtn" class="btn btn-sm">Şifreyi Güncelle</button>
+                  <button type="button" id="saveHocaPinBtn" class="btn">Şifreyi Güncelle</button>
                 </div>
-                <span id="hocaPinSaveStatus" style="font-size:0.8rem; color:var(--ok); font-weight:700;"></span>
+                <span id="hocaPinSaveStatus" style="font-size:0.85rem; color:var(--ok); font-weight:700;"></span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -1084,12 +1073,14 @@
   </main>
 
   <footer>
-    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; align-items:center;">
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px; align-items:center;">
       <div>
-        <strong style="color:var(--text); font-family:'Cormorant Garamond',serif; font-size:1.15rem;">Doğukan Bozkurt — Müzik & Bağlama Akademisi</strong><br />
-        Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu • WhatsApp: 0 537 439 49 92
+        <strong style="color:var(--text); font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Doğukan Bozkurt — Müzik & Bağlama Akademisi</strong><br />
+        Sakarya Üniversitesi Devlet Konservatuarı Çalgı Eğitimi Bölümü Mezunu
       </div>
+      <!-- FOOTER WHATSAPP BUTONU DÜZENLENDİ -->
       <div class="social-pills">
+        <a href="https://wa.me/905374394992" target="_blank" rel="noopener noreferrer" class="pill pill-wa">💬 WhatsApp</a>
         <a href="https://youtube.com/@dogukanbozkrt?si=r3BU9ujfmJ7v42gy" target="_blank" rel="noopener noreferrer" class="pill">YouTube</a>
         <a href="https://www.instagram.com/dogukanbozkrt?obrf=ZnpodWppZnRuMTR3" target="_blank" rel="noopener noreferrer" class="pill">Instagram</a>
         <a href="https://www.facebook.com/share/1CT9hxBpiY/" target="_blank" rel="noopener noreferrer" class="pill">Facebook</a>
@@ -1104,7 +1095,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // DOĞUKAN BOZKURT FIREBASE AYARLARI
     const firebaseConfig = {
       apiKey: "AIzaSyCblMRc5In8TtvSWM4S_MQ92k-wpOVvkek",
       authDomain: "dogukan-bozkurt.firebaseapp.com",
@@ -1121,7 +1111,6 @@
       const db = getDatabase(app);
       portalRef = ref(db, 'dogukanPortalData');
 
-      // FIREBASE DİNLEYİCİ: Veritabanında bir şey değiştiği an bu kod çalışır (Canlı Senkronizasyon)
       onValue(portalRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
@@ -1138,50 +1127,33 @@
     }
     // ---------------------------------------------------------
 
-    // Global Fonksiyonlar (HTML içinden erişilebilmesi için window'a bağlanır)
     window.togglePassword = function(inputId) {
       const input = document.getElementById(inputId);
-      if(input) {
-        input.type = input.type === "password" ? "text" : "password";
-      }
+      if(input) { input.type = input.type === "password" ? "text" : "password"; }
     };
 
     const WHATSAPP_NUMBER = "905374394992";
     const DEFAULT_HOCA_PIN = "baglama2026";
     const HOCA_PIN_KEY = "dogukan_hoca_pin_v1";
-    const STORAGE_KEY = "dogukan_muzik_portal_v22";
+    const STORAGE_KEY = "dogukan_muzik_portal_v23";
     const AUTH_PERSIST_KEY = "dogukan_auth_persist_v1";
     const THEME_KEY = "dogukan_portal_theme_v2";
     const MAIN_METHOD_PDF_TITLE = "Bağlama Düzeni Temel & Orta Seviye - Repertuvar & Parmak Etüdü PDF";
     const MAIN_METHOD_PDF_URL = "./dogukanbaglamametodu.pdf";
 
-    function getHocaPin() {
-      try { return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN; } catch (_) { return DEFAULT_HOCA_PIN; }
-    }
-
+    function getHocaPin() { try { return localStorage.getItem(HOCA_PIN_KEY) || DEFAULT_HOCA_PIN; } catch (_) { return DEFAULT_HOCA_PIN; } }
     function readAuthPersist() {
       try {
         const raw = localStorage.getItem(AUTH_PERSIST_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
-          return {
-            view: typeof parsed.view === "string" ? parsed.view : "vitrin",
-            hocaLoggedIn: Boolean(parsed.hocaLoggedIn),
-            studentId: parsed.studentId || null
-          };
+          return { view: typeof parsed.view === "string" ? parsed.view : "vitrin", hocaLoggedIn: Boolean(parsed.hocaLoggedIn), studentId: parsed.studentId || null };
         }
       } catch (_) {}
       return { view: "vitrin", hocaLoggedIn: false, studentId: null };
     }
-
     function writeAuthPersist(data) {
-      try {
-        localStorage.setItem(AUTH_PERSIST_KEY, JSON.stringify({
-          view: data.view || "vitrin",
-          hocaLoggedIn: Boolean(data.hocaLoggedIn),
-          studentId: data.studentId || null
-        }));
-      } catch (_) {}
+      try { localStorage.setItem(AUTH_PERSIST_KEY, JSON.stringify({ view: data.view || "vitrin", hocaLoggedIn: Boolean(data.hocaLoggedIn), studentId: data.studentId || null })); } catch (_) {}
     }
 
     let authPersist = readAuthPersist();
@@ -1214,12 +1186,7 @@
       applyTheme(current === "dark" ? "light" : "dark");
     });
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const pre = document.getElementById("preloader");
-        if (pre) pre.classList.add("hide");
-      }, 1450);
-    });
+    window.addEventListener("load", () => { setTimeout(() => { const pre = document.getElementById("preloader"); if (pre) pre.classList.add("hide"); }, 1450); });
 
     document.querySelectorAll("[data-stu-tab]").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -1227,9 +1194,7 @@
         document.querySelectorAll("#studentMemberWorkspace .sub-pane").forEach((p) => p.classList.remove("active"));
         btn.classList.add("active");
         const targetPane = document.getElementById(btn.dataset.stuTab);
-        targetPane.classList.remove("active");
-        void targetPane.offsetWidth;
-        targetPane.classList.add("active");
+        targetPane.classList.remove("active"); void targetPane.offsetWidth; targetPane.classList.add("active");
       });
     });
 
@@ -1239,19 +1204,14 @@
         document.querySelectorAll("#hocaWorkspace .sub-pane").forEach((p) => p.classList.remove("active"));
         btn.classList.add("active");
         const targetPane = document.getElementById(btn.dataset.hocaTab);
-        targetPane.classList.remove("active");
-        void targetPane.offsetWidth;
-        targetPane.classList.add("active");
+        targetPane.classList.remove("active"); void targetPane.offsetWidth; targetPane.classList.add("active");
       });
     });
 
     const SKILL_BADGES = [
-      { id: "b_mizrap", title: "Temel Mızrap & Tutuş" },
-      { id: "b_nota", title: "Nota & Bona Okuma" },
-      { id: "b_baglama", title: "Bağlama Düzeni Geçişleri" },
-      { id: "b_bozuk", title: "Bozuk Düzen Tavrı" },
-      { id: "b_selpe", title: "Şelpe Teknik Hakimiyeti" },
-      { id: "b_sinav", title: "Solfej & Sınav Hazırlık" }
+      { id: "b_mizrap", title: "Temel Mızrap & Tutuş" }, { id: "b_nota", title: "Nota & Bona Okuma" },
+      { id: "b_baglama", title: "Bağlama Düzeni Geçişleri" }, { id: "b_bozuk", title: "Bozuk Düzen Tavrı" },
+      { id: "b_selpe", title: "Şelpe Teknik Hakimiyeti" }, { id: "b_sinav", title: "Solfej & Sınav Hazırlık" }
     ];
 
     const DEFAULT_SCHEDULE = [
@@ -1266,45 +1226,19 @@
 
     const defaultState = {
       students: [
-        {
-          id: "s1",
-          name: "Emre Yılmaz",
-          username: "emre",
-          password: "1234",
-          passwordSetByStudent: false,
-          course: "Bağlama Düzeni",
-          phone: "0500 000 00 00",
-          mode: "Aylık 4 Ders Paketi",
-          practiceMins: 60,
-          lessonsDone: 2,
-          lessonsTotal: 4,
-          liveLink: "",
-          liveActive: false,
-          pdfs: [{ id: "p_main_method", title: MAIN_METHOD_PDF_TITLE, url: MAIN_METHOD_PDF_URL }],
-          videos: [],
-          badges: ["b_mizrap"]
-        }
-      ],
-      messages: [],
-      requests: [],
-      schedule: structuredClone(DEFAULT_SCHEDULE)
+        { id: "s1", name: "Emre Yılmaz", username: "emre", password: "1234", passwordSetByStudent: false, course: "Bağlama Düzeni", phone: "0500 000 00 00", mode: "Aylık 4 Ders Paketi", practiceMins: 60, lessonsDone: 2, lessonsTotal: 4, liveLink: "", liveActive: false, pdfs: [{ id: "p_main_method", title: MAIN_METHOD_PDF_TITLE, url: MAIN_METHOD_PDF_URL }], videos: [], badges: ["b_mizrap"] }
+      ], messages: [], requests: [], schedule: structuredClone(DEFAULT_SCHEDULE)
     };
 
     let state = loadState();
-    let currentStudent = authPersist.studentId
-      ? (state.students.find((s) => s.id === authPersist.studentId) || null)
-      : null;
+    let currentStudent = authPersist.studentId ? (state.students.find((s) => s.id === authPersist.studentId) || null) : null;
     let hocaLoggedIn = Boolean(authPersist.hocaLoggedIn);
     let selectedHocaStudent = "ALL";
     let justUnlockedBadgeId = null;
 
     function persistAuthState() {
       const activeView = document.querySelector(".page-view.active")?.id?.replace("view-", "") || "vitrin";
-      authPersist = {
-        view: activeView,
-        hocaLoggedIn: Boolean(hocaLoggedIn),
-        studentId: currentStudent ? currentStudent.id : null
-      };
+      authPersist = { view: activeView, hocaLoggedIn: Boolean(hocaLoggedIn), studentId: currentStudent ? currentStudent.id : null };
       writeAuthPersist(authPersist);
     }
 
@@ -1314,17 +1248,13 @@
         if (!Array.isArray(stu.pdfs)) stu.pdfs = [];
         if (!Array.isArray(stu.videos)) stu.videos = [];
         const hasMethod = stu.pdfs.some((p) => p.url === MAIN_METHOD_PDF_URL || p.id === "p_main_method");
-        if (!hasMethod) {
-          stu.pdfs.unshift({ id: "p_main_method", title: MAIN_METHOD_PDF_TITLE, url: MAIN_METHOD_PDF_URL });
-        }
+        if (!hasMethod) stu.pdfs.unshift({ id: "p_main_method", title: MAIN_METHOD_PDF_TITLE, url: MAIN_METHOD_PDF_URL });
       });
     }
 
     function nowDateTimeStr() {
       const now = new Date();
-      const datePart = now.toLocaleDateString("tr-TR", { day: "2-digit", month: "short", year: "numeric" });
-      const timePart = now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" });
-      return `${datePart} • ${timePart}`;
+      return `${now.toLocaleDateString("tr-TR", { day: "2-digit", month: "short", year: "numeric" })} • ${now.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" })}`;
     }
 
     function loadState() {
@@ -1344,9 +1274,7 @@
     function saveState() {
       ensureMethodPdfForAllStudents(state);
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
-      if (portalRef) {
-        set(portalRef, state).catch(err => console.error("Firebase kayıt hatası:", err));
-      }
+      if (portalRef) set(portalRef, state).catch(err => console.error("Firebase kayıt hatası:", err));
     }
 
     document.getElementById("saveHocaPinBtn").addEventListener("click", () => {
@@ -1359,597 +1287,231 @@
     });
 
     window.handlePhotoError = function(img) {
-      if (!img.dataset.retried) {
-        img.dataset.retried = "1";
-        img.src = "./do%C4%9Fukan.jpg.jpeg";
-        return;
-      }
-      img.style.display = "none";
-      document.getElementById("instructorFallback").classList.add("active");
+      if (!img.dataset.retried) { img.dataset.retried = "1"; img.src = "./do%C4%9Fukan.jpg.jpeg"; return; }
+      img.style.display = "none"; document.getElementById("instructorFallback").classList.add("active");
     }
-
     window.handleLogoError = function(img) {
       const steps = ["./logo.jpg.jpeg", "./logo.png", "./LOGO.JPG"];
       const idx = parseInt(img.dataset.retryIndex || "0", 10);
-      if (idx < steps.length) {
-        img.dataset.retryIndex = String(idx + 1);
-        img.src = steps[idx];
-        return;
-      }
-      img.style.display = "none";
-      document.getElementById("brandLogoFallback").style.display = "inline";
+      if (idx < steps.length) { img.dataset.retryIndex = String(idx + 1); img.src = steps[idx]; return; }
+      img.style.display = "none"; document.getElementById("brandLogoFallback").style.display = "inline";
     }
 
     function goView(viewName, scrollTop = true) {
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === viewName));
       document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + viewName));
-      persistAuthState();
-      if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
-      renderAll();
+      persistAuthState(); if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" }); renderAll();
     }
-
-    document.querySelectorAll("[data-go]").forEach((el) => {
-      el.addEventListener("click", () => goView(el.dataset.go, true));
-    });
-
+    document.querySelectorAll("[data-go]").forEach((el) => { el.addEventListener("click", () => goView(el.dataset.go, true)); });
     document.getElementById("openMsgFromBannerBtn").addEventListener("click", () => {
-      if (currentStudent) {
-        goView("ogrenci", true);
-        const odevTab = document.querySelector('[data-stu-tab="pane-stu-odev"]');
-        if (odevTab) odevTab.click();
-      } else {
-        goView("hoca", true);
-        const hocaOdevTab = document.querySelector('[data-hoca-tab="pane-hoca-odev"]');
-        if (hocaOdevTab) hocaOdevTab.click();
-      }
+      if (currentStudent) { goView("ogrenci", true); const odevTab = document.querySelector('[data-stu-tab="pane-stu-odev"]'); if (odevTab) odevTab.click(); }
+      else { goView("hoca", true); const hocaOdevTab = document.querySelector('[data-hoca-tab="pane-hoca-odev"]'); if (hocaOdevTab) hocaOdevTab.click(); }
     });
 
     // -------------------------------------------------------------
     // Akort Ölçer (Tuner) ve Metronom
     // -------------------------------------------------------------
-    let audioCtx = null;
-    let micStream = null;
-    let analyser = null;
-    let tunerRaf = null;
-
-    function ensureAudioCtx() {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return null;
-      if (!audioCtx) audioCtx = new AudioCtx();
-      if (audioCtx.state === "suspended") audioCtx.resume();
-      return audioCtx;
-    }
-
+    let audioCtx = null; let micStream = null; let analyser = null; let tunerRaf = null;
+    function ensureAudioCtx() { const AudioCtx = window.AudioContext || window.webkitAudioContext; if (!AudioCtx) return null; if (!audioCtx) audioCtx = new AudioCtx(); if (audioCtx.state === "suspended") audioCtx.resume(); return audioCtx; }
     const NOTE_NAMES = ["Do (C)", "Do# (C#)", "Re (D)", "Re# (D#)", "Mi (E)", "Fa (F)", "Fa# (F#)", "Sol (G)", "Sol# (G#)", "La (A)", "Sib (Bb)", "Si (B)"];
-
     function autoCorrelate(buf, sampleRate) {
-      let size = buf.length;
-      let rms = 0;
+      let size = buf.length; let rms = 0;
       for (let i = 0; i < size; i++) rms += buf[i] * buf[i];
       rms = Math.sqrt(rms / size);
       if (rms < 0.015) return -1;
       let r1 = 0, r2 = size - 1, thres = 0.2;
       for (let i = 0; i < size / 2; i++) if (Math.abs(buf[i]) < thres) { r1 = i; break; }
       for (let i = 1; i < size / 2; i++) if (Math.abs(buf[size - i]) < thres) { r2 = size - i; break; }
-      buf = buf.slice(r1, r2);
-      size = buf.length;
+      buf = buf.slice(r1, r2); size = buf.length;
       const c = new Array(size).fill(0);
       for (let i = 0; i < size; i++) for (let j = 0; j < size - i; j++) c[i] += buf[j] * buf[j + i];
-      let d = 0;
-      while (c[d] > c[d + 1]) d++;
+      let d = 0; while (c[d] > c[d + 1]) d++;
       let maxval = -1, maxpos = -1;
       for (let i = d; i < size; i++) if (c[i] > maxval) { maxval = c[i]; maxpos = i; }
       return sampleRate / maxpos;
     }
-
     function updatePitch() {
       if (!analyser) return;
-      const buf = new Float32Array(2048);
-      analyser.getFloatTimeDomainData(buf);
-      const ac = autoCorrelate(buf, audioCtx.sampleRate);
+      const buf = new Float32Array(2048); analyser.getFloatTimeDomainData(buf); const ac = autoCorrelate(buf, audioCtx.sampleRate);
       if (ac !== -1 && ac > 65 && ac < 1000) {
-        const noteNum = 12 * (Math.log(ac / 440) / Math.log(2)) + 69;
-        const rounded = Math.round(noteNum);
-        const cents = Math.floor((noteNum - rounded) * 100);
-        const noteName = NOTE_NAMES[rounded % 12];
+        const noteNum = 12 * (Math.log(ac / 440) / Math.log(2)) + 69; const rounded = Math.round(noteNum); const cents = Math.floor((noteNum - rounded) * 100); const noteName = NOTE_NAMES[rounded % 12];
         document.getElementById("liveTunerNote").textContent = noteName;
         const statusText = Math.abs(cents) <= 6 ? "Tam Akort ✓" : (cents < 0 ? "Pes (Sık)" : "Tiz (Gevşet)");
         document.getElementById("liveTunerFreq").textContent = `${ac.toFixed(1)} Hz • ${statusText}`;
-        const clamped = Math.max(-45, Math.min(45, cents));
-        document.getElementById("liveTunerNeedle").style.left = `calc(${50 + clamped}% - 9px)`;
+        const clamped = Math.max(-45, Math.min(45, cents)); document.getElementById("liveTunerNeedle").style.left = `calc(${50 + clamped}% - 9px)`;
       }
       tunerRaf = requestAnimationFrame(updatePitch);
     }
-
     document.getElementById("micTunerBtn").addEventListener("click", async () => {
       const btn = document.getElementById("micTunerBtn");
       if (micStream) {
-        cancelAnimationFrame(tunerRaf);
-        micStream.getTracks().forEach((t) => t.stop());
-        micStream = null;
-        analyser = null;
-        btn.textContent = "Mikrofonu Başlat";
-        document.getElementById("liveTunerNote").textContent = "--";
-        document.getElementById("liveTunerFreq").textContent = "Mikrofon kapalı";
-        return;
+        cancelAnimationFrame(tunerRaf); micStream.getTracks().forEach((t) => t.stop()); micStream = null; analyser = null;
+        btn.textContent = "Mikrofonu Başlat"; document.getElementById("liveTunerNote").textContent = "--"; document.getElementById("liveTunerFreq").textContent = "Mikrofon kapalı"; return;
       }
       try {
-        const ctx = ensureAudioCtx();
-        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const source = ctx.createMediaStreamSource(micStream);
-        analyser = ctx.createAnalyser();
-        analyser.fftSize = 2048;
-        source.connect(analyser);
-        btn.textContent = "Mikrofonu Kapat";
-        document.getElementById("liveTunerFreq").textContent = "Teli tınlatın...";
-        updatePitch();
-      } catch (_) {
-        document.getElementById("liveTunerFreq").textContent = "Mikrofon izni verilmedi.";
-      }
+        const ctx = ensureAudioCtx(); micStream = await navigator.mediaDevices.getUserMedia({ audio: true }); const source = ctx.createMediaStreamSource(micStream); analyser = ctx.createAnalyser();
+        analyser.fftSize = 2048; source.connect(analyser); btn.textContent = "Mikrofonu Kapat"; document.getElementById("liveTunerFreq").textContent = "Teli tınlatın..."; updatePitch();
+      } catch (_) { document.getElementById("liveTunerFreq").textContent = "Mikrofon izni verilmedi."; }
     });
-
-    const USUL_PATTERNS = {
-      "4": ["Düm", "Tek", "Tek", "Tek"],
-      "5": ["Düm", "Tek", "Düm", "Tek", "Tek"],
-      "7": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"],
-      "9": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"]
-    };
-
-    let metroTimer = null;
-    let currentBeatIdx = 0;
-
+    const USUL_PATTERNS = { "4": ["Düm", "Tek", "Tek", "Tek"], "5": ["Düm", "Tek", "Düm", "Tek", "Tek"], "7": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"], "9": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"] };
+    let metroTimer = null; let currentBeatIdx = 0;
     function renderUsulBeats() {
-      const key = document.getElementById("usulSelect").value;
-      const pattern = USUL_PATTERNS[key] || USUL_PATTERNS["4"];
-      document.getElementById("usulBeatsRow").innerHTML = pattern.map((label, i) => `
-        <div class="beat-dot" id="beat-dot-${i}">${i + 1}. ${label}</div>
-      `).join("");
+      const key = document.getElementById("usulSelect").value; const pattern = USUL_PATTERNS[key] || USUL_PATTERNS["4"];
+      document.getElementById("usulBeatsRow").innerHTML = pattern.map((label, i) => `<div class="beat-dot" id="beat-dot-${i}">${i + 1}. ${label}</div>`).join("");
     }
-
-    document.getElementById("usulSelect").addEventListener("change", () => {
-      currentBeatIdx = 0;
-      renderUsulBeats();
-    });
-
+    document.getElementById("usulSelect").addEventListener("change", () => { currentBeatIdx = 0; renderUsulBeats(); });
     function playUsulBeat() {
-      const ctx = ensureAudioCtx();
-      if (!ctx) return;
-      const key = document.getElementById("usulSelect").value;
-      const pattern = USUL_PATTERNS[key] || USUL_PATTERNS["4"];
-      const beatType = pattern[currentBeatIdx % pattern.length];
-
+      const ctx = ensureAudioCtx(); if (!ctx) return;
+      const key = document.getElementById("usulSelect").value; const pattern = USUL_PATTERNS[key] || USUL_PATTERNS["4"]; const beatType = pattern[currentBeatIdx % pattern.length];
       document.querySelectorAll(".beat-dot").forEach((el) => el.classList.remove("active-dum", "active-tek"));
-      const activeEl = document.getElementById(`beat-dot-${currentBeatIdx % pattern.length}`);
-      if (activeEl) {
-        void activeEl.offsetWidth;
-        activeEl.classList.add(beatType === "Düm" ? "active-dum" : "active-tek");
-      }
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "triangle";
-      osc.frequency.value = beatType === "Düm" ? 500 : 860;
-      gain.gain.setValueAtTime(beatType === "Düm" ? 0.2 : 0.11, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.075);
-
+      const activeEl = document.getElementById(`beat-dot-${currentBeatIdx % pattern.length}`); if (activeEl) { void activeEl.offsetWidth; activeEl.classList.add(beatType === "Düm" ? "active-dum" : "active-tek"); }
+      const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = "triangle"; osc.frequency.value = beatType === "Düm" ? 500 : 860;
+      gain.gain.setValueAtTime(beatType === "Düm" ? 0.2 : 0.11, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
+      osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.075);
       currentBeatIdx = (currentBeatIdx + 1) % pattern.length;
     }
-
     document.getElementById("metronomeToggleBtn").addEventListener("click", () => {
-      const btn = document.getElementById("metronomeToggleBtn");
-      const status = document.getElementById("metronomeStatus");
-      if (metroTimer) {
-        clearInterval(metroTimer);
-        metroTimer = null;
-        btn.textContent = "Metronomu Başlat";
-        status.textContent = "Durduruldu";
-        document.querySelectorAll(".beat-dot").forEach((el) => el.classList.remove("active-dum", "active-tek"));
-        return;
-      }
-      currentBeatIdx = 0;
-      const bpm = Math.min(220, Math.max(40, parseInt(document.getElementById("bpmInput").value, 10) || 92));
-      playUsulBeat();
-      metroTimer = setInterval(playUsulBeat, Math.round(60000 / bpm));
-      btn.textContent = "Metronomu Durdur";
-      status.textContent = `Çalıyor: ${bpm} BPM`;
+      const btn = document.getElementById("metronomeToggleBtn"); const status = document.getElementById("metronomeStatus");
+      if (metroTimer) { clearInterval(metroTimer); metroTimer = null; btn.textContent = "Metronomu Başlat"; status.textContent = "Durduruldu"; document.querySelectorAll(".beat-dot").forEach((el) => el.classList.remove("active-dum", "active-tek")); return; }
+      currentBeatIdx = 0; const bpm = Math.min(220, Math.max(40, parseInt(document.getElementById("bpmInput").value, 10) || 92)); playUsulBeat();
+      metroTimer = setInterval(playUsulBeat, Math.round(60000 / bpm)); btn.textContent = "Metronomu Durdur"; status.textContent = `Çalıyor: ${bpm} BPM`;
     });
 
     // -------------------------------------------------------------
-    // Core Application Logic
+    // Uygulama Mantığı
     // -------------------------------------------------------------
     function upsertStudent(name, course, phone = "", mode = "", username = "", password = "", pkgTotal = 4) {
       const cleanUser = (username || name).toLowerCase().replace(/[^a-z0-9ğüşıöç]/gi, "");
-      const existing = state.students.find(
-        (s) => s.name.toLowerCase() === name.toLowerCase() || (s.username && s.username.toLowerCase() === cleanUser)
-      );
+      const existing = state.students.find((s) => s.name.toLowerCase() === name.toLowerCase() || (s.username && s.username.toLowerCase() === cleanUser));
       if (existing) {
-        existing.course = course || existing.course;
-        if (phone) existing.phone = phone;
-        if (mode) existing.mode = mode;
-        if (username) existing.username = cleanUser;
-        if (password) existing.password = password;
-        return existing;
+        existing.course = course || existing.course; if (phone) existing.phone = phone; if (mode) existing.mode = mode; if (username) existing.username = cleanUser; if (password) existing.password = password; return existing;
       }
-      const created = {
-        id: "s_" + Date.now(),
-        name,
-        username: cleanUser,
-        password: password || String(Math.floor(1000 + Math.random() * 9000)),
-        passwordSetByStudent: false,
-        course,
-        phone,
-        mode,
-        practiceMins: 0,
-        lessonsDone: 0,
-        lessonsTotal: pkgTotal || 4,
-        liveLink: "",
-        liveActive: false,
-        pdfs: [{ id: "p_main_method", title: MAIN_METHOD_PDF_TITLE, url: MAIN_METHOD_PDF_URL }],
-        videos: [],
-        badges: []
-      };
-      state.students.push(created);
-      return created;
+      const created = { id: "s_" + Date.now(), name, username: cleanUser, password: password || String(Math.floor(1000 + Math.random() * 9000)), passwordSetByStudent: false, course, phone, mode, practiceMins: 0, lessonsDone: 0, lessonsTotal: pkgTotal || 4, liveLink: "", liveActive: false, pdfs: [{ id: "p_main_method", title: MAIN_METHOD_PDF_TITLE, url: MAIN_METHOD_PDF_URL }], videos: [], badges: [] };
+      state.students.push(created); return created;
     }
 
     function deleteStudentById(stuId) {
       const target = state.students.find((s) => s.id === stuId);
-      if (!target) return;
-      if (!confirm(`${target.name} adlı öğrenciyi silmek istediğinize emin misiniz?`)) return;
+      if (!target || !confirm(`${target.name} adlı öğrenciyi silmek istediğinize emin misiniz?`)) return;
       state.students = state.students.filter((s) => s.id !== stuId);
       if (selectedHocaStudent === target.name) selectedHocaStudent = "ALL";
       if (currentStudent && currentStudent.id === stuId) currentStudent = null;
-      saveState();
-      persistAuthState();
-      renderAll();
+      saveState(); persistAuthState(); renderAll();
     }
 
     document.getElementById("quickRegisterForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = document.getElementById("regName").value.trim();
-      const phone = document.getElementById("regPhone").value.trim();
-      const course = document.getElementById("regCourse").value;
-      const mode = document.getElementById("regMode").value;
-      const note = document.getElementById("regNote").value.trim();
-
-      state.requests.unshift({
-        id: "r_" + Date.now(),
-        studentName: name,
-        phone,
-        course,
-        slot: mode,
-        topic: note || course,
-        status: "Onay Bekliyor",
-        time: nowDateTimeStr()
-      });
-      saveState();
-      renderAll();
-
+      const name = document.getElementById("regName").value.trim(); const phone = document.getElementById("regPhone").value.trim(); const course = document.getElementById("regCourse").value; const mode = document.getElementById("regMode").value; const note = document.getElementById("regNote").value.trim();
+      state.requests.unshift({ id: "r_" + Date.now(), studentName: name, phone, course, slot: mode, topic: note || course, status: "Onay Bekliyor", time: nowDateTimeStr() });
+      saveState(); renderAll();
       const waMsg = `Merhaba Doğukan Bozkurt Hocam, ders paketi kaydı ve ödeme bilgisi için başvuruyorum.\n\nAd Soyad: ${name}\nTelefon: ${phone}\nDers Alanı: ${course}\nPaket: ${mode}\nNot: ${note || "-"}`;
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`, "_blank", "noopener,noreferrer");
     });
 
     document.getElementById("memberLoginForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      const userInp = document.getElementById("loginUser").value.trim().toLowerCase();
-      const passInp = document.getElementById("loginPass").value.trim();
-
-      const found = state.students.find(
-        (s) => (s.username && s.username.toLowerCase() === userInp) || s.name.toLowerCase() === userInp
-      );
-
-      if (!found || String(found.password || "1234") !== passInp) {
-        document.getElementById("memberLoginError").textContent = "Kullanıcı adı veya şifre hatalı.";
-        return;
-      }
-
-      currentStudent = found;
-      document.getElementById("memberLoginError").textContent = "";
-      persistAuthState();
-      renderAll();
+      const userInp = document.getElementById("loginUser").value.trim().toLowerCase(); const passInp = document.getElementById("loginPass").value.trim();
+      const found = state.students.find((s) => (s.username && s.username.toLowerCase() === userInp) || s.name.toLowerCase() === userInp);
+      if (!found || String(found.password || "1234") !== passInp) { document.getElementById("memberLoginError").textContent = "Kullanıcı adı veya şifre hatalı."; return; }
+      currentStudent = found; document.getElementById("memberLoginError").textContent = ""; persistAuthState(); renderAll();
     });
 
     document.getElementById("firstSetPassBtn").addEventListener("click", () => {
-      if (!currentStudent) return;
-      const newPass = document.getElementById("firstSetPassInput").value.trim();
-      if (!newPass) return;
-      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent;
-      st.password = newPass;
-      st.passwordSetByStudent = true;
-      currentStudent = st;
-      document.getElementById("firstSetPassInput").value = "";
-      saveState();
-      renderAll();
-      document.getElementById("studentPassStatus").textContent = "Yeni şifreniz ayarlandı ✓";
-      setTimeout(() => { document.getElementById("studentPassStatus").textContent = ""; }, 2500);
+      if (!currentStudent) return; const newPass = document.getElementById("firstSetPassInput").value.trim(); if (!newPass) return;
+      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent; st.password = newPass; st.passwordSetByStudent = true; currentStudent = st; document.getElementById("firstSetPassInput").value = "";
+      saveState(); renderAll(); document.getElementById("studentPassStatus").textContent = "Yeni şifreniz ayarlandı ✓"; setTimeout(() => { document.getElementById("studentPassStatus").textContent = ""; }, 2500);
     });
 
     document.getElementById("studentChangePassBtn").addEventListener("click", () => {
-      if (!currentStudent) return;
-      const newPass = document.getElementById("studentChangePassInput").value.trim();
-      if (!newPass) return;
-      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent;
-      st.password = newPass;
-      st.passwordSetByStudent = true;
-      currentStudent = st;
-      document.getElementById("studentChangePassInput").value = "";
-      saveState();
-      renderAll();
-      document.getElementById("studentPassStatus").textContent = "Şifreniz güncellendi ✓";
-      setTimeout(() => { document.getElementById("studentPassStatus").textContent = ""; }, 2500);
+      if (!currentStudent) return; const newPass = document.getElementById("studentChangePassInput").value.trim(); if (!newPass) return;
+      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent; st.password = newPass; st.passwordSetByStudent = true; currentStudent = st; document.getElementById("studentChangePassInput").value = "";
+      saveState(); renderAll(); document.getElementById("studentPassStatus").textContent = "Şifreniz güncellendi ✓"; setTimeout(() => { document.getElementById("studentPassStatus").textContent = ""; }, 2500);
     });
 
-    document.getElementById("studentLogoutBtn").addEventListener("click", () => {
-      currentStudent = null;
-      document.getElementById("loginUser").value = "";
-      document.getElementById("loginPass").value = "";
-      persistAuthState();
-      renderAll();
-    });
+    document.getElementById("studentLogoutBtn").addEventListener("click", () => { currentStudent = null; document.getElementById("loginUser").value = ""; document.getElementById("loginPass").value = ""; persistAuthState(); renderAll(); });
 
     document.getElementById("savePracticeMinsBtn").addEventListener("click", () => {
-      if (!currentStudent) return;
-      const rawVal = parseInt(document.getElementById("studentPracticeInput").value, 10);
-      if (Number.isNaN(rawVal) || rawVal < 0) return;
-      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent;
-      st.practiceMins = rawVal;
-      currentStudent = st;
-      saveState();
-      renderAll();
-      document.getElementById("practiceSaveStatus").textContent = "Çalışma süresi kaydedildi ✓";
-      setTimeout(() => { document.getElementById("practiceSaveStatus").textContent = ""; }, 2200);
+      if (!currentStudent) return; const rawVal = parseInt(document.getElementById("studentPracticeInput").value, 10); if (Number.isNaN(rawVal) || rawVal < 0) return;
+      const st = state.students.find((s) => s.id === currentStudent.id) || currentStudent; st.practiceMins = rawVal; currentStudent = st;
+      saveState(); renderAll(); document.getElementById("practiceSaveStatus").textContent = "Çalışma süresi kaydedildi ✓"; setTimeout(() => { document.getElementById("practiceSaveStatus").textContent = ""; }, 2200);
     });
 
     document.getElementById("studentMsgForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!currentStudent) return;
-      const text = document.getElementById("studentMsgInput").value.trim();
-      if (!text) return;
-      state.messages.unshift({
-        id: "m_" + Date.now(),
-        sender: "ogrenci",
-        senderName: currentStudent.name,
-        targetStudent: currentStudent.name,
-        course: currentStudent.course,
-        cardType: "Öğrenci Mesajı",
-        link: "",
-        text,
-        time: nowDateTimeStr(),
-        completed: false,
-        readByHoca: false,
-        readByStudent: true
-      });
-      document.getElementById("studentMsgInput").value = "";
-      saveState();
-      renderAll();
+      e.preventDefault(); if (!currentStudent) return; const text = document.getElementById("studentMsgInput").value.trim(); if (!text) return;
+      state.messages.unshift({ id: "m_" + Date.now(), sender: "ogrenci", senderName: currentStudent.name, targetStudent: currentStudent.name, course: currentStudent.course, cardType: "Öğrenci Mesajı", link: "", text, time: nowDateTimeStr(), completed: false, readByHoca: false, readByStudent: true });
+      document.getElementById("studentMsgInput").value = ""; saveState(); renderAll();
     });
 
     document.getElementById("hocaPinForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const pin = document.getElementById("hocaPinInput").value.trim();
-      if (pin === getHocaPin()) {
-        hocaLoggedIn = true;
-        document.getElementById("hocaLockBox").style.display = "none";
-        document.getElementById("hocaWorkspace").style.display = "block";
-        document.getElementById("hocaPinError").textContent = "";
-        persistAuthState();
-        renderAll();
-      } else {
-        document.getElementById("hocaPinError").textContent = "Hatalı eğitmen şifresi.";
-      }
+      e.preventDefault(); const pin = document.getElementById("hocaPinInput").value.trim();
+      if (pin === getHocaPin()) { hocaLoggedIn = true; document.getElementById("hocaLockBox").style.display = "none"; document.getElementById("hocaWorkspace").style.display = "block"; document.getElementById("hocaPinError").textContent = ""; persistAuthState(); renderAll(); }
+      else { document.getElementById("hocaPinError").textContent = "Hatalı eğitmen şifresi."; }
     });
 
-    document.getElementById("hocaLogoutBtn").addEventListener("click", () => {
-      hocaLoggedIn = false;
-      document.getElementById("hocaPinInput").value = "";
-      document.getElementById("hocaWorkspace").style.display = "none";
-      document.getElementById("hocaLockBox").style.display = "grid";
-      persistAuthState();
-      renderAll();
-    });
+    document.getElementById("hocaLogoutBtn").addEventListener("click", () => { hocaLoggedIn = false; document.getElementById("hocaPinInput").value = ""; document.getElementById("hocaWorkspace").style.display = "none"; document.getElementById("hocaLockBox").style.display = "grid"; persistAuthState(); renderAll(); });
 
     document.getElementById("hocaAddStudentForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("newStuName").value.trim();
-      const phone = document.getElementById("newStuPhone").value.trim();
-      const username = document.getElementById("newStuUser").value.trim();
-      const password = document.getElementById("newStuPass").value.trim();
-      const course = document.getElementById("newStuCourse").value;
-      const pkg = parseInt(document.getElementById("newStuPkg").value, 10) || 4;
-
-      const created = upsertStudent(name, course, phone, "Aylık Paket", username, password, pkg);
-      selectedHocaStudent = created.name;
-      saveState();
-      renderAll();
-
-      document.getElementById("newStuName").value = "";
-      document.getElementById("newStuPhone").value = "";
-      document.getElementById("newStuUser").value = "";
-      document.getElementById("newStuPass").value = "";
-      document.getElementById("hocaAddStuStatus").textContent = `${name} eklendi ✓`;
-      setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 2500);
+      e.preventDefault(); const name = document.getElementById("newStuName").value.trim(); const phone = document.getElementById("newStuPhone").value.trim(); const username = document.getElementById("newStuUser").value.trim(); const password = document.getElementById("newStuPass").value.trim(); const course = document.getElementById("newStuCourse").value; const pkg = parseInt(document.getElementById("newStuPkg").value, 10) || 4;
+      const created = upsertStudent(name, course, phone, "Aylık Paket", username, password, pkg); selectedHocaStudent = created.name; saveState(); renderAll();
+      document.getElementById("newStuName").value = ""; document.getElementById("newStuPhone").value = ""; document.getElementById("newStuUser").value = ""; document.getElementById("newStuPass").value = "";
+      document.getElementById("hocaAddStuStatus").textContent = `${name} başarıyla eklendi ✓`; setTimeout(() => { document.getElementById("hocaAddStuStatus").textContent = ""; }, 3000);
     });
 
-    document.getElementById("hocaDeleteSelectedStudentBtn").addEventListener("click", () => {
-      const found = state.students.find((s) => s.name === selectedHocaStudent);
-      if (found) deleteStudentById(found.id);
-    });
+    document.getElementById("hocaDeleteSelectedStudentBtn").addEventListener("click", () => { const found = state.students.find((s) => s.name === selectedHocaStudent); if (found) deleteStudentById(found.id); });
 
     document.getElementById("saveStuMetaBtn").addEventListener("click", () => {
-      const stu = state.students.find((s) => s.name === selectedHocaStudent);
-      if (!stu) return;
-      stu.course = document.getElementById("editStuCourseSelect").value;
-      stu.lessonsTotal = Math.max(1, parseInt(document.getElementById("editStuPkgInput").value, 10) || 4);
-      if ((stu.lessonsDone || 0) > stu.lessonsTotal) stu.lessonsDone = stu.lessonsTotal;
-      saveState();
-      renderAll();
+      const stu = state.students.find((s) => s.name === selectedHocaStudent); if (!stu) return;
+      stu.course = document.getElementById("editStuCourseSelect").value; stu.lessonsTotal = Math.max(1, parseInt(document.getElementById("editStuPkgInput").value, 10) || 4);
+      if ((stu.lessonsDone || 0) > stu.lessonsTotal) stu.lessonsDone = stu.lessonsTotal; saveState(); renderAll();
     });
 
     document.getElementById("hocaAddPdfForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const title = document.getElementById("hocaPdfTitle").value.trim();
-      const url = document.getElementById("hocaPdfUrl").value.trim();
-      if (!title || !url) return;
-
-      const targets = selectedHocaStudent === "ALL"
-        ? state.students
-        : state.students.filter((s) => s.name === selectedHocaStudent);
-
-      targets.forEach((stu) => {
-        if (!Array.isArray(stu.pdfs)) stu.pdfs = [];
-        stu.pdfs.push({ id: "pdf_" + Date.now() + Math.random(), title, url });
-      });
-
-      document.getElementById("hocaPdfTitle").value = "";
-      document.getElementById("hocaPdfUrl").value = "";
-      saveState();
-      renderAll();
+      e.preventDefault(); const title = document.getElementById("hocaPdfTitle").value.trim(); const url = document.getElementById("hocaPdfUrl").value.trim(); if (!title || !url) return;
+      const targets = selectedHocaStudent === "ALL" ? state.students : state.students.filter((s) => s.name === selectedHocaStudent);
+      targets.forEach((stu) => { if (!Array.isArray(stu.pdfs)) stu.pdfs = []; stu.pdfs.push({ id: "pdf_" + Date.now() + Math.random(), title, url }); });
+      document.getElementById("hocaPdfTitle").value = ""; document.getElementById("hocaPdfUrl").value = ""; saveState(); renderAll();
     });
 
     document.getElementById("hocaAddVideoForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const title = document.getElementById("hocaVideoTitle").value.trim();
-      const url = document.getElementById("hocaVideoUrl").value.trim();
-      if (!title || !url) return;
-
-      const targets = selectedHocaStudent === "ALL"
-        ? state.students
-        : state.students.filter((s) => s.name === selectedHocaStudent);
-
-      targets.forEach((stu) => {
-        if (!Array.isArray(stu.videos)) stu.videos = [];
-        stu.videos.push({ id: "vid_" + Date.now() + Math.random(), title, url });
-      });
-
-      document.getElementById("hocaVideoTitle").value = "";
-      document.getElementById("hocaVideoUrl").value = "";
-      saveState();
-      renderAll();
+      e.preventDefault(); const title = document.getElementById("hocaVideoTitle").value.trim(); const url = document.getElementById("hocaVideoUrl").value.trim(); if (!title || !url) return;
+      const targets = selectedHocaStudent === "ALL" ? state.students : state.students.filter((s) => s.name === selectedHocaStudent);
+      targets.forEach((stu) => { if (!Array.isArray(stu.videos)) stu.videos = []; stu.videos.push({ id: "vid_" + Date.now() + Math.random(), title, url }); });
+      document.getElementById("hocaVideoTitle").value = ""; document.getElementById("hocaVideoUrl").value = ""; saveState(); renderAll();
     });
 
     document.getElementById("hocaReplyForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const text = document.getElementById("hocaReplyInput").value.trim();
-      const cardType = document.getElementById("hocaCardType").value;
-      const link = document.getElementById("hocaResourceLink").value.trim();
-      if (!text) return;
+      e.preventDefault(); const text = document.getElementById("hocaReplyInput").value.trim(); const cardType = document.getElementById("hocaCardType").value; const link = document.getElementById("hocaResourceLink").value.trim(); if (!text) return;
       const found = state.students.find((s) => s.name === selectedHocaStudent);
-      state.messages.unshift({
-        id: "m_" + Date.now(),
-        sender: "hoca",
-        senderName: "Doğukan Bozkurt",
-        targetStudent: selectedHocaStudent,
-        course: found ? found.course : "Genel",
-        cardType,
-        link,
-        text,
-        time: nowDateTimeStr(),
-        completed: false,
-        readByHoca: true,
-        readByStudent: false
-      });
-      document.getElementById("hocaReplyInput").value = "";
-      document.getElementById("hocaResourceLink").value = "";
-      saveState();
-      renderAll();
+      state.messages.unshift({ id: "m_" + Date.now(), sender: "hoca", senderName: "Doğukan Bozkurt", targetStudent: selectedHocaStudent, course: found ? found.course : "Genel", cardType, link, text, time: nowDateTimeStr(), completed: false, readByHoca: true, readByStudent: false });
+      document.getElementById("hocaReplyInput").value = ""; document.getElementById("hocaResourceLink").value = ""; saveState(); renderAll();
     });
 
     document.getElementById("hocaAddSlotForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const dayName = document.getElementById("slotDaySelect").value;
-      const timeVal = document.getElementById("slotTimeInput").value.trim();
-      if (!timeVal) return;
-      const dayObj = state.schedule.find((d) => d.day === dayName);
-      if (!dayObj) return;
-      if (!dayObj.slots.some((s) => s.time === timeVal)) {
-        dayObj.slots.push({ time: timeVal, busy: false });
-        dayObj.slots.sort((a, b) => a.time.localeCompare(b.time));
-        saveState();
-        renderSchedules();
-      }
+      e.preventDefault(); const dayName = document.getElementById("slotDaySelect").value; const timeVal = document.getElementById("slotTimeInput").value.trim(); if (!timeVal) return;
+      const dayObj = state.schedule.find((d) => d.day === dayName); if (!dayObj) return;
+      if (!dayObj.slots.some((s) => s.time === timeVal)) { dayObj.slots.push({ time: timeVal, busy: false }); dayObj.slots.sort((a, b) => a.time.localeCompare(b.time)); saveState(); renderSchedules(); }
     });
 
-    document.getElementById("hocaIncLessonBtn").addEventListener("click", () => {
-      const stu = state.students.find((s) => s.name === selectedHocaStudent);
-      if (!stu) return;
-      stu.lessonsTotal = stu.lessonsTotal || 4;
-      stu.lessonsDone = Math.min(stu.lessonsTotal, (stu.lessonsDone || 0) + 1);
-      saveState();
-      renderAll();
-    });
-
-    document.getElementById("hocaDecLessonBtn").addEventListener("click", () => {
-      const stu = state.students.find((s) => s.name === selectedHocaStudent);
-      if (!stu) return;
-      stu.lessonsDone = Math.max(0, (stu.lessonsDone || 0) - 1);
-      saveState();
-      renderAll();
-    });
-
-    document.getElementById("hocaResetCourseBtn").addEventListener("click", () => {
-      const stu = state.students.find((s) => s.name === selectedHocaStudent);
-      if (!stu) return;
-      stu.lessonsDone = 0;
-      saveState();
-      renderAll();
-    });
-
-    document.getElementById("hocaActivateLiveBtn").addEventListener("click", () => {
-      const stu = state.students.find((s) => s.name === selectedHocaStudent);
-      if (!stu) return;
-      const url = document.getElementById("hocaLiveLinkInput").value.trim();
-      if (!url) return;
-      stu.liveLink = url;
-      stu.liveActive = true;
-      saveState();
-      renderAll();
-    });
-
-    document.getElementById("hocaCloseLiveBtn").addEventListener("click", () => {
-      const stu = state.students.find((s) => s.name === selectedHocaStudent);
-      if (!stu) return;
-      stu.liveActive = false;
-      saveState();
-      renderAll();
-    });
-
-    document.getElementById("exportDataBtn").addEventListener("click", () => {
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "dogukan-bozkurt-yedek.json";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
+    document.getElementById("hocaIncLessonBtn").addEventListener("click", () => { const stu = state.students.find((s) => s.name === selectedHocaStudent); if (!stu) return; stu.lessonsTotal = stu.lessonsTotal || 4; stu.lessonsDone = Math.min(stu.lessonsTotal, (stu.lessonsDone || 0) + 1); saveState(); renderAll(); });
+    document.getElementById("hocaDecLessonBtn").addEventListener("click", () => { const stu = state.students.find((s) => s.name === selectedHocaStudent); if (!stu) return; stu.lessonsDone = Math.max(0, (stu.lessonsDone || 0) - 1); saveState(); renderAll(); });
+    document.getElementById("hocaResetCourseBtn").addEventListener("click", () => { const stu = state.students.find((s) => s.name === selectedHocaStudent); if (!stu) return; stu.lessonsDone = 0; saveState(); renderAll(); });
+    document.getElementById("hocaActivateLiveBtn").addEventListener("click", () => { const stu = state.students.find((s) => s.name === selectedHocaStudent); if (!stu) return; const url = document.getElementById("hocaLiveLinkInput").value.trim(); if (!url) return; stu.liveLink = url; stu.liveActive = true; saveState(); renderAll(); });
+    document.getElementById("hocaCloseLiveBtn").addEventListener("click", () => { const stu = state.students.find((s) => s.name === selectedHocaStudent); if (!stu) return; stu.liveActive = false; saveState(); renderAll(); });
+    document.getElementById("exportDataBtn").addEventListener("click", () => { const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" }); const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = "dogukan-bozkurt-yedek.json"; a.click(); URL.revokeObjectURL(url); });
 
     function renderSchedules() {
-      const pubGrid = document.getElementById("publicScheduleGrid");
-      const hocaGrid = document.getElementById("hocaScheduleGrid");
-
+      const pubGrid = document.getElementById("publicScheduleGrid"); const hocaGrid = document.getElementById("hocaScheduleGrid");
       pubGrid.innerHTML = state.schedule.map((d) => `
         <div class="day-col">
           <h4>${escapeHtml(d.day)}</h4>
           ${d.slots.map((s) => `
             <div class="slot-pill ${s.busy ? "busy" : "free"}" data-pick-slot="${escapeHtml(d.day + " " + s.time)}" data-busy="${s.busy ? "1" : "0"}">
-              <span>${escapeHtml(s.time)}</span>
-              <span>${s.busy ? "Dolu" : "Müsait ✓"}</span>
+              <span>${escapeHtml(s.time)}</span><span>${s.busy ? "Dolu" : "Müsait ✓"}</span>
             </div>
           `).join("")}
         </div>
       `).join("");
-
-      pubGrid.querySelectorAll("[data-pick-slot]").forEach((el) => {
-        el.addEventListener("click", () => {
-          if (el.dataset.busy === "1") return;
-          document.getElementById("regNote").value = `Talep edilen ders saati: ${el.dataset.pickSlot}`;
-          document.getElementById("basvuru-bolumu").scrollIntoView({ behavior: "smooth" });
-        });
-      });
+      pubGrid.querySelectorAll("[data-pick-slot]").forEach((el) => { el.addEventListener("click", () => { if (el.dataset.busy === "1") return; document.getElementById("regNote").value = `Talep edilen ders saati: ${el.dataset.pickSlot}`; document.getElementById("basvuru-bolumu").scrollIntoView({ behavior: "smooth" }); }); });
 
       if (hocaGrid) {
         hocaGrid.innerHTML = state.schedule.map((d, dIdx) => `
@@ -1958,408 +1520,151 @@
             ${d.slots.map((s, sIdx) => `
               <div class="slot-pill ${s.busy ? "busy" : "free"}" style="cursor:pointer;" data-toggle-day="${dIdx}" data-toggle-slot="${sIdx}">
                 <span>${escapeHtml(s.time)}</span>
-                <div style="display:flex; align-items:center; gap:5px;">
-                  <span>${s.busy ? "Dolu" : "Müsait"}</span>
-                  <button type="button" class="slot-del-btn" title="Saati Sil" data-del-day="${dIdx}" data-del-slot="${sIdx}">×</button>
-                </div>
+                <div style="display:flex; align-items:center; gap:5px;"><span>${s.busy ? "Dolu" : "Müsait"}</span><button type="button" class="slot-del-btn" title="Saati Sil" data-del-day="${dIdx}" data-del-slot="${sIdx}">×</button></div>
               </div>
             `).join("")}
           </div>
         `).join("");
-
-        hocaGrid.querySelectorAll("[data-toggle-day]").forEach((el) => {
-          el.addEventListener("click", (e) => {
-            if (e.target.closest("[data-del-day]")) return;
-            const dIdx = parseInt(el.dataset.toggleDay, 10);
-            const sIdx = parseInt(el.dataset.toggleSlot, 10);
-            state.schedule[dIdx].slots[sIdx].busy = !state.schedule[dIdx].slots[sIdx].busy;
-            saveState();
-            renderSchedules();
-          });
-        });
-
-        hocaGrid.querySelectorAll("[data-del-day]").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const dIdx = parseInt(btn.dataset.delDay, 10);
-            const sIdx = parseInt(btn.dataset.delSlot, 10);
-            state.schedule[dIdx].slots.splice(sIdx, 1);
-            saveState();
-            renderSchedules();
-          });
-        });
+        hocaGrid.querySelectorAll("[data-toggle-day]").forEach((el) => { el.addEventListener("click", (e) => { if (e.target.closest("[data-del-day]")) return; const dIdx = parseInt(el.dataset.toggleDay, 10); const sIdx = parseInt(el.dataset.toggleSlot, 10); state.schedule[dIdx].slots[sIdx].busy = !state.schedule[dIdx].slots[sIdx].busy; saveState(); renderSchedules(); }); });
+        hocaGrid.querySelectorAll("[data-del-day]").forEach((btn) => { btn.addEventListener("click", (e) => { e.stopPropagation(); const dIdx = parseInt(btn.dataset.delDay, 10); const sIdx = parseInt(btn.dataset.delSlot, 10); state.schedule[dIdx].slots.splice(sIdx, 1); saveState(); renderSchedules(); }); });
       }
     }
 
     function updateMessageNotifications() {
-      const hocaBadge = document.getElementById("hocaNavBadge");
-      const stuBadge = document.getElementById("stuNavBadge");
-      const banner = document.getElementById("incomingMsgBanner");
-      const bannerText = document.getElementById("incomingMsgText");
-
+      const hocaBadge = document.getElementById("hocaNavBadge"); const stuBadge = document.getElementById("stuNavBadge"); const banner = document.getElementById("incomingMsgBanner"); const bannerText = document.getElementById("incomingMsgText");
       const unreadFromStudents = state.messages.filter((m) => m.sender === "ogrenci" && !m.readByHoca);
-      if (unreadFromStudents.length > 0) {
-        hocaBadge.textContent = String(unreadFromStudents.length);
-        hocaBadge.classList.add("show");
-      } else {
-        hocaBadge.classList.remove("show");
-      }
+      if (unreadFromStudents.length > 0) { hocaBadge.textContent = String(unreadFromStudents.length); hocaBadge.classList.add("show"); } else { hocaBadge.classList.remove("show"); }
 
       let unreadForCurrentStudent = [];
       if (currentStudent) {
-        unreadForCurrentStudent = state.messages.filter(
-          (m) => m.sender === "hoca" &&
-          !m.readByStudent &&
-          (m.targetStudent === "ALL" || m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase())
-        );
-        if (unreadForCurrentStudent.length > 0) {
-          stuBadge.textContent = String(unreadForCurrentStudent.length);
-          stuBadge.classList.add("show");
-        } else {
-          stuBadge.classList.remove("show");
-        }
-      } else {
-        stuBadge.classList.remove("show");
-      }
+        unreadForCurrentStudent = state.messages.filter((m) => m.sender === "hoca" && !m.readByStudent && (m.targetStudent === "ALL" || m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase()));
+        if (unreadForCurrentStudent.length > 0) { stuBadge.textContent = String(unreadForCurrentStudent.length); stuBadge.classList.add("show"); } else { stuBadge.classList.remove("show"); }
+      } else { stuBadge.classList.remove("show"); }
 
       if (currentStudent && unreadForCurrentStudent.length > 0) {
-        const latest = unreadForCurrentStudent[0];
-        bannerText.textContent = `Doğukan Bozkurt hocanızdan ${unreadForCurrentStudent.length} yeni mesaj var: "${latest.text.slice(0, 75)}"`;
-        banner.classList.add("show");
+        const latest = unreadForCurrentStudent[0]; bannerText.textContent = `Doğukan Bozkurt hocanızdan ${unreadForCurrentStudent.length} yeni mesaj var: "${latest.text.slice(0, 75)}"`; banner.classList.add("show");
       } else if (!currentStudent && unreadFromStudents.length > 0) {
-        const senders = [...new Set(unreadFromStudents.map((m) => m.senderName))];
-        bannerText.textContent = `${senders.join(", ")} adlı öğrenciden ${unreadFromStudents.length} yeni mesaj var!`;
-        banner.classList.add("show");
-      } else {
-        banner.classList.remove("show");
-      }
+        const senders = [...new Set(unreadFromStudents.map((m) => m.senderName))]; bannerText.textContent = `${senders.join(", ")} adlı öğrenciden ${unreadFromStudents.length} yeni mesaj var!`; banner.classList.add("show");
+      } else { banner.classList.remove("show"); }
     }
 
     function renderAll() {
-      ensureMethodPdfForAllStudents(state);
-      renderUsulBeats();
-      renderSchedules();
-      updateMessageNotifications();
+      ensureMethodPdfForAllStudents(state); renderUsulBeats(); renderSchedules(); updateMessageNotifications();
+      if (hocaLoggedIn) { document.getElementById("hocaLockBox").style.display = "none"; document.getElementById("hocaWorkspace").style.display = "block"; } else { document.getElementById("hocaLockBox").style.display = "grid"; document.getElementById("hocaWorkspace").style.display = "none"; }
 
-      if (hocaLoggedIn) {
-        document.getElementById("hocaLockBox").style.display = "none";
-        document.getElementById("hocaWorkspace").style.display = "block";
-      } else {
-        document.getElementById("hocaLockBox").style.display = "grid";
-        document.getElementById("hocaWorkspace").style.display = "none";
-      }
-
-      const authScreen = document.getElementById("studentAuthScreen");
-      const memberWorkspace = document.getElementById("studentMemberWorkspace");
+      const authScreen = document.getElementById("studentAuthScreen"); const memberWorkspace = document.getElementById("studentMemberWorkspace");
 
       if (currentStudent) {
-        authScreen.style.display = "none";
-        memberWorkspace.style.display = "block";
-
-        const stObj = state.students.find((s) => s.id === currentStudent.id || s.name.toLowerCase() === currentStudent.name.toLowerCase()) || currentStudent;
-        currentStudent = stObj;
-
+        authScreen.style.display = "none"; memberWorkspace.style.display = "block";
+        const stObj = state.students.find((s) => s.id === currentStudent.id || s.name.toLowerCase() === currentStudent.name.toLowerCase()) || currentStudent; currentStudent = stObj;
         document.getElementById("firstLoginSetupCard").style.display = stObj.passwordSetByStudent ? "none" : "block";
-
-        document.getElementById("memberWelcomeTitle").textContent = stObj.name;
-        document.getElementById("memberCourseInfo").textContent = `${stObj.course} • k.adı: ${stObj.username || "-"}`;
-
-        const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : [];
-        const videoList = Array.isArray(stObj.videos) ? stObj.videos : [];
-        const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
-        document.getElementById("studyDeskSummaryTitle").textContent = `${stObj.name} — Bağlama Çalışma Masası`;
-        document.getElementById("deskCourseChip").textContent = `Branş: ${stObj.course}`;
-        document.getElementById("deskPdfCountChip").textContent = `Kayıtlı Materyal: ${pdfList.length + videoList.length}`;
-        document.getElementById("deskBadgeCountChip").textContent = `Onaylı Aşama: ${earnedList.length} / ${SKILL_BADGES.length}`;
-
+        document.getElementById("memberWelcomeTitle").textContent = `${stObj.name} - ${stObj.course}`;
+        document.getElementById("memberCourseInfo").textContent = `Kullanıcı Adınız: ${stObj.username || "-"}`;
+        const pdfList = Array.isArray(stObj.pdfs) ? stObj.pdfs : []; const videoList = Array.isArray(stObj.videos) ? stObj.videos : []; const earnedList = Array.isArray(stObj.badges) ? stObj.badges : [];
         const liveCard = document.getElementById("studentLiveRoomCard");
-        if (stObj.liveActive && stObj.liveLink) {
-          liveCard.style.display = "block";
-          document.getElementById("studentLiveRoomLink").href = stObj.liveLink;
-        } else {
-          liveCard.style.display = "none";
-        }
-
-        const done = stObj.lessonsDone || 0;
-        const total = stObj.lessonsTotal || 4;
-        const rem = Math.max(0, total - done);
+        if (stObj.liveActive && stObj.liveLink) { liveCard.style.display = "block"; document.getElementById("studentLiveRoomLink").href = stObj.liveLink; } else { liveCard.style.display = "none"; }
+        const done = stObj.lessonsDone || 0; const total = stObj.lessonsTotal || 4; const rem = Math.max(0, total - done);
         document.getElementById("studentCourseLessonBar").style.width = Math.min(100, Math.round((done / total) * 100)) + "%";
         document.getElementById("studentCourseLessonText").textContent = `${done} / ${total} Ders`;
         document.getElementById("studentCourseRemainingBadge").textContent = rem === 0 ? "Kur Doldu" : `${rem} Ders Kaldı`;
-
         const renewalAlert = document.getElementById("studentRenewalAlert");
-        if (done >= total) {
-          renewalAlert.style.display = "flex";
-          const waMsg = `Merhaba Doğukan Hocam, ben ${stObj.name}. ${total}/${total} derslik kurum tamamlandı, yeni kur ödemesi için yazıyorum.`;
-          document.getElementById("studentRenewalWaBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
-        } else {
-          renewalAlert.style.display = "none";
-        }
-
+        if (done >= total) { renewalAlert.style.display = "flex"; const waMsg = `Merhaba Doğukan Hocam, ben ${stObj.name}. ${total}/${total} derslik kurum tamamlandı, yeni kur ödemesi için yazıyorum.`; document.getElementById("studentRenewalWaBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`; } else { renewalAlert.style.display = "none"; }
         const mins = stObj.practiceMins || 0;
-        document.getElementById("studentPracticeBar").style.width = Math.min(100, Math.round((mins / 180) * 100)) + "%";
-        document.getElementById("studentPracticeText").textContent = `${mins} / 180 dk`;
-        const pInput = document.getElementById("studentPracticeInput");
-        if (document.activeElement !== pInput) {
-          pInput.value = String(mins);
-        }
-
+        document.getElementById("studentPracticeBar").style.width = Math.min(100, Math.round((mins / 180) * 100)) + "%"; document.getElementById("studentPracticeText").textContent = `${mins} / 180 dk`;
+        const pInput = document.getElementById("studentPracticeInput"); if (document.activeElement !== pInput) { pInput.value = String(mins); }
         document.getElementById("studentPdfDrawer").innerHTML = pdfList.map((p) => `
           <div class="pdf-link-card">
-            <strong style="font-size:0.92rem; color:var(--gold-light);">📘 ${escapeHtml(p.title)}</strong>
+            <strong style="font-size:1rem; color:var(--gold-light);">📘 ${escapeHtml(p.title)}</strong>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <a href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">PDF Aç →</a>
               <a href="${escapeHtml(p.url)}" download class="btn btn-ghost btn-sm">İndir ↓</a>
             </div>
           </div>
         `).join("");
-
         document.getElementById("studentVideoDrawer").innerHTML = videoList.length > 0 ? videoList.map((v) => `
           <div class="pdf-link-card">
-            <strong style="font-size:0.92rem; color:var(--gold-light);">🎬 ${escapeHtml(v.title)}</strong>
+            <strong style="font-size:1rem; color:var(--gold-light);">🎬 ${escapeHtml(v.title)}</strong>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <a href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm">Videoyu İzle →</a>
+              <a href="${escapeHtml(v.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="background:var(--danger); color:#fff; border:none;">Videoyu İzle →</a>
             </div>
           </div>
-        `).join("") : `<p style="font-size:0.8rem; color:var(--muted);">Henüz eklenmiş video ders bulunmuyor.</p>`;
-
+        `).join("") : `<p style="font-size:0.9rem; color:var(--muted);">Henüz eklenmiş video ders bulunmuyor.</p>`;
         document.getElementById("studentBadgesGrid").innerHTML = SKILL_BADGES.map((b) => {
-          const earned = earnedList.includes(b.id);
-          const popCls = earned && justUnlockedBadgeId === b.id ? "badge-just-unlocked" : "";
-          return `
-            <div class="skill-badge ${earned ? "earned" : ""} ${popCls}">
-              <span>${escapeHtml(b.title)}</span>
-              <span>${earned ? "✓ Hoca Onayladı" : "Çalışılıyor"}</span>
-            </div>
-          `;
+          const earned = earnedList.includes(b.id); const popCls = earned && justUnlockedBadgeId === b.id ? "badge-just-unlocked" : "";
+          return `<div class="skill-badge ${earned ? "earned" : ""} ${popCls}"><span>${escapeHtml(b.title)}</span><span>${earned ? "✓ Hoca Onayladı" : "Çalışılıyor"}</span></div>`;
         }).join("");
-      } else {
-        authScreen.style.display = "grid";
-        memberWorkspace.style.display = "none";
-      }
+      } else { authScreen.style.display = "grid"; memberWorkspace.style.display = "none"; }
 
       const studentFeed = document.getElementById("studentFeed");
-      const visibleForStudent = state.messages.filter((m) => {
-        if (!currentStudent) return false;
-        return (
-          m.targetStudent === "ALL" ||
-          m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase() ||
-          m.senderName.toLowerCase() === currentStudent.name.toLowerCase()
-        );
-      });
-
-      studentFeed.innerHTML = visibleForStudent.length
-        ? visibleForStudent.map((m) => `
+      const visibleForStudent = state.messages.filter((m) => { if (!currentStudent) return false; return (m.targetStudent === "ALL" || m.targetStudent.toLowerCase() === currentStudent.name.toLowerCase() || m.senderName.toLowerCase() === currentStudent.name.toLowerCase()); });
+      studentFeed.innerHTML = visibleForStudent.length ? visibleForStudent.map((m) => `
           <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
-            <div class="msg-meta">
-              <strong>${escapeHtml(m.senderName)} • ${escapeHtml(m.cardType || "")}</strong>
-              <span class="date-chip">${escapeHtml(m.time)}</span>
-            </div>
+            <div class="msg-meta"><strong>${escapeHtml(m.senderName)} • ${escapeHtml(m.cardType || "")}</strong><span class="date-chip">${escapeHtml(m.time)}</span></div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
-            ${m.link ? `<div style="margin-top:6px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.82rem;">Bağlantıyı Aç →</a></div>` : ""}
-            ${m.sender === "hoca" ? `
-              <div style="margin-top:8px;">
-                <button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">
-                  ${m.completed ? "Tamamlandı ✓" : "Çalıştım / Tamamla"}
-                </button>
-              </div>
-            ` : ""}
+            ${m.link ? `<div style="margin-top:8px;"><a href="${escapeHtml(m.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--gold); font-weight:700; font-size:0.9rem;">Bağlantıyı Aç →</a></div>` : ""}
+            ${m.sender === "hoca" ? `<div style="margin-top:12px;"><button type="button" class="btn btn-ghost btn-sm" data-toggle-done="${escapeHtml(m.id)}">${m.completed ? "Tamamlandı ✓" : "Çalıştım / Tamamla"}</button></div>` : ""}
           </div>
-        `).join("")
-        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz mesaj veya ödev kaydı bulunmuyor.</p>`;
-
-      studentFeed.querySelectorAll("[data-toggle-done]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const item = state.messages.find((x) => x.id === btn.dataset.toggleDone);
-          if (item) {
-            item.completed = !item.completed;
-            item.readByStudent = true;
-            saveState();
-            renderAll();
-          }
-        });
-      });
+        `).join("") : `<p style="color:var(--muted); font-size:0.85rem;">Henüz mesaj veya ödev kaydı bulunmuyor.</p>`;
+      studentFeed.querySelectorAll("[data-toggle-done]").forEach((btn) => { btn.addEventListener("click", () => { const item = state.messages.find((x) => x.id === btn.dataset.toggleDone); if (item) { item.completed = !item.completed; item.readByStudent = true; saveState(); renderAll(); } }); });
 
       const sList = document.getElementById("hocaStudentList");
       sList.innerHTML = [
-        `<div class="student-pill ${selectedHocaStudent === "ALL" ? "active" : ""}" data-select-s="ALL">
-          <span>Tüm Öğrenciler (Genel)</span>
-          <span class="status-pill">Tümü</span>
-        </div>`,
+        `<div class="student-pill ${selectedHocaStudent === "ALL" ? "active" : ""}" data-select-s="ALL"><span>Tüm Öğrenciler (Genel İletişim)</span><span class="status-pill">Tümü</span></div>`,
         ...state.students.map((s) => {
-          const d = s.lessonsDone || 0;
-          const t = s.lessonsTotal || 4;
-          const stuUnread = state.messages.filter((m) => m.sender === "ogrenci" && !m.readByHoca && m.senderName.toLowerCase() === s.name.toLowerCase()).length;
+          const d = s.lessonsDone || 0; const t = s.lessonsTotal || 4; const stuUnread = state.messages.filter((m) => m.sender === "ogrenci" && !m.readByHoca && m.senderName.toLowerCase() === s.name.toLowerCase()).length;
           return `
             <div class="student-pill ${selectedHocaStudent === s.name ? "active" : ""}" data-select-s="${escapeHtml(s.name)}">
               <div>
                 <strong>${escapeHtml(s.name)} ${stuUnread > 0 ? `<span class="status-pill done" style="margin-left:4px;">${stuUnread} yeni mesaj</span>` : ""}</strong>
-                <span style="display:block; font-size:0.73rem; color:var(--muted);">
-                  k.adı: ${escapeHtml(s.username)} • şifre: ${escapeHtml(s.password)}
-                </span>
+                <span style="display:block; font-size:0.75rem; color:var(--muted); margin-top:2px;">k.adı: ${escapeHtml(s.username)} • şifre: ${escapeHtml(s.password)}</span>
               </div>
-              <div style="display:flex; align-items:center; gap:6px;">
-                <span class="status-pill ${d >= t ? "done" : ""}">${d}/${t}</span>
-                <button type="button" class="btn btn-danger btn-sm" data-del-stu="${escapeHtml(s.id)}">Sil</button>
-              </div>
+              <span class="status-pill ${d >= t ? "done" : ""}">${d}/${t}</span>
             </div>
           `;
         })
       ].join("");
-
-      sList.querySelectorAll("[data-select-s]").forEach((el) => {
-        el.addEventListener("click", (e) => {
-          if (e.target.closest("[data-del-stu]")) return;
-          selectedHocaStudent = el.dataset.selectS;
-          state.messages.forEach((m) => {
-            if (m.sender === "ogrenci" && (selectedHocaStudent === "ALL" || m.senderName.toLowerCase() === selectedHocaStudent.toLowerCase())) {
-              m.readByHoca = true;
-            }
-          });
-          saveState();
-          renderAll();
-        });
-      });
-
-      sList.querySelectorAll("[data-del-stu]").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          deleteStudentById(btn.dataset.delStu);
-        });
-      });
+      sList.querySelectorAll("[data-select-s]").forEach((el) => { el.addEventListener("click", (e) => { selectedHocaStudent = el.dataset.selectS; state.messages.forEach((m) => { if (m.sender === "ogrenci" && (selectedHocaStudent === "ALL" || m.senderName.toLowerCase() === selectedHocaStudent.toLowerCase())) { m.readByHoca = true; } }); saveState(); renderAll(); }); });
 
       document.getElementById("selectedStudentTitle").textContent = selectedHocaStudent === "ALL" ? "Tüm Öğrenciler" : selectedHocaStudent;
       const foundStudent = state.students.find((s) => s.name === selectedHocaStudent);
-      document.getElementById("selectedStudentCourse").textContent = foundStudent
-        ? `${foundStudent.course} (${foundStudent.lessonsDone || 0}/${foundStudent.lessonsTotal || 4} Ders)`
-        : "Genel";
+      document.getElementById("selectedStudentCourse").textContent = foundStudent ? `${foundStudent.course} (${foundStudent.lessonsDone || 0}/${foundStudent.lessonsTotal || 4} Ders)` : "Genel İşlemler";
 
-      const toolsCard = document.getElementById("hocaStudentToolsCard");
-      const warnBox = document.getElementById("hocaNoStudentWarn");
-      const badgeControlGrid = document.getElementById("hocaBadgesControlGrid");
-
+      const toolsCard = document.getElementById("hocaStudentToolsCard"); const warnBox = document.getElementById("hocaNoStudentWarn"); const badgeControlGrid = document.getElementById("hocaBadgesControlGrid");
       if (foundStudent) {
-        warnBox.style.display = "none";
-        toolsCard.style.display = "grid";
-
-        const d = foundStudent.lessonsDone || 0;
-        const t = foundStudent.lessonsTotal || 4;
-        document.getElementById("hocaToolsStudentName").textContent = `${foundStudent.name} (k.adı: ${foundStudent.username} / şifre: ${foundStudent.password})`;
-        document.getElementById("hocaCourseCounterLabel").textContent = `${d} / ${t} Ders İşlendi`;
-        document.getElementById("hocaLiveLinkInput").value = foundStudent.liveLink || "";
-        document.getElementById("editStuCourseSelect").value = foundStudent.course || "Bağlama Düzeni";
-        document.getElementById("editStuPkgInput").value = t;
-
+        warnBox.style.display = "none"; toolsCard.style.display = "grid";
+        const d = foundStudent.lessonsDone || 0; const t = foundStudent.lessonsTotal || 4;
+        document.getElementById("hocaToolsStudentName").textContent = `${foundStudent.name}`;
+        document.getElementById("hocaCourseCounterLabel").textContent = `${d} / ${t} Ders İşlendi`; document.getElementById("hocaLiveLinkInput").value = foundStudent.liveLink || ""; document.getElementById("editStuCourseSelect").value = foundStudent.course || "Bağlama Düzeni"; document.getElementById("editStuPkgInput").value = t;
         if (!Array.isArray(foundStudent.badges)) foundStudent.badges = [];
         badgeControlGrid.innerHTML = SKILL_BADGES.map((b) => {
-          const earned = foundStudent.badges.includes(b.id);
-          const popCls = earned && justUnlockedBadgeId === b.id ? "badge-just-unlocked" : "";
-          return `
-            <div class="skill-badge ${earned ? "earned" : ""} ${popCls}" style="cursor:pointer;" data-hoca-badge="${b.id}">
-              <span>${escapeHtml(b.title)}</span>
-              <span>${earned ? "✓ Onaylandı" : "+ Onayla"}</span>
-            </div>
-          `;
+          const earned = foundStudent.badges.includes(b.id); const popCls = earned && justUnlockedBadgeId === b.id ? "badge-just-unlocked" : "";
+          return `<div class="skill-badge ${earned ? "earned" : ""} ${popCls}" style="cursor:pointer;" data-hoca-badge="${b.id}"><span>${escapeHtml(b.title)}</span><span>${earned ? "✓ Onaylandı" : "+ Onayla"}</span></div>`;
         }).join("");
-
-        badgeControlGrid.querySelectorAll("[data-hoca-badge]").forEach((el) => {
-          el.addEventListener("click", () => {
-            const bId = el.dataset.hocaBadge;
-            const idx = foundStudent.badges.indexOf(bId);
-            if (idx >= 0) {
-              foundStudent.badges.splice(idx, 1);
-              justUnlockedBadgeId = null;
-            } else {
-              foundStudent.badges.push(bId);
-              justUnlockedBadgeId = bId;
-              setTimeout(() => { justUnlockedBadgeId = null; }, 900);
-            }
-            saveState();
-            renderAll();
-          });
-        });
-      } else {
-        warnBox.style.display = "block";
-        toolsCard.style.display = "none";
-      }
+        badgeControlGrid.querySelectorAll("[data-hoca-badge]").forEach((el) => { el.addEventListener("click", () => { const bId = el.dataset.hocaBadge; const idx = foundStudent.badges.indexOf(bId); if (idx >= 0) { foundStudent.badges.splice(idx, 1); justUnlockedBadgeId = null; } else { foundStudent.badges.push(bId); justUnlockedBadgeId = bId; setTimeout(() => { justUnlockedBadgeId = null; }, 900); } saveState(); renderAll(); }); });
+      } else { warnBox.style.display = "block"; toolsCard.style.display = "none"; }
 
       const hocaFeed = document.getElementById("hocaFeed");
-      const visibleForHoca = state.messages.filter((m) => {
-        if (selectedHocaStudent === "ALL") return true;
-        return (
-          m.targetStudent === "ALL" ||
-          m.targetStudent.toLowerCase() === selectedHocaStudent.toLowerCase() ||
-          m.senderName.toLowerCase() === selectedHocaStudent.toLowerCase()
-        );
-      });
-
-      hocaFeed.innerHTML = visibleForHoca.length
-        ? visibleForHoca.map((m) => `
+      const visibleForHoca = state.messages.filter((m) => { if (selectedHocaStudent === "ALL") return true; return (m.targetStudent === "ALL" || m.targetStudent.toLowerCase() === selectedHocaStudent.toLowerCase() || m.senderName.toLowerCase() === selectedHocaStudent.toLowerCase()); });
+      hocaFeed.innerHTML = visibleForHoca.length ? visibleForHoca.map((m) => `
           <div class="msg-item ${m.sender === "hoca" ? "from-hoca" : "from-ogrenci"}">
-            <div class="msg-meta">
-              <strong>${escapeHtml(m.senderName)} → ${escapeHtml(m.targetStudent === "ALL" ? "Tüm Öğrenciler" : m.targetStudent)} • ${escapeHtml(m.cardType || "")}</strong>
-              <div style="display:flex; align-items:center; gap:6px;">
-                <span class="date-chip">${m.completed ? "Tamamlandı ✓ • " : ""}${escapeHtml(m.time)}</span>
-                <button type="button" class="slot-del-btn" title="Kaydı Sil" data-del-msg="${escapeHtml(m.id)}">×</button>
-              </div>
-            </div>
+            <div class="msg-meta"><strong>${escapeHtml(m.senderName)} → ${escapeHtml(m.targetStudent === "ALL" ? "Tüm Öğrenciler" : m.targetStudent)} • ${escapeHtml(m.cardType || "")}</strong>
+            <div style="display:flex; align-items:center; gap:8px;"><span class="date-chip">${m.completed ? "Tamamlandı ✓ • " : ""}${escapeHtml(m.time)}</span><button type="button" class="slot-del-btn" title="Kaydı Sil" data-del-msg="${escapeHtml(m.id)}">×</button></div></div>
             <div class="msg-body">${escapeHtml(m.text)}</div>
           </div>
-        `).join("")
-        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz mesaj veya ödev kaydı yok.</p>`;
-
-      hocaFeed.querySelectorAll("[data-del-msg]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.messages = state.messages.filter((x) => x.id !== btn.dataset.delMsg);
-          saveState();
-          renderAll();
-        });
-      });
+        `).join("") : `<p style="color:var(--muted); font-size:0.85rem;">Henüz mesaj veya ödev kaydı yok.</p>`;
+      hocaFeed.querySelectorAll("[data-del-msg]").forEach((btn) => { btn.addEventListener("click", () => { state.messages = state.messages.filter((x) => x.id !== btn.dataset.delMsg); saveState(); renderAll(); }); });
 
       const reqFeed = document.getElementById("hocaRequestsFeed");
-      reqFeed.innerHTML = state.requests.length
-        ? state.requests.map((r) => `
-          <div class="msg-item">
-            <div class="msg-meta">
-              <strong>${escapeHtml(r.studentName)} ${r.phone ? "(" + escapeHtml(r.phone) + ")" : ""} • ${escapeHtml(r.course)}</strong>
-              <span class="status-pill ${r.status === "Onaylandı" ? "done" : ""}">${escapeHtml(r.status)}</span>
-            </div>
-            <div class="msg-body">${escapeHtml(r.slot)} — ${escapeHtml(r.topic)}</div>
-            <div style="margin-top:8px;">
-              <button type="button" class="btn btn-sm" data-approve="${escapeHtml(r.id)}">Öğrenci Kaydını Onayla</button>
-            </div>
+      reqFeed.innerHTML = state.requests.length ? state.requests.map((r) => `
+          <div class="msg-item"><div class="msg-meta"><strong>${escapeHtml(r.studentName)} ${r.phone ? "(" + escapeHtml(r.phone) + ")" : ""} • ${escapeHtml(r.course)}</strong><span class="status-pill ${r.status === "Onaylandı" ? "done" : ""}">${escapeHtml(r.status)}</span></div>
+            <div class="msg-body">${escapeHtml(r.slot)} — ${escapeHtml(r.topic)}</div><div style="margin-top:10px;"><button type="button" class="btn btn-sm" data-approve="${escapeHtml(r.id)}">Öğrenci Kaydını Onayla & Ekle</button></div>
           </div>
-        `).join("")
-        : `<p style="color:var(--muted); font-size:0.85rem;">Henüz başvuru yok.</p>`;
-
-      reqFeed.querySelectorAll("[data-approve]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const item = state.requests.find((x) => x.id === btn.dataset.approve);
-          if (item) {
-            item.status = "Onaylandı";
-            const stu = upsertStudent(item.studentName, item.course, item.phone || "", item.slot);
-            selectedHocaStudent = stu.name;
-            saveState();
-            renderAll();
-          }
-        });
-      });
+        `).join("") : `<p style="color:var(--muted); font-size:0.85rem;">Henüz başvuru yok.</p>`;
+      reqFeed.querySelectorAll("[data-approve]").forEach((btn) => { btn.addEventListener("click", () => { const item = state.requests.find((x) => x.id === btn.dataset.approve); if (item) { item.status = "Onaylandı"; const stu = upsertStudent(item.studentName, item.course, item.phone || "", item.slot); selectedHocaStudent = stu.name; saveState(); renderAll(); } }); });
     }
 
-    function escapeHtml(str) {
-      return String(str || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
-    }
-
-    (function restoreInitialView() {
-      const targetView = authPersist.view || "vitrin";
-      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === targetView));
-      document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + targetView));
-    })();
-
+    function escapeHtml(str) { return String(str || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
+    (function restoreInitialView() { const targetView = authPersist.view || "vitrin"; document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.go === targetView)); document.querySelectorAll(".page-view").forEach((v) => v.classList.toggle("active", v.id === "view-" + targetView)); })();
     renderAll();
   </script>
 </body>
