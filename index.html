@@ -1104,21 +1104,22 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // AŞAĞIDAKİ BİLGİLERİ KENDİ FİREBASE KONSOLUNDAN ALIP BURAYA YAPIŞTIR!
-    // Firebase > Project Settings > General > "Your apps" kısmında bulunur.
+    // "dogukan-bozkurt" projesi için yapılandırıldı.
+    // LÜTFEN BİLGİLERİ (apiKey, messagingSenderId, appId) KENDİ FİREBASE KONSOLUNDAN ALARAK DEĞİŞTİR:
     const firebaseConfig = {
-      apiKey: "SENIN_API_KEY_BURAYA",
-      authDomain: "SENIN_PROJE_ADI.firebaseapp.com",
-      databaseURL: "https://SENIN_PROJE_ADI-default-rtdb.firebaseio.com",
-      projectId: "SENIN_PROJE_ADI",
-      storageBucket: "SENIN_PROJE_ADI.appspot.com",
-      messagingSenderId: "123456789",
-      appId: "1:123456789:web:abcdef"
+      apiKey: "BURAYA_FIREBASE_API_KEY_GELECEK",
+      authDomain: "dogukan-bozkurt.firebaseapp.com",
+      databaseURL: "https://dogukan-bozkurt-default-rtdb.firebaseio.com", 
+      projectId: "dogukan-bozkurt",
+      storageBucket: "dogukan-bozkurt.appspot.com",
+      messagingSenderId: "BURAYA_MESSAGING_SENDER_ID_GELECEK",
+      appId: "BURAYA_APP_ID_GELECEK"
     };
 
     let portalRef = null;
     try {
-      if(firebaseConfig.apiKey !== "SENIN_API_KEY_BURAYA") {
+      // Eğer kendi anahtarını girersen sistem Firebase üzerinden senkronize olmaya başlar
+      if(firebaseConfig.apiKey && !firebaseConfig.apiKey.includes("BURAYA")) {
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         portalRef = ref(db, 'dogukanPortalData');
@@ -1813,7 +1814,6 @@
       renderAll();
     });
 
-    // Yeni Video Ekleme Modülü İşlevi
     document.getElementById("hocaAddVideoForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("hocaVideoTitle").value.trim();
