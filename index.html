@@ -1104,39 +1104,35 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // "dogukan-bozkurt" projesi için yapılandırıldı.
-    // LÜTFEN BİLGİLERİ (apiKey, messagingSenderId, appId) KENDİ FİREBASE KONSOLUNDAN ALARAK DEĞİŞTİR:
+    // DOĞUKAN BOZKURT FIREBASE AYARLARI
     const firebaseConfig = {
-      apiKey: "BURAYA_FIREBASE_API_KEY_GELECEK",
+      apiKey: "AIzaSyCblMRc5In8TtvSWM4S_MQ92k-wpOVvkek",
       authDomain: "dogukan-bozkurt.firebaseapp.com",
-      databaseURL: "https://dogukan-bozkurt-default-rtdb.firebaseio.com", 
+      databaseURL: "https://dogukan-bozkurt-default-rtdb.europe-west1.firebasedatabase.app",
       projectId: "dogukan-bozkurt",
-      storageBucket: "dogukan-bozkurt.appspot.com",
-      messagingSenderId: "BURAYA_MESSAGING_SENDER_ID_GELECEK",
-      appId: "BURAYA_APP_ID_GELECEK"
+      storageBucket: "dogukan-bozkurt.firebasestorage.app",
+      messagingSenderId: "928618708791",
+      appId: "1:928618708791:web:f08e7e63d200d42b1324b2"
     };
 
     let portalRef = null;
     try {
-      // Eğer kendi anahtarını girersen sistem Firebase üzerinden senkronize olmaya başlar
-      if(firebaseConfig.apiKey && !firebaseConfig.apiKey.includes("BURAYA")) {
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        portalRef = ref(db, 'dogukanPortalData');
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      portalRef = ref(db, 'dogukanPortalData');
 
-        // FIREBASE DİNLEYİCİ: Veritabanında bir şey değiştiği an bu kod çalışır (Canlı Senkronizasyon)
-        onValue(portalRef, (snapshot) => {
-          const data = snapshot.val();
-          if (data) {
-            state = data;
-            ensureMethodPdfForAllStudents(state);
-            if (authPersist.studentId) {
-               currentStudent = state.students.find(s => s.id === authPersist.studentId) || null;
-            }
-            renderAll();
+      // FIREBASE DİNLEYİCİ: Veritabanında bir şey değiştiği an bu kod çalışır (Canlı Senkronizasyon)
+      onValue(portalRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          state = data;
+          ensureMethodPdfForAllStudents(state);
+          if (authPersist.studentId) {
+             currentStudent = state.students.find(s => s.id === authPersist.studentId) || null;
           }
-        });
-      }
+          renderAll();
+        }
+      });
     } catch(e) {
       console.warn("Firebase ayarlanmadı veya hata oluştu. Sistem yerel depolama ile çalışıyor.");
     }
